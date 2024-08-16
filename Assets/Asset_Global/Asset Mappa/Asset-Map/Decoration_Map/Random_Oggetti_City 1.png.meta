@@ -1,0 +1,3484 @@
+fileFormatVersion: 2
+guid: e9649f8f7977b97438b67bdbade7ab64
+TextureImporter:
+  internalIDToNameTable: []
+  externalObjects: {}
+  serializedVersion: 13
+  mipmaps:
+    mipMapMode: 0
+    enableMipMap: 0
+    sRGBTexture: 1
+    linearTexture: 0
+    fadeOut: 0
+    borderMipMap: 0
+    mipMapsPreserveCoverage: 0
+    alphaTestReferenceValue: 0.5
+    mipMapFadeDistanceStart: 1
+    mipMapFadeDistanceEnd: 3
+  bumpmap:
+    convertToNormalMap: 0
+    externalNormalMap: 0
+    heightScale: 0.25
+    normalMapFilter: 0
+    flipGreenChannel: 0
+  isReadable: 0
+  streamingMipmaps: 0
+  streamingMipmapsPriority: 0
+  vTOnly: 0
+  ignoreMipmapLimit: 0
+  grayScaleToAlpha: 0
+  generateCubemap: 6
+  cubemapConvolution: 0
+  seamlessCubemap: 0
+  textureFormat: 1
+  maxTextureSize: 2048
+  textureSettings:
+    serializedVersion: 2
+    filterMode: 0
+    aniso: 1
+    mipBias: 0
+    wrapU: 1
+    wrapV: 1
+    wrapW: 1
+  nPOTScale: 0
+  lightmap: 0
+  compressionQuality: 50
+  spriteMode: 2
+  spriteExtrude: 1
+  spriteMeshType: 1
+  alignment: 0
+  spritePivot: {x: 0.5, y: 0.5}
+  spritePixelsToUnits: 16
+  spriteBorder: {x: 0, y: 0, z: 0, w: 0}
+  spriteGenerateFallbackPhysicsShape: 1
+  alphaUsage: 1
+  alphaIsTransparency: 1
+  spriteTessellationDetail: -1
+  textureType: 8
+  textureShape: 1
+  singleChannelComponent: 0
+  flipbookRows: 1
+  flipbookColumns: 1
+  maxTextureSizeSet: 0
+  compressionQualitySet: 0
+  textureFormatSet: 0
+  ignorePngGamma: 0
+  applyGammaDecoding: 0
+  swizzle: 50462976
+  cookieLightType: 0
+  platformSettings:
+  - serializedVersion: 3
+    buildTarget: DefaultTexturePlatform
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 0
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 3
+    buildTarget: Standalone
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 3
+    buildTarget: WebGL
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 3
+    buildTarget: Android
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 0
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  spriteSheet:
+    serializedVersion: 2
+    sprites:
+    - serializedVersion: 2
+      name: Random_Oggetti_City 1_0
+      rect:
+        serializedVersion: 2
+        x: 17
+        y: 576
+        width: 46
+        height: 37
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 227ff0f83a46f6946a98e19809ca430d
+      internalID: 2052086039
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Random_Oggetti_City 1_1
+      rect:
+        serializedVersion: 2
+        x: 81
+        y: 580
+        width: 46
+        height: 23
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: ede170d3fde17e04d9bdfce43c382782
+      internalID: -1418277061
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Random_Oggetti_City 1_2
+      rect:
+        serializedVersion: 2
+        x: 131
+        y: 576
+        width: 30
+        height: 31
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: f2695baa5bddd4f4d9cffa1c08ec8408
+      internalID: -619968281
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Random_Oggetti_City 1_3
+      rect:
+        serializedVersion: 2
+        x: 217
+        y: 592
+        width: 16
+        height: 17
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 7ca5738300b878343897e629de939bc8
+      internalID: 1750715585
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Random_Oggetti_City 1_4
+      rect:
+        serializedVersion: 2
+        x: 249
+        y: 592
+        width: 16
+        height: 21
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 039f29e160a0dfe468ef8c00d188cc30
+      internalID: 1549551365
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Random_Oggetti_City 1_5
+      rect:
+        serializedVersion: 2
+        x: 275
+        y: 592
+        width: 42
+        height: 24
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: cfd24c6a1f710eb409c98153ed4ffa9d
+      internalID: 1804221227
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Random_Oggetti_City 1_6
+      rect:
+        serializedVersion: 2
+        x: 368
+        y: 585
+        width: 31
+        height: 23
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 87f7dfd06a604d14081087e197f46c4f
+      internalID: 1625305495
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Random_Oggetti_City 1_7
+      rect:
+        serializedVersion: 2
+        x: 400
+        y: 585
+        width: 16
+        height: 23
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 1f8ed3afc310efb4d8a4f3d90a6d87b8
+      internalID: 191568416
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Random_Oggetti_City 1_8
+      rect:
+        serializedVersion: 2
+        x: 432
+        y: 576
+        width: 15
+        height: 37
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: e43cc2359a36ebd4f9d8479b2e3e7161
+      internalID: -203930178
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Random_Oggetti_City 1_9
+      rect:
+        serializedVersion: 2
+        x: 464
+        y: 578
+        width: 15
+        height: 26
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: d75ac2aef9e2c2744beb476cbf3c4635
+      internalID: 1500107785
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Random_Oggetti_City 1_10
+      rect:
+        serializedVersion: 2
+        x: 480
+        y: 578
+        width: 15
+        height: 26
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 70455f24e5b97734884d1a7d5b004d68
+      internalID: -631896576
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Random_Oggetti_City 1_11
+      rect:
+        serializedVersion: 2
+        x: 496
+        y: 578
+        width: 15
+        height: 26
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 8921340a31689a74eb9a981985ccd618
+      internalID: 1529379205
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Random_Oggetti_City 1_12
+      rect:
+        serializedVersion: 2
+        x: 531
+        y: 567
+        width: 42
+        height: 64
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: c0ca45b1acc97e84eb682121912c234f
+      internalID: 909914745
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Random_Oggetti_City 1_13
+      rect:
+        serializedVersion: 2
+        x: 579
+        y: 568
+        width: 42
+        height: 63
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 160caefec343eea48981aad8d454c581
+      internalID: -1084723316
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Random_Oggetti_City 1_14
+      rect:
+        serializedVersion: 2
+        x: 17
+        y: 528
+        width: 46
+        height: 37
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: cc97ea90cf85cfd419aa2a19faa372c2
+      internalID: -1203525678
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Random_Oggetti_City 1_15
+      rect:
+        serializedVersion: 2
+        x: 81
+        y: 545
+        width: 111
+        height: 31
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 61, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: fc0dbfc3b1e0e704498fb8b2dce8a984
+      internalID: -1706195855
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Random_Oggetti_City 1_16
+      rect:
+        serializedVersion: 2
+        x: 213
+        y: 560
+        width: 23
+        height: 21
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: f957d35f8a441ed4785ae327e2be3a71
+      internalID: -1456099146
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Random_Oggetti_City 1_17
+      rect:
+        serializedVersion: 2
+        x: 245
+        y: 560
+        width: 23
+        height: 25
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 8703f200737b7364e811c95b86a5faaa
+      internalID: -1497865375
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Random_Oggetti_City 1_18
+      rect:
+        serializedVersion: 2
+        x: 275
+        y: 560
+        width: 42
+        height: 28
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 6d5cb2e11e7330244adfc6ddf18339eb
+      internalID: 1158964404
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Random_Oggetti_City 1_19
+      rect:
+        serializedVersion: 2
+        x: 342
+        y: 544
+        width: 21
+        height: 24
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 94e71dac5573ec74fb9d17804350914c
+      internalID: 1730107751
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Random_Oggetti_City 1_20
+      rect:
+        serializedVersion: 2
+        x: 82
+        y: 516
+        width: 28
+        height: 28
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: e7be3a03a8d977a4fb81ca39862521ad
+      internalID: 726130063
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Random_Oggetti_City 1_21
+      rect:
+        serializedVersion: 2
+        x: 112
+        y: 516
+        width: 16
+        height: 24
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: d06ea5273e6159f40b1fbed928a4dd59
+      internalID: -1605477944
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Random_Oggetti_City 1_22
+      rect:
+        serializedVersion: 2
+        x: 129
+        y: 515
+        width: 27
+        height: 24
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 1fbd0656bc5ebfb46a61b88aa80add14
+      internalID: 897944050
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Random_Oggetti_City 1_23
+      rect:
+        serializedVersion: 2
+        x: 160
+        y: 513
+        width: 32
+        height: 26
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: d8febb427c4621541965a86b5dd544ed
+      internalID: -1371196914
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Random_Oggetti_City 1_24
+      rect:
+        serializedVersion: 2
+        x: 213
+        y: 528
+        width: 23
+        height: 21
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: f4f458b4fec348145bf1389612a897d5
+      internalID: 299838612
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Random_Oggetti_City 1_25
+      rect:
+        serializedVersion: 2
+        x: 245
+        y: 528
+        width: 23
+        height: 25
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 8ab16e460fae04d4c9044d2b3a06f918
+      internalID: 1925320471
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Random_Oggetti_City 1_26
+      rect:
+        serializedVersion: 2
+        x: 275
+        y: 528
+        width: 29
+        height: 17
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: c788d48ebd809c34792f6a880aa0a481
+      internalID: -1105743572
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Random_Oggetti_City 1_27
+      rect:
+        serializedVersion: 2
+        x: 342
+        y: 498
+        width: 21
+        height: 43
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: e929cb14ab5662c4aac4502d1fecc652
+      internalID: 2063069471
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Random_Oggetti_City 1_28
+      rect:
+        serializedVersion: 2
+        x: 371
+        y: 529
+        width: 11
+        height: 11
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 7da7ba1c93f291d418015d2f6ca1418a
+      internalID: 708609769
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Random_Oggetti_City 1_29
+      rect:
+        serializedVersion: 2
+        x: 386
+        y: 528
+        width: 14
+        height: 21
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: d1364413ad1a5c147b7dd0ae88a8ed16
+      internalID: -1989413448
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Random_Oggetti_City 1_30
+      rect:
+        serializedVersion: 2
+        x: 402
+        y: 529
+        width: 11
+        height: 20
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 37ad951d23f4a3e488c0f7fe735d17c2
+      internalID: 1630760866
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Random_Oggetti_City 1_31
+      rect:
+        serializedVersion: 2
+        x: 448
+        y: 496
+        width: 32
+        height: 64
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 897bce069aa75a941847b8bd8fdf3627
+      internalID: -920022316
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Random_Oggetti_City 1_32
+      rect:
+        serializedVersion: 2
+        x: 544
+        y: 503
+        width: 32
+        height: 53
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 9d0823449fecec6468321d7595b4667f
+      internalID: -2139975397
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Random_Oggetti_City 1_33
+      rect:
+        serializedVersion: 2
+        x: 592
+        y: 504
+        width: 32
+        height: 52
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 3c7573fe3e120ea49a88f2d44e9b5e47
+      internalID: 502583581
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Random_Oggetti_City 1_34
+      rect:
+        serializedVersion: 2
+        x: 80
+        y: 514
+        width: 11
+        height: 10
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: e3c25fedeb0597c429ee6faca99c7073
+      internalID: 430874552
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Random_Oggetti_City 1_35
+      rect:
+        serializedVersion: 2
+        x: 370
+        y: 513
+        width: 11
+        height: 11
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: b9d89ddbaa4939c42903e6ca053438ae
+      internalID: -435986729
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Random_Oggetti_City 1_36
+      rect:
+        serializedVersion: 2
+        x: 402
+        y: 523
+        width: 5
+        height: 5
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 1517934aa41f1864e98e6f2a496a2d84
+      internalID: 1522006373
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Random_Oggetti_City 1_37
+      rect:
+        serializedVersion: 2
+        x: 411
+        y: 512
+        width: 21
+        height: 16
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 3a7bed38257898e47b15cfc7c3820842
+      internalID: 1796921170
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Random_Oggetti_City 1_38
+      rect:
+        serializedVersion: 2
+        x: 245
+        y: 496
+        width: 23
+        height: 25
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 996fc150d1a4afe419f856334a8bddfd
+      internalID: 173335537
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Random_Oggetti_City 1_39
+      rect:
+        serializedVersion: 2
+        x: 386
+        y: 513
+        width: 12
+        height: 9
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 4e3504f50ee3f4642b9aefc925b6348f
+      internalID: 1042122252
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Random_Oggetti_City 1_40
+      rect:
+        serializedVersion: 2
+        x: 402
+        y: 516
+        width: 7
+        height: 7
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: ebc37e1239b2cf742b281c70e12729b2
+      internalID: -498160071
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Random_Oggetti_City 1_41
+      rect:
+        serializedVersion: 2
+        x: 411
+        y: 519
+        width: 4
+        height: 4
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 423a3521bb351aa40a0b30d436ea122f
+      internalID: 1115513412
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Random_Oggetti_City 1_42
+      rect:
+        serializedVersion: 2
+        x: 17
+        y: 480
+        width: 46
+        height: 37
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 1b537648d6556fc4dbcf5894bac8b0b2
+      internalID: 887580578
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Random_Oggetti_City 1_43
+      rect:
+        serializedVersion: 2
+        x: 213
+        y: 496
+        width: 23
+        height: 21
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: d81ab978a8925cb418938570a069dbae
+      internalID: -684658172
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Random_Oggetti_City 1_44
+      rect:
+        serializedVersion: 2
+        x: 275
+        y: 496
+        width: 29
+        height: 21
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: e5e7601b2b47e7a4e808eb782f149983
+      internalID: 1577416592
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Random_Oggetti_City 1_45
+      rect:
+        serializedVersion: 2
+        x: 409
+        y: 513
+        width: 6
+        height: 6
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: de4d034465cfe5142ae60775f98470f3
+      internalID: 733704610
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Random_Oggetti_City 1_46
+      rect:
+        serializedVersion: 2
+        x: 85
+        y: 486
+        width: 23
+        height: 22
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 6a2219526e7011f40989c3f2bbbb7291
+      internalID: 337212323
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Random_Oggetti_City 1_47
+      rect:
+        serializedVersion: 2
+        x: 116
+        y: 483
+        width: 25
+        height: 26
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 56e6cc4552416974ab9ab87a73ee02ee
+      internalID: 1647600257
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Random_Oggetti_City 1_48
+      rect:
+        serializedVersion: 2
+        x: 148
+        y: 487
+        width: 26
+        height: 16
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 02576445a52a1ae49a79c26f38ccecc2
+      internalID: 784654684
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Random_Oggetti_City 1_49
+      rect:
+        serializedVersion: 2
+        x: 182
+        y: 486
+        width: 20
+        height: 19
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: f4d2ff5b2da9d2e42b39bbfc0cfe171d
+      internalID: 1325845027
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Random_Oggetti_City 1_50
+      rect:
+        serializedVersion: 2
+        x: 386
+        y: 480
+        width: 13
+        height: 11
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 2de5c2fb33466234db7d744500cf3453
+      internalID: -881530984
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Random_Oggetti_City 1_51
+      rect:
+        serializedVersion: 2
+        x: 20
+        y: 421
+        width: 40
+        height: 32
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 7d9122e31808d00468c51356c74a7556
+      internalID: 1506355048
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Random_Oggetti_City 1_52
+      rect:
+        serializedVersion: 2
+        x: 96
+        y: 384
+        width: 102
+        height: 84
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: dd4dc5280838a164d926fd1c81a18c50
+      internalID: 1619192192
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Random_Oggetti_City 1_53
+      rect:
+        serializedVersion: 2
+        x: 239
+        y: 432
+        width: 33
+        height: 43
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 36671a50fadcc6a4ba5a300338994e84
+      internalID: -788335548
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Random_Oggetti_City 1_54
+      rect:
+        serializedVersion: 2
+        x: 321
+        y: 432
+        width: 31
+        height: 23
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 70d5c8b95215cb14ebf651aa42922993
+      internalID: 307354972
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Random_Oggetti_City 1_55
+      rect:
+        serializedVersion: 2
+        x: 372
+        y: 433
+        width: 8
+        height: 21
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 419c0dc542b89bc458724fc6813a4431
+      internalID: -798841991
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Random_Oggetti_City 1_56
+      rect:
+        serializedVersion: 2
+        x: 386
+        y: 448
+        width: 12
+        height: 26
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 58e998a92dde2be49a7147b4454a53d3
+      internalID: -507428718
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Random_Oggetti_City 1_57
+      rect:
+        serializedVersion: 2
+        x: 386
+        y: 432
+        width: 13
+        height: 11
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 940784ac96e6dc14f970c33676f9aa71
+      internalID: -1350897040
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Random_Oggetti_City 1_58
+      rect:
+        serializedVersion: 2
+        x: 192
+        y: 320
+        width: 46
+        height: 50
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 35e65a9795bbbbb4db9a4cfcf07697bb
+      internalID: 41150240
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Random_Oggetti_City 1_59
+      rect:
+        serializedVersion: 2
+        x: 240
+        y: 320
+        width: 46
+        height: 49
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: b30cacae10f82184094a1c6120ed233e
+      internalID: -2127013252
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Random_Oggetti_City 1_60
+      rect:
+        serializedVersion: 2
+        x: 290
+        y: 320
+        width: 43
+        height: 49
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: f3ce7367edbf17540a4d9b77e450c569
+      internalID: 2054842459
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Random_Oggetti_City 1_61
+      rect:
+        serializedVersion: 2
+        x: 386
+        y: 400
+        width: 12
+        height: 26
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: bcd2d15f0a65b4b4999c7e158b3b34df
+      internalID: -1228933174
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Random_Oggetti_City 1_62
+      rect:
+        serializedVersion: 2
+        x: 433
+        y: 412
+        width: 14
+        height: 17
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 2e02c770c7897e74d9c78863c3ea32f4
+      internalID: -968411125
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Random_Oggetti_City 1_63
+      rect:
+        serializedVersion: 2
+        x: 449
+        y: 412
+        width: 14
+        height: 17
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 26f4919ac8ad5bb42992633a7d0f7399
+      internalID: -328529237
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Random_Oggetti_City 1_64
+      rect:
+        serializedVersion: 2
+        x: 465
+        y: 410
+        width: 14
+        height: 20
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 396a5eeeac035cf42bed7e6cf6c943ce
+      internalID: -523022400
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Random_Oggetti_City 1_65
+      rect:
+        serializedVersion: 2
+        x: 489
+        y: 406
+        width: 19
+        height: 23
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 4b44f3c78a037bd4b85ebb3f4b24eef1
+      internalID: -1900232289
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Random_Oggetti_City 1_66
+      rect:
+        serializedVersion: 2
+        x: 519
+        y: 406
+        width: 21
+        height: 24
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 44535b5c570ccbf4b8e72f768bbda1b3
+      internalID: -967751178
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Random_Oggetti_City 1_67
+      rect:
+        serializedVersion: 2
+        x: 21
+        y: 376
+        width: 37
+        height: 35
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 49cd8e9542df5b241973873e2d4c3aaa
+      internalID: -269238865
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Random_Oggetti_City 1_68
+      rect:
+        serializedVersion: 2
+        x: 416
+        y: 352
+        width: 32
+        height: 26
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 651f1d0232c713549ab5a16161494b09
+      internalID: 1611705766
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Random_Oggetti_City 1_69
+      rect:
+        serializedVersion: 2
+        x: 384
+        y: 339
+        width: 26
+        height: 26
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 1577c5bd8dd1d364f8878fb37e2a1a6a
+      internalID: -1576258863
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Random_Oggetti_City 1_70
+      rect:
+        serializedVersion: 2
+        x: 417
+        y: 304
+        width: 30
+        height: 34
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 892faeb98deb17c40b25a3bb2a40692f
+      internalID: 1952366002
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Random_Oggetti_City 1_71
+      rect:
+        serializedVersion: 2
+        x: 7
+        y: 224
+        width: 105
+        height: 70
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: e2565865f364d374897e22a1bef16be1
+      internalID: 224728450
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Random_Oggetti_City 1_72
+      rect:
+        serializedVersion: 2
+        x: 130
+        y: 224
+        width: 109
+        height: 80
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: f75196ab5bfecd242b37a33200520664
+      internalID: -1539013876
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Random_Oggetti_City 1_73
+      rect:
+        serializedVersion: 2
+        x: 256
+        y: 224
+        width: 96
+        height: 80
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 05bf7c3c1123be548aa44fc61a9720cf
+      internalID: 642399424
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Random_Oggetti_City 1_74
+      rect:
+        serializedVersion: 2
+        x: 24
+        y: 193
+        width: 33
+        height: 15
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: e42ed18d77d000d498a658e2c42ab61c
+      internalID: -1113338888
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Random_Oggetti_City 1_75
+      rect:
+        serializedVersion: 2
+        x: 97
+        y: 162
+        width: 47
+        height: 36
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: fa4425e248c95a141ac0ce518dad8764
+      internalID: -387414774
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Random_Oggetti_City 1_76
+      rect:
+        serializedVersion: 2
+        x: 150
+        y: 166
+        width: 68
+        height: 35
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 27e26071314591b4c919ab879ac03f68
+      internalID: -1637705364
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Random_Oggetti_City 1_77
+      rect:
+        serializedVersion: 2
+        x: 226
+        y: 165
+        width: 62
+        height: 34
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 46ce5b3414084434886667263570f215
+      internalID: -1030867626
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Random_Oggetti_City 1_78
+      rect:
+        serializedVersion: 2
+        x: 300
+        y: 164
+        width: 48
+        height: 38
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: e48b216c570fd3f4f9cb233656bf96af
+      internalID: -1241156803
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Random_Oggetti_City 1_79
+      rect:
+        serializedVersion: 2
+        x: 354
+        y: 178
+        width: 44
+        height: 24
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 80c6ca2527ba13a4090763fdc1f3d43a
+      internalID: 1841430726
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Random_Oggetti_City 1_80
+      rect:
+        serializedVersion: 2
+        x: 400
+        y: 181
+        width: 32
+        height: 22
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 52c53b2a79a173046a3f0bf7040c71f8
+      internalID: 302265784
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Random_Oggetti_City 1_81
+      rect:
+        serializedVersion: 2
+        x: 436
+        y: 181
+        width: 23
+        height: 18
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 1793c10d0b2e7754dbfee5816cfb1ab1
+      internalID: 1213748674
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Random_Oggetti_City 1_82
+      rect:
+        serializedVersion: 2
+        x: 470
+        y: 181
+        width: 21
+        height: 20
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: c84e2a44d62f91a4089fb56318733890
+      internalID: -1406594152
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Random_Oggetti_City 1_83
+      rect:
+        serializedVersion: 2
+        x: 489
+        y: 187
+        width: 4
+        height: 10
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 0e78744badc992f41afa2323328c8d71
+      internalID: -1317267436
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Random_Oggetti_City 1_84
+      rect:
+        serializedVersion: 2
+        x: 499
+        y: 194
+        width: 23
+        height: 10
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 72439170d39c1ef49a94c7ae0d379006
+      internalID: 611227563
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Random_Oggetti_City 1_85
+      rect:
+        serializedVersion: 2
+        x: 24
+        y: 162
+        width: 65
+        height: 29
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 14e5117775d9a994e8ef38a10788c50f
+      internalID: 1853366748
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Random_Oggetti_City 1_86
+      rect:
+        serializedVersion: 2
+        x: 503
+        y: 181
+        width: 20
+        height: 6
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 05d4a38ad083ec54a9e27a0a9470907c
+      internalID: 380661710
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Random_Oggetti_City 1_87
+      rect:
+        serializedVersion: 2
+        x: 292
+        y: 165
+        width: 9
+        height: 12
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 40a30d0d45f03ca48ab7dc2f7c8b86b3
+      internalID: 733395823
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Random_Oggetti_City 1_88
+      rect:
+        serializedVersion: 2
+        x: 360
+        y: 160
+        width: 18
+        height: 15
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 08cc6bb043c96a04f820fdda74f88c93
+      internalID: 1595192168
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Random_Oggetti_City 1_89
+      rect:
+        serializedVersion: 2
+        x: 384
+        y: 160
+        width: 30
+        height: 15
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 3b7330b512cb68740a6fb4d9c8a0a299
+      internalID: 1593700234
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Random_Oggetti_City 1_90
+      rect:
+        serializedVersion: 2
+        x: 416
+        y: 163
+        width: 16
+        height: 10
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 6892492288e735b4781c676c46f13416
+      internalID: -479912047
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Random_Oggetti_City 1_91
+      rect:
+        serializedVersion: 2
+        x: 435
+        y: 164
+        width: 11
+        height: 7
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 1c9c5c32287d4b94086341d8cac44d8e
+      internalID: 1959031179
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Random_Oggetti_City 1_92
+      rect:
+        serializedVersion: 2
+        x: 449
+        y: 162
+        width: 15
+        height: 9
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 4c9a0238e38a7e944ae511e36f915d99
+      internalID: 815286872
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Random_Oggetti_City 1_93
+      rect:
+        serializedVersion: 2
+        x: 464
+        y: 161
+        width: 15
+        height: 9
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: adb5b1ba036189a429bbd70de5356451
+      internalID: -1571958442
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Random_Oggetti_City 1_94
+      rect:
+        serializedVersion: 2
+        x: 482
+        y: 162
+        width: 13
+        height: 12
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: db7b09d0c4c6c474d934374e0363ae5a
+      internalID: 484149228
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Random_Oggetti_City 1_95
+      rect:
+        serializedVersion: 2
+        x: 501
+        y: 162
+        width: 7
+        height: 10
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 03e4c2cd2cb568149ac23d2a97cabe6e
+      internalID: 523199422
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Random_Oggetti_City 1_96
+      rect:
+        serializedVersion: 2
+        x: 23
+        y: 146
+        width: 21
+        height: 12
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 9080bfd40e5c5684bb0b79723128ada5
+      internalID: 150135601
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Random_Oggetti_City 1_97
+      rect:
+        serializedVersion: 2
+        x: 55
+        y: 146
+        width: 21
+        height: 12
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: c432dd7a59619b540bd25820fae39e71
+      internalID: 1603193582
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Random_Oggetti_City 1_98
+      rect:
+        serializedVersion: 2
+        x: 82
+        y: 145
+        width: 11
+        height: 15
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 731e25f1503cccd4aa195effc35352f8
+      internalID: 1682745232
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Random_Oggetti_City 1_99
+      rect:
+        serializedVersion: 2
+        x: 98
+        y: 148
+        width: 12
+        height: 12
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 20a49db73c3be21448393b8a3478ea42
+      internalID: -1541259826
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Random_Oggetti_City 1_100
+      rect:
+        serializedVersion: 2
+        x: 102
+        y: 144
+        width: 4
+        height: 5
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: f385e966a83b5f24794e74912e93f3a3
+      internalID: 1398277288
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Random_Oggetti_City 1_101
+      rect:
+        serializedVersion: 2
+        x: 114
+        y: 146
+        width: 12
+        height: 12
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: a39053f806ddb494f9763bef6e585c62
+      internalID: -484269033
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Random_Oggetti_City 1_102
+      rect:
+        serializedVersion: 2
+        x: 130
+        y: 148
+        width: 12
+        height: 12
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: f5c9680dd9cc383488042485131b1273
+      internalID: 54302423
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Random_Oggetti_City 1_103
+      rect:
+        serializedVersion: 2
+        x: 131
+        y: 145
+        width: 7
+        height: 9
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: e26d2858a2b03684690065eaa88fc255
+      internalID: 1843038360
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Random_Oggetti_City 1_104
+      rect:
+        serializedVersion: 2
+        x: 150
+        y: 131
+        width: 37
+        height: 20
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 211caa7b05b8f9749bf676f393ec3028
+      internalID: 1869556982
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Random_Oggetti_City 1_105
+      rect:
+        serializedVersion: 2
+        x: 192
+        y: 144
+        width: 12
+        height: 14
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: d53bf16f536cbcb409388e522de184f7
+      internalID: 1101938766
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Random_Oggetti_City 1_106
+      rect:
+        serializedVersion: 2
+        x: 203
+        y: 145
+        width: 21
+        height: 15
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 2f9354cd6aae2da4e91ba12254fb24c9
+      internalID: -1893148993
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Random_Oggetti_City 1_107
+      rect:
+        serializedVersion: 2
+        x: 240
+        y: 145
+        width: 15
+        height: 14
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: b79fdf3140e322345af8c5fe4adad734
+      internalID: 811200822
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Random_Oggetti_City 1_108
+      rect:
+        serializedVersion: 2
+        x: 258
+        y: 145
+        width: 12
+        height: 13
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 00b23a89eaf5bd845b120fb474382c0f
+      internalID: 286099136
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Random_Oggetti_City 1_109
+      rect:
+        serializedVersion: 2
+        x: 273
+        y: 146
+        width: 14
+        height: 11
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 0391687096ed78a4ca98b9baa0c063dc
+      internalID: 8186079
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Random_Oggetti_City 1_110
+      rect:
+        serializedVersion: 2
+        x: 293
+        y: 145
+        width: 23
+        height: 13
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 6971ae65da0a292468b4920ee45831e0
+      internalID: 166407315
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Random_Oggetti_City 1_111
+      rect:
+        serializedVersion: 2
+        x: 323
+        y: 134
+        width: 23
+        height: 19
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: d8efce53f8c857f4cb62ea4c41f379ca
+      internalID: -188297154
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Random_Oggetti_City 1_112
+      rect:
+        serializedVersion: 2
+        x: 353
+        y: 113
+        width: 30
+        height: 36
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 5151e7db9dba1154999f63b844c91df3
+      internalID: -819347527
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Random_Oggetti_City 1_113
+      rect:
+        serializedVersion: 2
+        x: 434
+        y: 148
+        width: 11
+        height: 7
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: d3aff8a6a6cefb64385079198ab661d3
+      internalID: 1160127724
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Random_Oggetti_City 1_114
+      rect:
+        serializedVersion: 2
+        x: 448
+        y: 146
+        width: 15
+        height: 9
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: f6ae0cf2d24a8e34db7bde9c1eb184a5
+      internalID: 1804569326
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Random_Oggetti_City 1_115
+      rect:
+        serializedVersion: 2
+        x: 465
+        y: 148
+        width: 15
+        height: 6
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: dc90cadb3fb2b264b85514a0600582a9
+      internalID: 697432195
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Random_Oggetti_City 1_116
+      rect:
+        serializedVersion: 2
+        x: 481
+        y: 146
+        width: 13
+        height: 12
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 62efc19ff9858d543bd1ed6567e45ef5
+      internalID: -852647872
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Random_Oggetti_City 1_117
+      rect:
+        serializedVersion: 2
+        x: 500
+        y: 146
+        width: 7
+        height: 10
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 82706f8a0bcb76d4781110bd6c59f41c
+      internalID: -1286510315
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Random_Oggetti_City 1_118
+      rect:
+        serializedVersion: 2
+        x: 28
+        y: 116
+        width: 42
+        height: 24
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: b3ff2373fcd537a4e8689004f4696f6f
+      internalID: -1158920663
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Random_Oggetti_City 1_119
+      rect:
+        serializedVersion: 2
+        x: 83
+        y: 114
+        width: 36
+        height: 29
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: be36e3399ae59b148929f035b275cd1f
+      internalID: 1784064437
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Random_Oggetti_City 1_120
+      rect:
+        serializedVersion: 2
+        x: 118
+        y: 138
+        width: 7
+        height: 5
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 6ca9f48f1480b7345b4beb5d2e5de827
+      internalID: -1821168804
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Random_Oggetti_City 1_121
+      rect:
+        serializedVersion: 2
+        x: 130
+        y: 129
+        width: 11
+        height: 14
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: c56f4886c32750944badd88ca4d288e2
+      internalID: 421124574
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Random_Oggetti_City 1_122
+      rect:
+        serializedVersion: 2
+        x: 198
+        y: 114
+        width: 38
+        height: 26
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 0edb10eea0fb2684e9db4296c7d5375f
+      internalID: 956277168
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Random_Oggetti_City 1_123
+      rect:
+        serializedVersion: 2
+        x: 243
+        y: 131
+        width: 10
+        height: 9
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 4f724c583c716204bb0fbde440aea11e
+      internalID: 569152836
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Random_Oggetti_City 1_124
+      rect:
+        serializedVersion: 2
+        x: 260
+        y: 130
+        width: 10
+        height: 10
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 33904f234bb75e446876addff0538bff
+      internalID: 211401154
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Random_Oggetti_City 1_125
+      rect:
+        serializedVersion: 2
+        x: 276
+        y: 131
+        width: 10
+        height: 9
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 6c74152944e96c945ad5305e6b6243f1
+      internalID: -178924531
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Random_Oggetti_City 1_126
+      rect:
+        serializedVersion: 2
+        x: 291
+        y: 130
+        width: 10
+        height: 10
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: f89bbd4c292afff45bf34d6bdd8dbdaa
+      internalID: 839770325
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Random_Oggetti_City 1_127
+      rect:
+        serializedVersion: 2
+        x: 392
+        y: 119
+        width: 36
+        height: 20
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: d203b5818ef65c54799bd75f849ffb5b
+      internalID: -312404678
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Random_Oggetti_City 1_128
+      rect:
+        serializedVersion: 2
+        x: 438
+        y: 116
+        width: 38
+        height: 24
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 25d1c9f451792bc42a9a5a2a55fd01b5
+      internalID: -1342718968
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Random_Oggetti_City 1_129
+      rect:
+        serializedVersion: 2
+        x: 486
+        y: 116
+        width: 38
+        height: 23
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 319ab5dc49e70df4e85aa13d326d04ab
+      internalID: -1225207978
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Random_Oggetti_City 1_130
+      rect:
+        serializedVersion: 2
+        x: 121
+        y: 128
+        width: 4
+        height: 9
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: f5bfbb47a72863a4c87bc4537c3f000b
+      internalID: 1388465410
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Random_Oggetti_City 1_131
+      rect:
+        serializedVersion: 2
+        x: 149
+        y: 112
+        width: 35
+        height: 16
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 53938604199b78e4d9f38c21de913ff5
+      internalID: 1813257204
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Random_Oggetti_City 1_132
+      rect:
+        serializedVersion: 2
+        x: 240
+        y: 113
+        width: 10
+        height: 10
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: febed536c260a84438fd88bb2b63d591
+      internalID: 482265330
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Random_Oggetti_City 1_133
+      rect:
+        serializedVersion: 2
+        x: 252
+        y: 103
+        width: 57
+        height: 21
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 54871ac1b7d06714d97c26a6bd270c96
+      internalID: 816890296
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Random_Oggetti_City 1_134
+      rect:
+        serializedVersion: 2
+        x: 310
+        y: 113
+        width: 10
+        height: 10
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: dda623c9a7dbf3b48a67d00a4aa208fa
+      internalID: -1816154969
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Random_Oggetti_City 1_135
+      rect:
+        serializedVersion: 2
+        x: 21
+        y: 66
+        width: 38
+        height: 42
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 329053efee527bb4c903ef4b16ccfb2a
+      internalID: -614056940
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Random_Oggetti_City 1_136
+      rect:
+        serializedVersion: 2
+        x: 70
+        y: 67
+        width: 38
+        height: 42
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 3aabc0f487ea3ce4cb9c0bb7269e08fb
+      internalID: 1934943137
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Random_Oggetti_City 1_137
+      rect:
+        serializedVersion: 2
+        x: 148
+        y: 85
+        width: 41
+        height: 21
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: d70770f3b5f9e9b43b20735b3f9293bf
+      internalID: -264449690
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Random_Oggetti_City 1_138
+      rect:
+        serializedVersion: 2
+        x: 195
+        y: 84
+        width: 41
+        height: 21
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 00ee6781e1dce3c4ea616fdfa778f467
+      internalID: 1676565106
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Random_Oggetti_City 1_139
+      rect:
+        serializedVersion: 2
+        x: 240
+        y: 103
+        width: 10
+        height: 9
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 180099193538e034ebf268dfeb464556
+      internalID: 353819046
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Random_Oggetti_City 1_140
+      rect:
+        serializedVersion: 2
+        x: 310
+        y: 99
+        width: 40
+        height: 13
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: b080128d94181474787c9e1a371fc3aa
+      internalID: -421362298
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Random_Oggetti_City 1_141
+      rect:
+        serializedVersion: 2
+        x: 357
+        y: 80
+        width: 27
+        height: 26
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: e64f823b68f74f74da4d82962270b45f
+      internalID: 2063190523
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Random_Oggetti_City 1_142
+      rect:
+        serializedVersion: 2
+        x: 392
+        y: 87
+        width: 36
+        height: 20
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: cb40c82500afc2444a43858beea7f128
+      internalID: 429146550
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Random_Oggetti_City 1_143
+      rect:
+        serializedVersion: 2
+        x: 437
+        y: 85
+        width: 38
+        height: 23
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 1549a03335da11c4fa0724f7789c90ab
+      internalID: -2043996670
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Random_Oggetti_City 1_144
+      rect:
+        serializedVersion: 2
+        x: 487
+        y: 83
+        width: 38
+        height: 23
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: bbc52b2abeba8234fa4f2b0955c2601d
+      internalID: 305316474
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Random_Oggetti_City 1_145
+      rect:
+        serializedVersion: 2
+        x: 240
+        y: 80
+        width: 10
+        height: 10
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 240329314aa91b748afa5499e58d528d
+      internalID: -1237884248
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Random_Oggetti_City 1_146
+      rect:
+        serializedVersion: 2
+        x: 252
+        y: 69
+        width: 100
+        height: 22
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 67dea4a8f00b5e14889d7d5d7b27d0da
+      internalID: 2111524230
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Random_Oggetti_City 1_147
+      rect:
+        serializedVersion: 2
+        x: 240
+        y: 70
+        width: 10
+        height: 9
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 6af4588c5d5e68f42acb032ae241f389
+      internalID: 790039
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Random_Oggetti_City 1_148
+      rect:
+        serializedVersion: 2
+        x: 322
+        y: 48
+        width: 57
+        height: 24
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 596aef4368d024643a6997a0f9a7e8c7
+      internalID: 1848331383
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Random_Oggetti_City 1_149
+      rect:
+        serializedVersion: 2
+        x: 387
+        y: 53
+        width: 43
+        height: 20
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 58003063d20689e499fc9acbd93dd29a
+      internalID: -714031428
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Random_Oggetti_City 1_150
+      rect:
+        serializedVersion: 2
+        x: 434
+        y: 53
+        width: 43
+        height: 20
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 87b99e04df628e64c9be951db1ced716
+      internalID: 1410634242
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Random_Oggetti_City 1_151
+      rect:
+        serializedVersion: 2
+        x: 482
+        y: 53
+        width: 43
+        height: 20
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 2c0e2b77221669343bf15073700109e5
+      internalID: 333869224
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    outline: []
+    physicsShape: []
+    bones: []
+    spriteID: 5e97eb03825dee720800000000000000
+    internalID: 0
+    vertices: []
+    indices: 
+    edges: []
+    weights: []
+    secondaryTextures: []
+    nameFileIdTable:
+      Random_Oggetti_City 1_0: 2052086039
+      Random_Oggetti_City 1_1: -1418277061
+      Random_Oggetti_City 1_10: -631896576
+      Random_Oggetti_City 1_100: 1398277288
+      Random_Oggetti_City 1_101: -484269033
+      Random_Oggetti_City 1_102: 54302423
+      Random_Oggetti_City 1_103: 1843038360
+      Random_Oggetti_City 1_104: 1869556982
+      Random_Oggetti_City 1_105: 1101938766
+      Random_Oggetti_City 1_106: -1893148993
+      Random_Oggetti_City 1_107: 811200822
+      Random_Oggetti_City 1_108: 286099136
+      Random_Oggetti_City 1_109: 8186079
+      Random_Oggetti_City 1_11: 1529379205
+      Random_Oggetti_City 1_110: 166407315
+      Random_Oggetti_City 1_111: -188297154
+      Random_Oggetti_City 1_112: -819347527
+      Random_Oggetti_City 1_113: 1160127724
+      Random_Oggetti_City 1_114: 1804569326
+      Random_Oggetti_City 1_115: 697432195
+      Random_Oggetti_City 1_116: -852647872
+      Random_Oggetti_City 1_117: -1286510315
+      Random_Oggetti_City 1_118: -1158920663
+      Random_Oggetti_City 1_119: 1784064437
+      Random_Oggetti_City 1_12: 909914745
+      Random_Oggetti_City 1_120: -1821168804
+      Random_Oggetti_City 1_121: 421124574
+      Random_Oggetti_City 1_122: 956277168
+      Random_Oggetti_City 1_123: 569152836
+      Random_Oggetti_City 1_124: 211401154
+      Random_Oggetti_City 1_125: -178924531
+      Random_Oggetti_City 1_126: 839770325
+      Random_Oggetti_City 1_127: -312404678
+      Random_Oggetti_City 1_128: -1342718968
+      Random_Oggetti_City 1_129: -1225207978
+      Random_Oggetti_City 1_13: -1084723316
+      Random_Oggetti_City 1_130: 1388465410
+      Random_Oggetti_City 1_131: 1813257204
+      Random_Oggetti_City 1_132: 482265330
+      Random_Oggetti_City 1_133: 816890296
+      Random_Oggetti_City 1_134: -1816154969
+      Random_Oggetti_City 1_135: -614056940
+      Random_Oggetti_City 1_136: 1934943137
+      Random_Oggetti_City 1_137: -264449690
+      Random_Oggetti_City 1_138: 1676565106
+      Random_Oggetti_City 1_139: 353819046
+      Random_Oggetti_City 1_14: -1203525678
+      Random_Oggetti_City 1_140: -421362298
+      Random_Oggetti_City 1_141: 2063190523
+      Random_Oggetti_City 1_142: 429146550
+      Random_Oggetti_City 1_143: -2043996670
+      Random_Oggetti_City 1_144: 305316474
+      Random_Oggetti_City 1_145: -1237884248
+      Random_Oggetti_City 1_146: 2111524230
+      Random_Oggetti_City 1_147: 790039
+      Random_Oggetti_City 1_148: 1848331383
+      Random_Oggetti_City 1_149: -714031428
+      Random_Oggetti_City 1_15: -1706195855
+      Random_Oggetti_City 1_150: 1410634242
+      Random_Oggetti_City 1_151: 333869224
+      Random_Oggetti_City 1_16: -1456099146
+      Random_Oggetti_City 1_17: -1497865375
+      Random_Oggetti_City 1_18: 1158964404
+      Random_Oggetti_City 1_19: 1730107751
+      Random_Oggetti_City 1_2: -619968281
+      Random_Oggetti_City 1_20: 726130063
+      Random_Oggetti_City 1_21: -1605477944
+      Random_Oggetti_City 1_22: 897944050
+      Random_Oggetti_City 1_23: -1371196914
+      Random_Oggetti_City 1_24: 299838612
+      Random_Oggetti_City 1_25: 1925320471
+      Random_Oggetti_City 1_26: -1105743572
+      Random_Oggetti_City 1_27: 2063069471
+      Random_Oggetti_City 1_28: 708609769
+      Random_Oggetti_City 1_29: -1989413448
+      Random_Oggetti_City 1_3: 1750715585
+      Random_Oggetti_City 1_30: 1630760866
+      Random_Oggetti_City 1_31: -920022316
+      Random_Oggetti_City 1_32: -2139975397
+      Random_Oggetti_City 1_33: 502583581
+      Random_Oggetti_City 1_34: 430874552
+      Random_Oggetti_City 1_35: -435986729
+      Random_Oggetti_City 1_36: 1522006373
+      Random_Oggetti_City 1_37: 1796921170
+      Random_Oggetti_City 1_38: 173335537
+      Random_Oggetti_City 1_39: 1042122252
+      Random_Oggetti_City 1_4: 1549551365
+      Random_Oggetti_City 1_40: -498160071
+      Random_Oggetti_City 1_41: 1115513412
+      Random_Oggetti_City 1_42: 887580578
+      Random_Oggetti_City 1_43: -684658172
+      Random_Oggetti_City 1_44: 1577416592
+      Random_Oggetti_City 1_45: 733704610
+      Random_Oggetti_City 1_46: 337212323
+      Random_Oggetti_City 1_47: 1647600257
+      Random_Oggetti_City 1_48: 784654684
+      Random_Oggetti_City 1_49: 1325845027
+      Random_Oggetti_City 1_5: 1804221227
+      Random_Oggetti_City 1_50: -881530984
+      Random_Oggetti_City 1_51: 1506355048
+      Random_Oggetti_City 1_52: 1619192192
+      Random_Oggetti_City 1_53: -788335548
+      Random_Oggetti_City 1_54: 307354972
+      Random_Oggetti_City 1_55: -798841991
+      Random_Oggetti_City 1_56: -507428718
+      Random_Oggetti_City 1_57: -1350897040
+      Random_Oggetti_City 1_58: 41150240
+      Random_Oggetti_City 1_59: -2127013252
+      Random_Oggetti_City 1_6: 1625305495
+      Random_Oggetti_City 1_60: 2054842459
+      Random_Oggetti_City 1_61: -1228933174
+      Random_Oggetti_City 1_62: -968411125
+      Random_Oggetti_City 1_63: -328529237
+      Random_Oggetti_City 1_64: -523022400
+      Random_Oggetti_City 1_65: -1900232289
+      Random_Oggetti_City 1_66: -967751178
+      Random_Oggetti_City 1_67: -269238865
+      Random_Oggetti_City 1_68: 1611705766
+      Random_Oggetti_City 1_69: -1576258863
+      Random_Oggetti_City 1_7: 191568416
+      Random_Oggetti_City 1_70: 1952366002
+      Random_Oggetti_City 1_71: 224728450
+      Random_Oggetti_City 1_72: -1539013876
+      Random_Oggetti_City 1_73: 642399424
+      Random_Oggetti_City 1_74: -1113338888
+      Random_Oggetti_City 1_75: -387414774
+      Random_Oggetti_City 1_76: -1637705364
+      Random_Oggetti_City 1_77: -1030867626
+      Random_Oggetti_City 1_78: -1241156803
+      Random_Oggetti_City 1_79: 1841430726
+      Random_Oggetti_City 1_8: -203930178
+      Random_Oggetti_City 1_80: 302265784
+      Random_Oggetti_City 1_81: 1213748674
+      Random_Oggetti_City 1_82: -1406594152
+      Random_Oggetti_City 1_83: -1317267436
+      Random_Oggetti_City 1_84: 611227563
+      Random_Oggetti_City 1_85: 1853366748
+      Random_Oggetti_City 1_86: 380661710
+      Random_Oggetti_City 1_87: 733395823
+      Random_Oggetti_City 1_88: 1595192168
+      Random_Oggetti_City 1_89: 1593700234
+      Random_Oggetti_City 1_9: 1500107785
+      Random_Oggetti_City 1_90: -479912047
+      Random_Oggetti_City 1_91: 1959031179
+      Random_Oggetti_City 1_92: 815286872
+      Random_Oggetti_City 1_93: -1571958442
+      Random_Oggetti_City 1_94: 484149228
+      Random_Oggetti_City 1_95: 523199422
+      Random_Oggetti_City 1_96: 150135601
+      Random_Oggetti_City 1_97: 1603193582
+      Random_Oggetti_City 1_98: 1682745232
+      Random_Oggetti_City 1_99: -1541259826
+  mipmapLimitGroupName: 
+  pSDRemoveMatte: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

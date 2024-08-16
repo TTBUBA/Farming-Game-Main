@@ -1,0 +1,79 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!78 &1
+TagManager:
+  serializedVersion: 2
+  tags:
+  - ortaggi
+  - Terreno
+  - Carota
+  - Destra
+  - Sinistra
+  - Scelta
+  - Globalworld
+  - UI Lavori in corso
+  - Pali luci
+  - ZonaCostruzioni
+  - ColliderDialogue
+  - BoxPlayer
+  - Tree
+  - Axe
+  - Npc_Shop
+  - Acquisto
+  - box_chicken
+  - box_cow
+  - box_goat
+  - box_pig
+  - shop
+  - Mill
+  - statistics_cow
+  - statistics_chicken
+  - statistics_goat
+  - statistics_pig
+  - Box_Silo
+  - Box_Magazzino
+  - Box_Sheep
+  - statistics_Sheep
+  layers:
+  - Default
+  - TransparentFX
+  - Ignore Raycast
+  - Ortaggi
+  - Water
+  - UI
+  - Terreno
+  - Asset Lavori in corso
+  - Asset Pali Luce
+  - Street
+  - Player
+  - Test
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  m_SortingLayers:
+  - name: Default
+    uniqueID: 0
+    locked: 0
+  - name: BackGround
+    uniqueID: 200561875
+    locked: 0
+  - name: ForeBackGround
+    uniqueID: 922639193
+    locked: 0

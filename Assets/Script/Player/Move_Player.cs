@@ -1,20 +1,27 @@
 using System.Collections;
 using System.Collections.Generic;
+using System.Runtime.CompilerServices;
 using UnityEditor;
 using UnityEngine;
 using UnityEngine.Tilemaps;
 
 
-public class Move_Player : MonoBehaviour , IData
+public class Move_Player : MonoBehaviour, IData
 {
     private float horizontal;
     private float vertical;
+
+    private float lastHorizontal;
+    private float lastVertical;
+
+
     private Rigidbody2D rb;
     public float speed = 7f;
     public Animator animator;
-    
+
     private bool isMovingRight;
     private bool isMovingLeft;
+    private bool isMovingUp;
 
     public Tilemap Terrainmap; // La Tilemap su cui muoversi
     public GameObject PointSpawn; // L'oggetto da muovere
@@ -27,14 +34,14 @@ public class Move_Player : MonoBehaviour , IData
     public GameObject Axe;
 
 
-
+    Vector2 Movement;
 
 
     // Start is called before the first frame update
     void Start()
     {
         rb = GetComponent<Rigidbody2D>();
-        NextCellPosition = new Vector3Int(CellPosition.x + 1 , CellPosition.y + 1);
+        NextCellPosition = new Vector3Int(CellPosition.x + 1, CellPosition.y + 1);
         PointSpawn.transform.position = Terrainmap.GetCellCenterWorld(NextCellPosition);
         animator = GetComponent<Animator>();
     }
@@ -55,58 +62,78 @@ public class Move_Player : MonoBehaviour , IData
         horizontal = Input.GetAxis("Horizontal");
         vertical = Input.GetAxis("Vertical");
 
-        Vector2 direction = new Vector2(horizontal , vertical);
 
-        if(direction.magnitude  > 0)
+        // Il player rimane nella posizione in qui era prima
+        if (horizontal != 0 || vertical != 0)
+        {
+            lastHorizontal = horizontal;
+            lastVertical = vertical;
+        }
+
+        animator.SetBool("IdleDown", false);
+        animator.SetBool("IdleUp", false);
+        animator.SetBool("IdleLeft", false);
+        animator.SetBool("IdleRight", false);
+
+        animator.SetFloat("Horizontal", lastHorizontal);
+        animator.SetFloat("Vertical", lastVertical);
+
+        if(horizontal == 0 && vertical == 0)
+        {
+            switch (DetermineDirection(lastHorizontal, lastVertical))
+            {
+                case Direction.Down:
+                    animator.SetBool("IdleDown", true);
+                    break;
+
+                case Direction.Up:
+                    animator.SetBool("IdleUp", true);
+                    break;
+
+                case Direction.Left:
+                    animator.SetBool("IdleLeft", true);
+                    break;
+
+                case Direction.Right:
+                    animator.SetBool("IdleRight", true);
+                    break;
+
+            }
+                
+
+
+        }
+
+        Vector2 direction = new Vector2(horizontal, vertical);
+
+        if (direction.magnitude > 0)
         {
             direction.Normalize();
         }
 
         rb.velocity = direction * speed;
 
+
+
         // Controlla la direzione del movimento
-        if(horizontal > 0)
+        if (horizontal > 0)
         {
-            isMovingRight = true;
-            isMovingLeft = false;
             Axe.transform.localPosition = new Vector2(1, 0);
             Axe.transform.localScale = new Vector2(0.6f, 0.6f);
 
-            transform.localScale = new Vector2(0.8f, 0.8f);
         }
         else if (horizontal < 0)
         {
-            isMovingRight = false;
-            isMovingLeft = true;
             Axe.transform.localPosition = new Vector2(1, 0);
             Axe.transform.localScale = new Vector2(-0.6f, 0.6f);
 
-            //transform.localScale = new Vector2(-0.8f, 0.8f);
         }
-        else
-        {
-            isMovingRight = false;
-            isMovingLeft = false;
-        }
-
-        if(isMovingLeft == true && isMovingRight == false)
-        {
-           transform.localScale = new Vector2(-0.8f, 0.8f);
-        }
-
-        if (isMovingRight == true && isMovingLeft == false)
-        {
-            transform.localScale = new Vector2(0.8f, 0.8f);
-        }
-
-        animator.SetBool("Left", isMovingLeft);
-        animator.SetBool("Right", isMovingRight);
 
         MovimentoPointSpawn();
-    }
+     }
 
-    // Funzione che serve per far muovere l'oggetto PointSpawn sulla Tilemap
-    public void MovimentoPointSpawn()
+        // Funzione che serve per far muovere l'oggetto PointSpawn sulla Tilemap
+        public void MovimentoPointSpawn()
     {
         // Facendo cosi si ottiene la  posizione della cella corrente in cui si trova PointSpawn
         CellPosition = Terrainmap.WorldToCell(transform.position);
@@ -122,4 +149,35 @@ public class Move_Player : MonoBehaviour , IData
         }
     }
 
+     private enum Direction 
+     { 
+        Down, 
+        Up, 
+        Left, 
+        Right,
+     }
+
+    private Direction DetermineDirection(float Horizontal , float Vertical)
+    {
+        if (lastVertical < 0)
+        {
+            return Direction.Down;
+        }
+        else if (lastVertical > 0)
+        {
+            return Direction.Up;
+        }
+        else if (lastHorizontal < 0)
+        {
+            return Direction.Left;
+        }
+        else if(lastHorizontal > 0)
+        {
+             return Direction.Right;
+        }
+        else
+        {
+            return Direction.Down;
+        }
+    }
 }

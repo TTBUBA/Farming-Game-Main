@@ -6,88 +6,88 @@ using UnityEngine.Rendering.Universal;
 public class notte_giorno : MonoBehaviour
 {
     public Light2D Luce;
-    // public GameObject LuceAbitazioni;
     public GameObject[] LucePali;
     public TimeManager TimeManager;
-    public float transitionDuration = 5.0f;
-    // Start is called before the first frame update
+    public float transitionDuration = 2f; // Durata della transizione in secondi
+
+    private bool isTransitioning = false;
+
     void Start()
     {
-        
+
     }
 
-    // Update is called once per frame
     void Update()
     {
-        if(Input.GetButtonDown("e"))
+        if (Input.GetButtonDown("e") && !isTransitioning)
         {
-            Luce.intensity = 0.4f;
-            // LuceAbitazioni.SetActive(true);
-
-            foreach(GameObject lucepali in LucePali)
+            StartCoroutine(ChangeLightIntensity(Luce.intensity, 0.4f));
+            foreach (GameObject lucepali in LucePali)
             {
                 lucepali.SetActive(true);
             }
             Debug.Log("cliccato");
         }
-        else if(Input.GetButtonDown("t"))
+        else if (Input.GetButtonDown("t") && !isTransitioning)
         {
-         
-            Luce.intensity = 1f;
-            // LuceAbitazioni.SetActive(false);
-
+            StartCoroutine(ChangeLightIntensity(Luce.intensity, 1f));
             foreach (GameObject lucepali in LucePali)
             {
-                lucepali.SetActive(true);
+                lucepali.SetActive(false);
             }
             Debug.Log("cliccato");
         }
 
         CycleNight_day();
-        
     }
 
     public void CycleNight_day()
     {
         int currentHour = TimeManager.Hour;
+        float CurrentMinutes = TimeManager.Minutes;
 
+        // Controllo Orario per Attivazione della luce globale e della disattivazione delle luce
         if (currentHour >= 19 || currentHour < 8)
         {
-         
-            
-            StartCoroutine(ChangeLightIntensity(0.2f, transitionDuration));
-
-            foreach (GameObject lucepali in LucePali)
+            if (!isTransitioning)
             {
-                lucepali.SetActive(true);
+                StartCoroutine(ChangeLightIntensity(Luce.intensity, 0.2f));
+                foreach (GameObject lucepali in LucePali)
+                {
+                    lucepali.SetActive(true);
+                }
             }
         }
         else
         {
-            
-            
-            StartCoroutine(ChangeLightIntensity(1f, transitionDuration));
-
-            foreach (GameObject lucepali in LucePali)
+            if (!isTransitioning)
             {
-                lucepali.SetActive(false);
+                StartCoroutine(ChangeLightIntensity(Luce.intensity, 1f));
+                foreach (GameObject lucepali in LucePali)
+                {
+                    lucepali.SetActive(false);
+                }
             }
         }
+
+
     }
 
-    public  IEnumerator ChangeLightIntensity(float targetIntensity , float Duration)
+    private IEnumerator ChangeLightIntensity(float startIntensity, float endIntensity)
     {
-        float startIntensity = Luce.intensity;
-        float TimeElapsed = 0f;
+        isTransitioning = true;
+        float elapsedTime = 0f;
 
-        while (TimeElapsed < Duration)
+        while (elapsedTime < transitionDuration)
         {
-            Luce.intensity = Mathf.Lerp(startIntensity, targetIntensity, TimeElapsed / Duration);
-            TimeElapsed += Time.deltaTime;
-            
+            Luce.intensity = Mathf.Lerp(startIntensity, endIntensity, elapsedTime / transitionDuration);
+            elapsedTime += Time.deltaTime;
             yield return null;
         }
 
-        Luce.intensity = targetIntensity;
+        Luce.intensity = endIntensity;
+        isTransitioning = false;
     }
+
+
 }

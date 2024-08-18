@@ -62,29 +62,41 @@ public class Options_Manager : MonoBehaviour
     // Aumenta il livello di qualità
     public void IncreaseQuality()
     {
-        if(qualityLevel < QualitySettings.names.Length - 1)
+        // Controlla se il livello di qualità corrente è inferiore al massimo disponibile
+        if (qualityLevel < QualitySettings.names.Length - 1)
         {
+            // Incrementa il livello di qualità
             qualityLevel++;
-            QualitySettings.SetQualityLevel(qualityLevel);
-            UpdateQualityText();
 
+            // Applica il nuovo livello di qualità
+            QualitySettings.SetQualityLevel(qualityLevel);
+
+            // Aggiorna il testo visualizzato per riflettere il nuovo livello di qualità
+            UpdateQualityText();
         }
     }
 
     // Diminuisce il livello di qualità
     public void DecreaseQuality()
     {
+        // Controlla se il livello di qualità corrente è superiore al minimo disponibile
         if (qualityLevel > 0)
         {
+            // Decrementa il livello di qualità
             qualityLevel--;
-            QualitySettings.SetQualityLevel(qualityLevel);
-            UpdateQualityText();
 
+            // Applica il nuovo livello di qualità
+            QualitySettings.SetQualityLevel(qualityLevel);
+
+            // Aggiorna il testo visualizzato per riflettere il nuovo livello di qualità
+            UpdateQualityText();
         }
     }
 
+    // Aggiorna il testo visualizzato con il nome del livello di qualità corrente
     public void UpdateQualityText()
     {
+        // Imposta il testo del componente UI 'QualityText' al nome del livello di qualità corrente
         QualityText.text = QualitySettings.names[qualityLevel];
     }
 

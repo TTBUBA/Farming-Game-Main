@@ -61,6 +61,7 @@ SpriteAtlas:
     isAtlasV2: 0
     cachedData: {fileID: 0}
     packedSpriteRenderDataKeys:
+    - 3bff541079810a84d855620c67626640: 21300000
     - 61e771405a926214ba50b0d8a6d01d8b: 21300000
     - a69416404ec0de046916134172378292: 21300000
     - 74165d50b86cff143a1246e0e771ee46: -54100616
@@ -102,6 +103,7 @@ SpriteAtlas:
     - c716ecb1b649bb44cbd54dcb6ef84d61: 466555632
     - c716ecb1b649bb44cbd54dcb6ef84d61: -751223081
     - a8f048d1442964d47b138cbb9f7485a3: 21300000
+    - be58ecd10f408574a9be4c265a08fb3e: 21300000
     - cf449ee1435f5e34ca5139e40e477e42: -116173911
     - 59fd14f1d2849844dbf474be9c049e29: 21300000
     - 09fa244285fc5c94cb2ee24182327ed3: 21300000
@@ -140,6 +142,7 @@ SpriteAtlas:
     - 7f4e91057f5c38748bffedc8ad6f2741: 1887471157
     - 9d06bc051a45563458d2fdb82f4dc33f: 21300000
     - f743cc453a888a24c9791d4d548cefe3: 21300000
+    - c1ee236592bcc2f4788e3a6d8fdf1ea1: 21300000
     - 54fcfe757eea0ca48bfec44c18e4acb7: 21300000
     - adb16f85b46cd1441b89ab1280b08868: 21300000
     - 3b489e95d99701f45bae4260e2be1937: 21300000
@@ -199,6 +202,7 @@ SpriteAtlas:
     - 04949bb83a9a76d43ab27bd3d6b23f4a: 21300000
     - 041945c81ae9f1d4785d0397eb2a7a50: 21300000
     - 17709ac85dcf4264f90362b80beab6da: 21300000
+    - 2a8305f8a1da2d14eb12fd319df7d13d: 21300000
     - 28941909797edc942810942e3ca9be87: 21300000
     - ecc9f92935735e048a43991d2c2f2b0a: 1762862282
     - 99104039f1ab666479dcabc728c08863: -1587692486
@@ -307,6 +311,7 @@ SpriteAtlas:
     - d2927cafc627b60459a3849e12bcb122: 21300000
   m_MasterAtlas: {fileID: 0}
   m_PackedSprites:
+  - {fileID: 21300000, guid: 3bff541079810a84d855620c67626640, type: 3}
   - {fileID: 21300000, guid: 61e771405a926214ba50b0d8a6d01d8b, type: 3}
   - {fileID: 21300000, guid: a69416404ec0de046916134172378292, type: 3}
   - {fileID: -54100616, guid: 74165d50b86cff143a1246e0e771ee46, type: 3}
@@ -348,6 +353,7 @@ SpriteAtlas:
   - {fileID: 466555632, guid: c716ecb1b649bb44cbd54dcb6ef84d61, type: 3}
   - {fileID: -751223081, guid: c716ecb1b649bb44cbd54dcb6ef84d61, type: 3}
   - {fileID: 21300000, guid: a8f048d1442964d47b138cbb9f7485a3, type: 3}
+  - {fileID: 21300000, guid: be58ecd10f408574a9be4c265a08fb3e, type: 3}
   - {fileID: -116173911, guid: cf449ee1435f5e34ca5139e40e477e42, type: 3}
   - {fileID: 21300000, guid: 59fd14f1d2849844dbf474be9c049e29, type: 3}
   - {fileID: 21300000, guid: 09fa244285fc5c94cb2ee24182327ed3, type: 3}
@@ -386,6 +392,7 @@ SpriteAtlas:
   - {fileID: 1887471157, guid: 7f4e91057f5c38748bffedc8ad6f2741, type: 3}
   - {fileID: 21300000, guid: 9d06bc051a45563458d2fdb82f4dc33f, type: 3}
   - {fileID: 21300000, guid: f743cc453a888a24c9791d4d548cefe3, type: 3}
+  - {fileID: 21300000, guid: c1ee236592bcc2f4788e3a6d8fdf1ea1, type: 3}
   - {fileID: 21300000, guid: 54fcfe757eea0ca48bfec44c18e4acb7, type: 3}
   - {fileID: 21300000, guid: adb16f85b46cd1441b89ab1280b08868, type: 3}
   - {fileID: 21300000, guid: 3b489e95d99701f45bae4260e2be1937, type: 3}
@@ -445,6 +452,7 @@ SpriteAtlas:
   - {fileID: 21300000, guid: 04949bb83a9a76d43ab27bd3d6b23f4a, type: 3}
   - {fileID: 21300000, guid: 041945c81ae9f1d4785d0397eb2a7a50, type: 3}
   - {fileID: 21300000, guid: 17709ac85dcf4264f90362b80beab6da, type: 3}
+  - {fileID: 21300000, guid: 2a8305f8a1da2d14eb12fd319df7d13d, type: 3}
   - {fileID: 21300000, guid: 28941909797edc942810942e3ca9be87, type: 3}
   - {fileID: 1762862282, guid: ecc9f92935735e048a43991d2c2f2b0a, type: 3}
   - {fileID: -1587692486, guid: 99104039f1ab666479dcabc728c08863, type: 3}
@@ -552,6 +560,7 @@ SpriteAtlas:
   - {fileID: 985707039, guid: e1f6b3af427d978469f9c37426d29a1d, type: 3}
   - {fileID: 21300000, guid: d2927cafc627b60459a3849e12bcb122, type: 3}
   m_PackedSpriteNamesToIndex:
+  - Icon_BackGround
   - potato_00
   - Icon_Record
   - BackGround_Timer_0
@@ -593,6 +602,7 @@ SpriteAtlas:
   - Tree_falling v2_2
   - Tree_falling v2_3
   - Background
+  - Icon_BackGround
   - Ui_Dialogue_Icon_Player_0
   - arrow
   - Background
@@ -631,6 +641,7 @@ SpriteAtlas:
   - Walking_Anim_Spritesheets_15
   - Icon_Timer
   - Cow
+  - BackGround
   - Box_checking_Fullscreen
   - kale_02
   - Icon_Imptazioni
@@ -690,6 +701,7 @@ SpriteAtlas:
   - wheat_00
   - Quit
   - potato_01
+  - BackGround
   - Moon
   - ICON_ITEMS_0
   - ICON_NAME_SHOP_0

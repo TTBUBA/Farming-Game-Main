@@ -15,10 +15,11 @@ public class TimeManager : MonoBehaviour , IData
     public float Minutes;
 
     public float timeMultiplier = 1.0f; // Moltiplicatore di tempo
-    public TextMeshProUGUI MinutesText;
+    [Header("Ui Time")]
     public TextMeshProUGUI HourText;
     public TextMeshProUGUI DayText;
     public Text DayWeekText;
+    private TextMeshProUGUI MinutesText;
 
     public GameObject Sun;
     public GameObject Moon;
@@ -48,9 +49,9 @@ public class TimeManager : MonoBehaviour , IData
 
     private void InitializeTime()
     {
-        HourText.text = Hour.ToString();
+        HourText.text = Hour.ToString()+ ":" + Minutes.ToString();
         DayText.text = Day.ToString();
-        MinutesText.text = Minutes.ToString();
+       
 
         dayOfWeek = Day % 7;
 
@@ -62,8 +63,10 @@ public class TimeManager : MonoBehaviour , IData
 
         int minutes = Mathf.FloorToInt(Minutes / 60);
         int seconds = Mathf.FloorToInt(Minutes % 60);
-        MinutesText.text = string.Format("{1:00}", minutes, seconds);
+        // MinutesText.text = string.Format("{1:00}", minutes, seconds);
+        int MinutesInt = Mathf.FloorToInt(Minutes);
 
+        HourText.text = Hour.ToString() + ":" + MinutesInt.ToString();
         if (Minutes >= 60)
         {
             Minutes = 0;

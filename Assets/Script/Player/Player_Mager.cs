@@ -50,6 +50,7 @@ public class Player_Manager : MonoBehaviour
         if (collider.gameObject.CompareTag("Terreno"))
         {
             ButtonPlant.SetActive(true);
+            
             PointSpawn.SetActive(true);
             // Debug.Log("Entrato nel terreno");
             PuoiPiantare = true;

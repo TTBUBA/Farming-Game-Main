@@ -1,8 +1,6 @@
-using System.Collections;
-using System.Collections.Generic;
-using System.Runtime.CompilerServices;
 using UnityEditor;
 using UnityEngine;
+using UnityEngine.InputSystem;
 using UnityEngine.Tilemaps;
 
 
@@ -30,6 +28,11 @@ public class Move_Player : MonoBehaviour, IData
     private Vector3Int CellPosition; // Posizione della cella corrente
     private Vector3Int NextCellPosition; // Posizione della prossima cella da raggiungere
 
+    // Input System
+    public InputActionReference MovePlayer_KeyBoard;
+    public InputActionReference MovePlayer_Controller;
+ 
+
 
     public GameObject Axe;
 
@@ -55,12 +58,27 @@ public class Move_Player : MonoBehaviour, IData
     {
         data.PositionPlayer = this.transform.position;
     }
+    private void OnEnable()
+    {
+        MovePlayer_KeyBoard.action.Enable();
+        MovePlayer_Controller.action.Enable();
+    }
 
+    private void OnDisable()
+    {
+        MovePlayer_KeyBoard.action.Disable();
+        MovePlayer_Controller.action.Disable();
+    }
     // Update is called once per frame
     void Update()
     {
-        horizontal = Input.GetAxis("Horizontal");
-        vertical = Input.GetAxis("Vertical");
+        Vector2 keyboardMovement = MovePlayer_KeyBoard.action.ReadValue<Vector2>();
+        Vector2 controllerMovement = MovePlayer_Controller.action.ReadValue<Vector2>();
+
+        Movement = (keyboardMovement + controllerMovement).normalized;
+
+        horizontal = Movement.x;
+        vertical = Movement.y;
 
 
         // Il player rimane nella posizione in qui era prima
@@ -132,8 +150,8 @@ public class Move_Player : MonoBehaviour, IData
         MovimentoPointSpawn();
      }
 
-        // Funzione che serve per far muovere l'oggetto PointSpawn sulla Tilemap
-        public void MovimentoPointSpawn()
+    // Funzione che serve per far muovere l'oggetto PointSpawn sulla Tilemap
+    public void MovimentoPointSpawn()
     {
         // Facendo cosi si ottiene la  posizione della cella corrente in cui si trova PointSpawn
         CellPosition = Terrainmap.WorldToCell(transform.position);
@@ -149,7 +167,7 @@ public class Move_Player : MonoBehaviour, IData
         }
     }
 
-     private enum Direction 
+    private enum Direction 
      { 
         Down, 
         Up, 
@@ -180,4 +198,6 @@ public class Move_Player : MonoBehaviour, IData
             return Direction.Down;
         }
     }
+
+  
 }

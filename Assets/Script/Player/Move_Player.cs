@@ -31,13 +31,15 @@ public class Move_Player : MonoBehaviour, IData
     // Input System
     public InputActionReference MovePlayer_KeyBoard;
     public InputActionReference MovePlayer_Controller;
- 
 
+    public PlayerInput playerInput;
 
     public GameObject Axe;
 
 
     Vector2 Movement;
+    public Vector2 keyboardMovement;
+    public Vector2 controllerMovement;
 
 
     // Start is called before the first frame update
@@ -72,8 +74,23 @@ public class Move_Player : MonoBehaviour, IData
     // Update is called once per frame
     void Update()
     {
-        Vector2 keyboardMovement = MovePlayer_KeyBoard.action.ReadValue<Vector2>();
-        Vector2 controllerMovement = MovePlayer_Controller.action.ReadValue<Vector2>();
+        
+
+
+         keyboardMovement = MovePlayer_KeyBoard.action.ReadValue<Vector2>();
+         controllerMovement = MovePlayer_Controller.action.ReadValue<Vector2>();
+
+        if (keyboardMovement != Vector2.zero)
+        {
+            //Debug.Log("USO TASTIERA");
+        }
+
+        if (controllerMovement != Vector2.zero)
+        {
+            //Debug.Log("USO Controller");
+        }
+
+        
 
         Movement = (keyboardMovement + controllerMovement).normalized;
 

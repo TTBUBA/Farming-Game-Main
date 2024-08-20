@@ -142,9 +142,36 @@
             "id": "78a7c803-78fa-4994-869f-7f0d60a232d7",
             "actions": [
                 {
-                    "name": "Button",
+                    "name": "Button_Log_Box_Animal",
                     "type": "Button",
                     "id": "2506b191-d3f2-45b2-995c-3b4cf3134011",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
+                },
+                {
+                    "name": "Button_Exit_Box_Animal",
+                    "type": "Button",
+                    "id": "106a1c8a-29d6-4967-a5bc-c0081efbaa1b",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
+                },
+                {
+                    "name": "Button_Log_Box_Magazzini",
+                    "type": "Button",
+                    "id": "4985523c-cec3-403f-ab42-eecc7a65ad41",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
+                },
+                {
+                    "name": "Button_Exit_Box_Magazzini",
+                    "type": "Button",
+                    "id": "dd10ef6c-29c6-4d45-8ba3-e6a055722dd6",
                     "expectedControlType": "Button",
                     "processors": "",
                     "interactions": "",
@@ -177,7 +204,7 @@
                     "interactions": "",
                     "processors": "",
                     "groups": "Controller",
-                    "action": "Button",
+                    "action": "Button_Log_Box_Animal",
                     "isComposite": false,
                     "isPartOfComposite": false
                 },
@@ -200,6 +227,39 @@
                     "processors": "",
                     "groups": "",
                     "action": "Previous_Slot",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "135d20a5-60ce-4f37-9ca3-3459a1389396",
+                    "path": "<Gamepad>/buttonEast",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "Controller",
+                    "action": "Button_Exit_Box_Animal",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "49d59399-e374-45e2-83d2-82cb9735a837",
+                    "path": "<Gamepad>/buttonEast",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "Controller",
+                    "action": "Button_Exit_Box_Magazzini",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "f94f2765-5d63-4752-bd01-aa47c1db239c",
+                    "path": "<Gamepad>/buttonSouth",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "Controller",
+                    "action": "Button_Log_Box_Magazzini",
                     "isComposite": false,
                     "isPartOfComposite": false
                 }

@@ -41,7 +41,7 @@ public class GameManger : MonoBehaviour , IData
     public int goat;
 
 
-
+    
 
 
     [Header("Debug")]
@@ -71,6 +71,9 @@ public class GameManger : MonoBehaviour , IData
     private void Update()
     {
         
+        
+
+
         // Aggiorna il testo delle monete nella UI ad ogni frame
         CoinText.text = Coin.ToString();
 

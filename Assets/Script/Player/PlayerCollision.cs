@@ -31,12 +31,13 @@ public class PlayerCollision : MonoBehaviour
     public GameObject Icon_Exit_GamePad; // Icona per indicare il pulsante di uscita quando si utilizza il gamepad
     public GameObject Icon_Log_Keyboard; // Icona per indicare il pulsante di log quando si utilizza la tastiera
 
-    private string currentCollisionTag; // Tag dell'oggetto con cui il giocatore è in collisione
+    public string currentCollisionTag; // Tag dell'oggetto con cui il giocatore è in collisione
 
+    
     private void OnTriggerEnter2D(Collider2D collider)
     {
         string tag = collider.gameObject.tag;
-
+        
         // Se il tag è associato a un animale, gestisce la collisione con l'animale
         if (IsAnimalTag(tag))
         {
@@ -63,8 +64,8 @@ public class PlayerCollision : MonoBehaviour
 
         // Attiva il bottone di log per gli animali e abilita le azioni del gamepad per gli animali
         Button_Log_Box.SetActive(true);
-        ToggleAnimalGamepadActions(true);
-        
+        Button_Log_Box_Animal_Gamepad.action.Enable();
+        Button_Exit_Box_Animal_Gamepad.action.Enable();
     }
 
     // Gestisce la logica quando il giocatore collide con un magazzino o silo
@@ -75,7 +76,8 @@ public class PlayerCollision : MonoBehaviour
 
         // Attiva il bottone di log per i magazzini e abilita le azioni del gamepad per i magazzini
         Button_Log.SetActive(true);
-        ToggleMagazzinoGamepadActions(true);
+        Button_Log_Magazzini_Gamepad.action.Enable();
+        Button_Exit_Magazzini_Gamepad.action.Enable();
     }
 
     // Mostra le icone appropriate a seconda se si utilizza un gamepad o una tastiera
@@ -84,7 +86,7 @@ public class PlayerCollision : MonoBehaviour
         bool isUsingGamepad = MovePlayer.controllerMovement != Vector2.zero;
 
         Icon_Log_GamePad.SetActive(isUsingGamepad);
-        //Icon_Exit_GamePad.SetActive(isUsingGamepad);
+       
         Icon_Log_Keyboard.SetActive(!isUsingGamepad);
     }
 
@@ -95,14 +97,18 @@ public class PlayerCollision : MonoBehaviour
         Button_Log.SetActive(false);
         Button_Exit_Box.SetActive(false);
         Button_Exit.SetActive(false);
-        currentCollisionTag = null;
+   
 
         Icon_Log_GamePad.SetActive(false);
         Icon_Exit_GamePad.SetActive(false);
         Icon_Log_Keyboard.SetActive(false);
 
-        ToggleAnimalGamepadActions(false);
-        ToggleMagazzinoGamepadActions(false);
+        Button_Log_Box_Animal_Gamepad.action.Disable();
+        Button_Exit_Box_Animal_Gamepad.action.Disable();
+        Button_Log_Magazzini_Gamepad.action.Disable();
+        Button_Exit_Magazzini_Gamepad.action.Disable();
+
+        currentCollisionTag = null;
     }
 
     // Gestisce il click sul bottone di log per gli animali (usato per attivare la UI specifica dell'animale)
@@ -148,6 +154,7 @@ public class PlayerCollision : MonoBehaviour
         }
 
         Button_Exit_Box.SetActive(false); // Nasconde il bottone di uscita dopo l'uso
+        Icon_Log_Keyboard.SetActive(false); // Nasconde il bottone della tastiera di uscita dopo l'uso
     }
 
     // Gestisce il caricamento della UI del magazzino o del silo
@@ -192,8 +199,8 @@ public class PlayerCollision : MonoBehaviour
         Button_Log_Box_Animal_Gamepad.action.started += LogBoxAnimal;
         Button_Exit_Box_Animal_Gamepad.action.started += ExitBoxAnimal;
 
-        ToggleAnimalGamepadActions(true);
-        ToggleMagazzinoGamepadActions(true);
+
+        ResetUI();
     }
 
     // Disabilita le azioni del gamepad quando lo script è disattivato
@@ -204,65 +211,54 @@ public class PlayerCollision : MonoBehaviour
         Button_Log_Box_Animal_Gamepad.action.started -= LogBoxAnimal;
         Button_Exit_Box_Animal_Gamepad.action.started -= ExitBoxAnimal;
 
-        ToggleAnimalGamepadActions(false);
-        ToggleMagazzinoGamepadActions(false);
+        ResetUI();
     }
+
 
     // Gestisce l'azione del gamepad per visualizzare la UI del magazzino/silo
     private void LogMagazziniGamePad(InputAction.CallbackContext context)
     {
-        ButtonLoadMagazzini();
-        Icon_Log_GamePad.SetActive(false);
-        Icon_Exit_GamePad.SetActive(true);
+        if (currentCollisionTag != null && IsMagazzinoTag(currentCollisionTag))
+        {
+             ButtonLoadMagazzini();
+             Icon_Log_GamePad.SetActive(false);
+             Icon_Exit_GamePad.SetActive(true);
+        }
+  
     }
 
     // Gestisce l'azione del gamepad per chiudere la UI del magazzino/silo
     private void ExitMagazziniGamePad(InputAction.CallbackContext context)
     {
-        ButtonExitMagazzini();
-        Icon_Exit_GamePad.SetActive(false);
+        if (currentCollisionTag != null && IsMagazzinoTag(currentCollisionTag))
+        {
+            ButtonExitMagazzini();
+            Icon_Exit_GamePad.SetActive(false);
+        }
+
     }
 
     // Gestisce l'azione del gamepad per visualizzare la UI degli animali
     private void LogBoxAnimal(InputAction.CallbackContext context)
     {
-        //OnButtonLogBoxClick();
+        if (currentCollisionTag != null && IsAnimalTag(currentCollisionTag))
+        {
+            OnButtonLogBoxClick();
+            Icon_Log_GamePad.SetActive(false);
+            Icon_Exit_GamePad.SetActive(true);
+        }
+        
     }
 
     // Gestisce l'azione del gamepad per chiudere la UI degli animali
     private void ExitBoxAnimal(InputAction.CallbackContext context)
     {
-       // OnButtonExitBoxClick();
-    }
-
-    // Abilita o disabilita le azioni del gamepad per i recinti degli animali
-    private void ToggleAnimalGamepadActions(bool enable)
-    {
-        if (enable)
+        if(currentCollisionTag != null && IsAnimalTag(currentCollisionTag))
         {
-            Button_Log_Box_Animal_Gamepad.action.Enable();
-            Button_Exit_Box_Animal_Gamepad.action.Enable();
+            OnButtonExitBoxClick();
+            Icon_Exit_GamePad.SetActive(false);
         }
-        else
-        {
-            Button_Log_Box_Animal_Gamepad.action.Disable();
-            Button_Exit_Box_Animal_Gamepad.action.Disable();
-        }
-    }
-
-    // Abilita o disabilita le azioni del gamepad per i magazzini/silo
-    private void ToggleMagazzinoGamepadActions(bool enable)
-    {
-        if (enable)
-        {
-            Button_Log_Magazzini_Gamepad.action.Enable();
-            Button_Exit_Magazzini_Gamepad.action.Enable();
-        }
-        else
-        {
-            Button_Log_Magazzini_Gamepad.action.Disable();
-            Button_Exit_Magazzini_Gamepad.action.Disable();
-        }
+        
     }
 
     // Controlla se il tag corrisponde a un animale

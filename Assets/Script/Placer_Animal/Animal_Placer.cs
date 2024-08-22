@@ -6,10 +6,11 @@ public class Animal_Placer : MonoBehaviour
     public GameObject objectPrefab;  // prefab dell'oggetto da posizionare
     private GameObject objectInHand; // Riferimento all'oggetto in fase di posizionamento
 
-    public string targetTagForPurchase = ""; // Tag per l'oggetto di acquisto
-    public string targetTagForPlacement = ""; // Tag per la zona di posizionamento
+    //public string targetTagForPurchase = ""; // Tag per l'oggetto di acquisto
+    //public string targetTagForPlacement = ""; // Tag per la zona di posizionamento
 
-    public Animation ErrorAnimatio;
+    public string requiredPlacementID;
+    //public Animation ErrorAnimatio;
     public int cost;
     public GameManger gameManger;
 
@@ -38,27 +39,30 @@ public class Animal_Placer : MonoBehaviour
             {
                 // Lancia un raggio nella posizione del mouse per verificare la zona di posizionamento
                 RaycastHit2D hit = Physics2D.Raycast(movePosition, Vector2.zero);
-                if (hit.collider != null && hit.collider.CompareTag(targetTagForPlacement) && gameManger.Coin >= cost)
+                if (hit.collider != null && gameManger.Coin >= cost)
                 {
-                    gameManger.Coin -= cost;
-                    GameObject placedObject = Instantiate(objectPrefab, movePosition, Quaternion.identity); // Crea l'oggetto prefab
-
-                    Animal_Type animal = placedObject.GetComponent<Animal_Type>();
-                    if(animal != null)
+                    // Controlla se l'oggetto colpito ha lo script PlacementArea
+                    Id_Box Id = hit.collider.GetComponent<Id_Box>();
+                    if (Id != null && Id.placementID == requiredPlacementID && gameManger.Coin >= cost)
                     {
-                        gameManger.IncrementAnimalCount(animal.Type);
+                        gameManger.Coin -= cost;
+                        GameObject placedObject = Instantiate(objectPrefab, movePosition, Quaternion.identity); // Crea l'oggetto prefab
 
+                        Animal_Type animal = placedObject.GetComponent<Animal_Type>();
+
+                        if (animal != null)
+                        {
+                            gameManger.IncrementAnimalCount(animal.Type);
+
+                        }
+                        Destroy(objectInHand); // Rimuove l'oggetto da posizionare
+                        objectInHand = null; // Rilascia l'oggetto
                     }
-                    Destroy(objectInHand); // Rimuove l'oggetto da posizionare
-                    objectInHand = null; // Rilascia l'oggetto
+                   
                 }
                 else
                 {
-                    if (!hit.collider.CompareTag(targetTagForPlacement))
-                    {
-                        ErrorAnimatio.Play();
-                        Debug.Log("A");
-                    }
+                    Debug.Log("Errore: ID non corrispondente o monete insufficienti");
                 }
               
                
@@ -67,7 +71,7 @@ public class Animal_Placer : MonoBehaviour
             if (Input.GetMouseButtonUp(1))
             {
 
-                Debug.Log("recinto non adatto");
+                Debug.Log("Animale rimosso dal mouse");
                 Destroy(objectInHand);
             }
         }

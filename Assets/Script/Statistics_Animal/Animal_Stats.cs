@@ -1,5 +1,6 @@
 using UnityEngine;
 using UnityEngine.UI;
+using UnityEngine.InputSystem;
 
 public class Animal : MonoBehaviour
 {
@@ -30,6 +31,9 @@ public class Animal : MonoBehaviour
     private float minValue = 0f;
     private float maxValue = 1f;
 
+
+    //comanda controller
+    public InputActionReference Button_Decrese_hunger;
     // Riferimento al Mill_Manager
     public Mill_Manager millManager;
     public GameManger gameManager;
@@ -154,5 +158,36 @@ public class Animal : MonoBehaviour
             barProduction.fillAmount = production;
         }
     }
+
+
+    // Comandandi Controller
+
+    private void OnEnable()
+    {
+        Button_Decrese_hunger.action.started += Decrese_hunger_Controller;
+
+        Button_Decrese_hunger.action.Enable();
+    }
+
+    private void OnDisable()
+    {
+        Button_Decrese_hunger.action.started -= Decrese_hunger_Controller;
+
+        Button_Decrese_hunger.action.Disable();
+    }
+
+    public void Decrese_hunger_Controller(InputAction.CallbackContext context)
+    {
+        SackData selectedSack = millManager.sackDataArray[millManager.selectedSackIndex];
+        if (selectedSack.NameSack == RequiredSackName && selectedSack.quantity >= 1)
+        {
+            hunger += 0.1f;
+            selectedSack.quantity -= 1;
+            UpdateHungerBar();
+        }
+
+    }
+
+
 
 }

@@ -16,7 +16,7 @@ public class SackData
     public int quantity = 0;
     public Text QuantityText;
 
-  
+
 
     public string Vegetable1Name;    // Nome del primo ortaggio
     public string Vegetable2Name;    // Nome del secondo ortaggio
@@ -68,7 +68,7 @@ public class Mill_Manager : MonoBehaviour
     public void ButtonSackChicken()
     {
         OnselectSack(0);
-        
+
 
     }
 
@@ -141,10 +141,10 @@ public class Mill_Manager : MonoBehaviour
 
         preparationTimerCoroutine = StartCoroutine(Timer(sackDataArray[SackIndex].PreparationTime * 60, SackIndex));
         SetSackButtonsInteractable(false);
-        
+
     }
 
-  
+
     public IEnumerator Timer(float preparationTimeInSeconds, int SackIndex)
     {
         float elapsedTime = 0;
@@ -158,7 +158,7 @@ public class Mill_Manager : MonoBehaviour
             BarTime.fillAmount = elapsedTime / preparationTimeInSeconds;
 
             yield return null;
-           // Debug.Log(preparationTimeInSeconds);
+            // Debug.Log(preparationTimeInSeconds);
         }
 
         while (speedElica > 0)
@@ -182,7 +182,7 @@ public class Mill_Manager : MonoBehaviour
 
     public void SetSackButtonsInteractable(bool interactable)
     {
-        foreach(Button button in sackButtons)
+        foreach (Button button in sackButtons)
         {
             button.interactable = interactable;
         }

@@ -194,6 +194,15 @@
                     "processors": "",
                     "interactions": "",
                     "initialStateCheck": false
+                },
+                {
+                    "name": "Increse_Hunger_Animal",
+                    "type": "Button",
+                    "id": "a4cb5813-c9d5-44b0-a40b-b93945f88428",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
                 }
             ],
             "bindings": [
@@ -260,6 +269,17 @@
                     "processors": "",
                     "groups": "Controller",
                     "action": "Button_Log_Box_Magazzini",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "af5c7697-d331-4bf4-9d7d-74fec3bbe260",
+                    "path": "<Gamepad>/buttonSouth",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "Controller",
+                    "action": "Increse_Hunger_Animal",
                     "isComposite": false,
                     "isPartOfComposite": false
                 }

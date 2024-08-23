@@ -33,10 +33,19 @@ public class Animal : MonoBehaviour
 
 
     //comanda controller
-    public InputActionReference Button_Decrese_hunger;
+    public InputActionReference Button_Incrase_hunger;
+
+
+    // UI CONTROLLER
+    public GameObject Icon_Increse_Hunger_Controller;
+    public GameObject Icon_Increse_Hunger_KeyBoard;
     // Riferimento al Mill_Manager
     public Mill_Manager millManager;
     public GameManger gameManager;
+
+
+
+    public Move_Player MovePlayer;
     void Start()
     {
         hunger = 0f;
@@ -53,6 +62,7 @@ public class Animal : MonoBehaviour
         DecreaseHunger();
         IncreaseProduction();
         UpdateUi();
+        ShowAppropriateIcons();
     }
 
     private void DecreaseHunger()
@@ -159,24 +169,40 @@ public class Animal : MonoBehaviour
         }
     }
 
+    // Mostra le icone appropriate a seconda se si utilizza un gamepad o una tastiera
+    private void ShowAppropriateIcons()
+    {
+       if(MovePlayer.controllerMovement != Vector2.zero)
+        {
+            Icon_Increse_Hunger_Controller.SetActive(true);
+            Icon_Increse_Hunger_KeyBoard.SetActive(false);
+        }
+
+        if(MovePlayer.keyboardMovement != Vector2.zero)
+        {
+            Icon_Increse_Hunger_KeyBoard.SetActive(true);
+            Icon_Increse_Hunger_Controller.SetActive(false);
+            
+        }
+    }
 
     // Comandandi Controller
 
     private void OnEnable()
     {
-        Button_Decrese_hunger.action.started += Decrese_hunger_Controller;
+        Button_Incrase_hunger.action.started += Incrase_hunger_Controller;
 
-        Button_Decrese_hunger.action.Enable();
+        Button_Incrase_hunger.action.Enable();
     }
 
     private void OnDisable()
     {
-        Button_Decrese_hunger.action.started -= Decrese_hunger_Controller;
+        Button_Incrase_hunger.action.started -= Incrase_hunger_Controller;
 
-        Button_Decrese_hunger.action.Disable();
+        Button_Incrase_hunger.action.Disable();
     }
 
-    public void Decrese_hunger_Controller(InputAction.CallbackContext context)
+    public void Incrase_hunger_Controller(InputAction.CallbackContext context)
     {
         SackData selectedSack = millManager.sackDataArray[millManager.selectedSackIndex];
         if (selectedSack.NameSack == RequiredSackName && selectedSack.quantity >= 1)
@@ -184,8 +210,9 @@ public class Animal : MonoBehaviour
             hunger += 0.1f;
             selectedSack.quantity -= 1;
             UpdateHungerBar();
+            
         }
-
+        
     }
 
 

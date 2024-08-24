@@ -34,10 +34,12 @@ public class Animal : MonoBehaviour
 
     //comanda controller
     public InputActionReference Button_Incrase_hunger;
+    public InputActionReference Button_Incrase_Thirst;
 
 
     // UI CONTROLLER
     public GameObject Icon_Increse_Hunger_Controller;
+    public GameObject Icon_Increse_Thirst_Controller;
     public GameObject Icon_Increse_Hunger_KeyBoard;
     // Riferimento al Mill_Manager
     public Mill_Manager millManager;
@@ -175,6 +177,7 @@ public class Animal : MonoBehaviour
        if(MovePlayer.controllerMovement != Vector2.zero)
         {
             Icon_Increse_Hunger_Controller.SetActive(true);
+            Icon_Increse_Thirst_Controller.SetActive(true);
             Icon_Increse_Hunger_KeyBoard.SetActive(false);
         }
 
@@ -182,7 +185,7 @@ public class Animal : MonoBehaviour
         {
             Icon_Increse_Hunger_KeyBoard.SetActive(true);
             Icon_Increse_Hunger_Controller.SetActive(false);
-            
+            Icon_Increse_Thirst_Controller.SetActive(false);
         }
     }
 
@@ -191,15 +194,20 @@ public class Animal : MonoBehaviour
     private void OnEnable()
     {
         Button_Incrase_hunger.action.started += Incrase_hunger_Controller;
+        Button_Incrase_Thirst.action.started += Incrase_Thirst_Controller;
 
         Button_Incrase_hunger.action.Enable();
+        Button_Incrase_Thirst.action.Enable();
     }
 
     private void OnDisable()
     {
         Button_Incrase_hunger.action.started -= Incrase_hunger_Controller;
+        Button_Incrase_Thirst.action.started -= Incrase_Thirst_Controller;
+
 
         Button_Incrase_hunger.action.Disable();
+        Button_Incrase_Thirst.action.Disable();
     }
 
     public void Incrase_hunger_Controller(InputAction.CallbackContext context)
@@ -214,6 +222,15 @@ public class Animal : MonoBehaviour
         }
         
     }
+
+    public void Incrase_Thirst_Controller(InputAction.CallbackContext context)
+    {
+        thirst += 0.1f;
+        UpdateThirstBar();
+
+    }
+
+
 
 
 

@@ -203,6 +203,15 @@
                     "processors": "",
                     "interactions": "",
                     "initialStateCheck": false
+                },
+                {
+                    "name": "Increse_Thirst_Animal",
+                    "type": "Button",
+                    "id": "771902ae-6d33-4449-8753-97a7aebe182a",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
                 }
             ],
             "bindings": [
@@ -275,11 +284,22 @@
                 {
                     "name": "",
                     "id": "af5c7697-d331-4bf4-9d7d-74fec3bbe260",
-                    "path": "<Gamepad>/leftShoulder",
+                    "path": "<Gamepad>/leftTrigger",
                     "interactions": "",
                     "processors": "",
                     "groups": "Controller",
                     "action": "Increse_Hunger_Animal",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "b0c8c2bd-5d61-4e3d-ad05-91a926cb62dd",
+                    "path": "<Gamepad>/rightTrigger",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "Controller",
+                    "action": "Increse_Thirst_Animal",
                     "isComposite": false,
                     "isPartOfComposite": false
                 }

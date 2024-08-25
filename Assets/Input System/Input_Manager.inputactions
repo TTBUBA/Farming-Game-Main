@@ -196,6 +196,24 @@
                     "initialStateCheck": false
                 },
                 {
+                    "name": "Next_Image",
+                    "type": "Button",
+                    "id": "49d03a60-4ea0-4210-bc44-15762f5f26d5",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
+                },
+                {
+                    "name": "Back_Image",
+                    "type": "Button",
+                    "id": "07481379-0022-49cb-acb8-b6716a1a8c2a",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
+                },
+                {
                     "name": "Increse_Hunger_Animal",
                     "type": "Button",
                     "id": "a4cb5813-c9d5-44b0-a40b-b93945f88428",
@@ -284,7 +302,7 @@
                 {
                     "name": "",
                     "id": "af5c7697-d331-4bf4-9d7d-74fec3bbe260",
-                    "path": "<Gamepad>/leftTrigger",
+                    "path": "<Gamepad>/buttonSouth",
                     "interactions": "",
                     "processors": "",
                     "groups": "Controller",
@@ -295,11 +313,33 @@
                 {
                     "name": "",
                     "id": "b0c8c2bd-5d61-4e3d-ad05-91a926cb62dd",
-                    "path": "<Gamepad>/rightTrigger",
+                    "path": "<Gamepad>/buttonSouth",
                     "interactions": "",
                     "processors": "",
                     "groups": "Controller",
                     "action": "Increse_Thirst_Animal",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "74b92048-1c17-40eb-903e-a892afae58fc",
+                    "path": "<Gamepad>/rightShoulder",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Next_Image",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "0c532430-9e8b-4c1f-bf81-c3ba1b0c1202",
+                    "path": "<Gamepad>/leftShoulder",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Back_Image",
                     "isComposite": false,
                     "isPartOfComposite": false
                 }

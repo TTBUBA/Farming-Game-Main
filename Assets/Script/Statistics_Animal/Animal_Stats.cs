@@ -40,7 +40,11 @@ public class Animal : MonoBehaviour
     // UI CONTROLLER
     public GameObject Icon_Increse_Hunger_Controller;
     public GameObject Icon_Increse_Thirst_Controller;
+
+    // UI Tastiera
     public GameObject Icon_Increse_Hunger_KeyBoard;
+    public GameObject Icon_Increse_Thirst_KeyBoard;
+
     // Riferimento al Mill_Manager
     public Mill_Manager millManager;
     public GameManger gameManager;
@@ -48,6 +52,7 @@ public class Animal : MonoBehaviour
 
 
     public Move_Player MovePlayer;
+    public UI_Controller UiController;
     void Start()
     {
         hunger = 0f;
@@ -179,13 +184,16 @@ public class Animal : MonoBehaviour
             Icon_Increse_Hunger_Controller.SetActive(true);
             Icon_Increse_Thirst_Controller.SetActive(true);
             Icon_Increse_Hunger_KeyBoard.SetActive(false);
+            Icon_Increse_Thirst_KeyBoard.SetActive(false);
         }
 
         if(MovePlayer.keyboardMovement != Vector2.zero)
         {
             Icon_Increse_Hunger_KeyBoard.SetActive(true);
+            Icon_Increse_Thirst_KeyBoard.SetActive(true);
             Icon_Increse_Hunger_Controller.SetActive(false);
             Icon_Increse_Thirst_Controller.SetActive(false);
+            
         }
     }
 
@@ -212,21 +220,29 @@ public class Animal : MonoBehaviour
 
     public void Incrase_hunger_Controller(InputAction.CallbackContext context)
     {
-        SackData selectedSack = millManager.sackDataArray[millManager.selectedSackIndex];
-        if (selectedSack.NameSack == RequiredSackName && selectedSack.quantity >= 1)
+        if(UiController.currentIndex == 1)
         {
-            hunger += 0.1f;
-            selectedSack.quantity -= 1;
-            UpdateHungerBar();
-            
+            SackData selectedSack = millManager.sackDataArray[millManager.selectedSackIndex];
+            if (selectedSack.NameSack == RequiredSackName && selectedSack.quantity >= 1)
+            {
+                hunger += 0.1f;
+                selectedSack.quantity -= 1;
+                UpdateHungerBar();
+
+            }
         }
+
         
     }
 
     public void Incrase_Thirst_Controller(InputAction.CallbackContext context)
     {
-        thirst += 0.1f;
-        UpdateThirstBar();
+        if (UiController.currentIndex == 2)
+        {
+            thirst += 0.1f;
+            UpdateThirstBar();
+        }
+        
 
     }
 

@@ -65,6 +65,7 @@ SpriteAtlas:
     - 61e771405a926214ba50b0d8a6d01d8b: 21300000
     - a69416404ec0de046916134172378292: 21300000
     - 5981345069c83b14b8aeb4ac3d94c119: 21300000
+    - 125c6650cab3eee4395d31ee242730cb: 2010112528
     - 74165d50b86cff143a1246e0e771ee46: -54100616
     - d997fb90fa253e24d81c7c757e698b21: 21300000
     - d4d772d06ce606d41bad214205e0e46f: -37479833
@@ -873,6 +874,7 @@ SpriteAtlas:
   - {fileID: 21300000, guid: 61e771405a926214ba50b0d8a6d01d8b, type: 3}
   - {fileID: 21300000, guid: a69416404ec0de046916134172378292, type: 3}
   - {fileID: 21300000, guid: 5981345069c83b14b8aeb4ac3d94c119, type: 3}
+  - {fileID: 2010112528, guid: 125c6650cab3eee4395d31ee242730cb, type: 3}
   - {fileID: -54100616, guid: 74165d50b86cff143a1246e0e771ee46, type: 3}
   - {fileID: 21300000, guid: d997fb90fa253e24d81c7c757e698b21, type: 3}
   - {fileID: -37479833, guid: d4d772d06ce606d41bad214205e0e46f, type: 3}
@@ -1680,6 +1682,7 @@ SpriteAtlas:
   - potato_00
   - Icon_Record
   - Button_Right
+  - BackGround 1_0
   - BackGround_Timer_0
   - kale_01
   - Tree_growing_0

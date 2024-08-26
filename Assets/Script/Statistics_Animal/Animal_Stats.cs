@@ -52,7 +52,7 @@ public class Animal : MonoBehaviour
 
 
     public Move_Player MovePlayer;
-    public UI_Controller UiController;
+    public UI_Controller_Animal UiController;
     void Start()
     {
         hunger = 0f;

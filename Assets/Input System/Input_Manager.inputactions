@@ -178,6 +178,24 @@
                     "initialStateCheck": false
                 },
                 {
+                    "name": "Button_Log_Mill",
+                    "type": "Button",
+                    "id": "30dcb1f9-c16f-44b3-af82-ae1760e25ae5",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
+                },
+                {
+                    "name": "Button_Exit_Mill",
+                    "type": "Button",
+                    "id": "e4fcccfc-9f4d-42ab-80b5-2837838a32ac",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
+                },
+                {
                     "name": "Next_Slot",
                     "type": "Button",
                     "id": "244abc74-2ce7-4329-924b-89ab9a59af63",
@@ -226,6 +244,15 @@
                     "name": "Increse_Thirst_Animal",
                     "type": "Button",
                     "id": "771902ae-6d33-4449-8753-97a7aebe182a",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
+                },
+                {
+                    "name": "Collect_Sack",
+                    "type": "Button",
+                    "id": "afabdd34-c18a-4fd8-912d-dfe71179b890",
                     "expectedControlType": "Button",
                     "processors": "",
                     "interactions": "",
@@ -340,6 +367,39 @@
                     "processors": "",
                     "groups": "",
                     "action": "Back_Image",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "ee3b2643-3814-40dc-be72-3635449d21e5",
+                    "path": "<Gamepad>/buttonEast",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "Controller",
+                    "action": "Button_Exit_Mill",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "9769d953-2e4e-4c13-b0a3-2e0d5c28ff05",
+                    "path": "<Gamepad>/buttonSouth",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "Controller",
+                    "action": "Button_Log_Mill",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "2b179b26-9e67-4b75-93a3-77efeae63fa0",
+                    "path": "<Gamepad>/buttonSouth",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "Controller",
+                    "action": "Collect_Sack",
                     "isComposite": false,
                     "isPartOfComposite": false
                 }

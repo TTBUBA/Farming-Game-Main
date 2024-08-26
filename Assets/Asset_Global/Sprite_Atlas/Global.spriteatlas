@@ -117,6 +117,7 @@ SpriteAtlas:
     - eeae7fe25519e824a8ed116a7d8470d8: 2010112528
     - 60eb3003a2309bf4da37c8d1260aa51d: 1023719861
     - 3d6e380340af2e24ca0b5f4b89b18615: 21300000
+    - 3a8b634372fde9a4cad70e005490ef85: 2023664961
     - 0ef0d5433274eb9498b9b6ed85897455: 21300000
     - 41c505633985b294992228c14d4b99ed: 463144546
     - 2bd101736c7dea644adee82fef63d317: 21300000
@@ -386,7 +387,6 @@ SpriteAtlas:
     - dca3192b620755e4ba67d9e809468793: -1699450925
     - ae32673bc36914140bafe4f233b774bc: 21300000
     - f07d816b258b4aa479a7fe0629f0241b: 21300000
-    - 987f916b938ac184ab8f471080c703c3: 21300000
     - dc2bdf9b9e42ae941b1e5290dd093837: 21300000
     - 1fb0f8bbed4ba064d990c7cbb74a0571: 21300000
     - 508828ebc4f18d14791e44461926208c: 21300000
@@ -926,6 +926,7 @@ SpriteAtlas:
   - {fileID: 2010112528, guid: eeae7fe25519e824a8ed116a7d8470d8, type: 3}
   - {fileID: 1023719861, guid: 60eb3003a2309bf4da37c8d1260aa51d, type: 3}
   - {fileID: 21300000, guid: 3d6e380340af2e24ca0b5f4b89b18615, type: 3}
+  - {fileID: 2023664961, guid: 3a8b634372fde9a4cad70e005490ef85, type: 3}
   - {fileID: 21300000, guid: 0ef0d5433274eb9498b9b6ed85897455, type: 3}
   - {fileID: 463144546, guid: 41c505633985b294992228c14d4b99ed, type: 3}
   - {fileID: 21300000, guid: 2bd101736c7dea644adee82fef63d317, type: 3}
@@ -1195,7 +1196,6 @@ SpriteAtlas:
   - {fileID: -1699450925, guid: dca3192b620755e4ba67d9e809468793, type: 3}
   - {fileID: 21300000, guid: ae32673bc36914140bafe4f233b774bc, type: 3}
   - {fileID: 21300000, guid: f07d816b258b4aa479a7fe0629f0241b, type: 3}
-  - {fileID: 21300000, guid: 987f916b938ac184ab8f471080c703c3, type: 3}
   - {fileID: 21300000, guid: dc2bdf9b9e42ae941b1e5290dd093837, type: 3}
   - {fileID: 21300000, guid: 1fb0f8bbed4ba064d990c7cbb74a0571, type: 3}
   - {fileID: 21300000, guid: 508828ebc4f18d14791e44461926208c, type: 3}
@@ -1734,6 +1734,7 @@ SpriteAtlas:
   - BackGround 1_0
   - Interno_0
   - Sun
+  - BackGround 2_0
   - Segno_Verificato
   - Quantita_Box_0
   - beetroot_00
@@ -2003,7 +2004,6 @@ SpriteAtlas:
   - Box_Icon_0
   - BackGround_Timer
   - BackGround
-  - Icon_Cibo
   - Icon_Web
   - BackGround 1
   - Chicken

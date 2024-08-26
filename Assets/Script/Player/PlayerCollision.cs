@@ -17,11 +17,20 @@ public class PlayerCollision : MonoBehaviour
     public GameObject Ui_Silo; // Interfaccia utente per le statistiche del silo
     public GameObject Ui_Magazzino; // Interfaccia utente per le statistiche del magazzino
 
+    [Header("UI Mill")]
+    public GameObject Button_Log_Mill;
+    public GameObject Button_Exit_Mill;
+    public GameObject Ui_Mill;
+
+
     [Header("Gamepad Controls")]
     public InputActionReference Button_Log_Magazzini_Gamepad; // Azione del gamepad per visualizzare le statistiche del magazzino/silo
     public InputActionReference Button_Exit_Magazzini_Gamepad; // Azione del gamepad per chiudere le statistiche del magazzino/silo
     public InputActionReference Button_Log_Box_Animal_Gamepad; // Azione del gamepad per visualizzare le statistiche degli animali
     public InputActionReference Button_Exit_Box_Animal_Gamepad; // Azione del gamepad per chiudere le statistiche degli animali
+    public InputActionReference Button_Log_Mill_Gamepad;
+    public InputActionReference Button_Exit_Mill_Gamepad;
+
 
     [Header("Player Movement")]
     public Move_Player MovePlayer;
@@ -48,12 +57,20 @@ public class PlayerCollision : MonoBehaviour
         {
             HandleMagazzinoCollision(tag);
         }
+        else if (IsMillTag(tag))
+        {
+            HandleMillCollision(tag);
+        }
+
     }
 
+
+ 
     // Gestisce l'uscita del giocatore da un'area con un trigger collider
     private void OnTriggerExit2D(Collider2D collider)
     {
         ResetUI(); // Resetta l'interfaccia utente quando il giocatore esce dalla collisione
+        ResetTag(tag);
     }
 
     // Gestisce la logica quando il giocatore collide con un oggetto animale
@@ -68,6 +85,11 @@ public class PlayerCollision : MonoBehaviour
         Button_Exit_Box_Animal_Gamepad.action.Enable();
     }
 
+    private void ResetTag(string tag)
+    {
+        currentCollisionTag = null;
+    }
+
     // Gestisce la logica quando il giocatore collide con un magazzino o silo
     private void HandleMagazzinoCollision(string tag)
     {
@@ -78,6 +100,17 @@ public class PlayerCollision : MonoBehaviour
         Button_Log.SetActive(true);
         Button_Log_Magazzini_Gamepad.action.Enable();
         Button_Exit_Magazzini_Gamepad.action.Enable();
+    }
+
+    private void HandleMillCollision(string tag)
+    {
+        currentCollisionTag = tag; // Salva il tag corrente per future interazioni
+        ShowAppropriateIcons(); // Mostra le icone appropriate a seconda del dispositivo di input
+
+        // Attiva il bottone di log per i magazzini e abilita le azioni del gamepad per i magazzini
+        Button_Log.SetActive(true);
+        Button_Log_Mill_Gamepad.action.Enable();
+        Button_Exit_Mill_Gamepad.action.Enable();
     }
 
     // Mostra le icone appropriate a seconda se si utilizza un gamepad o una tastiera
@@ -103,10 +136,16 @@ public class PlayerCollision : MonoBehaviour
         Icon_Exit_GamePad.SetActive(false);
         Icon_Log_Keyboard.SetActive(false);
 
+        Button_Log_Mill.SetActive(false);
+        Button_Exit_Mill.SetActive(false);
+
+
         Button_Log_Box_Animal_Gamepad.action.Disable();
         Button_Exit_Box_Animal_Gamepad.action.Disable();
         Button_Log_Magazzini_Gamepad.action.Disable();
         Button_Exit_Magazzini_Gamepad.action.Disable();
+        Button_Log_Mill_Gamepad.action.Disable();
+        Button_Exit_Mill_Gamepad.action.Disable();
 
         currentCollisionTag = null;
     }
@@ -157,6 +196,34 @@ public class PlayerCollision : MonoBehaviour
         Icon_Log_Keyboard.SetActive(false); // Nasconde il bottone della tastiera di uscita dopo l'uso
     }
 
+    public void OnbuttonLogMill()
+    {
+        switch (currentCollisionTag)
+        {
+            case "Mill":
+                Ui_Mill.SetActive(true);
+                break;
+
+        }
+
+        Button_Log_Mill.SetActive(false); 
+                                         
+        Button_Exit_Mill.SetActive(true); // Mostra il bottone di uscita
+    }
+
+    public void OnbuttonExitMill()
+    {
+        switch (currentCollisionTag)
+        {
+            case "Mill":
+                Ui_Mill.SetActive(false);
+                break;
+
+        }
+
+        Button_Exit_Mill.SetActive(false);
+    }
+
     // Gestisce il caricamento della UI del magazzino o del silo
     public void ButtonLoadMagazzini()
     {
@@ -170,8 +237,7 @@ public class PlayerCollision : MonoBehaviour
                 break;
         }
 
-        Button_Log.SetActive(false); // Nasconde il bottone di log dopo l'uso
-        Button_Exit.SetActive(true); // Mostra il bottone di uscita
+        Button_Log_Mill.SetActive(false);
     }
 
     // Gestisce la chiusura della UI del magazzino o del silo
@@ -198,7 +264,8 @@ public class PlayerCollision : MonoBehaviour
         Button_Exit_Magazzini_Gamepad.action.started += ExitMagazziniGamePad;
         Button_Log_Box_Animal_Gamepad.action.started += LogBoxAnimal;
         Button_Exit_Box_Animal_Gamepad.action.started += ExitBoxAnimal;
-
+        Button_Log_Mill_Gamepad.action.started += LogMill;
+        Button_Exit_Mill_Gamepad.action.started += ExiMill;
 
         ResetUI();
     }
@@ -210,6 +277,8 @@ public class PlayerCollision : MonoBehaviour
         Button_Exit_Magazzini_Gamepad.action.started -= ExitMagazziniGamePad;
         Button_Log_Box_Animal_Gamepad.action.started -= LogBoxAnimal;
         Button_Exit_Box_Animal_Gamepad.action.started -= ExitBoxAnimal;
+        Button_Log_Mill_Gamepad.action.started -= LogMill;
+        Button_Exit_Mill_Gamepad.action.started -= ExiMill;
 
         ResetUI();
     }
@@ -261,6 +330,26 @@ public class PlayerCollision : MonoBehaviour
         
     }
 
+    // Gestisce l'azione del gamepad per visualizzare la UI del mulino
+    private void LogMill(InputAction.CallbackContext context)
+    {
+        if(currentCollisionTag != null && IsMillTag(currentCollisionTag))
+        {
+            OnbuttonLogMill();
+            Icon_Exit_GamePad.SetActive(true);
+        }
+    }
+
+    // Gestisce l'azione del gamepad per chiudere la UI del mulino
+    private void ExiMill(InputAction.CallbackContext context)
+    {
+        if (currentCollisionTag != null && IsMillTag(currentCollisionTag))
+        {
+            OnbuttonExitMill();
+            Icon_Exit_GamePad.SetActive(false);
+        }
+    }
+
     // Controlla se il tag corrisponde a un animale
     private bool IsAnimalTag(string tag)
     {
@@ -275,4 +364,10 @@ public class PlayerCollision : MonoBehaviour
     {
         return tag == "Box_Magazzino" || tag == "Box_Silo";
     }
+
+    private bool IsMillTag(string tag)
+    {
+        return tag == "Mill";
+    }
+
 }

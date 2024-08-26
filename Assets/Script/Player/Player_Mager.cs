@@ -19,10 +19,6 @@ public class Player_Manager : MonoBehaviour
     public Text errorMessage;
     public Button ButtonBulding;
 
-    [Header("UI Mill")]
-    public GameObject Button_Log_Mill;
-
- 
 
 
     public bool PuoiPiantare = false;
@@ -82,11 +78,7 @@ public class Player_Manager : MonoBehaviour
             PuoiPiantare = false;
         }
 
-        // quando il player entra in collisione con il Mulino
-        if (collision.gameObject.CompareTag("Mill"))
-        {
-            Button_Log_Mill.SetActive(false);
-        }
+       
 
 
         if (collision.gameObject.CompareTag("ZonaCostruzioni"))
@@ -95,19 +87,6 @@ public class Player_Manager : MonoBehaviour
         }
     }
 
-    public void OnCollisionEnter2D(Collision2D collider)
-    {
-        
-
-
-        // quando il player entra in collisione con il Mulino
-        if (collider.gameObject.CompareTag("Mill"))
-        {
-            Button_Log_Mill.SetActive(true);
-        }
-
-
-    }
 
     /* System Bulding
      * 

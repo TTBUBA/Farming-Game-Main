@@ -6,7 +6,7 @@ using UnityEngine.EventSystems;
 using UnityEngine.InputSystem;
 using UnityEngine.UI;
 
-public class UI_Controller : MonoBehaviour
+public class UI_Controller_Animal : MonoBehaviour
 {
     public Image[] images;
     public int currentIndex = 0;
@@ -96,19 +96,19 @@ public class UI_Controller : MonoBehaviour
 
     private void ActionForImage1()
     {
-        //images[currentIndex].transform.localScale = new Vector2(1.15f, 1.15f);
+        
         images[currentIndex].transform.DOScale(new Vector2(1.15f, 1.15f), 0.2f).SetEase(Ease.InBounce);
     }
 
     private void ActionForImage2()
     {
-        //images[currentIndex].transform.localScale = new Vector2(1.15f, 1.15f);
+       
         images[currentIndex].transform.DOScale(new Vector2(1.15f, 1.15f), 0.2f).SetEase(Ease.InBounce);
     }
 
     private void ActionForImage3()
     {
-        //images[currentIndex].transform.localScale = new Vector2(1.15f, 1.15f);
+        
         images[currentIndex].transform.DOScale(new Vector2(1.15f, 1.15f), 0.2f).SetEase(Ease.InBounce);
     }
 }

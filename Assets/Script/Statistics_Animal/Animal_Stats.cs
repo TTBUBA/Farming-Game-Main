@@ -51,7 +51,7 @@ public class Animal : MonoBehaviour
 
 
 
-    public Move_Player MovePlayer;
+    public PlayerInput Playerinput;
     public UI_Controller_Animal UiController;
     void Start()
     {
@@ -179,22 +179,29 @@ public class Animal : MonoBehaviour
     // Mostra le icone appropriate a seconda se si utilizza un gamepad o una tastiera
     private void ShowAppropriateIcons()
     {
-       if(MovePlayer.controllerMovement != Vector2.zero)
+       if(Playerinput != null)
         {
-            Icon_Increse_Hunger_Controller.SetActive(true);
-            Icon_Increse_Thirst_Controller.SetActive(true);
-            Icon_Increse_Hunger_KeyBoard.SetActive(false);
-            Icon_Increse_Thirst_KeyBoard.SetActive(false);
+            var currentDevice = Playerinput.currentControlScheme;
+
+            foreach (var Device in Playerinput.devices)
+            {
+                if (Device is Gamepad)
+                {
+                        Icon_Increse_Hunger_Controller.SetActive(true);
+                        Icon_Increse_Thirst_Controller.SetActive(true);
+                        Icon_Increse_Hunger_KeyBoard.SetActive(false);
+                        Icon_Increse_Thirst_KeyBoard.SetActive(false);
+                }
+                else if (Device is Keyboard)
+                {
+                        Icon_Increse_Hunger_KeyBoard.SetActive(true);
+                        Icon_Increse_Thirst_KeyBoard.SetActive(true);
+                        Icon_Increse_Hunger_Controller.SetActive(false);
+                        Icon_Increse_Thirst_Controller.SetActive(false);
+                }
+            }
         }
 
-        if(MovePlayer.keyboardMovement != Vector2.zero)
-        {
-            Icon_Increse_Hunger_KeyBoard.SetActive(true);
-            Icon_Increse_Thirst_KeyBoard.SetActive(true);
-            Icon_Increse_Hunger_Controller.SetActive(false);
-            Icon_Increse_Thirst_Controller.SetActive(false);
-            
-        }
     }
 
     // Comandandi Controller

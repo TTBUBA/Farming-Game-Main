@@ -40,9 +40,16 @@ public class PlayerCollision : MonoBehaviour
     public GameObject Icon_Exit_GamePad; // Icona per indicare il pulsante di uscita quando si utilizza il gamepad
     public GameObject Icon_Log_Keyboard; // Icona per indicare il pulsante di log quando si utilizza la tastiera
 
-    public string currentCollisionTag; // Tag dell'oggetto con cui il giocatore è in collisione
+    private string currentCollisionTag; // Tag dell'oggetto con cui il giocatore è in collisione
 
-    
+    private PlayerInput Playerinput;
+
+    private void Start()
+    {
+        Playerinput = GetComponent<PlayerInput>();
+    }
+
+
     private void OnTriggerEnter2D(Collider2D collider)
     {
         string tag = collider.gameObject.tag;
@@ -116,11 +123,27 @@ public class PlayerCollision : MonoBehaviour
     // Mostra le icone appropriate a seconda se si utilizza un gamepad o una tastiera
     private void ShowAppropriateIcons()
     {
-        bool isUsingGamepad = MovePlayer.controllerMovement != Vector2.zero;
+        if(Playerinput != null)
+        {
+            var currentDevice = Playerinput.currentControlScheme;
 
-        Icon_Log_GamePad.SetActive(isUsingGamepad);
-       
-        Icon_Log_Keyboard.SetActive(!isUsingGamepad);
+            foreach(var Device in Playerinput.devices)
+            {
+                if (Device is Gamepad)
+                {
+                    Icon_Log_GamePad.SetActive(true);
+
+                    Icon_Log_Keyboard.SetActive(false);
+                }
+                else if (Device is Keyboard)
+                {
+                    Icon_Log_Keyboard.SetActive(true);
+
+                    Icon_Log_GamePad.SetActive(false);
+                }
+            }
+
+        }
     }
 
     // Resetta l'interfaccia utente quando il giocatore esce da una zona di collisione
@@ -283,6 +306,9 @@ public class PlayerCollision : MonoBehaviour
         ResetUI();
     }
 
+
+
+    //=======CONTROLLER SYSTEM======//
 
     // Gestisce l'azione del gamepad per visualizzare la UI del magazzino/silo
     private void LogMagazziniGamePad(InputAction.CallbackContext context)

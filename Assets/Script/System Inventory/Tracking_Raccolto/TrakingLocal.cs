@@ -1,6 +1,3 @@
-using System.Collections;
-using System.Collections.Generic;
-using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -18,13 +15,11 @@ public class TrakingLocal : MonoBehaviour
     public int CountLegna;
     public Text Raccolto_Legna_Text;
 
-    // Start is called before the first frame update
     void Start()
     {
         // Inizializza il testo della legna raccolta
         Raccolto_Legna_Text.text = CountLegna.ToString();
     }
-
 
     public void AddLegna(int amount)
     {
@@ -38,22 +33,18 @@ public class TrakingLocal : MonoBehaviour
         {
             case "Carota":
                 RaccoltoCarote++;
-                
                 break;
 
             case "Patate":
                 RaccoltoPatate++;
-                
                 break;
 
             case "Grano":
                 RaccoltoGrano++;
-                
                 break;
 
             case "Cavolo":
                 Raccoltocavolo++;
-                
                 break;
         }
     }
@@ -64,24 +55,41 @@ public class TrakingLocal : MonoBehaviour
         {
             case "Carota":
                 RaccoltoCarote -= quantity;
-                
                 break;
 
             case "Patate":
                 RaccoltoPatate -= quantity;
-                
                 break;
 
             case "Grano":
                 RaccoltoGrano -= quantity;
-                
                 break;
 
             case "Cavolo":
                 Raccoltocavolo -= quantity;
-               
                 break;
         }
+    }
 
+    
+    public int GetVegetableQuantity(string vegetableName)
+    {
+        switch (vegetableName)
+        {
+            case "Carota":
+                return RaccoltoCarote;
+
+            case "Patate":
+                return RaccoltoPatate;
+
+            case "Grano":
+                return RaccoltoGrano;
+
+            case "Cavolo":
+                return Raccoltocavolo;
+
+            default:
+                return 0; // Restituisce 0 se il nome dell'ortaggio non corrisponde
+        }
     }
 }

@@ -1,4 +1,5 @@
 using UnityEngine;
+using UnityEngine.InputSystem;
 using UnityEngine.UI;
 
 public class Shop : MonoBehaviour
@@ -12,6 +13,9 @@ public class Shop : MonoBehaviour
     public Sprite[] ortaggioSprites;
     public int[] ortaggioPrices;
     public string[] ortaggioTypes;
+
+    //Array di box shop
+    public GameObject[] Box_Shop;
 
     // Variabili per memorizzare l'ortaggio selezionato
     private int selectedOrtaggioIndex;
@@ -27,6 +31,17 @@ public class Shop : MonoBehaviour
     
     public GameObject shop;
     public InventorySlot[] inventorySlots;
+
+    //InputController//
+    [Header("Ui Controller")]
+    public GameObject Icon_Quit_Shop;
+
+    [Header("Input Controller")]
+    public InputActionReference Icon_Controller;
+
+
+    //Input Manager//
+    public PlayerInput Playerinput;
 
     public void Start()
     {
@@ -166,4 +181,6 @@ public class Shop : MonoBehaviour
     {
         shop.SetActive(false);
     }
+
+    //==========Input Controller==========//
 }

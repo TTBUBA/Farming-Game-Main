@@ -376,6 +376,15 @@
                     "processors": "",
                     "interactions": "",
                     "initialStateCheck": false
+                },
+                {
+                    "name": "Next_Dialogue",
+                    "type": "Button",
+                    "id": "f9b9f7f7-35ef-4fad-ae1e-e249c4b75d62",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
                 }
             ],
             "bindings": [
@@ -519,6 +528,17 @@
                     "processors": "",
                     "groups": "Controller",
                     "action": "Collect_Sack",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "3c5304f2-6dc2-4b08-ad0e-42f78818dc0a",
+                    "path": "<Gamepad>/buttonWest",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "Controller",
+                    "action": "Next_Dialogue",
                     "isComposite": false,
                     "isPartOfComposite": false
                 }

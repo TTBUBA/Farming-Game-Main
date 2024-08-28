@@ -1,18 +1,28 @@
-using System.Collections;
+﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.InputSystem;
 using UnityEngine.UI;
 
 public class DialogueManager : MonoBehaviour
 {
 
     public Text NameText;                // Testo per il nome del personaggio nel dialogo
+    public Text ContinueText;            // Testo per continuare il dialogo 
     public Text DialogueText;            // Testo per il testo del dialogo
     public Animator animator;            // Animator per gestire le animazioni del dialogo
     private NPC npc;
     private Queue<string> sentences;     // Coda delle frasi del dialogo
 
-    
+    //Input GamePad
+    public InputActionReference Continue_Dialogue_Controller;
+
+    //Ui GamePad
+    public GameObject Icon_Controller;
+
+
+    //Input General
+    public PlayerInput Playerinput;
     void Start()
     {
         npc = FindAnyObjectByType<NPC>();
@@ -23,14 +33,63 @@ public class DialogueManager : MonoBehaviour
     
     public void Update()
     {
-        // Se premuto il tasto Space, avanza al prossimo messaggio del dialogo
-        if (Input.GetKeyUp(KeyCode.Space))
+
+        CheckDevice();
+    }
+
+    private void CheckDevice()
+    {
+        if(Playerinput != null)
         {
-            NextDisplayDialogue();
+            var DeviceTracker = Playerinput.defaultControlScheme;
+
+            foreach (var device in Playerinput.devices)
+            {
+                if(device is Keyboard)
+                {
+                    ContinueText.text = "Space To continue...";
+                    // Se premuto il tasto Space, avanza al prossimo messaggio del dialogo
+                    if (Input.GetKeyUp(KeyCode.Space))
+                    {
+                        NextDisplayDialogue();
+                    }
+                    Icon_Controller.SetActive(false);
+                }
+                else if(device is Gamepad)
+                {
+                   
+                    // Se premuto il tasto Quatrodato del controller, avanza al prossimo messaggio del dialogo
+                    ContinueText.text = "To continue...";
+
+                    Icon_Controller.SetActive(true);
+                }
+            }
         }
     }
 
-    // Avvia il dialogo con il personaggio specificato
+    //==========Input Controller==========//
+    private void OnEnable()
+    {
+        Continue_Dialogue_Controller.action.started += NextDialogueController;
+
+        Continue_Dialogue_Controller.action.Enable();
+    }
+
+    private void OnDisable()
+    {
+        Continue_Dialogue_Controller.action.started -= NextDialogueController;
+
+        Continue_Dialogue_Controller.action.Disable();
+    }
+
+    // Se premuto il tasto Quatrodato del controller, avanza al prossimo messaggio del dialogo
+    private void NextDialogueController(InputAction.CallbackContext Obj)
+    {
+        NextDisplayDialogue();
+    }
+ 
+
+
     public void StartDialogue(Dialogue dialogue)
     {
         // Imposta il parametro "IsOpen" dell'animator su true per mostrare il dialogo
@@ -55,7 +114,7 @@ public class DialogueManager : MonoBehaviour
     // Passa al prossimo messaggio del dialogo
     public void NextDisplayDialogue()
     {
-        // Se non ci sono pi� frasi nella coda, termina il dialogo
+        // Se non ci sono più frasi nella coda, termina il dialogo
         if (sentences.Count == 0)
         {
             EndDialogue();

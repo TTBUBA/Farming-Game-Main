@@ -76,6 +76,7 @@ SpriteAtlas:
     - f9d3c2f07e3ba164d94b0311a5c3ae4b: 21300000
     - ff77fc11a7826e848ae570fc8b06f93c: 21300000
     - c5918f11bc55f384093b5990bec474bf: 21300000
+    - dd0ea5414aa5907468ac3cf66b008e89: -1339041590
     - ad766e41482bb0549a44eb48bcd791a9: 484618701
     - ad766e41482bb0549a44eb48bcd791a9: -1055955787
     - ad766e41482bb0549a44eb48bcd791a9: 615282532
@@ -384,7 +385,7 @@ SpriteAtlas:
     - d978fd9abf2169848af03159c6e47b57: 21300000
     - c5bb86daae413de409a8ca58a1786cd4: 21300000
     - 8baa732b1633ee14692f0db4354527d0: 21300000
-    - dca3192b620755e4ba67d9e809468793: -1699450925
+    - dca3192b620755e4ba67d9e809468793: 21300000
     - ae32673bc36914140bafe4f233b774bc: 21300000
     - f07d816b258b4aa479a7fe0629f0241b: 21300000
     - dc2bdf9b9e42ae941b1e5290dd093837: 21300000
@@ -885,6 +886,7 @@ SpriteAtlas:
   - {fileID: 21300000, guid: f9d3c2f07e3ba164d94b0311a5c3ae4b, type: 3}
   - {fileID: 21300000, guid: ff77fc11a7826e848ae570fc8b06f93c, type: 3}
   - {fileID: 21300000, guid: c5918f11bc55f384093b5990bec474bf, type: 3}
+  - {fileID: -1339041590, guid: dd0ea5414aa5907468ac3cf66b008e89, type: 3}
   - {fileID: 484618701, guid: ad766e41482bb0549a44eb48bcd791a9, type: 3}
   - {fileID: -1055955787, guid: ad766e41482bb0549a44eb48bcd791a9, type: 3}
   - {fileID: 615282532, guid: ad766e41482bb0549a44eb48bcd791a9, type: 3}
@@ -1193,7 +1195,7 @@ SpriteAtlas:
   - {fileID: 21300000, guid: d978fd9abf2169848af03159c6e47b57, type: 3}
   - {fileID: 21300000, guid: c5bb86daae413de409a8ca58a1786cd4, type: 3}
   - {fileID: 21300000, guid: 8baa732b1633ee14692f0db4354527d0, type: 3}
-  - {fileID: -1699450925, guid: dca3192b620755e4ba67d9e809468793, type: 3}
+  - {fileID: 21300000, guid: dca3192b620755e4ba67d9e809468793, type: 3}
   - {fileID: 21300000, guid: ae32673bc36914140bafe4f233b774bc, type: 3}
   - {fileID: 21300000, guid: f07d816b258b4aa479a7fe0629f0241b, type: 3}
   - {fileID: 21300000, guid: dc2bdf9b9e42ae941b1e5290dd093837, type: 3}
@@ -1693,6 +1695,7 @@ SpriteAtlas:
   - kale_00
   - wheat_02
   - Button_Left
+  - Box_Icon._0
   - tools_axe_strip10_0
   - tools_axe_strip10_1
   - tools_axe_strip10_2
@@ -2001,7 +2004,7 @@ SpriteAtlas:
   - Egg_item
   - l0_Icon_Goat
   - Background
-  - Box_Icon_0
+  - Box_Icon
   - BackGround_Timer
   - BackGround
   - Icon_Web

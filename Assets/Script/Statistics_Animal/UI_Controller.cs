@@ -6,7 +6,7 @@ using UnityEngine.EventSystems;
 using UnityEngine.InputSystem;
 using UnityEngine.UI;
 
-public class UI_Controller_Animal : MonoBehaviour
+public class UI_Controller_Animal : MonoBehaviour , IPointerEnterHandler
 {
     public Image[] images;
     public int currentIndex = 0;
@@ -41,6 +41,7 @@ public class UI_Controller_Animal : MonoBehaviour
         currentIndex = (currentIndex + 1) % images.Length;
         //UpdateImageVisibility();
         ActiveImage();
+
     }
 
     public void ScrollBackward()
@@ -110,5 +111,10 @@ public class UI_Controller_Animal : MonoBehaviour
     {
         
         images[currentIndex].transform.DOScale(new Vector2(1.15f, 1.15f), 0.2f).SetEase(Ease.InBounce);
+    }
+
+    public void OnPointerEnter(PointerEventData eventData)
+    {
+        ScrollForward(); 
     }
 }

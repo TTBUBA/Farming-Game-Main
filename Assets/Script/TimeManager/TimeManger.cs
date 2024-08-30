@@ -66,7 +66,7 @@ public class TimeManager : MonoBehaviour , IData
         // MinutesText.text = string.Format("{1:00}", minutes, seconds);
         int MinutesInt = Mathf.FloorToInt(Minutes);
 
-        HourText.text = Hour.ToString() + ":" + MinutesInt.ToString();
+        HourText.text = $"{Hour.ToString()}:{MinutesInt:00}";
         if (Minutes >= 60)
         {
             Minutes = 0;

@@ -1,7 +1,5 @@
-using System.Collections;
+using DG.Tweening;
 using UnityEngine;
-using UnityEngine.EventSystems;
-using UnityEngine.Experimental.Rendering;
 using UnityEngine.InputSystem;
 using UnityEngine.UI;
 
@@ -9,121 +7,116 @@ public class Shop : MonoBehaviour
 {
     public static Shop Instance { get; private set; }
 
-    // UI Elements
-    public Text ValoreTotale;
-
-    // Array di sprite, prezzi , tipi di ortaggi disponibili nel negozio
-    public Sprite[] ortaggioSprites;
-    //public int[] ortaggioPrices;
-    public string[] ortaggioTypes;
-
-    //Array di box shop
+    // Array
     public Image[] Box_Shop;
-    public int currentIndex = 0;
+    public string[] ortaggioTypes;
     public Tracker_Box[] trackerBoxes;
+    public int currentIndex = 0;
 
     // Variabili per memorizzare l'ortaggio selezionato
     private int selectedOrtaggioIndex;
     private int selectedOrtaggioPrice;
-    private string selectedOrtaggioType;
-
-    
-
-    [Header("carrello ortaggi")]
-    private int Carrot;
-    private int Wheat;
-    private int Kale;
-
-    [Header("Text_Ortaggi")]
-
+    public string selectedOrtaggioType;
 
     // Variabile per memorizzare il totale corrente del portafoglio
     public int CurrentWallet = 0;
     public Text Text_Wallet;
 
-    
     private GameManger gamemanager;
-
     public GameObject shop;
     public InventorySlot[] inventorySlots;
 
-    //InputController//
-    [Header("Ui Controller")]
+    // InputController
+    [Header("UI Controller")]
+    public GameObject[] Ui_Controller;
+    public GameObject[] Ui_Keyboard;
+
     public GameObject Icon_Quit_Shop;
 
     [Header("Input Controller")]
-    public InputActionReference Icon_Controller;
+    public InputActionReference Icon_Controller_Shop;
+    public InputActionReference Button_NextSlot;
+    public InputActionReference Button_BackSlot;
+    public InputActionReference Button_IncreseQuantity;
+    public InputActionReference Button_DecreseQuantity;
+    public InputActionReference Button_Quit;
 
-
-    //Input Manager//
+    // Input Manager
     public PlayerInput Playerinput;
 
     public void Start()
-    {  
-        gamemanager = FindAnyObjectByType<GameManger>(); 
+    {
+        gamemanager = FindAnyObjectByType<GameManger>();
     }
 
-    //Scroll Slot
-
-
-
-    // Metodo per calcolare il valore totale basato sulla quantità inserita
-    public void CalculatorValueTotal(int Quantity)
+    public void Update()
     {
-        // Calcola il totale moltiplicando la quantità per il prezzo dell'ortaggio selezionato
-        int QuatitaTot = Quantity * selectedOrtaggioPrice;
-        CurrentWallet = QuatitaTot;
-        // Aggiorna il testo del valore totale
-        ValoreTotale.text = "$" + QuatitaTot.ToString();
-
-        
-    }
-
-    // Metodo per cancellare l'ordine attuale
-    public void DeleteOrder(int Quantity)
-    {
-        // Resetta la quantità e il valore totale a zero
-        int QuatitaTot = 0;
-        //quantitaInputField.text = QuatitaTot.ToString();
-        ValoreTotale.text = "$" + QuatitaTot.ToString();
-
-
+        TrackerDevice();
     }
 
     // Metodo per confermare l'acquisto dell'ordine
-    public void BuyOrder(int Quantity)
+    public void BuyOrder()
     {
-        
-        
-           // Verifica se il giocatore ha abbastanza monete
-           if (gamemanager.Coin >= CurrentWallet)
-           {
-                // Deduce il totale dal portafoglio del giocatore
-                gamemanager.Coin -= CurrentWallet;
+        // Controlla se il giocatore ha abbastanza monete
+        if (gamemanager.Coin >= CurrentWallet)
+        {
+            // Deduce il totale dal portafoglio del giocatore
+            gamemanager.Coin -= CurrentWallet;
 
-                // Cerca uno slot esistente per il tipo di seme e aumenta la quantità
-                foreach (var slot in inventorySlots)
+            // Cerca uno slot esistente per il tipo di seme e aumenta la quantità
+            foreach (var trackerBox in trackerBoxes)
+            {
+                int quantityToAdd = trackerBox.CurrentValue;
+
+                if(quantityToAdd > 0)
                 {
-                    if (slot.seedType == selectedOrtaggioType)
+                    foreach(var slot in inventorySlots)
                     {
-                        slot.IncreaseSeedQuantity(Quantity);
-                        break;
+                        if(slot.seedType == trackerBox.Name_Box)
+                        {
+                            slot.IncreaseSeedQuantity(quantityToAdd);
+                            break;
+                        }
                     }
                 }
-                Debug.Log("Ordine effettuato");
-           }
-        
-    }
+               
+            }
 
+            // Reset del carrello e del totale nel portafoglio
+            CurrentWallet = 0;
+            foreach (var trackerbox in trackerBoxes)
+            {
+                trackerbox.CurrentValue = 0;
+                trackerbox.Value_Quantity.text = "0";
+                trackerbox.Value_Vegetables.text = "X0";
+            }
+            
+            UpdateCarrelloTotale();
+
+            Debug.Log("Ordine effettuato");
+        }
+       
+    }
 
     public void NextSlot()
     {
+        Box_Shop[currentIndex].transform.localScale = Vector2.one;
+
         currentIndex = (currentIndex + 1) % Box_Shop.Length;
+        selectedOrtaggioType = ortaggioTypes[currentIndex];
+
+
+        ActiveImageController();
     }
 
     public void BackSlot()
     {
+        Box_Shop[currentIndex].transform.localScale = Vector2.one;
+
         currentIndex = (currentIndex - 1 + Box_Shop.Length) % Box_Shop.Length;
+        selectedOrtaggioType = ortaggioTypes[currentIndex];
+
+        ActiveImageController();
     }
 
     public void Increment_Quantity()
@@ -132,24 +125,69 @@ public class Shop : MonoBehaviour
         trackerBoxes[currentIndex].Value_Quantity.text = trackerBoxes[currentIndex].CurrentValue.ToString();
         trackerBoxes[currentIndex].Value_Vegetables.text = "X" + trackerBoxes[currentIndex].CurrentValue.ToString();
 
-        Text_Wallet.text  = trackerBoxes[currentIndex].ortaggioPrices.ToString() + "$";
+        CurrentWallet += trackerBoxes[currentIndex].ortaggioPrices;
+        UpdateCarrelloTotale();
 
         Debug.Log(trackerBoxes[currentIndex].CurrentValue.ToString() + trackerBoxes[currentIndex].Name_Box);
-
     }
 
     public void Decrese_Quantity()
     {
-        if(trackerBoxes[currentIndex].CurrentValue > 0)
+        if (trackerBoxes[currentIndex].CurrentValue > 0)
         {
             trackerBoxes[currentIndex].CurrentValue--;
             trackerBoxes[currentIndex].Value_Quantity.text = trackerBoxes[currentIndex].CurrentValue.ToString();
             trackerBoxes[currentIndex].Value_Vegetables.text = "X" + trackerBoxes[currentIndex].CurrentValue.ToString();
 
+            CurrentWallet -= trackerBoxes[currentIndex].ortaggioPrices;
+            UpdateCarrelloTotale();
         }
     }
 
-    
+    private void UpdateCarrelloTotale()
+    {
+        Text_Wallet.text = CurrentWallet.ToString() + "$";
+    }
+
+    private void TrackerDevice()
+    {
+        if(Playerinput != null)
+        {
+            var CurrentDevice = Playerinput.currentControlScheme;
+
+            foreach(var device in Playerinput.devices)
+            {
+                if(device is Keyboard)
+                {
+                    foreach (var iconKeyboard in Ui_Keyboard)
+                    {
+                        iconKeyboard.SetActive(true);
+                        
+                    }
+
+                    foreach (var iconController in Ui_Controller)
+                    {
+                        iconController.SetActive(false);
+                       
+                    }
+                }
+                else if(device is Gamepad)
+                {
+                    foreach(var iconController in Ui_Controller)
+                    {
+                        iconController.SetActive(true);
+                        
+                    }
+
+                    foreach (var iconKeyboard in Ui_Keyboard)
+                    {
+                        iconKeyboard.SetActive(false);
+
+                    }
+                }
+            }
+        }
+    }
 
     // Metodo per chiudere il negozio
     public void QuitShop()
@@ -157,7 +195,103 @@ public class Shop : MonoBehaviour
         shop.SetActive(false);
     }
 
+    //========== Input Controller ==========//
 
+    private void OnEnable()
+    {
+        Icon_Controller_Shop.action.started += ShopOrderController;
+        Button_NextSlot.action.started += ScrollNextSlot;
+        Button_BackSlot.action.started += ScrollBackSlot;
+        Button_IncreseQuantity.action.started += IncreseQuantiyController;
+        Button_DecreseQuantity.action.started += DecreseQuantiyControlle;
+        Button_Quit.action.started += buttonQuit;
 
-    //==========Input Controller==========//
+        Button_Quit.action.Enable();
+        Icon_Controller_Shop.action.Enable();
+        Button_NextSlot.action.Enable();
+        Button_IncreseQuantity.action.Enable();
+        Button_DecreseQuantity.action.Enable();
+    }
+
+    private void OnDisable()
+    {
+        Icon_Controller_Shop.action.started -= ShopOrderController;
+        Button_NextSlot.action.started -= ScrollNextSlot;
+        Button_BackSlot.action.started -= ScrollBackSlot;
+        Button_IncreseQuantity.action.started -= IncreseQuantiyController;
+        Button_DecreseQuantity.action.started -= DecreseQuantiyControlle;
+        Button_Quit.action.started -= buttonQuit;
+
+        Button_Quit.action.Disable();
+        Icon_Controller_Shop.action.Disable();
+        Button_NextSlot.action.Disable();
+        Button_BackSlot.action.Disable();
+        Button_IncreseQuantity.action.Disable();   
+        Button_DecreseQuantity.action.Disable();
+    }
+
+    private void ShopOrderController(InputAction.CallbackContext context)
+    {
+        BuyOrder();
+    }
+
+    private void ScrollNextSlot(InputAction.CallbackContext context)
+    {
+        NextSlot();
+    }
+
+    private void ScrollBackSlot(InputAction.CallbackContext context)
+    {
+        BackSlot();
+    }
+
+    private void IncreseQuantiyController(InputAction.CallbackContext context)
+    {
+        Increment_Quantity();
+    }
+
+    private void DecreseQuantiyControlle(InputAction.CallbackContext context)
+    {
+        Decrese_Quantity();
+    }
+
+    private void buttonQuit(InputAction.CallbackContext context)
+    {
+        shop.SetActive(false);
+    }
+    private void ActiveImageController()
+    {
+        switch (currentIndex)
+        {
+            case 0:
+                ActionForImage1();
+                break;
+
+            case 1:
+                ActionForImage2();
+                break;
+
+            case 2:
+                ActionForImage3();
+                break;
+        }
+    }
+
+    private void ActionForImage1()
+    {
+
+        Box_Shop[currentIndex].transform.DOScale(new Vector2(1.05f, 1.05f), 0.2f).SetEase(Ease.InBounce);
+    }
+
+    private void ActionForImage2()
+    {
+
+        Box_Shop[currentIndex].transform.DOScale(new Vector2(1.05f, 1.05f), 0.2f).SetEase(Ease.InBounce);
+    }
+
+    private void ActionForImage3()
+    {
+
+        Box_Shop[currentIndex].transform.DOScale(new Vector2(1.05f, 1.05f), 0.2f).SetEase(Ease.InBounce);
+    }
 }

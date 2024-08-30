@@ -1,12 +1,13 @@
 using DG.Tweening;
 using UnityEngine;
+using UnityEngine.EventSystems;
 using UnityEngine.InputSystem;
 using UnityEngine.UI;
 
 public class Shop : MonoBehaviour
 {
     public static Shop Instance { get; private set; }
-
+    
     // Array
     public Image[] Box_Shop;
     public string[] ortaggioTypes;
@@ -44,6 +45,11 @@ public class Shop : MonoBehaviour
     // Input Manager
     public PlayerInput Playerinput;
 
+    public float timeElapsed;
+    public int CurrentValue;
+    public  bool isHolding_Increse = false;     // Indica se il bottone è premuto
+    public bool isHolding_Decrese = false;
+    public int MaxValue;
     public void Start()
     {
         gamemanager = FindAnyObjectByType<GameManger>();
@@ -52,6 +58,16 @@ public class Shop : MonoBehaviour
     public void Update()
     {
         TrackerDevice();
+
+        if (isHolding_Increse && !isHolding_Decrese)
+        {
+            Increment_Quantity();
+        }
+
+        if (isHolding_Decrese && !isHolding_Increse)
+        {
+            Decrese_Quantity();
+        }
     }
 
     // Metodo per confermare l'acquisto dell'ordine
@@ -119,8 +135,43 @@ public class Shop : MonoBehaviour
         ActiveImageController();
     }
 
+    // Funzione da chiamare quando il pulsante viene premuto
+    public void OnPointerDown_Increse()
+    {
+        isHolding_Increse = true;
+        timeElapsed = 0f; // Resetta il tempo trascorso
+    }
+
+    // Funzione da chiamare quando il pulsante viene rilasciato
+    public void OnPointerUp_Increse()
+    {
+        isHolding_Increse = false;
+    }
+
+    // Funzione da chiamare quando il pulsante viene premuto
+    public void OnPointerDown_Decrese()
+    {
+        isHolding_Decrese = true;
+        timeElapsed = 0f; // Resetta il tempo trascorso
+    }
+
+    // Funzione da chiamare quando il pulsante viene rilasciato
+    public void OnPointerUp_Decrese()
+    {
+        isHolding_Decrese = false;
+    }
+
+
     public void Increment_Quantity()
     {
+        
+        timeElapsed += Time.deltaTime;
+
+        int incrementValue = Mathf.RoundToInt(1 * (1 + timeElapsed * timeElapsed));
+
+        CurrentValue += incrementValue;
+        CurrentValue = Mathf.Clamp(CurrentValue, 0, MaxValue);
+
         trackerBoxes[currentIndex].CurrentValue++;
         trackerBoxes[currentIndex].Value_Quantity.text = trackerBoxes[currentIndex].CurrentValue.ToString();
         trackerBoxes[currentIndex].Value_Vegetables.text = "X" + trackerBoxes[currentIndex].CurrentValue.ToString();
@@ -128,19 +179,27 @@ public class Shop : MonoBehaviour
         CurrentWallet += trackerBoxes[currentIndex].ortaggioPrices;
         UpdateCarrelloTotale();
 
-        Debug.Log(trackerBoxes[currentIndex].CurrentValue.ToString() + trackerBoxes[currentIndex].Name_Box);
+        //Debug.Log(trackerBoxes[currentIndex].CurrentValue.ToString() + trackerBoxes[currentIndex].Name_Box);
     }
 
     public void Decrese_Quantity()
     {
         if (trackerBoxes[currentIndex].CurrentValue > 0)
         {
+            timeElapsed -= Time.deltaTime;
+
+            int incrementValue = Mathf.RoundToInt(1 * (1 - timeElapsed * timeElapsed));
+
+            CurrentValue -= incrementValue;
+            
+
             trackerBoxes[currentIndex].CurrentValue--;
             trackerBoxes[currentIndex].Value_Quantity.text = trackerBoxes[currentIndex].CurrentValue.ToString();
             trackerBoxes[currentIndex].Value_Vegetables.text = "X" + trackerBoxes[currentIndex].CurrentValue.ToString();
 
             CurrentWallet -= trackerBoxes[currentIndex].ortaggioPrices;
             UpdateCarrelloTotale();
+
         }
     }
 
@@ -294,4 +353,6 @@ public class Shop : MonoBehaviour
 
         Box_Shop[currentIndex].transform.DOScale(new Vector2(1.05f, 1.05f), 0.2f).SetEase(Ease.InBounce);
     }
+
+
 }

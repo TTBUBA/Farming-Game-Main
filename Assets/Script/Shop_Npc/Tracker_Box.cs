@@ -6,8 +6,9 @@ using UnityEngine.UI;
 public class Tracker_Box : MonoBehaviour
 {
     public string Name_Box;
-    public int CurrentValue; 
-    
+    public int CurrentValue;
+    public int MaxValue;
+
     public int ortaggioPrices;
 
     [Header("Text")]

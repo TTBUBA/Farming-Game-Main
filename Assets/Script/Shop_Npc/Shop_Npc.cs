@@ -46,10 +46,9 @@ public class Shop : MonoBehaviour
     public PlayerInput Playerinput;
 
     public float timeElapsed;
-    public int CurrentValue;
     public  bool isHolding_Increse = false;     // Indica se il bottone è premuto
     public bool isHolding_Decrese = false;
-    public int MaxValue;
+
     public void Start()
     {
         gamemanager = FindAnyObjectByType<GameManger>();
@@ -167,12 +166,13 @@ public class Shop : MonoBehaviour
         
         timeElapsed += Time.deltaTime;
 
-        int incrementValue = Mathf.RoundToInt(1 * (1 + timeElapsed * timeElapsed));
+        int incrementValue = Mathf.RoundToInt(1 * (1f + timeElapsed * timeElapsed));
 
-        CurrentValue += incrementValue;
-        CurrentValue = Mathf.Clamp(CurrentValue, 0, MaxValue);
 
-        trackerBoxes[currentIndex].CurrentValue++;
+        trackerBoxes[currentIndex].CurrentValue += incrementValue;
+        trackerBoxes[currentIndex].CurrentValue = Mathf.Clamp(trackerBoxes[currentIndex].CurrentValue, 0, trackerBoxes[currentIndex].MaxValue);
+
+        
         trackerBoxes[currentIndex].Value_Quantity.text = trackerBoxes[currentIndex].CurrentValue.ToString();
         trackerBoxes[currentIndex].Value_Vegetables.text = "X" + trackerBoxes[currentIndex].CurrentValue.ToString();
 
@@ -190,10 +190,10 @@ public class Shop : MonoBehaviour
 
             int incrementValue = Mathf.RoundToInt(1 * (1 - timeElapsed * timeElapsed));
 
-            CurrentValue -= incrementValue;
-            
+            trackerBoxes[currentIndex].CurrentValue -= incrementValue;
 
-            trackerBoxes[currentIndex].CurrentValue--;
+
+            
             trackerBoxes[currentIndex].Value_Quantity.text = trackerBoxes[currentIndex].CurrentValue.ToString();
             trackerBoxes[currentIndex].Value_Vegetables.text = "X" + trackerBoxes[currentIndex].CurrentValue.ToString();
 
@@ -254,6 +254,8 @@ public class Shop : MonoBehaviour
         shop.SetActive(false);
     }
 
+
+
     //========== Input Controller ==========//
 
     private void OnEnable()
@@ -261,8 +263,11 @@ public class Shop : MonoBehaviour
         Icon_Controller_Shop.action.started += ShopOrderController;
         Button_NextSlot.action.started += ScrollNextSlot;
         Button_BackSlot.action.started += ScrollBackSlot;
+
         Button_IncreseQuantity.action.started += IncreseQuantiyController;
-        Button_DecreseQuantity.action.started += DecreseQuantiyControlle;
+        Button_IncreseQuantity.action.canceled += IncreseQuantiyController;
+
+        Button_DecreseQuantity.action.started += DecreseQuantiyController;
         Button_Quit.action.started += buttonQuit;
 
         Button_Quit.action.Enable();
@@ -277,8 +282,13 @@ public class Shop : MonoBehaviour
         Icon_Controller_Shop.action.started -= ShopOrderController;
         Button_NextSlot.action.started -= ScrollNextSlot;
         Button_BackSlot.action.started -= ScrollBackSlot;
+
         Button_IncreseQuantity.action.started -= IncreseQuantiyController;
-        Button_DecreseQuantity.action.started -= DecreseQuantiyControlle;
+        Button_IncreseQuantity.action.canceled -= IncreseQuantiyController;
+
+        Button_DecreseQuantity.action.started -= DecreseQuantiyController;
+        Button_DecreseQuantity.action.canceled -= DecreseQuantiyController;
+
         Button_Quit.action.started -= buttonQuit;
 
         Button_Quit.action.Disable();
@@ -306,12 +316,40 @@ public class Shop : MonoBehaviour
 
     private void IncreseQuantiyController(InputAction.CallbackContext context)
     {
-        Increment_Quantity();
+        //Debug.Log($"Context Phase: {context.phase}, Control: {context.control.name}");
+
+        if (context.phase == InputActionPhase.Started)
+        {
+            isHolding_Increse = true;
+            timeElapsed = 0f; // Resetta il tempo trascorso
+            Increment_Quantity();
+            
+        }
+        else if(context.phase == InputActionPhase.Canceled)
+        {
+            isHolding_Increse = false;
+            
+
+        }
+
+
     }
 
-    private void DecreseQuantiyControlle(InputAction.CallbackContext context)
+    private void DecreseQuantiyController(InputAction.CallbackContext context)
     {
-        Decrese_Quantity();
+        if(context.phase == InputActionPhase.Started)
+        {
+            isHolding_Decrese = true;
+            timeElapsed = 0f;
+            Decrese_Quantity();
+        }
+        else if(context.phase == InputActionPhase.Canceled)
+        {
+            isHolding_Decrese = false;
+
+        }
+       
+       
     }
 
     private void buttonQuit(InputAction.CallbackContext context)
@@ -323,36 +361,24 @@ public class Shop : MonoBehaviour
         switch (currentIndex)
         {
             case 0:
-                ActionForImage1();
+                ActionImage();
                 break;
 
             case 1:
-                ActionForImage2();
+                ActionImage();
                 break;
 
             case 2:
-                ActionForImage3();
+                ActionImage();
                 break;
         }
     }
 
-    private void ActionForImage1()
+    private void ActionImage()
     {
-
         Box_Shop[currentIndex].transform.DOScale(new Vector2(1.05f, 1.05f), 0.2f).SetEase(Ease.InBounce);
     }
 
-    private void ActionForImage2()
-    {
-
-        Box_Shop[currentIndex].transform.DOScale(new Vector2(1.05f, 1.05f), 0.2f).SetEase(Ease.InBounce);
-    }
-
-    private void ActionForImage3()
-    {
-
-        Box_Shop[currentIndex].transform.DOScale(new Vector2(1.05f, 1.05f), 0.2f).SetEase(Ease.InBounce);
-    }
 
 
 }

@@ -196,6 +196,24 @@
                     "initialStateCheck": false
                 },
                 {
+                    "name": "Open_Shop_Animal",
+                    "type": "Button",
+                    "id": "ba48db8f-1ca4-4b2c-ab91-3c2b7d5366fb",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
+                },
+                {
+                    "name": "Close_Shop_Animal",
+                    "type": "Button",
+                    "id": "dfc61b93-f2ae-41b6-9ce1-65f871e5474b",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
+                },
+                {
                     "name": "Next_Slot",
                     "type": "Button",
                     "id": "244abc74-2ce7-4329-924b-89ab9a59af63",
@@ -307,6 +325,33 @@
                     "name": "Decrese_Quantity_Shop",
                     "type": "Button",
                     "id": "e78efed1-6a18-4ac5-a682-70a56d43a588",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
+                },
+                {
+                    "name": "Next_Slot_Shop_Animal",
+                    "type": "Button",
+                    "id": "6af53584-7e13-41ef-99be-bfb0e03dd2a0",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
+                },
+                {
+                    "name": "Back_Slot_Shop_Animal",
+                    "type": "Button",
+                    "id": "d48ecfb4-8660-4590-9fbd-c7a9284be987",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
+                },
+                {
+                    "name": "Button_Buy_Animal",
+                    "type": "Button",
+                    "id": "8666ffd9-fb2d-453b-a28f-a5d173000fc8",
                     "expectedControlType": "Button",
                     "processors": "",
                     "interactions": "",
@@ -520,6 +565,61 @@
                     "processors": "",
                     "groups": "",
                     "action": "Decrese_Quantity_Shop",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "932d8687-0f70-4f9d-8f27-8ee0eb652e77",
+                    "path": "<Gamepad>/buttonEast",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "Controller",
+                    "action": "Close_Shop_Animal",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "deeab2dc-944e-4de7-b5c8-0498514f01c5",
+                    "path": "<Gamepad>/buttonSouth",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "Controller",
+                    "action": "Open_Shop_Animal",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "41b722ba-1cac-4716-b328-f4f9111d4fb5",
+                    "path": "<Gamepad>/dpad/down",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Next_Slot_Shop_Animal",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "f9e6f12d-7c98-40f5-b60c-db5505aaf911",
+                    "path": "<Gamepad>/dpad/up",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Back_Slot_Shop_Animal",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "e77c815d-27a4-4643-a99c-dae7744a7d29",
+                    "path": "<Gamepad>/buttonSouth",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Button_Buy_Animal",
                     "isComposite": false,
                     "isPartOfComposite": false
                 }

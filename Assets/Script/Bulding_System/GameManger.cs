@@ -2,8 +2,10 @@ using DG.Tweening.Core.Easing;
 using JetBrains.Annotations;
 using System.Collections;
 using System.Collections.Generic;
+using System.Runtime.CompilerServices;
 using Unity.VisualScripting;
 using UnityEngine;
+using UnityEngine.InputSystem;
 using UnityEngine.UI;
 
 
@@ -17,21 +19,10 @@ public class GameManger : MonoBehaviour , IData
 
     public float time;
 
-    // Riferimento all'oggetto della griglia nel gioco
-    public GameObject Grid;
 
-    // Array di caselle (Tile) disponibili nel gioco
-    public Tile[] Tiles;
-    // Riferimento al cursore personalizzato
-    public CustumCursor custumCursor;
-    // Variabile privata per l'edificio da posizionare
-    private Bulding buldingPlace;
-
-    [Header("Shop_Ui")]
+    
     public GameObject Money_Counter;
-    public GameObject Image_Shop;
-    public GameObject Image_Shop_Back;
-    public GameObject Ui_Bar_Shop;
+
 
     [Header("Counter_Animal")]
     public int chicken;
@@ -41,15 +32,9 @@ public class GameManger : MonoBehaviour , IData
     public int goat;
 
 
-    
-
-
     [Header("Debug")]
     public GameObject Debug;
     public GameObject Extig;
-
-
-    public Camera CameraPlayer;
 
     public void Start()
     {
@@ -70,8 +55,6 @@ public class GameManger : MonoBehaviour , IData
     
     private void Update()
     {
-        
-        
 
 
         // Aggiorna il testo delle monete nella UI ad ogni frame
@@ -159,33 +142,15 @@ public class GameManger : MonoBehaviour , IData
         }
     }
 
+
     public void CloseDebug()
     {
         Debug.SetActive(false);
         Extig.SetActive(false);
     }
 
-    public void ButtonShopClik()
-    {
-        //oggeti da disattivare appena viene premuto il tasto shop
+  
 
-        Image_Shop.SetActive(false);
-
-        //oggeti da attivare appena viene premuto il tasto shop
-        Ui_Bar_Shop.SetActive(true);
-
-    }
-
-    public void ButtonShopBack()
-    {
-        //oggeti da disattivare appena viene premuto il tasto shop
-
-        Image_Shop.SetActive(true);
-
-        //oggeti da attivare appena viene premuto il tasto shop
-        Ui_Bar_Shop.SetActive(false);
-
-    }
 }
 
 

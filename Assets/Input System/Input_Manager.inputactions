@@ -356,6 +356,33 @@
                     "processors": "",
                     "interactions": "",
                     "initialStateCheck": false
+                },
+                {
+                    "name": "Button_Place_Animal",
+                    "type": "Button",
+                    "id": "3ae3e630-e45a-44c5-91c5-b2e78b8d5e84",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
+                },
+                {
+                    "name": "Move_Animal",
+                    "type": "Value",
+                    "id": "f49bec16-5244-4c97-b18b-ec29a322d947",
+                    "expectedControlType": "Vector2",
+                    "processors": "StickDeadzone(min=1.401298E-45,max=0.3)",
+                    "interactions": "",
+                    "initialStateCheck": true
+                },
+                {
+                    "name": "Delet_Animal",
+                    "type": "Button",
+                    "id": "9a390d75-b0c8-434f-bdeb-455784b641e0",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": true
                 }
             ],
             "bindings": [
@@ -620,6 +647,39 @@
                     "processors": "",
                     "groups": "",
                     "action": "Button_Buy_Animal",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "75141cf1-ba35-48c4-a7b3-0871448ceefb",
+                    "path": "<Gamepad>/rightStick",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Move_Animal",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "846e34a2-1153-4a66-af33-fd764b1b2e2b",
+                    "path": "<Gamepad>/buttonWest",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Delet_Animal",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "1d2f0687-2d3e-4f3f-b159-281e6eb01a6f",
+                    "path": "<Gamepad>/buttonNorth",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Button_Place_Animal",
                     "isComposite": false,
                     "isPartOfComposite": false
                 }

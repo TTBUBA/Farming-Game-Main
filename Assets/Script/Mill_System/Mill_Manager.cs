@@ -61,6 +61,8 @@ public class Mill_Manager : MonoBehaviour
     public InputActionReference CollectSackAction;
 
     public PlayerInput Playerinput;
+
+    public bool MillIsActive = false;
     // Start is called before the first frame update
     void Start()
     {
@@ -101,10 +103,14 @@ public class Mill_Manager : MonoBehaviour
     }
     public void ButtonQuit()
     {
+        MillIsActive = false;
+
         UiMulino.SetActive(false);
     }
     public void ButtonAccess_Mill()
     {
+        MillIsActive = true;
+
         UiMulino.SetActive(true);
         button.SetActive(false);
     }
@@ -201,7 +207,7 @@ public class Mill_Manager : MonoBehaviour
     {
 
         SackData selectedSack = sackDataArray[SackIndex];
-        // Debug.Log("premio ricevuto" + selectedSack.NameSack);
+        //Debug.Log("premio ricevuto" + selectedSack.NameSack);
         selectedSack.quantity += 1;
         selectedSack.QuantityText.text = selectedSack.quantity.ToString();
 
@@ -335,7 +341,11 @@ public class Mill_Manager : MonoBehaviour
 
     private void OnCollectSackController(InputAction.CallbackContext Obj)
     {
-        CollectionSack(selectedSackIndex);
+        if(MillIsActive == true)
+        {
+            CollectionSack(selectedSackIndex);
+        }
+        
     }
 
     private void AnimateSelectedImageSack()

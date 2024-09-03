@@ -1,80 +1,182 @@
 using UnityEngine;
+using UnityEngine.InputSystem;
 
-public class Animal_Placer : MonoBehaviour
+public class AnimalPlacer : MonoBehaviour
 {
-    public GameObject objectToSpawn; // L'oggetto che viene creato quando clicchi il bottone
-    public GameObject objectPrefab;  // prefab dell'oggetto da posizionare
-    private GameObject objectInHand; // Riferimento all'oggetto in fase di posizionamento
+    [Header("Prefab e Oggetti")]
+    public GameObject objectToSpawn;
+    public GameObject objectPrefab;
 
-    //public string targetTagForPurchase = ""; // Tag per l'oggetto di acquisto
-    //public string targetTagForPlacement = ""; // Tag per la zona di posizionamento
-
+    [Header("Configurazione")]
     public string requiredPlacementID;
-    //public Animation ErrorAnimatio;
     public int cost;
     public GameManger gameManger;
 
-    public bool isPlacing = true; // Flag per controllare se si sta posizionando un oggetto
+    private GameObject objectInHand;
+    private bool isPlacing = false;
+    private Vector2 moveInput;
 
-    // quando si preme sul bottone si creare l'oggetto
-    public void OnSpawnButton()
+    [Header("Input Actions")]
+    public InputActionReference moveAction;
+    public InputActionReference buyAnimal;
+    public InputAction PlaceAnimal;
+    public InputActionReference cancelAction;
+    public float SpedMoveController = 5f;
+    public PlayerInput playerInput; // Riferimento a PlayerInput
+
+    
+
+    private void OnEnable()
     {
-        // Crea l'oggetto da posizionare
-        if (objectInHand == null)
+        moveAction.action.Enable();
+        buyAnimal.action.Enable();
+        cancelAction.action.Enable();
+        PlaceAnimal.Enable();
+
+        moveAction.action.performed += OnMove;
+        buyAnimal.action.performed += OnBuyAnimal;
+        cancelAction.action.performed += OnCancel;
+        PlaceAnimal.performed += OnPlace;
+
+        // Chiamata al tracker per rilevare il dispositivo
+        TrackerDevice();
+    }
+
+    private void OnDisable()
+    {
+        moveAction.action.Disable();
+        buyAnimal.action.Disable();
+        cancelAction.action.Disable();
+        PlaceAnimal.Disable();
+
+        moveAction.action.performed -= OnMove;
+        buyAnimal.action.performed -= OnBuyAnimal;
+        cancelAction.action.performed -= OnCancel;
+        PlaceAnimal.performed -= OnPlace;
+
+    }
+
+    private void TrackerDevice()
+    {
+        if (playerInput != null)
         {
-            objectInHand = Instantiate(objectToSpawn);
-            
+            var currentControlScheme = playerInput.currentControlScheme;
+
+            foreach (var device in playerInput.devices)
+            {
+                if (device is Keyboard)
+                {
+                    Debug.Log("Dispositivo attivo: Tastiera");
+                    // Azioni specifiche per la tastiera
+                }
+                else if (device is Gamepad)
+                {
+                    Debug.Log("Dispositivo attivo: Gamepad");
+                    // Azioni specifiche per il gamepad
+                }
+            }
         }
     }
+
 
     void Update()
     {
         if (isPlacing && objectInHand != null)
         {
-            Vector3 movePosition = Camera.main.ScreenToWorldPoint(Input.mousePosition);
-            movePosition.z = 0;
-            objectInHand.transform.position = movePosition; // Muove l'oggetto alla posizione del mouse
+            Vector3 movePosition;
+            if (moveInput != Vector2.zero)
+            {
+                movePosition = objectInHand.transform.position + new Vector3(moveInput.x, moveInput.y, 0) * SpedMoveController ;
+            }
+            else
+            {
+                movePosition = Camera.main.ScreenToWorldPoint(Input.mousePosition);
+                movePosition.z = 0;
+            }
+
+            objectInHand.transform.position = movePosition;
 
             if (Input.GetMouseButtonUp(0))
             {
-                // Lancia un raggio nella posizione del mouse per verificare la zona di posizionamento
-                RaycastHit2D hit = Physics2D.Raycast(movePosition, Vector2.zero);
-                if (hit.collider != null && gameManger.Coin >= cost)
-                {
-                    // Controlla se l'oggetto colpito ha lo script PlacementArea
-                    Id_Box Id = hit.collider.GetComponent<Id_Box>();
-                    if (Id != null && Id.placementID == requiredPlacementID && gameManger.Coin >= cost)
-                    {
-                        gameManger.Coin -= cost;
-                        GameObject placedObject = Instantiate(objectPrefab, movePosition, Quaternion.identity); // Crea l'oggetto prefab
-
-                        Animal_Type animal = placedObject.GetComponent<Animal_Type>();
-
-                        if (animal != null)
-                        {
-                            gameManger.IncrementAnimalCount(animal.Type);
-
-                        }
-                        Destroy(objectInHand); // Rimuove l'oggetto da posizionare
-                        objectInHand = null; // Rilascia l'oggetto
-                    }
-                   
-                }
-                else
-                {
-                    Debug.Log("Errore: ID non corrispondente o monete insufficienti");
-                }
-              
-               
+                PlaceObject(movePosition);
             }
 
             if (Input.GetMouseButtonUp(1))
             {
-
-                Debug.Log("Animale rimosso dal mouse");
-                Destroy(objectInHand);
+                CancelPlacingObject();
             }
         }
-        
+    }
+
+    private void PlaceObject(Vector3 position)
+    {
+        RaycastHit2D hit = Physics2D.Raycast(position, Vector2.zero);
+        if (hit.collider != null && gameManger.Coin >= cost)
+        {
+            Id_Box id = hit.collider.GetComponent<Id_Box>();
+            if (id != null && id.placementID == requiredPlacementID && gameManger.Coin >= cost)
+            {
+                gameManger.Coin -= cost;
+                GameObject placedObject = Instantiate(objectPrefab, position, Quaternion.identity);
+
+                Animal_Type animal = placedObject.GetComponent<Animal_Type>();
+                if (animal != null)
+                {
+                    gameManger.IncrementAnimalCount(animal.Type);
+                }
+
+                Destroy(objectInHand);
+                objectInHand = null;
+                isPlacing = false;
+            }
+            else
+            {
+                Debug.Log("Errore: ID non trovato o monete insufficienti");
+            }
+        }
+    }
+
+    private void OnMove(InputAction.CallbackContext context)
+    {
+        moveInput = context.ReadValue<Vector2>();
+    }
+
+    private void OnBuyAnimal(InputAction.CallbackContext context)
+    {
+        if(objectInHand == null && gameManger.Coin >= cost)
+        {
+            objectInHand = Instantiate(objectToSpawn);
+            isPlacing = true;
+            gameManger.Coin -= cost;
+
+        }
+    }
+
+    private void OnPlace(InputAction.CallbackContext context)
+    {
+        if (objectInHand == null)
+        {
+            Vector3 PlacePosition = objectInHand.transform.position;
+
+            PlaceObject(PlacePosition);
+        }
+
+        Debug.Log("Click");
+    }
+
+    private void OnCancel(InputAction.CallbackContext context)
+    {
+        CancelPlacingObject();
+    }
+
+    public void CancelPlacingObject()
+    {
+        if (objectInHand != null)
+        {
+            Destroy(objectInHand);
+            objectInHand = null;
+            isPlacing = false;
+            Debug.Log("Posizionamento annullato");
+        }
     }
 }

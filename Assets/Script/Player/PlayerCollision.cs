@@ -35,6 +35,9 @@ public class PlayerCollision : MonoBehaviour
     [Header("Player Movement")]
     public Move_Player MovePlayer;
 
+    [Header("Mill")]
+    public Mill_Manager MillManager;
+
     [Header("UI Icons")]
     public GameObject Icon_Log_GamePad; // Icona per indicare il pulsante di log quando si utilizza il gamepad
     public GameObject Icon_Exit_GamePad; // Icona per indicare il pulsante di uscita quando si utilizza il gamepad
@@ -43,6 +46,7 @@ public class PlayerCollision : MonoBehaviour
     private string currentCollisionTag; // Tag dell'oggetto con cui il giocatore è in collisione
 
     private PlayerInput Playerinput;
+
 
     private void Start()
     {
@@ -363,6 +367,7 @@ public class PlayerCollision : MonoBehaviour
         {
             OnbuttonLogMill();
             Icon_Exit_GamePad.SetActive(true);
+            MillManager.MillIsActive = true;
         }
     }
 
@@ -373,6 +378,7 @@ public class PlayerCollision : MonoBehaviour
         {
             OnbuttonExitMill();
             Icon_Exit_GamePad.SetActive(false);
+            MillManager.MillIsActive = false;
         }
     }
 

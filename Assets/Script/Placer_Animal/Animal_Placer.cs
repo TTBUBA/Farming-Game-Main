@@ -21,40 +21,9 @@ public class AnimalPlacer : MonoBehaviour
     public InputActionReference buyAnimal;
     public InputAction PlaceAnimal;
     public InputActionReference cancelAction;
-    public float SpedMoveController = 5f;
-    public PlayerInput playerInput; // Riferimento a PlayerInput
-
     
-
-    private void OnEnable()
-    {
-        moveAction.action.Enable();
-        buyAnimal.action.Enable();
-        cancelAction.action.Enable();
-        PlaceAnimal.Enable();
-
-        moveAction.action.performed += OnMove;
-        buyAnimal.action.performed += OnBuyAnimal;
-        cancelAction.action.performed += OnCancel;
-        PlaceAnimal.performed += OnPlace;
-
-        // Chiamata al tracker per rilevare il dispositivo
-        TrackerDevice();
-    }
-
-    private void OnDisable()
-    {
-        moveAction.action.Disable();
-        buyAnimal.action.Disable();
-        cancelAction.action.Disable();
-        PlaceAnimal.Disable();
-
-        moveAction.action.performed -= OnMove;
-        buyAnimal.action.performed -= OnBuyAnimal;
-        cancelAction.action.performed -= OnCancel;
-        PlaceAnimal.performed -= OnPlace;
-
-    }
+    public PlayerInput playerInput;
+    public float SpedMoveController = 5f;
 
     private void TrackerDevice()
     {
@@ -131,9 +100,41 @@ public class AnimalPlacer : MonoBehaviour
             }
             else
             {
-                Debug.Log("Errore: ID non trovato o monete insufficienti");
+                Debug.Log("Errore ID non trovato o monete insufficienti");
             }
         }
+    }
+
+    //Input Controller
+
+    private void OnEnable()
+    {
+        moveAction.action.Enable();
+        buyAnimal.action.Enable();
+        cancelAction.action.Enable();
+        PlaceAnimal.Enable();
+
+        moveAction.action.performed += OnMove;
+        buyAnimal.action.performed += OnBuyAnimal;
+        cancelAction.action.performed += OnCancel;
+        PlaceAnimal.performed += OnPlace;
+
+        // Chiamata al tracker per rilevare il dispositivo
+        TrackerDevice();
+    }
+
+    private void OnDisable()
+    {
+        moveAction.action.Disable();
+        buyAnimal.action.Disable();
+        cancelAction.action.Disable();
+        PlaceAnimal.Disable();
+
+        moveAction.action.performed -= OnMove;
+        buyAnimal.action.performed -= OnBuyAnimal;
+        cancelAction.action.performed -= OnCancel;
+        PlaceAnimal.performed -= OnPlace;
+
     }
 
     private void OnMove(InputAction.CallbackContext context)
@@ -154,14 +155,13 @@ public class AnimalPlacer : MonoBehaviour
 
     private void OnPlace(InputAction.CallbackContext context)
     {
-        if (objectInHand == null)
-        {
+        
             Vector3 PlacePosition = objectInHand.transform.position;
 
             PlaceObject(PlacePosition);
-        }
+        
 
-        Debug.Log("Click");
+            //Debug.Log("Click");
     }
 
     private void OnCancel(InputAction.CallbackContext context)

@@ -23,6 +23,7 @@ public class Tracking_Item : MonoBehaviour
     public Text text_item_Milk;
     public Text text_item_Wool;
     public Text text_item_Bacon;
+
     [Header("TEXT RACCOLTO Ortaggi")]
     public Text Raccolto_Carote_Text;
     public Text Raccolto_Patate_Text;

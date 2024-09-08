@@ -103,7 +103,7 @@ MonoBehaviour:
   - {fileID: 21300000, guid: adb16f85b46cd1441b89ab1280b08868, type: 3}
   - {fileID: 21300000, guid: 30d1dc54efaecae4481905929cea49b4, type: 3}
   - {fileID: 21300000, guid: a6b6a56cf2dc1524aa1c3abf9f2e3653, type: 3}
-  timeStages: 10
+  timeStages: 5
   ItemType: Cavolo
   CurrentStage: 0
 --- !u!58 &7869637008620949917

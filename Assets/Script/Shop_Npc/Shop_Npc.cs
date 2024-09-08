@@ -23,7 +23,7 @@ public class Shop : MonoBehaviour
     public int CurrentWallet = 0;
     public Text Text_Wallet;
 
-    private GameManger gamemanager;
+    private GameManager gamemanager;
     public GameObject shop;
     public InventorySlot[] inventorySlots;
 
@@ -51,7 +51,7 @@ public class Shop : MonoBehaviour
 
     public void Start()
     {
-        gamemanager = FindAnyObjectByType<GameManger>();
+        gamemanager = FindAnyObjectByType<GameManager>();
     }
 
     public void Update()

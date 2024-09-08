@@ -47,7 +47,7 @@ public class Animal : MonoBehaviour
 
     // Riferimento al Mill_Manager
     public Mill_Manager millManager;
-    public GameManger gameManager;
+    public GameManager gameManager;
 
 
 

@@ -20,7 +20,7 @@ public class Bulding_Manager : MonoBehaviour
     public GameObject Shop_Edicio;  // Riferimento al negozio dell'edificio
     public GameObject Bar_Time;  // Barra del tempo per la costruzione
     public Image Bar;  // Immagine della barra del tempo
-    private GameManger gameManager;  // Riferimento al GameManager
+    private GameManager gameManager;  // Riferimento al GameManager
 
     [Header("Animazioni")]
     public Animator animator_Bulding;
@@ -41,7 +41,7 @@ public class Bulding_Manager : MonoBehaviour
         Bar_Time.SetActive(false);
 
         // Trova il riferimento al GameManager
-        gameManager = FindObjectOfType<GameManger>();
+        gameManager = FindObjectOfType<GameManager>();
 
         animator_Bulding = GetComponent<Animator>();
 

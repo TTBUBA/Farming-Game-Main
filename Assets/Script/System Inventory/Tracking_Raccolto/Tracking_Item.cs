@@ -36,14 +36,14 @@ public class Tracking_Item : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        UpdateUiOrtaggi();
+        //UpdateUiOrtaggi();
         UpdateUiItemAnimal();
     }
 
     // Update is called once per frame
     void Update()
     {
-        UpdateUiOrtaggi();
+        //UpdateUiOrtaggi();
         UpdateUiItemAnimal();
     }
 

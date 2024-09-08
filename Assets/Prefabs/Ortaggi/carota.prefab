@@ -103,7 +103,7 @@ MonoBehaviour:
   - {fileID: 21300000, guid: 025656f98a6a02b448548facb685e504, type: 3}
   - {fileID: 21300000, guid: 57ddb557cda451a439b3245f54ceae90, type: 3}
   - {fileID: 21300000, guid: cb13056eff613844f9484db6b6963490, type: 3}
-  timeStages: 10
+  timeStages: 5
   ItemType: Carota
   CurrentStage: 0
 --- !u!58 &10722327264987505

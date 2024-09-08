@@ -1,4 +1,6 @@
 using System.Collections.Generic;
+using System.Linq;
+using UnityEditorInternal.Profiling.Memory.Experimental;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -10,13 +12,19 @@ public class OrderSheet : MonoBehaviour
 
     public List<Item> items;
 
+    public Dictionary<Item.ItemType , int> requiredItems = new Dictionary<Item.ItemType , int>();
+    public Dictionary<Item.ItemType, int> currentItems = new Dictionary<Item.ItemType, int>();
+
+
+    public Dictionary<int, Item> KeyValuePairs = new Dictionary< int , Item>();
 
     public string NameOrder;
     public int reward;
 
     private List<int> selectedVegetableIndices = new List<int>();
 
-    public GameManger GameManger;
+    public GameManager GameManager;
+    public Tracking_Item trackingItem;
 
     public void Update()
     {
@@ -43,57 +51,38 @@ public class OrderSheet : MonoBehaviour
 
     public void ActivateRandomVegetables()
     {
-        foreach (GameObject vegetable in BoxVegetables)
-        {
-            vegetable.SetActive(false);
-
-        }
+        HideVegetables();
 
         int RandomNumberVegetable = Random.Range(1, Mathf.Min(5, BoxVegetables.Count) + 1);
 
 
-        selectedVegetableIndices.Clear();   
-        while (selectedVegetableIndices.Count < RandomNumberVegetable)
+        selectedVegetableIndices.Clear();
+        selectedVegetableIndices = Enumerable.Range(0, BoxVegetables.Count)
+                .OrderBy(x => Random.Range(0, BoxVegetables.Count))
+                .Take(RandomNumberVegetable).ToList();
+
+
+        selectedVegetableIndices.ForEach(index =>
         {
-            int RandomIndex = Random.Range(0, BoxVegetables.Count); // Scegli un ortaggio random
+            BoxVegetables[index].SetActive(true);
 
-            if (!selectedVegetableIndices.Contains(RandomIndex)) // Assicurati che non sia già attivo
-            {
-                selectedVegetableIndices.Add(RandomIndex);
-                BoxVegetables[RandomIndex].SetActive(true); // attiva l'oggetto selezionato
+            items[index].SetRequiredQuantity(Random.Range(20, 200));
+            items[index].UpdateUiItem();
+           
+        });
 
-                // Imposta i valori richiesti per l'oggetto
-                Item item = items[RandomIndex].GetComponent<Item>();
-                if(item != null)
-                {
-                    item.SetRequiredQuantity(Random.Range(20, 200));
-                    item.UpdateUiItem();
-                }
-            }
-            
-        }
 
 
     }
     public void ShowVegetables()
     {
-        List<int> activatedIndices = new List<int>();
-
-        foreach (GameObject vegetable in BoxVegetables)
-        {
-            vegetable.SetActive(false);
-        }
+        HideVegetables();
 
         // Attiva solo gli ortaggi selezionati per questo foglio
         foreach (int Index in selectedVegetableIndices)
         {
             BoxVegetables[Index].SetActive(true);
-
-            Item item = items[Index].GetComponent<Item>();
-            if (item != null)
-            {
-                item.UpdateUiItem(); // Aggiorna la UI per mostrare i valori attuali e richiesti
-            }
+            items[Index].UpdateUiItem();
         }
 
         //Debug.Log("Foglio selezionato: " + NameOrder + " con ricompensa: " + reward);
@@ -111,39 +100,49 @@ public class OrderSheet : MonoBehaviour
     {
         foreach(int index in selectedVegetableIndices )
         {
-            Item item = items[index].GetComponent<Item>();
-            if(item == null || item.CurrentQuantity < item.RequiredQuantity)
+            if (items[index] == null || items[index].CurrentQuantity < items[index].RequiredQuantity)
             {
 
                 return false;
             }
         }
-
         return true;
     }
     public void CompleteOrder()
     {
         if (CanCompleteOrder())
         {
-            GameManger.Coin += reward;
+            GameManager.Coin += reward;
             foreach (int index in selectedVegetableIndices)
             {
-                Item item = items[index].GetComponent<Item>();
-                if (item != null )
+
+                switch (items[index].itemType)
                 {
-                    item.SetCurrentQuantity(item.RequiredQuantity - item.CurrentQuantity);
-                    item.UpdateUiItem();
-
-
+                    case Item.ItemType.Carota:
+                        trackingItem.RaccoltoCarote = (Mathf.Max(0, items[index].CurrentQuantity - items[index].RequiredQuantity));
+                        break;
+                    case Item.ItemType.Cavolo:
+                        trackingItem.Raccoltocavolo = (Mathf.Max(0, items[index].CurrentQuantity - items[index].RequiredQuantity));
+                        break;
+                    case Item.ItemType.Patata:
+                        trackingItem.RaccoltoPatate = (Mathf.Max(0, items[index].CurrentQuantity - items[index].RequiredQuantity));
+                        break;
+                    case Item.ItemType.Grano:
+                        trackingItem.RaccoltoGrano = (Mathf.Max(0, items[index].CurrentQuantity - items[index].RequiredQuantity));
+                        break;
                 }
+
+                items[index].UpdateUiItem();
+                //Debug.Log(item.CurrentQuantity);
+        
+                
             }
             HideVegetables();
-
             gameObject.SetActive(false);
-            Debug.Log("click a");
+           //Debug.Log("click a");
         }
 
-        Debug.Log("click b");
+        
     }
 
 

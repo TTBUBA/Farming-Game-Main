@@ -10,7 +10,7 @@ public class InventoryController : MonoBehaviour
     public InventorySlot patateslot;
     public InventorySlot cavoloslot; 
     public InventorySlot granoslot;
-    public GameManger gameManger;
+    public GameManager gameManager;
 
     private void Awake()
     {
@@ -35,22 +35,22 @@ public class InventoryController : MonoBehaviour
     public void AddPatate(int Quantity)
     {
         patateslot.IncreaseSeedQuantity(Quantity);
-        gameManger.Coin -= 7;
-        gameManger.CoinText.text = gameManger.Coin.ToString();
+        gameManager.Coin -= 7;
+        gameManager.CoinText.text = gameManager.Coin.ToString();
     }
 
     public void Addcavolo(int Quantity)
     {
         cavoloslot.IncreaseSeedQuantity(Quantity);
-        gameManger.Coin -= 4;
-        gameManger.CoinText.text = gameManger.Coin.ToString();
+        gameManager.Coin -= 4;
+        gameManager.CoinText.text = gameManager.Coin.ToString();
     }
 
     public void AddGrano(int Quantity)
     {
         granoslot.IncreaseSeedQuantity(Quantity);
-        gameManger.Coin -= 2;
-        gameManger.CoinText.text = gameManger.Coin.ToString();
+        gameManager.Coin -= 2;
+        gameManager.CoinText.text = gameManager.Coin.ToString();
     }
 
 
@@ -58,29 +58,29 @@ public class InventoryController : MonoBehaviour
     public void RemoveCarota(int Quantity)
     {
         carotaslot.DecreaseSeedQuantity(Quantity);
-        gameManger.Coin += 15;
-        gameManger.CoinText.text = gameManger.Coin.ToString();
+        gameManager.Coin += 15;
+        gameManager.CoinText.text = gameManager.Coin.ToString();
     }
 
     public void RemovePatate(int Quantity)
     {
         patateslot.DecreaseSeedQuantity(Quantity);
-        gameManger.Coin += 16;
-        gameManger.CoinText.text = gameManger.Coin.ToString();
+        gameManager.Coin += 16;
+        gameManager.CoinText.text = gameManager.Coin.ToString();
     }
 
     public void Removecavolo(int Quantity)
     {
         cavoloslot.DecreaseSeedQuantity(Quantity);
-        gameManger.Coin += 8;
-        gameManger.CoinText.text = gameManger.Coin.ToString();
+        gameManager.Coin += 8;
+        gameManager.CoinText.text = gameManager.Coin.ToString();
     }
 
     public void RemoveGrano(int Quantity)
     {
         granoslot.DecreaseSeedQuantity(Quantity);
-        gameManger.Coin += 8;
-        gameManger.CoinText.text = gameManger.Coin.ToString();
+        gameManager.Coin += 8;
+        gameManager.CoinText.text = gameManager.Coin.ToString();
     }
 
 }

@@ -1,11 +1,17 @@
-
 using UnityEngine;
 using UnityEngine.UI;
-using static UnityEditor.Progress;
 
+    public enum ItemType 
+    {
+        Carota,
+        Patata,
+        Grano,
+        Cavolo
+    }
 public class Item : MonoBehaviour
 {
-    public enum ItemType {
+    public enum ItemType 
+    {
         Carota,
         Patata,
         Grano,
@@ -25,9 +31,10 @@ public class Item : MonoBehaviour
     {
         UpdateUiItem();
     }
-    public void SetRequiredQuantity(int quantity)
+
+    public void SetRequiredQuantity(int Quantity)
     {
-        RequiredQuantity = quantity;
+        RequiredQuantity = Quantity;
     }
 
     public void SetCurrentQuantity(int quantity)

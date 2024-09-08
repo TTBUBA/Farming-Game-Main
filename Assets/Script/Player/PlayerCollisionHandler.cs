@@ -4,13 +4,13 @@ using UnityEngine;
 
 public class PlayerCollisionHandler : MonoBehaviour
 {
-    private GameManger gameManger;
+    private GameManager gameManger;
     public Dialogue dialogue;
 
     // Start is called before the first frame update
     void Start()
     {
-        gameManger = FindAnyObjectByType<GameManger>();
+        gameManger = FindAnyObjectByType<GameManager>();
     }
 
     // Update is called once per frame

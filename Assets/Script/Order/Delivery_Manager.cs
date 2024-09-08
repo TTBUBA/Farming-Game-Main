@@ -9,6 +9,11 @@ public class Order_Manager : MonoBehaviour
     public Button confirmOrderButton; // Bottone per confermare l'ordine
     private OrderSheet currentSheet; // Riferimento al foglio di ordine attualmente selezionato
 
+    public Text NameOrderText;
+    public Text PriceOrder;
+
+    //Sound Effect
+    public AudioSource completeOrder_Audio;
     void Start()
     {
         AssignRandomOrder();
@@ -33,6 +38,8 @@ public class Order_Manager : MonoBehaviour
                 int RandomReward = Random.Range(40, 300);
 
                 Sheet.SetOrder(RandomReward, randomName);
+
+
             }
 
             Button button = SheetsOrder[i].GetComponent<Button>();
@@ -59,6 +66,10 @@ public class Order_Manager : MonoBehaviour
         if (currentSheet != null)
         {
             currentSheet.ShowVegetables(); // Mostra gli ortaggi del foglio selezionato
+
+            NameOrderText.text = currentSheet.NameOrder;
+            PriceOrder.text = currentSheet.reward.ToString();
+            
         }
     }
 
@@ -67,6 +78,7 @@ public class Order_Manager : MonoBehaviour
         if (currentSheet != null)
         {
             currentSheet.CompleteOrder();
+            completeOrder_Audio.Play();
         }
         else
         {

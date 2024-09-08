@@ -10,7 +10,7 @@ public class AnimalPlacer : MonoBehaviour
     [Header("Configurazione")]
     public string requiredPlacementID;
     public int cost;
-    public GameManger gameManger;
+    public GameManager gameManger;
 
     private GameObject objectInHand;
     private bool isPlacing = false;

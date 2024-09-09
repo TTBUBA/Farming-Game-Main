@@ -1,9 +1,8 @@
 using System.Collections.Generic;
 using System.Linq;
-using UnityEditorInternal.Profiling.Memory.Experimental;
 using UnityEngine;
 using UnityEngine.UI;
-
+using DG.Tweening;
 public class OrderSheet : MonoBehaviour
 {
     public Text OrderNameText;
@@ -14,18 +13,16 @@ public class OrderSheet : MonoBehaviour
 
     public Dictionary<Item.ItemType , int> requiredItems = new Dictionary<Item.ItemType , int>();
     public Dictionary<Item.ItemType, int> currentItems = new Dictionary<Item.ItemType, int>();
-
-
     public Dictionary<int, Item> KeyValuePairs = new Dictionary< int , Item>();
 
     public string NameOrder;
     public int reward;
 
-    private List<int> selectedVegetableIndices = new List<int>();
 
     public GameManager GameManager;
     public Tracking_Item trackingItem;
 
+    private List<int> selectedVegetableIndices = new List<int>();
     public void Update()
     {
         //TEST
@@ -52,6 +49,7 @@ public class OrderSheet : MonoBehaviour
     public void ActivateRandomVegetables()
     {
         HideVegetables();
+        
 
         int RandomNumberVegetable = Random.Range(1, Mathf.Min(5, BoxVegetables.Count) + 1);
 
@@ -96,13 +94,20 @@ public class OrderSheet : MonoBehaviour
         }
     }
 
+    public void ActiveVegetables()
+    {
+        foreach (GameObject vegetable in BoxVegetables)
+        {
+            vegetable.SetActive(true);
+        }
+    }
+
     public bool CanCompleteOrder()
     {
         foreach(int index in selectedVegetableIndices )
         {
             if (items[index] == null || items[index].CurrentQuantity < items[index].RequiredQuantity)
             {
-
                 return false;
             }
         }
@@ -134,16 +139,39 @@ public class OrderSheet : MonoBehaviour
 
                 items[index].UpdateUiItem();
                 //Debug.Log(item.CurrentQuantity);
-        
                 
+
+
             }
+
             HideVegetables();
             gameObject.SetActive(false);
-           //Debug.Log("click a");
+            
+           
         }
 
         
     }
 
 
+    public void AnimationSheet()
+    {
+        //Animazione che serve per avere la sensazione di click 
+        transform.DOScale(new Vector2(1.02f, 1.02f), 0.1f).SetEase(Ease.InBounce).OnComplete(() => 
+        {
+            transform.DOScale(Vector2.one, 0.1f).SetEase(Ease.InBounce);
+        });
+
+
+        //Animazione che serve per far ruotare il foglio al click
+        transform.DORotate(new Vector3(0, 0, -5f), 0.2f).SetEase(Ease.InBounce).OnComplete(() =>
+        {
+            transform.DORotate(new Vector3(0, 0, 5f), 0.2f).SetEase(Ease.InBounce).OnComplete(() =>
+            {
+                transform.DORotate(Vector2.one, 0.2f).SetEase(Ease.InBounce);
+            });
+        });
+
+
+    }
 }

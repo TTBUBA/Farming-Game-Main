@@ -5,9 +5,11 @@ using UnityEngine.UI;
 using DG.Tweening;
 public class OrderSheet : MonoBehaviour
 {
+    public GameObject[] Text;
     public Text OrderNameText;
     public Text RewardText;
     public List<GameObject> BoxVegetables;
+    
 
     public List<Item> items;
 
@@ -17,12 +19,19 @@ public class OrderSheet : MonoBehaviour
 
     public string NameOrder;
     public int reward;
-
+    
 
     public GameManager GameManager;
     public Tracking_Item trackingItem;
 
+    public Image ImageSheet;
+    public Sprite Sheet_Torn;
     private List<int> selectedVegetableIndices = new List<int>();
+
+    public void Start()
+    {
+        ImageSheet = GetComponent<Image>();
+    }
     public void Update()
     {
         //TEST
@@ -92,6 +101,17 @@ public class OrderSheet : MonoBehaviour
         {
             vegetable.SetActive(false);
         }
+
+    }
+
+    public void HideText()
+    {
+        foreach (GameObject Text in Text)
+        {
+            Text.SetActive(false);
+        }
+
+
     }
 
     public void ActiveVegetables()
@@ -99,6 +119,16 @@ public class OrderSheet : MonoBehaviour
         foreach (GameObject vegetable in BoxVegetables)
         {
             vegetable.SetActive(true);
+        }
+
+
+    }
+
+    public void ActiveText()
+    {
+        foreach (GameObject Text in Text)
+        {
+            Text.SetActive(true);
         }
     }
 
@@ -139,15 +169,14 @@ public class OrderSheet : MonoBehaviour
 
                 items[index].UpdateUiItem();
                 //Debug.Log(item.CurrentQuantity);
-                
-
-
             }
 
             HideVegetables();
-            gameObject.SetActive(false);
-            
-           
+            HideText();
+            //gameObject.SetActive(false);
+            ImageSheet.sprite = Sheet_Torn;
+
+
         }
 
         
@@ -164,9 +193,9 @@ public class OrderSheet : MonoBehaviour
 
 
         //Animazione che serve per far ruotare il foglio al click
-        transform.DORotate(new Vector3(0, 0, -5f), 0.2f).SetEase(Ease.InBounce).OnComplete(() =>
+        transform.DORotate(new Vector3(0, 0, -3f), 0.2f).SetEase(Ease.InBounce).OnComplete(() =>
         {
-            transform.DORotate(new Vector3(0, 0, 5f), 0.2f).SetEase(Ease.InBounce).OnComplete(() =>
+            transform.DORotate(new Vector3(0, 0, 3f), 0.2f).SetEase(Ease.InBounce).OnComplete(() =>
             {
                 transform.DORotate(Vector2.one, 0.2f).SetEase(Ease.InBounce);
             });

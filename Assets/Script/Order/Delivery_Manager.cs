@@ -4,7 +4,10 @@ using UnityEngine.UI;
 public class Order_Manager : MonoBehaviour
 {
     public GameObject[] SheetsOrder;
-    public string[] OrderName = {
+
+
+    [SerializeField]
+    private string[] Name = {
     "Chiesa", "Casa Laur", "Negozio di Mark", "Ospedale", "Falegname", "Palazzo Regale", "Borgo Pescatori", "Foresta Magica",
     "Fruttivendolo", "Macellaio", "Panificio Rosa", "Farmacia Verde", "Trattoria Belvedere", "Taverna dei Saggi", "Locanda del Porto",
     "Drogheria Antica", "Emporio del Nord", "Oreficeria Dorata", "Sartoria Bianca", "Biblioteca Storica", "Casa dei Pini",
@@ -25,7 +28,6 @@ public class Order_Manager : MonoBehaviour
 
     //============//
     public TimeManager timeManager;
-   
     //============//
 
     private int lastCheckedHour = -1; // Variabile per tracciare l'ultima ora verificata
@@ -51,8 +53,9 @@ public class Order_Manager : MonoBehaviour
         if (timeManager.Hour == 10 && timeManager.Hour != lastCheckedHour)
         {
             AssignRandomOrder();
-            //orderSheet.ActiveVegetables();
             lastCheckedHour = timeManager.Hour;// Aggiorna l'ora controllata
+
+
             //Debug.Log("Random Order Active");
         }
 
@@ -60,6 +63,12 @@ public class Order_Manager : MonoBehaviour
         if (timeManager.Hour < 10)
         {
             lastCheckedHour = -1;// Resetta la variabile per riattivare l'ordine il giorno successivo
+        }
+        
+        //Test
+        if(Input.GetKeyDown(KeyCode.J))
+        {
+            AssignRandomOrder();
         }
     }
     public void AssignRandomOrder()
@@ -71,7 +80,7 @@ public class Order_Manager : MonoBehaviour
             if (Sheet != null)
             {
                 // Assegna un nome random per la consegna e un compenso random (tra 50 e 200 monete)
-                string randomName = OrderName[Random.Range(0, OrderName.Length)];
+                string randomName = Name[Random.Range(0, Name.Length)];
                 int RandomReward = Random.Range(40, 300);
 
                 Sheet.SetOrder(RandomReward, randomName);

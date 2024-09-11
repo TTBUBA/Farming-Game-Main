@@ -8,13 +8,15 @@ public class Order_Manager : MonoBehaviour
 
     [SerializeField]
     private string[] Name = {
-    "Chiesa", "Casa Laur", "Negozio di Mark", "Ospedale", "Falegname", "Palazzo Regale", "Borgo Pescatori", "Foresta Magica",
-    "Fruttivendolo", "Macellaio", "Panificio Rosa", "Farmacia Verde", "Trattoria Belvedere", "Taverna dei Saggi", "Locanda del Porto",
-    "Drogheria Antica", "Emporio del Nord", "Oreficeria Dorata", "Sartoria Bianca", "Biblioteca Storica", "Casa dei Pini",
-    "Villaggio dei Lupi", "Stalla di Luca", "Castello del Duca", "Fabbro di Leon", "Bottega della Lana", "Cantina del Borgo",
-    "Torre del Drago", "Giardino delle Erbe", "Rifugio dei Cacciatori", "Pasticceria Dolci Sogni", "Merceria Arcobaleno",
-    "Vigneto della Collina", "Bancarella di Sara", "Villa dei Sogni", "Caserma dei Cavalieri", "Erboristeria Solare",
-    "Allevamento del Bosco", "Ponte dei Mercanti", "Carovana di Lina", "Rimessa dei Carri"};
+    "Church", "Laur's House", "Mark's Shop", "Hospital", "Carpenter", "Royal Palace", "Fishermen's Village", "Magic Forest",
+    "Greengrocer", "Butcher", "Rosa's Bakery", "Green Pharmacy", "Belvedere Trattoria", "Wise Men's Tavern", "Port Inn",
+    "Old Drugstore", "Northern Emporium", "Golden Jeweler", "White Tailor", "Historical Library", "Pine House",
+    "Wolf Village", "Luca's Stable", "Duke's Castle", "Leon's Blacksmith", "Wool Shop", "Village Winery",
+    "Dragon Tower", "Herb Garden", "Hunters' Refuge", "Sweet Dreams Bakery", "Rainbow Haberdashery",
+    "Hill Vineyard", "Sara's Stall", "Dream Villa", "Knights' Barracks", "Solar Herbalist",
+    "Forest Farm", "Merchants' Bridge", "Lina's Caravan", "Cart Depot"
+     };
+
 
 
     public Button confirmOrderButton; // Bottone per confermare l'ordine

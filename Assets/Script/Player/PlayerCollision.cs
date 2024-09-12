@@ -17,6 +17,11 @@ public class PlayerCollision : MonoBehaviour
     public GameObject Ui_Silo; // Interfaccia utente per le statistiche del silo
     public GameObject Ui_Magazzino; // Interfaccia utente per le statistiche del magazzino
 
+    [Header("UI Showcase")]
+    public GameObject Button_Log_Showcase;
+    public GameObject Button_Exit_Showcase;
+    public GameObject Ui_Order;
+
     [Header("UI Mill")]
     public GameObject Button_Log_Mill;
     public GameObject Button_Exit_Mill;
@@ -30,7 +35,8 @@ public class PlayerCollision : MonoBehaviour
     public InputActionReference Button_Exit_Box_Animal_Gamepad; // Azione del gamepad per chiudere le statistiche degli animali
     public InputActionReference Button_Log_Mill_Gamepad;
     public InputActionReference Button_Exit_Mill_Gamepad;
-
+    public InputActionReference Button_Log_ShowCaseOrder_Gamepad;
+    public InputActionReference Button_Exit_ShowCaseOrder_Gamepad;
 
     [Header("Player Movement")]
     public Move_Player MovePlayer;
@@ -72,13 +78,27 @@ public class PlayerCollision : MonoBehaviour
         {
             HandleMillCollision(tag);
         }
+        
+
 
     }
-
-
- 
     // Gestisce l'uscita del giocatore da un'area con un trigger collider
     private void OnTriggerExit2D(Collider2D collider)
+    {
+        ResetUI(); // Resetta l'interfaccia utente quando il giocatore esce dalla collisione
+        ResetTag(tag);
+    }
+
+    private void OnCollisionEnter2D(Collision2D collision)
+    {
+        string tag = collision.gameObject.tag;
+        if (IsShowCaseOrder(tag))
+        {
+            HandleShowcaseOrderCollision(tag);
+        }
+    }
+
+    private void OnCollisionExit2D(Collision2D collision)
     {
         ResetUI(); // Resetta l'interfaccia utente quando il giocatore esce dalla collisione
         ResetTag(tag);
@@ -124,6 +144,17 @@ public class PlayerCollision : MonoBehaviour
         Button_Exit_Mill_Gamepad.action.Enable();
     }
 
+    // Gestisce la logica quando il giocatore collide con il la bacheca degli ordini
+    private void HandleShowcaseOrderCollision(string tag)
+    {
+        currentCollisionTag = tag;
+        ShowAppropriateIcons();
+
+        Button_Log_Showcase.SetActive(true);
+        Button_Log_ShowCaseOrder_Gamepad.action.Enable();
+        Button_Exit_ShowCaseOrder_Gamepad.action.Enable();
+}
+
     // Mostra le icone appropriate a seconda se si utilizza un gamepad o una tastiera
     private void ShowAppropriateIcons()
     {
@@ -154,8 +185,9 @@ public class PlayerCollision : MonoBehaviour
     private void ResetUI()
     {
         Button_Log_Box.SetActive(false);
-        Button_Log.SetActive(false);
         Button_Exit_Box.SetActive(false);
+
+        Button_Log.SetActive(false);
         Button_Exit.SetActive(false);
    
 
@@ -166,6 +198,8 @@ public class PlayerCollision : MonoBehaviour
         Button_Log_Mill.SetActive(false);
         Button_Exit_Mill.SetActive(false);
 
+        Button_Log_Showcase.SetActive(false);
+        Button_Exit_Showcase.SetActive(false);
 
         Button_Log_Box_Animal_Gamepad.action.Disable();
         Button_Exit_Box_Animal_Gamepad.action.Disable();
@@ -233,8 +267,7 @@ public class PlayerCollision : MonoBehaviour
 
         }
 
-        Button_Log_Mill.SetActive(false); 
-                                         
+        Button_Log_Mill.SetActive(false);                              
         Button_Exit_Mill.SetActive(true); // Mostra il bottone di uscita
     }
 
@@ -281,6 +314,33 @@ public class PlayerCollision : MonoBehaviour
         }
 
         Button_Exit.SetActive(false); // Nasconde il bottone di uscita dopo l'uso
+        Icon_Log_Keyboard.SetActive(false); // Nasconde l'icona della tastiera
+    }
+
+    // Gestisce il caricamento della UI del magazzino o del silo
+    public void ButtonLoadShowcaseOrder()
+    {
+        switch (currentCollisionTag)
+        {
+            case "Order_Tab":
+                Ui_Order.SetActive(true);
+                break;
+        }
+        Button_Log_Showcase.SetActive(false);
+        Button_Exit_Showcase.SetActive(true);
+    }
+
+    // Gestisce la chiusura della UI del magazzino o del silo
+    public void ButtonExitShowcaseOrder()
+    {
+        switch (currentCollisionTag)
+        {
+            case "Order_Tab":
+                Ui_Order.SetActive(false);
+                break;
+        }
+
+        Button_Exit_Showcase.SetActive(false); // Nasconde il bottone di uscita dopo l'uso
         Icon_Log_Keyboard.SetActive(false); // Nasconde l'icona della tastiera
     }
 
@@ -381,6 +441,16 @@ public class PlayerCollision : MonoBehaviour
             MillManager.MillIsActive = false;
         }
     }
+    
+    private void LogShowCaseOrder(InputAction.CallbackContext context)
+    {
+
+    }
+
+    private void ExiShowCaseOrder(InputAction.CallbackContext context)
+    {
+
+    }
 
     // Controlla se il tag corrisponde a un animale
     private bool IsAnimalTag(string tag)
@@ -400,6 +470,11 @@ public class PlayerCollision : MonoBehaviour
     private bool IsMillTag(string tag)
     {
         return tag == "Mill";
+    }
+
+    private bool IsShowCaseOrder(string tag)
+    {
+        return tag == "Order_Tab";
     }
 
 }

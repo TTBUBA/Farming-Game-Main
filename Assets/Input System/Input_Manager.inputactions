@@ -178,6 +178,24 @@
                     "initialStateCheck": false
                 },
                 {
+                    "name": "Button_Log_ShowCaseOrder",
+                    "type": "Button",
+                    "id": "44013b4b-7b38-499a-af60-85a01c49b24f",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
+                },
+                {
+                    "name": "Button_Exit_ShowCaseOrder",
+                    "type": "Button",
+                    "id": "2fd1d66e-83c9-42fc-8ee5-16e3e65cf7f6",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
+                },
+                {
                     "name": "Button_Log_Mill",
                     "type": "Button",
                     "id": "30dcb1f9-c16f-44b3-af82-ae1760e25ae5",
@@ -680,6 +698,28 @@
                     "processors": "",
                     "groups": "",
                     "action": "Button_Place_Animal",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "60230676-509d-42b9-83ea-0d2100f625e3",
+                    "path": "<Gamepad>/buttonSouth",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "Controller",
+                    "action": "Button_Log_ShowCaseOrder",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "37c10275-6ee1-4126-bf48-3440d413a770",
+                    "path": "<Gamepad>/buttonEast",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "Controller",
+                    "action": "Button_Exit_ShowCaseOrder",
                     "isComposite": false,
                     "isPartOfComposite": false
                 }

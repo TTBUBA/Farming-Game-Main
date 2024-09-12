@@ -23,6 +23,9 @@ TagManager:
   - Box_Magazzino
   - Box_Sheep
   - statistics_Sheep
+  - ZonaCostruzioni
+  - box_cow
+  - Order_Tab
   layers:
   - Default
   - TransparentFX

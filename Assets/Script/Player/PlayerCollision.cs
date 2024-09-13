@@ -139,7 +139,7 @@ public class PlayerCollision : MonoBehaviour
         ShowAppropriateIcons(); // Mostra le icone appropriate a seconda del dispositivo di input
 
         // Attiva il bottone di log per i magazzini e abilita le azioni del gamepad per i magazzini
-        Button_Log.SetActive(true);
+        Button_Log_Mill.SetActive(true);
         Button_Log_Mill_Gamepad.action.Enable();
         Button_Exit_Mill_Gamepad.action.Enable();
     }
@@ -297,7 +297,8 @@ public class PlayerCollision : MonoBehaviour
                 break;
         }
 
-        Button_Log_Mill.SetActive(false);
+        Button_Log.SetActive(false);
+        Button_Exit.SetActive(true);
     }
 
     // Gestisce la chiusura della UI del magazzino o del silo

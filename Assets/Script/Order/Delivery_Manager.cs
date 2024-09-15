@@ -30,6 +30,7 @@ public class Order_Manager : MonoBehaviour
 
     //============//
     public TimeManager timeManager;
+    public OrderSheet[] orderSheet;
     //============//
 
     private int lastCheckedHour = -1; // Variabile per tracciare l'ultima ora verificata
@@ -50,13 +51,18 @@ public class Order_Manager : MonoBehaviour
     }
     public void Test()
     {
-       OrderSheet orderSheet = GetComponent<OrderSheet>();
+      
         // Se l'ora è >= 10 e non abbiamo ancora eseguito l'assegnazione per quest'ora
         if (timeManager.Hour == 10 && timeManager.Hour != lastCheckedHour)
         {
             AssignRandomOrder();
             lastCheckedHour = timeManager.Hour;// Aggiorna l'ora controllata
-
+            foreach(var OrderSheet in orderSheet)
+            {
+                OrderSheet.ImageSheet.sprite = OrderSheet.Sheet_Image;
+                OrderSheet.ActiveText();
+            }
+            
 
             //Debug.Log("Random Order Active");
         }

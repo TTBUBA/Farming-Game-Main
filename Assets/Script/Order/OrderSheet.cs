@@ -26,6 +26,7 @@ public class OrderSheet : MonoBehaviour
 
     public Image ImageSheet;
     public Sprite Sheet_Torn;
+    public Sprite Sheet_Image;
     private List<int> selectedVegetableIndices = new List<int>();
 
     public void Start()

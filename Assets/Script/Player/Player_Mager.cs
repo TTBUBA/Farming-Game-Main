@@ -45,24 +45,20 @@ public class Player_Manager : MonoBehaviour
         // quando il player entra in collisione con il terreno 
         if (collider.gameObject.CompareTag("Terreno"))
         {
-            ButtonPlant.SetActive(true);
-            
-            PointSpawn.SetActive(true);
-            // Debug.Log("Entrato nel terreno");
-            PuoiPiantare = true;
-
-            if (inventoryManager != null && PuoiPiantare)
+            if(gameObject.CompareTag("Player") || gameObject.CompareTag("BoxPlayer"))
             {
-                inventoryManager.plantPosition = PointSpawn.transform;
-                inventoryManager.PlantSelectedSeed();
-            }
-        }
-
-      
+                ButtonPlant.SetActive(true);
             
-        if (collider.gameObject.CompareTag("ZonaCostruzioni"))
-        {
-            inZonaCostruzioni = true;
+                PointSpawn.SetActive(true);
+                PuoiPiantare = true;
+
+                if (inventoryManager != null && PuoiPiantare)
+                {
+                    inventoryManager.plantPosition = PointSpawn.transform;
+                    inventoryManager.PlantSelectedSeed();
+                }
+            }
+ 
         }
 
 
@@ -70,20 +66,15 @@ public class Player_Manager : MonoBehaviour
 
     private void OnTriggerExit2D(Collider2D collision)
     {
-        if (collision.gameObject.CompareTag("Terreno"))
+        if (collision.gameObject.CompareTag("Terreno") )
         {
-            ButtonPlant.SetActive(false);
-            PointSpawn.SetActive(false);
-            // Debug.Log("Uscito dal terreno");
-            PuoiPiantare = false;
-        }
+            if (gameObject.CompareTag("Player") || gameObject.CompareTag("BoxPlayer"))
+            {
+                ButtonPlant.SetActive(false);
+                PointSpawn.SetActive(false);
+                PuoiPiantare = false;
+            }
 
-       
-
-
-        if (collision.gameObject.CompareTag("ZonaCostruzioni"))
-        {
-            inZonaCostruzioni = false;
         }
     }
 

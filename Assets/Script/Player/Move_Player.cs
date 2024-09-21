@@ -1,7 +1,7 @@
-using UnityEditor;
 using UnityEngine;
 using UnityEngine.InputSystem;
 using UnityEngine.Tilemaps;
+using static UnityEditor.Searcher.SearcherWindow.Alignment;
 
 
 public class Move_Player : MonoBehaviour, IData
@@ -15,15 +15,16 @@ public class Move_Player : MonoBehaviour, IData
 
     private Rigidbody2D rb;
     public float speed = 7f;
-    public Animator animator;
+    private Animator animator;
 
     private bool isMovingRight;
     private bool isMovingLeft;
     private bool isMovingUp;
 
     public Tilemap Terrainmap; // La Tilemap su cui muoversi
+    public TilemapCollider2D tilemapCollider2D;
     public GameObject PointSpawn; // L'oggetto da muovere
-
+    
     // Variabili che servono per memorizzare le posizioni delle celle
     private Vector3Int CellPosition; // Posizione della cella corrente
     private Vector3Int NextCellPosition; // Posizione della prossima cella da raggiungere
@@ -32,7 +33,7 @@ public class Move_Player : MonoBehaviour, IData
     public InputActionReference MovePlayer_KeyBoard;
     public InputActionReference MovePlayer_Controller;
 
-    public PlayerInput playerInput;
+    private PlayerInput playerInput;
 
     public GameObject Axe;
 
@@ -41,13 +42,13 @@ public class Move_Player : MonoBehaviour, IData
     public Vector2 keyboardMovement;
     public Vector2 controllerMovement;
 
+    public bool ActivePointPlant = false;
 
     // Start is called before the first frame update
     void Start()
     {
         rb = GetComponent<Rigidbody2D>();
-        NextCellPosition = new Vector3Int(CellPosition.x + 1, CellPosition.y + 1);
-        PointSpawn.transform.position = Terrainmap.GetCellCenterWorld(NextCellPosition);
+        Terrainmap = tilemapCollider2D.GetComponent<Tilemap>();
         animator = GetComponent<Animator>();
     }
 
@@ -65,32 +66,20 @@ public class Move_Player : MonoBehaviour, IData
         MovePlayer_KeyBoard.action.Enable();
         MovePlayer_Controller.action.Enable();
     }
-
     private void OnDisable()
     {
         MovePlayer_KeyBoard.action.Disable();
         MovePlayer_Controller.action.Disable();
     }
+
     // Update is called once per frame
     void Update()
     {
-        
 
 
-         keyboardMovement = MovePlayer_KeyBoard.action.ReadValue<Vector2>();
-         controllerMovement = MovePlayer_Controller.action.ReadValue<Vector2>();
+        keyboardMovement = MovePlayer_KeyBoard.action.ReadValue<Vector2>();
+        controllerMovement = MovePlayer_Controller.action.ReadValue<Vector2>();
 
-        if (keyboardMovement != Vector2.zero)
-        {
-            //Debug.Log("USO TASTIERA");
-        }
-
-        if (controllerMovement != Vector2.zero)
-        {
-            //Debug.Log("USO Controller");
-        }
-
-        
 
         Movement = (keyboardMovement + controllerMovement).normalized;
 
@@ -149,39 +138,116 @@ public class Move_Player : MonoBehaviour, IData
         rb.velocity = direction * speed;
 
 
-
-        // Controlla la direzione del movimento
-        if (horizontal > 0)
+        // Controlla la direzione in orizzontale del movimento del punto di spawn degli ortaggi
+        switch (horizontal)
         {
-            Axe.transform.localPosition = new Vector2(1, 0);
-            Axe.transform.localScale = new Vector2(0.6f, 0.6f);
+            case > 0:
+                //Movimento PointSpawn
+                PointSpawn.transform.localPosition = new Vector2(1, 0);
 
+                //Movimento ascia
+                Axe.transform.localPosition = new Vector2(1, 0);
+                Axe.transform.localScale = new Vector2(0.6f, 0.6f);
+                break;
+            case < 0:
+                PointSpawn.transform.localPosition = new Vector2(-1, 0);
+
+                //Movimento ascia
+                Axe.transform.localPosition = new Vector2(1, 0);
+                Axe.transform.localScale = new Vector2(-0.6f, 0.6f);
+                break;
         }
-        else if (horizontal < 0)
+
+        // Controlla la direzione in verticale del movimento del punto di spawn degli ortaggi
+        switch (vertical)
         {
-            Axe.transform.localPosition = new Vector2(1, 0);
-            Axe.transform.localScale = new Vector2(-0.6f, 0.6f);
-
+            case > 0:
+                PointSpawn.transform.localPosition = new Vector2(0, 1);
+                break;
+            case < 0:
+                PointSpawn.transform.localPosition = new Vector2(0, -1);
+                break;
         }
 
-        MovimentoPointSpawn();
-     }
+        if (ActivePointPlant == true)
+        {
+            MovimentoPointSpawn();
+        }
+        
+
+    }
+
+    public void OnTriggerEnter2D(Collider2D collision)
+    {
+        if (collision.gameObject.CompareTag("Terreno") || gameObject.CompareTag("Player"))
+        {
+            if (gameObject.CompareTag("BoxPlayer"))
+            {
+                ActivePointPlant = true;
+            }
+            
+        }
+    }
+
+    public void OnTriggerExit2D(Collider2D collision)
+    {
+        if (collision.gameObject.CompareTag("Terreno"))
+        {
+            if (gameObject.CompareTag("BoxPlayer") || gameObject.CompareTag("Player"))
+            {
+                ActivePointPlant = true;
+            }
+        }
+    }
+
 
     // Funzione che serve per far muovere l'oggetto PointSpawn sulla Tilemap
     public void MovimentoPointSpawn()
     {
-        // Facendo cosi si ottiene la  posizione della cella corrente in cui si trova PointSpawn
+        // Ottieni la posizione della cella corrente in cui si trova il giocatore
         CellPosition = Terrainmap.WorldToCell(transform.position);
 
-        // Viene effetuato un controllo, se PointSpawn ha raggiunto una nuova cella
-        if (NextCellPosition != CellPosition)
-        {
-            // Calcola la posizione della prossima cella aumentando di uno l'indice x rispetto alla cella corrente
-            NextCellPosition = new Vector3Int(CellPosition.x + 1, CellPosition.y);
+        // Ottieni il centro della cella corrente
+        Vector3 CellCenter = Terrainmap.GetCellCenterWorld(CellPosition);
 
-            // Sposta l'oggetto PointSpawn al centro della prossima cella calcolata da NextCellPosition
-            PointSpawn.transform.position = Terrainmap.GetCellCenterWorld(NextCellPosition);
+        switch (horizontal)
+        {
+            case > 0:
+                // Calcola la posizione della prossima cella aumentando di uno l'indice x rispetto alla cella corrente
+                NextCellPosition = new Vector3Int(CellPosition.x + 1, CellPosition.y);
+                ;
+                // Sposta l'oggetto PointSpawn al centro della prossima cella calcolata da NextCellPosition
+                PointSpawn.transform.position = Terrainmap.GetCellCenterWorld(NextCellPosition);
+                break;
+
+            case < 0:
+                // Calcola la posizione della prossima cella aumentando di uno l'indice x rispetto alla cella corrente
+                NextCellPosition = new Vector3Int(CellPosition.x - 1, CellPosition.y);
+
+                // Sposta l'oggetto PointSpawn al centro della prossima cella calcolata da NextCellPosition
+                PointSpawn.transform.position = Terrainmap.GetCellCenterWorld(NextCellPosition);
+                break;
         }
+
+        switch (vertical)
+        {
+            case > 0:
+                // Calcola la posizione della prossima cella aumentando di uno l'indice x rispetto alla cella corrente
+                NextCellPosition = new Vector3Int(CellPosition.x, CellPosition.y + 1);
+
+                // Sposta l'oggetto PointSpawn al centro della prossima cella calcolata da NextCellPosition
+                PointSpawn.transform.position = Terrainmap.GetCellCenterWorld(NextCellPosition);
+                break;
+
+            case < 0:
+                // Calcola la posizione della prossima cella aumentando di uno l'indice x rispetto alla cella corrente
+                NextCellPosition = new Vector3Int(CellPosition.x, CellPosition.y - 1);
+
+                // Sposta l'oggetto PointSpawn al centro della prossima cella calcolata da NextCellPosition
+                PointSpawn.transform.position = Terrainmap.GetCellCenterWorld(NextCellPosition);
+                break;
+        }
+
     }
 
     private enum Direction 

@@ -36,12 +36,12 @@ public class plant : MonoBehaviour
             
         }
 
-        Debug.Log("Il raccolto e pronto ");
+        //Debug.Log("Il raccolto e pronto ");
     }
 
     public void OnTriggerEnter2D(Collider2D other)
     {
-        Debug.Log("Entrato in collisione con: " + other.gameObject.name);
+        //Debug.Log("Entrato in collisione con: " + other.gameObject.name);
 
         if (CurrentStage >= 4)
         {

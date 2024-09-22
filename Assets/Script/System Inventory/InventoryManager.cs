@@ -1,15 +1,20 @@
 using UnityEngine;
 using UnityEngine.InputSystem;
 using UnityEngine.UI;
+using UnityEngine.Tilemaps;
+using System.Collections.Generic;
+using System.Linq;
 
 public class InventoryManager : MonoBehaviour
 {
+    //tiene traccia delle celle occupate 
+    public Dictionary<Vector3Int, GameObject> occupiedTiles = new Dictionary<Vector3Int, GameObject>();
+
     public InventorySlot[] slots;  // Array degli slot dell'inventario
     private int selectedSlotIndex = 0;  // Indice dello slot attualmente selezionato
     public Transform plantPosition;  // Posizione nel mondo dove piantare il seme
 
     public Button PlatingSeed;  // Riferimento al bottone per piantare un seme tramite UI
-
     // Input GamePad
     public InputActionReference Plating_Pad;  // Riferimento all'azione del gamepad per piantare un seme
     public InputActionReference NextSlot_Pad;  // Riferimento all'azione del gamepad per selezionare lo slot successivo
@@ -33,6 +38,8 @@ public class InventoryManager : MonoBehaviour
         if (Input.GetKeyDown(KeyCode.Alpha3)) SelectSlot(2);
         if (Input.GetKeyDown(KeyCode.Alpha4)) SelectSlot(3);
         if (Input.GetKeyDown(KeyCode.Alpha5)) SelectSlot(4);
+
+        Debug.Log(string.Join(", ", occupiedTiles.Select(entry => $"{entry.Key}: {entry.Value.name}")));
     }
 
     // Metodo chiamato quando il GameObject viene abilitato
@@ -92,24 +99,37 @@ public class InventoryManager : MonoBehaviour
 
         if (selectedSlot.quantity > 0)  // Controlla se ci sono semi disponibili in questo slot
         {
-            selectedSlot.PlantSeed();  // Pianta un seme e riduci la quantità nello slot
+           // selectedSlot.PlantSeed();  // Pianta un seme e riduci la quantità nello slot
 
             // Controlla che il prefab del seme e la posizione siano assegnati
             if (selectedSlot.seedPrefab != null && plantPosition != null)
             {
-                // Instanzia il prefab del seme nella posizione designata
-                GameObject plantseed = Instantiate(selectedSlot.seedPrefab, plantPosition.position, Quaternion.identity);
-
-                // Assicurati che la coroutine Grow del seme inizi subito
-                plant plantscript = plantseed.GetComponent<plant>();
-                if (plantscript != null)
+                Vector3Int cellPosition = Vector3Int.FloorToInt(plantPosition.position);
+                // Controlla se la cella è già occupata
+                if (!occupiedTiles.ContainsKey(cellPosition))
                 {
-                    plantscript.StartCoroutine(plantscript.Grow());  // Avvia la crescita del seme
+                    // Instanzia il prefab del seme nella posizione designata
+                    GameObject plantseed = Instantiate(selectedSlot.seedPrefab, plantPosition.position, Quaternion.identity);
+                    occupiedTiles[cellPosition] = plantseed;
+                    occupiedTiles[cellPosition] = selectedSlot.PlantSeed();
+
+                    // verifica che la coroutine Grow del seme inizia subito
+                    plant plantscript = plantseed.GetComponent<plant>();
+                    if (plantscript != null)
+                    {
+                        plantscript.StartCoroutine(plantscript.Grow());  // Avvia la crescita del seme
+                    }
+                    
                 }
+                else
+                {
+                    Debug.Log("Cella occupata");
+                }
+
             }
             else
             {
-                Debug.LogError("Seed prefab or plant position is not assigned.");  // Log di errore se mancano assegnazioni necessarie
+                Debug.Log("Seed prefab or plant position is not assigned.");  
             }
         }
     }

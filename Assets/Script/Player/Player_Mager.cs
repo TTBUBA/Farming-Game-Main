@@ -10,14 +10,13 @@ public class Player_Manager : MonoBehaviour
     
     public GameObject PointSpawn;
     private InventoryManager inventoryManager;
-    
-    public Camera Camera;
+
     public GameObject ButtonPlant;
 
 
     //private UnlockBuilding_System UnlockBuildingSystem;
-    public Text errorMessage;
-    public Button ButtonBulding;
+    //public Text errorMessage;
+    //public Button ButtonBulding;
 
 
 
@@ -29,9 +28,6 @@ public class Player_Manager : MonoBehaviour
     private void Awake()
     {
         ButtonPlant.SetActive(false);
-
-
-        //UnlockBuildingSystem = FindAnyObjectByType<UnlockBuilding_System>();
     }
 
     public Vector3 GetPosition()
@@ -39,16 +35,15 @@ public class Player_Manager : MonoBehaviour
         return transform.position;
     }
 
+
     private void OnTriggerEnter2D(Collider2D collider)
     {
-       
-        // quando il player entra in collisione con il terreno 
+        // Quando il player entra in collisione con il terreno
         if (collider.gameObject.CompareTag("Terreno"))
         {
-            if(gameObject.CompareTag("Player") || gameObject.CompareTag("BoxPlayer"))
+            if (gameObject.CompareTag("Player") || gameObject.CompareTag("BoxPlayer"))
             {
                 ButtonPlant.SetActive(true);
-            
                 PointSpawn.SetActive(true);
                 PuoiPiantare = true;
 
@@ -58,15 +53,12 @@ public class Player_Manager : MonoBehaviour
                     inventoryManager.PlantSelectedSeed();
                 }
             }
- 
         }
-
-
     }
 
     private void OnTriggerExit2D(Collider2D collision)
     {
-        if (collision.gameObject.CompareTag("Terreno") )
+        if (collision.gameObject.CompareTag("Terreno"))
         {
             if (gameObject.CompareTag("Player") || gameObject.CompareTag("BoxPlayer"))
             {
@@ -74,10 +66,8 @@ public class Player_Manager : MonoBehaviour
                 PointSpawn.SetActive(false);
                 PuoiPiantare = false;
             }
-
         }
     }
-
 
     /* System Bulding
      * 

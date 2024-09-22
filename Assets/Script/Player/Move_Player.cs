@@ -1,7 +1,7 @@
+using UnityEditor;
 using UnityEngine;
 using UnityEngine.InputSystem;
 using UnityEngine.Tilemaps;
-using static UnityEditor.Searcher.SearcherWindow.Alignment;
 
 
 public class Move_Player : MonoBehaviour, IData
@@ -15,16 +15,15 @@ public class Move_Player : MonoBehaviour, IData
 
     private Rigidbody2D rb;
     public float speed = 7f;
-    private Animator animator;
+    public Animator animator;
 
     private bool isMovingRight;
     private bool isMovingLeft;
     private bool isMovingUp;
 
     public Tilemap Terrainmap; // La Tilemap su cui muoversi
-    public TilemapCollider2D tilemapCollider2D;
     public GameObject PointSpawn; // L'oggetto da muovere
-    
+    public bool ActivePointPlant = false;
     // Variabili che servono per memorizzare le posizioni delle celle
     private Vector3Int CellPosition; // Posizione della cella corrente
     private Vector3Int NextCellPosition; // Posizione della prossima cella da raggiungere
@@ -33,7 +32,7 @@ public class Move_Player : MonoBehaviour, IData
     public InputActionReference MovePlayer_KeyBoard;
     public InputActionReference MovePlayer_Controller;
 
-    private PlayerInput playerInput;
+    public PlayerInput playerInput;
 
     public GameObject Axe;
 
@@ -42,13 +41,11 @@ public class Move_Player : MonoBehaviour, IData
     public Vector2 keyboardMovement;
     public Vector2 controllerMovement;
 
-    public bool ActivePointPlant = false;
 
     // Start is called before the first frame update
     void Start()
     {
         rb = GetComponent<Rigidbody2D>();
-        Terrainmap = tilemapCollider2D.GetComponent<Tilemap>();
         animator = GetComponent<Animator>();
     }
 
@@ -61,6 +58,8 @@ public class Move_Player : MonoBehaviour, IData
     {
         data.PositionPlayer = this.transform.position;
     }
+
+    //Input Controller//
     private void OnEnable()
     {
         MovePlayer_KeyBoard.action.Enable();
@@ -138,23 +137,24 @@ public class Move_Player : MonoBehaviour, IData
         rb.velocity = direction * speed;
 
 
-        // Controlla la direzione in orizzontale del movimento del punto di spawn degli ortaggi
+        // Controlla la direzione in orizzontale del movimento dell ascia
         switch (horizontal)
         {
             case > 0:
-                //Movimento PointSpawn
-                PointSpawn.transform.localPosition = new Vector2(1, 0);
-
                 //Movimento ascia
                 Axe.transform.localPosition = new Vector2(1, 0);
                 Axe.transform.localScale = new Vector2(0.6f, 0.6f);
+
+                //Movimento PointSpawn 
+                PointSpawn.transform.localPosition = new Vector2(1, 0);
                 break;
             case < 0:
-                PointSpawn.transform.localPosition = new Vector2(-1, 0);
-
                 //Movimento ascia
                 Axe.transform.localPosition = new Vector2(1, 0);
                 Axe.transform.localScale = new Vector2(-0.6f, 0.6f);
+
+                //Movimento PointSpawn 
+                PointSpawn.transform.localPosition = new Vector2(-1, 0);
                 break;
         }
 
@@ -173,23 +173,9 @@ public class Move_Player : MonoBehaviour, IData
         {
             MovimentoPointSpawn();
         }
-        
 
     }
-
     public void OnTriggerEnter2D(Collider2D collision)
-    {
-        if (collision.gameObject.CompareTag("Terreno") || gameObject.CompareTag("Player"))
-        {
-            if (gameObject.CompareTag("BoxPlayer"))
-            {
-                ActivePointPlant = true;
-            }
-            
-        }
-    }
-
-    public void OnTriggerExit2D(Collider2D collision)
     {
         if (collision.gameObject.CompareTag("Terreno"))
         {
@@ -200,7 +186,16 @@ public class Move_Player : MonoBehaviour, IData
         }
     }
 
-
+    public void OnTriggerExit2D(Collider2D collision)
+    {
+        if (collision.gameObject.CompareTag("Terreno") || gameObject.CompareTag("Player"))
+        {
+            if (gameObject.CompareTag("BoxPlayer") || gameObject.CompareTag("Player"))
+            {
+                ActivePointPlant = true;
+            }
+        }
+    }
     // Funzione che serve per far muovere l'oggetto PointSpawn sulla Tilemap
     public void MovimentoPointSpawn()
     {
@@ -247,7 +242,6 @@ public class Move_Player : MonoBehaviour, IData
                 PointSpawn.transform.position = Terrainmap.GetCellCenterWorld(NextCellPosition);
                 break;
         }
-
     }
 
     private enum Direction 

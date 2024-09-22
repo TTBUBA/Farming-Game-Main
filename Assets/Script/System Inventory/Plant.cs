@@ -12,6 +12,9 @@ public class plant : MonoBehaviour
 
     public int CurrentStage = 0;
     private SpriteRenderer SpriteRenderer;
+
+    public InventoryManager InventoryManager;
+    public Vector3Int cellPositionPlant;
     // Start is called before the first frame update
     void Start()
     {
@@ -54,6 +57,7 @@ public class plant : MonoBehaviour
                     trakingRaccolto.CollectItem(ItemType);
                     Debug.Log("Collisione Avvenuta e raccolto aggiunto");
                     Destroy(gameObject);
+                    InventoryManager.RemoveVegetableTile(cellPositionPlant);
                 }
 
             }

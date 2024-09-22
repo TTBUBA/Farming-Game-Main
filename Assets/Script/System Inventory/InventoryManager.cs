@@ -39,7 +39,8 @@ public class InventoryManager : MonoBehaviour
         if (Input.GetKeyDown(KeyCode.Alpha4)) SelectSlot(3);
         if (Input.GetKeyDown(KeyCode.Alpha5)) SelectSlot(4);
 
-        Debug.Log(string.Join(", ", occupiedTiles.Select(entry => $"{entry.Key}: {entry.Value.name}")));
+        //Debug per vedere cosa contiene il dizionario
+        //Debug.Log(string.Join(", ", occupiedTiles.Select(entry => $"{entry.Key}: {entry.Value.name}")));
     }
 
     // Metodo chiamato quando il GameObject viene abilitato
@@ -104,7 +105,9 @@ public class InventoryManager : MonoBehaviour
             // Controlla che il prefab del seme e la posizione siano assegnati
             if (selectedSlot.seedPrefab != null && plantPosition != null)
             {
+                // Converte la posizione di piantagione in una cella (ad esempio su una Tilemap)
                 Vector3Int cellPosition = Vector3Int.FloorToInt(plantPosition.position);
+
                 // Controlla se la cella è già occupata
                 if (!occupiedTiles.ContainsKey(cellPosition))
                 {
@@ -119,6 +122,8 @@ public class InventoryManager : MonoBehaviour
                     plant plantscript = plantseed.GetComponent<plant>();
                     if (plantscript != null)
                     {
+                        plantscript.cellPositionPlant = cellPosition;
+                        plantscript.InventoryManager = this;
                         plantscript.StartCoroutine(plantscript.Grow());  // Avvia la crescita del seme
                     }
                     
@@ -132,6 +137,17 @@ public class InventoryManager : MonoBehaviour
 
         }
     }
+
+    // Metodo per liberare la tile dal dizionario
+    public void RemoveVegetableTile(Vector3Int cellPosition)
+    {
+        if (occupiedTiles.ContainsKey(cellPosition))
+        {
+            occupiedTiles.Remove(cellPosition);
+        }
+    }
+
+    //======INPUT CONTROLLER======//
 
     // Metodo per piantare un seme utilizzando il gamepad
     public void PlantSeedGamePad(InputAction.CallbackContext Obj)

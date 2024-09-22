@@ -99,7 +99,7 @@ public class InventoryManager : MonoBehaviour
 
         if (selectedSlot.quantity > 0)  // Controlla se ci sono semi disponibili in questo slot
         {
-           // selectedSlot.PlantSeed();  // Pianta un seme e riduci la quantità nello slot
+            
 
             // Controlla che il prefab del seme e la posizione siano assegnati
             if (selectedSlot.seedPrefab != null && plantPosition != null)
@@ -108,10 +108,12 @@ public class InventoryManager : MonoBehaviour
                 // Controlla se la cella è già occupata
                 if (!occupiedTiles.ContainsKey(cellPosition))
                 {
+                    selectedSlot.PlantSeed();  // Pianta un seme e riduci la quantità nello slot
                     // Instanzia il prefab del seme nella posizione designata
                     GameObject plantseed = Instantiate(selectedSlot.seedPrefab, plantPosition.position, Quaternion.identity);
                     occupiedTiles[cellPosition] = plantseed;
-                    occupiedTiles[cellPosition] = selectedSlot.PlantSeed();
+                    
+
 
                     // verifica che la coroutine Grow del seme inizia subito
                     plant plantscript = plantseed.GetComponent<plant>();
@@ -127,10 +129,7 @@ public class InventoryManager : MonoBehaviour
                 }
 
             }
-            else
-            {
-                Debug.Log("Seed prefab or plant position is not assigned.");  
-            }
+
         }
     }
 

@@ -53,7 +53,6 @@ public class PlayerCollision : MonoBehaviour
 
     private PlayerInput Playerinput;
 
-
     private void Start()
     {
         Playerinput = GetComponent<PlayerInput>();
@@ -78,8 +77,6 @@ public class PlayerCollision : MonoBehaviour
         {
             HandleMillCollision(tag);
         }
-        
-
 
     }
     // Gestisce l'uscita del giocatore da un'area con un trigger collider

@@ -7,6 +7,7 @@ public class MiniMap : MonoBehaviour
     // Riferimento al transform del giocatore
     public Transform Player;
 
+    /*
     private void LateUpdate()
     {
         // Copia la posizione del giocatore nella variabile newpositionY, mantenendo solo l'asse y
@@ -21,4 +22,5 @@ public class MiniMap : MonoBehaviour
         // Assegna la nuova posizione della mappa mantenendo invariata l'altezza e la coordinata y
         transform.position = newpositionx;
     }
+    */
 }

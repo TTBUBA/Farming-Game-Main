@@ -8,16 +8,16 @@ public class CarController : MonoBehaviour
     public float speed = 5f; // Velocità dell'auto
     private int currentWaypointIndex = 0; // Indice del punto di riferimento corrente
 
+    /*
     void Start()
     {
         InvokeRepeating("MoveCar", 0f, 1f); // Chiama il metodo "MoveCar" ogni secondo (dopo 0 secondi di ritardo)
     }
 
+    
     void MoveCar()
     {
 
-        /* 
-         * 
         //QUESTO CODICE SERVE PER FAR GIRARE LA MACCHINA IN UN TERMINATO  WAYPOINT//
 
         // Sceglie casualmente una direzione all'incrocio
@@ -38,11 +38,12 @@ public class CarController : MonoBehaviour
                 break;
         }
 
-        */
+        
 
-        // Imposta il primo punto di riferimento
-        transform.position = waypoints[currentWaypointIndex].position;
+    // Imposta il primo punto di riferimento
+    transform.position = waypoints[currentWaypointIndex].position;
     }
+   
     void Update()
     {
         // in questo metodo controlla se l'auto ha raggiunto il punto di riferimento corrente che sarebbe currentWaypointIndex
@@ -62,5 +63,5 @@ public class CarController : MonoBehaviour
         Vector2 direction = (waypoints[currentWaypointIndex].position - transform.position).normalized;
         transform.Translate(direction * speed * Time.deltaTime);
     }
-
+    */
 }

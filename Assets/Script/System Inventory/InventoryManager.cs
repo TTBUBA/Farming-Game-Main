@@ -15,6 +15,7 @@ public class InventoryManager : MonoBehaviour
     public Transform plantPosition;  // Posizione nel mondo dove piantare il seme
 
     public Button PlatingSeed;  // Riferimento al bottone per piantare un seme tramite UI
+
     // Input GamePad
     public InputActionReference Plating_Pad;  // Riferimento all'azione del gamepad per piantare un seme
     public InputActionReference NextSlot_Pad;  // Riferimento all'azione del gamepad per selezionare lo slot successivo
@@ -25,7 +26,6 @@ public class InventoryManager : MonoBehaviour
     // Metodo chiamato all'inizio del gioco
     void Start()
     {
-
         UpdateSelectedSlot();  // Aggiorna lo slot selezionato all'inizio del gioco per riflettere la selezione iniziale
     }
 
@@ -41,33 +41,6 @@ public class InventoryManager : MonoBehaviour
 
         //Debug per vedere cosa contiene il dizionario
         //Debug.Log(string.Join(", ", occupiedTiles.Select(entry => $"{entry.Key}: {entry.Value.name}")));
-    }
-
-    // Metodo chiamato quando il GameObject viene abilitato
-    void OnEnable()
-    {
-        // Collega l'evento di piantare un seme all'azione del gamepad
-        Plating_Pad.action.started += PlantSeedGamePad;
-        Plating_Pad.action.Enable();  // Abilita l'azione del gamepad per piantare
-
-        // Collega gli eventi per navigare tra gli slot con il gamepad
-        NextSlot_Pad.action.started += NextSlot;
-        PreviousSlot_Pad.action.started += PreviousSlot;
-        NextSlot_Pad.action.Enable();  // Abilita l'azione per lo slot successivo
-        PreviousSlot_Pad.action.Enable();  // Abilita l'azione per lo slot precedente
-    }
-
-    // Metodo chiamato quando il GameObject viene disabilitato
-    void OnDisable()
-    {
-        // Scollega gli eventi per evitare memory leak o chiamate non volute
-        Plating_Pad.action.started -= PlantSeedGamePad;
-        Plating_Pad.action.Disable();  // Disabilita l'azione del gamepad per piantare
-
-        NextSlot_Pad.action.started -= NextSlot;
-        PreviousSlot_Pad.action.started -= PreviousSlot;
-        NextSlot_Pad.action.Disable();  // Disabilita l'azione per lo slot successivo
-        PreviousSlot_Pad.action.Disable();  // Disabilita l'azione per lo slot precedente
     }
 
     // Metodo per selezionare uno slot specifico dato il suo indice
@@ -147,8 +120,31 @@ public class InventoryManager : MonoBehaviour
         }
     }
 
-    //======INPUT CONTROLLER======//
 
+    //======INPUT CONTROLLER======//
+    void OnEnable()
+    {
+        // Collega l'evento di piantare un seme all'azione del gamepad
+        Plating_Pad.action.started += PlantSeedGamePad;
+        Plating_Pad.action.Enable();  // Abilita l'azione del gamepad per piantare
+
+        // Collega gli eventi per navigare tra gli slot con il gamepad
+        NextSlot_Pad.action.started += NextSlot;
+        PreviousSlot_Pad.action.started += PreviousSlot;
+        NextSlot_Pad.action.Enable();  // Abilita l'azione per lo slot successivo
+        PreviousSlot_Pad.action.Enable();  // Abilita l'azione per lo slot precedente
+    }
+    void OnDisable()
+    {
+        // Scollega gli eventi per evitare memory leak o chiamate non volute
+        Plating_Pad.action.started -= PlantSeedGamePad;
+        Plating_Pad.action.Disable();  // Disabilita l'azione del gamepad per piantare
+
+        NextSlot_Pad.action.started -= NextSlot;
+        PreviousSlot_Pad.action.started -= PreviousSlot;
+        NextSlot_Pad.action.Disable();  // Disabilita l'azione per lo slot successivo
+        PreviousSlot_Pad.action.Disable();  // Disabilita l'azione per lo slot precedente
+    }
     // Metodo per piantare un seme utilizzando il gamepad
     public void PlantSeedGamePad(InputAction.CallbackContext Obj)
     {

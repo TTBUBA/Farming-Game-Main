@@ -106,6 +106,8 @@ MonoBehaviour:
   timeStages: 2
   ItemType: Patate
   CurrentStage: 0
+  InventoryManager: {fileID: 0}
+  cellPositionPlant: {x: 0, y: 0, z: 0}
 --- !u!58 &-5399653959267549040
 CircleCollider2D:
   m_ObjectHideFlags: 0

@@ -1,22 +1,46 @@
 using UnityEngine;
 using UnityEngine.UI;
+using UnityEngine.UIElements;
+
 
 public class InventorySlot : MonoBehaviour
 {
+    public Sprite[] GrowSprites;
+    public float timeStages;
+    public string ItemType;
+
     [Header("Ui Invetatario")]
     public GameObject background;  // L'immagine di background dello slot
     public Text quantityText;  // Il testo che mostra la quantità di semi
-    public Image seedImage;  // L'immagine che rappresenta il seme
+    //public Image seedImage;  // L'immagine che rappresenta il seme
     public GameObject seedPrefab;  // Prefab del seme da piantare 
 
-    public int ortaggioID;
     public int quantity;  // La quantità di semi nello slot
     public string seedType;
 
     private void Start()
     {
         quantityText.text = quantity.ToString();
+
+        // Dichiarazione delle variabili che riceveranno i valori di out
+        Sprite[] sprites;
+        float timestage;
+        string type;
+
+        GetData(out sprites, out timestage, out type);
+
+        Debug.Log(sprites.Length);
+        Debug.Log(timestage);
+        Debug.Log( type);
     }
+
+    public void GetData(out Sprite[] sprite, out float Timestage, out string Type)
+    {
+        sprite = GrowSprites;
+        Timestage = timeStages;
+        Type = ItemType;
+    }
+
     // Metodo per inizializzare lo slot con una quantità di semi e un'immagine del seme
     public void Initialize(int initialQuantity, Sprite seedSprite, GameObject seedPrefab)
     {
@@ -24,7 +48,7 @@ public class InventorySlot : MonoBehaviour
         if (seedSprite != null)
         {
             quantity = initialQuantity;
-            seedImage.sprite = seedSprite;  // Assegna l'immagine del seme
+            //seedImage.sprite = seedSprite;  // Assegna l'immagine del seme
             this.seedPrefab = seedPrefab;  // Assegna il prefab del seme
             UpdateUI();
         }

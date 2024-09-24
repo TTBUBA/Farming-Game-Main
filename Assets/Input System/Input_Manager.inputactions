@@ -151,6 +151,15 @@
                     "initialStateCheck": false
                 },
                 {
+                    "name": "Button_Plant",
+                    "type": "Button",
+                    "id": "0e0eafd2-c4c1-4ca5-b54b-937397a098fe",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
+                },
+                {
                     "name": "Button_Exit_Box_Animal",
                     "type": "Button",
                     "id": "106a1c8a-29d6-4967-a5bc-c0081efbaa1b",
@@ -720,6 +729,17 @@
                     "processors": "",
                     "groups": "Controller",
                     "action": "Button_Exit_ShowCaseOrder",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "d74b9883-6baa-4623-accd-d88d61627e0a",
+                    "path": "<Gamepad>/buttonSouth",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "Controller",
+                    "action": "Button_Plant",
                     "isComposite": false,
                     "isPartOfComposite": false
                 }

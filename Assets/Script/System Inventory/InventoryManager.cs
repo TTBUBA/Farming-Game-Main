@@ -1,14 +1,14 @@
 using UnityEngine;
 using UnityEngine.InputSystem;
 using UnityEngine.UI;
-using UnityEngine.Tilemaps;
 using System.Collections.Generic;
 using System.Linq;
+
 
 public class InventoryManager : MonoBehaviour
 {
     //tiene traccia delle celle occupate 
-    public Dictionary<Vector3Int, GameObject> occupiedTiles = new Dictionary<Vector3Int, GameObject>();
+    public Dictionary<Vector3Int, GameObject> occupiedTiles = new Dictionary<Vector3Int, GameObject >();
 
     public InventorySlot[] slots;  // Array degli slot dell'inventario
     private int selectedSlotIndex = 0;  // Indice dello slot attualmente selezionato
@@ -23,6 +23,7 @@ public class InventoryManager : MonoBehaviour
 
     //PlayerManager
     public Player_Manager PlayerManager;
+    public Plant plant;
     // Metodo chiamato all'inizio del gioco
     void Start()
     {
@@ -32,6 +33,8 @@ public class InventoryManager : MonoBehaviour
     // Metodo chiamato ad ogni frame per controllare l'input della tastiera
     void Update()
     {
+
+
         // Controllo input da tastiera per selezionare uno specifico slot usando i tasti numerici
         if (Input.GetKeyDown(KeyCode.Alpha1)) SelectSlot(0);
         if (Input.GetKeyDown(KeyCode.Alpha2)) SelectSlot(1);
@@ -66,50 +69,44 @@ public class InventoryManager : MonoBehaviour
         }
     }
 
-    // Metodo per piantare un seme dallo slot attualmente selezionato
     public void PlantSelectedSeed()
     {
         InventorySlot selectedSlot = slots[selectedSlotIndex];  // Ottieni il riferimento allo slot selezionato
 
         if (selectedSlot.quantity > 0)  // Controlla se ci sono semi disponibili in questo slot
         {
-            
-
-            // Controlla che il prefab del seme e la posizione siano assegnati
-            if (selectedSlot.seedPrefab != null && plantPosition != null)
+            // Controlla che la posizione di piantagione sia assegnata
+            if (plantPosition != null)
             {
-                // Converte la posizione di piantagione in una cella (ad esempio su una Tilemap)
+                // Converte la posizione di piantagione in una cella
                 Vector3Int cellPosition = Vector3Int.FloorToInt(plantPosition.position);
 
                 // Controlla se la cella è già occupata
                 if (!occupiedTiles.ContainsKey(cellPosition))
                 {
-                    selectedSlot.PlantSeed();  // Pianta un seme e riduci la quantità nello slot
-                    // Instanzia il prefab del seme nella posizione designata
-                    GameObject plantseed = Instantiate(selectedSlot.seedPrefab, plantPosition.position, Quaternion.identity);
-                    occupiedTiles[cellPosition] = plantseed;
+                    // Riduci la quantità nello slot e aggiorna la cella
+                    selectedSlot.PlantSeed();
+
+                    // Recupera il GameObject della pianta dalla cella
                     
 
-
-                    // verifica che la coroutine Grow del seme inizia subito
-                    plant plantscript = plantseed.GetComponent<plant>();
-                    if (plantscript != null)
+                    if (plant != null)
                     {
-                        plantscript.cellPositionPlant = cellPosition;
-                        plantscript.InventoryManager = this;
-                        plantscript.StartCoroutine(plantscript.Grow());  // Avvia la crescita del seme
+                        // Passa i dati dallo slot alla pianta
+                        plant.StartGrowth(selectedSlot);
+
+                        // Memorizza la pianta nella cella occupata
+                        occupiedTiles[cellPosition] = plantPosition.gameObject;
                     }
-                    
                 }
                 else
                 {
                     Debug.Log("Cella occupata");
                 }
-
             }
-
         }
     }
+
 
     // Metodo per liberare la tile dal dizionario
     public void RemoveVegetableTile(Vector3Int cellPosition)

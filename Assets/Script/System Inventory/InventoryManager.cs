@@ -3,6 +3,7 @@ using UnityEngine.InputSystem;
 using UnityEngine.UI;
 using System.Collections.Generic;
 using System.Linq;
+using System;
 
 
 public class InventoryManager : MonoBehaviour
@@ -12,7 +13,7 @@ public class InventoryManager : MonoBehaviour
 
     public GameObject[] plantGameObjects;
     public InventorySlot[] slots;  // Array degli slot dell'inventario
-    private int selectedSlotIndex = 0;  // Indice dello slot attualmente selezionato
+    [SerializeField] private int selectedSlotIndex = 0;  // Indice dello slot attualmente selezionato
     public Transform plantPosition;  // Posizione nel mondo dove piantare il seme
 
     // Input GamePad
@@ -22,11 +23,6 @@ public class InventoryManager : MonoBehaviour
 
     //PlayerManager
     public Player_Manager PlayerManager;
-    
-    void Start()
-    {
-        UpdateSelectedSlot(); 
-    }
 
     // Metodo chiamato ad ogni frame per controllare l'input della tastiera
     void Update()
@@ -43,27 +39,21 @@ public class InventoryManager : MonoBehaviour
         if (Input.GetKeyDown(KeyCode.Alpha4)) SelectSlot(3);
         if (Input.GetKeyDown(KeyCode.Alpha5)) SelectSlot(4);
     }
+
     // Metodo per selezionare uno slot specifico dato il suo indice
     void SelectSlot(int index)
     {
-        selectedSlotIndex = index;  // Aggiorna l'indice dello slot selezionato
-        UpdateSelectedSlot();  // Aggiorna la UI per riflettere il cambiamento
-    }
-
-    // Metodo per aggiornare la UI per mostrare lo slot selezionato
-    void UpdateSelectedSlot()
-    {
-        for (int i = 0; i < slots.Length; i++)  // Itera su tutti gli slot
+        // Deseleziona tutti gli slot
+        foreach (var slot in slots)
         {
-            if (i == selectedSlotIndex)
-            {
-                slots[i].Select();  // Se lo slot è selezionato, applica lo stato selezionato
-            }
-            else
-            {
-                slots[i].Deselect();  // Se lo slot non è selezionato, applica lo stato deselezionato
-            }
+            slot.Deselect();
         }
+
+        // Aggiorna l'indice dello slot selezionato
+        selectedSlotIndex = index;
+
+        // Seleziona il nuovo slot
+        slots[selectedSlotIndex].Select();
     }
 
     public void PlantSelectedSeed()
@@ -148,6 +138,8 @@ public class InventoryManager : MonoBehaviour
             Debug.Log(string.Join(", ", occupiedTiles.Select(entry => $"{entry.Key}: {entry.Value.name}")));
         }
     }
+
+
     //======INPUT CONTROLLER======//
     void OnEnable()
     {
@@ -186,7 +178,7 @@ public class InventoryManager : MonoBehaviour
     private void NextSlot(InputAction.CallbackContext context)
     {
         selectedSlotIndex = (selectedSlotIndex + 1) % slots.Length;  // Incrementa l'indice e torna a zero se supera il numero di slot
-        UpdateSelectedSlot();  // Aggiorna la UI per riflettere il nuovo slot selezionato
+        SelectSlot(selectedSlotIndex);  // Aggiorna la UI per riflettere il nuovo slot selezionato
     }
 
     // Metodo per selezionare lo slot precedente con il controller
@@ -194,6 +186,6 @@ public class InventoryManager : MonoBehaviour
     {
         selectedSlotIndex--;  // Decrementa l'indice dello slot
         if (selectedSlotIndex < 0) selectedSlotIndex = slots.Length - 1;  // Se l'indice diventa negativo, torna all'ultimo slot
-        UpdateSelectedSlot();  // Aggiorna la UI per riflettere il nuovo slot selezionato
+        SelectSlot(selectedSlotIndex);  // Aggiorna la UI per riflettere il nuovo slot selezionato
     }
 }

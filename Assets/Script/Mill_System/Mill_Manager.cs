@@ -68,15 +68,16 @@ public class Mill_Manager : MonoBehaviour
     {
         ButtonSackChicken();
         speedElica = 0;
-
         
     }
 
     public void Update()
     {
-        Elica.transform.Rotate(0, 0, speedElica * Time.deltaTime);
+        SackData selectedSack = sackDataArray[selectedSackIndex];
 
+        Elica.transform.Rotate(0, 0, speedElica * Time.deltaTime);
         DeviceTracker();
+        UpdateVegetableQuantities(selectedSack);
     }
     public void ButtonSackChicken()
     {
@@ -241,13 +242,13 @@ public class Mill_Manager : MonoBehaviour
 
         switch (vegetableName)
         {
-            case "Carota":
+            case "carrot":
                 return trakingRaccolto.RaccoltoCarote;
-            case "Patate":
+            case "potato":
                 return trakingRaccolto.RaccoltoPatate;
-            case "Grano":
+            case "wheat":
                 return trakingRaccolto.RaccoltoGrano;
-            case "Cavolo":
+            case "kale":
                 return trakingRaccolto.Raccoltocavolo;
             default:
                 return 0;

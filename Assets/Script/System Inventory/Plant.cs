@@ -21,7 +21,6 @@ public class Plant : MonoBehaviour
     {
         InventorySlot inventorySlot = GetComponent<InventorySlot>();
         SpriteRenderer = GetComponent<SpriteRenderer>();
-        
     }
 
     public void StartGrowth(InventorySlot selectedSlot)
@@ -29,7 +28,7 @@ public class Plant : MonoBehaviour
         // Ottieni i dati dallo slot selezionato
         selectedSlot.GetData(out growSprites, out timeStages, out ItemType);
 
-        Debug.Log("Dati" + selectedSlot.seedPrefab.name + "tempo" + timeStages);
+       // Debug.Log("Dati" + selectedSlot.seedPrefab.name + "tempo" + timeStages);
 
         CurrentStage = 0;
 
@@ -38,7 +37,7 @@ public class Plant : MonoBehaviour
  
    public IEnumerator Grow()
     {
-        while (CurrentStage < growSprites.Length - 1)
+        while (CurrentStage < growSprites.Length )
         {
             yield return new WaitForSeconds(timeStages);
             CurrentStage++;
@@ -51,7 +50,7 @@ public class Plant : MonoBehaviour
     public void OnTriggerEnter2D(Collider2D other)
     {
         
-        if (CurrentStage >= 4)
+        if (CurrentStage >= 3)
         {
             if (other.gameObject.CompareTag("BoxPlayer"))
             {
@@ -60,9 +59,10 @@ public class Plant : MonoBehaviour
                 if (trakingRaccolto != null)
                 {
                     trakingRaccolto.CollectItem(ItemType);
-                    Debug.Log("Collisione Avvenuta e raccolto aggiunto");
-                    ResetPlant();
                     InventoryManager.RemoveVegetableTile(cellPositionPlant);
+                    ResetPlant();
+
+                    //Debug.Log("Collisione Avvenuta e raccolto aggiunto");
                 }
 
             }
@@ -73,6 +73,8 @@ public class Plant : MonoBehaviour
     public void ResetPlant()
     {
         CurrentStage = 0;
-        SpriteRenderer.sprite = growSprites[CurrentStage];
+        SpriteRenderer.sprite = null;
+        growSprites = null;
+        timeStages = 0;
     }
 }

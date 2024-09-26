@@ -15,6 +15,7 @@ public class TrakingLocal : MonoBehaviour
     public int CountLegna;
     public Text Raccolto_Legna_Text;
 
+    public Tracking_Item trackingItem;
     void Start()
     {
         // Inizializza il testo della legna raccolta
@@ -31,44 +32,47 @@ public class TrakingLocal : MonoBehaviour
     {
         switch (itemType)
         {
-            case "Carota":
+            case "carrot":
                 RaccoltoCarote++;
                 break;
 
-            case "Patate":
+            case "potato":
                 RaccoltoPatate++;
                 break;
 
-            case "Grano":
+            case "wheat":
                 RaccoltoGrano++;
                 break;
 
-            case "Cavolo":
+            case "kale":
                 Raccoltocavolo++;
                 break;
         }
+
+        trackingItem.UpdateUiOrtaggi();
     }
 
     public void SubtractVegetableQuantity(string vegetableName, int quantity)
     {
         switch (vegetableName)
         {
-            case "Carota":
+            case "carrot":
                 RaccoltoCarote -= quantity;
                 break;
 
-            case "Patate":
+            case "potato":
                 RaccoltoPatate -= quantity;
                 break;
 
-            case "Grano":
+            case "wheat":
                 RaccoltoGrano -= quantity;
                 break;
 
-            case "Cavolo":
+            case "kale":
                 Raccoltocavolo -= quantity;
                 break;
         }
+        trackingItem.UpdateUiOrtaggi();
     }
 
     
@@ -76,16 +80,16 @@ public class TrakingLocal : MonoBehaviour
     {
         switch (vegetableName)
         {
-            case "Carota":
+            case "carrot":
                 return RaccoltoCarote;
 
-            case "Patate":
+            case "potato":
                 return RaccoltoPatate;
 
-            case "Grano":
+            case "wheat":
                 return RaccoltoGrano;
 
-            case "Cavolo":
+            case "kale":
                 return Raccoltocavolo;
 
             default:

@@ -93,16 +93,12 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 4962417425977407300}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: cf383d48b9f286a45b150397e0d71820, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  GrowSprites:
-  - {fileID: 21300000, guid: 17709ac85dcf4264f90362b80beab6da, type: 3}
-  - {fileID: 21300000, guid: 5fdb3c1a4fc346c48b92cc3e28f2c509, type: 3}
-  - {fileID: 21300000, guid: b20e61920dc5ab5458ba9c052c7355b5, type: 3}
-  - {fileID: 21300000, guid: 815010af1258ae24896ffa8019d6cf46, type: 3}
+  growSprites: []
   timeStages: 2
   ItemType: Patate
   CurrentStage: 0

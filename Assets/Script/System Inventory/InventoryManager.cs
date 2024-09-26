@@ -10,11 +10,10 @@ public class InventoryManager : MonoBehaviour
     //tiene traccia delle celle occupate 
     public Dictionary<Vector3Int, GameObject> occupiedTiles = new Dictionary<Vector3Int, GameObject >();
 
+    public GameObject[] plantGameObjects;
     public InventorySlot[] slots;  // Array degli slot dell'inventario
     private int selectedSlotIndex = 0;  // Indice dello slot attualmente selezionato
     public Transform plantPosition;  // Posizione nel mondo dove piantare il seme
-
-    public Button PlatingSeed;  // Riferimento al bottone per piantare un seme tramite UI
 
     // Input GamePad
     public InputActionReference Plating_Pad;  // Riferimento all'azione del gamepad per piantare un seme
@@ -23,29 +22,27 @@ public class InventoryManager : MonoBehaviour
 
     //PlayerManager
     public Player_Manager PlayerManager;
-    public Plant plant;
-    // Metodo chiamato all'inizio del gioco
+    
     void Start()
     {
-        UpdateSelectedSlot();  // Aggiorna lo slot selezionato all'inizio del gioco per riflettere la selezione iniziale
+        UpdateSelectedSlot(); 
     }
 
     // Metodo chiamato ad ogni frame per controllare l'input della tastiera
     void Update()
     {
-
-
+        ChangeSlot();
+        DEBUG();
+    }
+    public void ChangeSlot()
+    {
         // Controllo input da tastiera per selezionare uno specifico slot usando i tasti numerici
         if (Input.GetKeyDown(KeyCode.Alpha1)) SelectSlot(0);
         if (Input.GetKeyDown(KeyCode.Alpha2)) SelectSlot(1);
         if (Input.GetKeyDown(KeyCode.Alpha3)) SelectSlot(2);
         if (Input.GetKeyDown(KeyCode.Alpha4)) SelectSlot(3);
         if (Input.GetKeyDown(KeyCode.Alpha5)) SelectSlot(4);
-
-        //Debug per vedere cosa contiene il dizionario
-        //Debug.Log(string.Join(", ", occupiedTiles.Select(entry => $"{entry.Key}: {entry.Value.name}")));
     }
-
     // Metodo per selezionare uno slot specifico dato il suo indice
     void SelectSlot(int index)
     {
@@ -81,23 +78,33 @@ public class InventoryManager : MonoBehaviour
                 // Converte la posizione di piantagione in una cella
                 Vector3Int cellPosition = Vector3Int.FloorToInt(plantPosition.position);
 
+                // Trova il GameObject della pianta corrispondente
+                GameObject selectedPlantObject = GetPlantAtPosition(cellPosition);
+
                 // Controlla se la cella è già occupata
                 if (!occupiedTiles.ContainsKey(cellPosition))
                 {
                     // Riduci la quantità nello slot e aggiorna la cella
                     selectedSlot.PlantSeed();
 
-                    // Recupera il GameObject della pianta dalla cella
-                    
+                    // Ottieni il GameObject attuale su cui piantare
+                    GameObject selectedTile = plantPosition.gameObject;
+                 
+                    Plant vegetable = selectedPlantObject.GetComponent<Plant>();
 
-                    if (plant != null)
+                    if (vegetable != null)
                     {
                         // Passa i dati dallo slot alla pianta
-                        plant.StartGrowth(selectedSlot);
+                        vegetable.StartGrowth(selectedSlot);
 
                         // Memorizza la pianta nella cella occupata
-                        occupiedTiles[cellPosition] = plantPosition.gameObject;
+                        occupiedTiles[cellPosition] = selectedTile;
+                        vegetable.cellPositionPlant = cellPosition;
+                        vegetable.InventoryManager = this;
+                        
                     }
+
+
                 }
                 else
                 {
@@ -107,6 +114,22 @@ public class InventoryManager : MonoBehaviour
         }
     }
 
+    // Metodo per ottenere il GameObject di una pianta in base alla posizione
+    private GameObject GetPlantAtPosition(Vector3Int position)
+    {
+        // Cicla attraverso tutti i GameObject che rappresentano le piante
+        foreach (GameObject plant in plantGameObjects)
+        {
+            // Confronta la posizione della pianta con la posizione data (convertita in un Vector3Int)
+            if (Vector3Int.FloorToInt(plant.transform.position) == position)
+            {
+                // Se la posizione combacia, ritorna il GameObject della pianta
+                return plant;
+            }
+        }
+        // Se non c'è nessuna pianta alla posizione specificata, ritorna null
+        return null;
+    }
 
     // Metodo per liberare la tile dal dizionario
     public void RemoveVegetableTile(Vector3Int cellPosition)
@@ -117,7 +140,14 @@ public class InventoryManager : MonoBehaviour
         }
     }
 
-
+    public void DEBUG()
+    {
+        //Debug per vedere cosa contiene il dizionario
+        if (Input.GetKeyDown(KeyCode.J))
+        {
+            Debug.Log(string.Join(", ", occupiedTiles.Select(entry => $"{entry.Key}: {entry.Value.name}")));
+        }
+    }
     //======INPUT CONTROLLER======//
     void OnEnable()
     {
@@ -147,8 +177,6 @@ public class InventoryManager : MonoBehaviour
     {
         if (PlayerManager.PuoiPiantare == true)
         {
-            
-            PlatingSeed.onClick.Invoke();  // Simula un clic sul bottone della UI
             PlantSelectedSeed();  // Esegue la piantagione del seme
         }
       

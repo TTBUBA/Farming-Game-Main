@@ -22,7 +22,7 @@ public class InventorySlot : MonoBehaviour
     {
         quantityText.text = quantity.ToString();
 
-        // Dichiarazione delle variabili che riceveranno i valori di out
+        /* DEBUG DATA 
         Sprite[] sprites;
         float timestage;
         string type;
@@ -32,6 +32,8 @@ public class InventorySlot : MonoBehaviour
         Debug.Log(sprites.Length);
         Debug.Log(timestage);
         Debug.Log( type);
+        */
+        
     }
 
     public void GetData(out Sprite[] sprite, out float Timestage, out string Type)

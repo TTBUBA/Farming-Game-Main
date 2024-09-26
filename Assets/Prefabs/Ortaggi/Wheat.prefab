@@ -93,19 +93,17 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 4692992478570809764}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: cf383d48b9f286a45b150397e0d71820, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  GrowSprites:
-  - {fileID: 21300000, guid: 21ff619a9fea7ab4ab0b9f2b01b4c6c5, type: 3}
-  - {fileID: 21300000, guid: ff77fc11a7826e848ae570fc8b06f93c, type: 3}
-  - {fileID: 21300000, guid: e4e9a0499a5f9314b9400a9d1f50e02d, type: 3}
-  - {fileID: 21300000, guid: b3ed953a14fcbcf4092e3f5068f61d82, type: 3}
+  growSprites: []
   timeStages: 5
   ItemType: Grano
   CurrentStage: 0
+  InventoryManager: {fileID: 0}
+  cellPositionPlant: {x: 0, y: 0, z: 0}
 --- !u!58 &-3313450472956101183
 CircleCollider2D:
   m_ObjectHideFlags: 0

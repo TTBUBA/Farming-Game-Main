@@ -93,19 +93,17 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 3245508487500998353}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: cf383d48b9f286a45b150397e0d71820, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  GrowSprites:
-  - {fileID: 21300000, guid: 35bc6c87c2d14f644ba6dadd074cf837, type: 3}
-  - {fileID: 21300000, guid: 025656f98a6a02b448548facb685e504, type: 3}
-  - {fileID: 21300000, guid: 57ddb557cda451a439b3245f54ceae90, type: 3}
-  - {fileID: 21300000, guid: cb13056eff613844f9484db6b6963490, type: 3}
+  growSprites: []
   timeStages: 5
   ItemType: Carota
   CurrentStage: 0
+  InventoryManager: {fileID: 0}
+  cellPositionPlant: {x: 0, y: 0, z: 0}
 --- !u!58 &10722327264987505
 CircleCollider2D:
   m_ObjectHideFlags: 0

@@ -26,9 +26,14 @@ public class Plant : MonoBehaviour
     public void StartGrowth(InventorySlot selectedSlot)
     {
         // Ottieni i dati dallo slot selezionato
-        selectedSlot.GetData(out growSprites, out timeStages, out ItemType);
+        VegetableData vegetableData = selectedSlot.GetVegetableData();
 
-       // Debug.Log("Dati" + selectedSlot.seedPrefab.name + "tempo" + timeStages);
+        growSprites = vegetableData.GrowSprites;
+        timeStages = vegetableData.TimeStages;
+        ItemType = vegetableData.ItemType;
+
+
+        // Debug.Log("Dati" + selectedSlot.seedPrefab.name + "tempo" + timeStages);
 
         CurrentStage = 0;
 
@@ -37,7 +42,7 @@ public class Plant : MonoBehaviour
  
    public IEnumerator Grow()
     {
-        while (CurrentStage < growSprites.Length )
+        while (CurrentStage < growSprites.Length)
         {
             yield return new WaitForSeconds(timeStages);
             CurrentStage++;

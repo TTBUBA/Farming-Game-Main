@@ -20,7 +20,7 @@ public class UscitaCollider : MonoBehaviour
         RoomAddress = FindAnyObjectByType<RoomManger>();
         // Trova l'oggetto con il tag "Globalworld" e assegna il riferimento a globalworld
         globalworld = GameObject.FindWithTag("Globalworld");
-        // Trova il figlio dell'oggetto globalworld chiamato "Test" e assegna il valore a childObject
+        // Trova il figlio dell'oggetto globalworld chiamato "Word" e assegna il valore a childObject
         childObject = globalworld.transform.Find("Word").gameObject;
     }
 
@@ -51,7 +51,7 @@ public class UscitaCollider : MonoBehaviour
 
 
             Vector3 entryPosition = RoomAddress.GetEntryPosition();
-            entryPosition.y -= 4f;
+            entryPosition.y -= 1f;
             entryPosition.z = 0;
             collision.transform.position = entryPosition;
           

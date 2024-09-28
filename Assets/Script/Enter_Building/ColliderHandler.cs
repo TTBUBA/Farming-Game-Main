@@ -8,10 +8,9 @@ public class ColliderHandler : MonoBehaviour
     public string RoomAddress;
     // Riferimento al gestore delle stanze
     private RoomManger roomManger;
-    // Riferimento all'oggetto del mondo globale
+
     public GameObject Globalworld;
-    // Riferimento all'animazione da riprodurre
-    public Animation Animazione;
+    public Animation Animazione_fade;
 
     // Start viene chiamato prima del primo frame update
     void Start()
@@ -31,11 +30,9 @@ public class ColliderHandler : MonoBehaviour
             // Disattiva l'oggetto Globalworld
             Globalworld.SetActive(false);
             // Riproduce l'animazione
-            Animazione.Play();
+            Animazione_fade.Play();
 
             roomManger.SetPosition(transform.position);
-
-
 
         }
     }

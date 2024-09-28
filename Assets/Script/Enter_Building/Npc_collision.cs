@@ -4,7 +4,7 @@ using UnityEngine;
 using UnityEngine.InputSystem;
 using UnityEngine.UI;
 
-public class Npc_ : MonoBehaviour
+public class Npc_collision : MonoBehaviour
 {
     public GameObject Box;
     public GameObject Shop;

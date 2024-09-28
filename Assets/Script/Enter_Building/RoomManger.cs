@@ -11,8 +11,8 @@ public class RoomManger : MonoBehaviour
     // Riferimento al giocatore
     public GameObject Player;
     // Distanza offset per il posizionamento della nuova stanza
-    public float Xasset = 10f;
-    public float Yasset = 5f;
+    public float Xasset;
+    public float Yasset;
 
     public Vector3 entryPosition;
 
@@ -47,7 +47,7 @@ public class RoomManger : MonoBehaviour
 
     public void MovePlayerToNewRoom(Vector3 roomPosition)
     {
-        Vector3 playerposition = new Vector3(-212 , 293, 0);
+        Vector3 playerposition = new Vector3(-219 , 288, 0);
         Player.transform.position = playerposition;
     }
 

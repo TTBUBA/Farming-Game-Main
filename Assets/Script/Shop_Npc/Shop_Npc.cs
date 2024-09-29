@@ -23,8 +23,8 @@ public class Shop : MonoBehaviour
     public int CurrentWallet = 0;
     public Text Text_Wallet;
 
-    private GameManager gamemanager;
-    public GameObject shop;
+    [SerializeField] private GameManager gamemanager;
+    [SerializeField] private GameObject shop;
     public InventorySlot[] inventorySlots;
 
     // InputController
@@ -35,24 +35,19 @@ public class Shop : MonoBehaviour
     public GameObject Icon_Quit_Shop;
 
     [Header("Input Controller")]
-    public InputActionReference Icon_Controller_Shop;
-    public InputActionReference Button_NextSlot;
-    public InputActionReference Button_BackSlot;
-    public InputActionReference Button_IncreseQuantity;
-    public InputActionReference Button_DecreseQuantity;
-    public InputActionReference Button_Quit;
+    [SerializeField] private InputActionReference Icon_Controller_Shop;
+    [SerializeField] private InputActionReference Button_NextSlot;
+    [SerializeField] private InputActionReference Button_BackSlot;
+    [SerializeField] private InputActionReference Button_IncreseQuantity;
+    [SerializeField] private InputActionReference Button_DecreseQuantity;
+    [SerializeField] private InputActionReference Button_Quit;
 
     // Input Manager
     public PlayerInput Playerinput;
 
-    public float timeElapsed;
-    public  bool isHolding_Increse = false;     // Indica se il bottone è premuto
-    public bool isHolding_Decrese = false;
-
-    public void Start()
-    {
-        gamemanager = FindAnyObjectByType<GameManager>();
-    }
+    [SerializeField] private float timeElapsed;
+    [SerializeField] private bool isHolding_Increse = false;     // Indica se il bottone è premuto
+    [SerializeField] private bool isHolding_Decrese = false;
 
     public void Update()
     {
@@ -255,7 +250,6 @@ public class Shop : MonoBehaviour
     }
 
 
-
     //========== Input Controller ==========//
 
     private void OnEnable()
@@ -354,7 +348,7 @@ public class Shop : MonoBehaviour
 
     private void buttonQuit(InputAction.CallbackContext context)
     {
-        shop.SetActive(false);
+        QuitShop();
     }
     private void ActiveImageController()
     {

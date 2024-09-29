@@ -35,7 +35,7 @@ public class RoomManger : MonoBehaviour
             }
             // Posiziona la nuova stanza 
             Vector3 RoomPosition = new Vector2(-200,300);
-            CurrentRoom = Instantiate(obj.Result,  RoomPosition , Quaternion.identity);
+            //CurrentRoom = Instantiate(obj.Result,  RoomPosition , Quaternion.identity);
 
             MovePlayerToNewRoom(RoomPosition);
         }

@@ -6,39 +6,25 @@ using UnityEngine.UI;
 
 public class Npc_collision : MonoBehaviour
 {
-    public GameObject Box;
+    public GameObject Ui_Npc;
     public GameObject Shop;
     public Text Box_Npc_Text;
-    private Move_Player Move_Player;
-    private Player_Manager PlayerMager;
+
+    private bool IsCollision = false;
 
     [Header("Ui Controller")]
-    public GameObject Ui_Log_Controller;
+    [SerializeField] private GameObject Ui_Log_Controller;
 
     [Header("Input Controller")]
-    public InputAction Log_Shop;
+    [SerializeField] private InputAction Log_Shop;
 
-    public PlayerInput PlayerInput;
-    // Start is called before the first frame update
-    void Start()
-    {
-        Move_Player = FindAnyObjectByType<Move_Player>();
-        PlayerMager = FindAnyObjectByType<Player_Manager>();
-        PlayerInput = FindAnyObjectByType<PlayerInput>();
-
-    }
+    [SerializeField] private PlayerInput PlayerInput;
+    [SerializeField] private Move_Player Move_Player;
+    [SerializeField] private Player_Manager PlayerMager;
 
     // Update is called once per frame
     void Update()
     {
-        if (Input.GetButtonDown("t"))
-        {
-            Box.SetActive(false);
-            Shop.SetActive(true);
-            Move_Player.speed = 0f;
-            
-        }
-
         trackerdevice();
     }
     private void trackerdevice()
@@ -63,25 +49,41 @@ public class Npc_collision : MonoBehaviour
         }
     }
 
-
     public void OnTriggerEnter2D(Collider2D collision)
     {
         if(collision.gameObject.CompareTag("Player"))
         {
-            Box.SetActive(true);
-            
+            IsCollision = true;
+            Ui_Npc.SetActive(true);
+            ActiveShop();
         }
     }
 
-    public void ExitShop()
+    private void OnTriggerExit2D(Collider2D collision)
     {
+        if (collision.gameObject.CompareTag("Player"))
+        {
+            IsCollision = false;
+            Ui_Npc.SetActive(false);
 
-        Shop.SetActive(false);
-        Move_Player.speed = 5;
+        }
     }
 
-    //Input Controller
+    public void ActiveShop()
+    {
+        if (Input.GetKeyDown(KeyCode.T) && IsCollision == true)
+        {
+            Ui_Npc.SetActive(false);
+            Shop.SetActive(true);
+            Debug.Log("click");
+        }
+    }
+    public void ExitShop()
+    {
+        Shop.SetActive(false);
+    }
 
+    //========Input Controller========//
     private void OnEnable()
     {
         Log_Shop.Enable();

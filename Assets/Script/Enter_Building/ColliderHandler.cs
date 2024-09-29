@@ -12,14 +12,13 @@ public class ColliderHandler : MonoBehaviour
     public GameObject Globalworld;
     public Animation Animazione_fade;
 
-    // Start viene chiamato prima del primo frame update
     void Start()
     {
         // Trova un oggetto di tipo RoomManger nella scena e assegna il riferimento a roomManger
         roomManger = FindAnyObjectByType<RoomManger>();
     }
 
-    // Metodo chiamato quando un altro collider entra nel trigger 2D di questo oggetto
+    
     public void OnTriggerEnter2D(Collider2D collision)
     {
         // Controlla se il collider appartiene a un oggetto con il tag "Player"

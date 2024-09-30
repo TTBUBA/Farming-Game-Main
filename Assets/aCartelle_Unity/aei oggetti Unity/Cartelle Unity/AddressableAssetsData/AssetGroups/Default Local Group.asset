@@ -22,16 +22,6 @@ MonoBehaviour:
     m_ReadOnly: 0
     m_SerializedLabels: []
     FlaggedDuringContentUpdateRestriction: 0
-  - m_GUID: e557fe35df583aa4bbcab61ad861f26f
-    m_Address: Market_2
-    m_ReadOnly: 0
-    m_SerializedLabels: []
-    FlaggedDuringContentUpdateRestriction: 0
-  - m_GUID: 62a39b43c147c3847af77941cd5822c4
-    m_Address: shop_1
-    m_ReadOnly: 0
-    m_SerializedLabels: []
-    FlaggedDuringContentUpdateRestriction: 0
   - m_GUID: b6a1445f3c3723f4e896aeefc91ed37d
     m_Address: House
     m_ReadOnly: 0

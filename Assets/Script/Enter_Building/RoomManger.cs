@@ -1,5 +1,3 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.AddressableAssets;
 using UnityEngine.ResourceManagement.AsyncOperations;
@@ -29,26 +27,20 @@ public class RoomManger : MonoBehaviour
         if (obj.Status == AsyncOperationStatus.Succeeded)
         {
             // Se esiste una stanza corrente, distruggila
+            /*
             if (CurrentRoom != null)
             {
                 Destroy(CurrentRoom);
             }
+            */
+  
             // Posiziona la nuova stanza 
             Vector3 RoomPosition = new Vector2(-200,300);
-            //CurrentRoom = Instantiate(obj.Result,  RoomPosition , Quaternion.identity);
-
-            MovePlayerToNewRoom(RoomPosition);
         }
         else
         {
             Debug.Log("Caricamento stanza fallito");
         }
-    }
-
-    public void MovePlayerToNewRoom(Vector3 roomPosition)
-    {
-        Vector3 playerposition = new Vector3(-219 , 288, 0);
-        Player.transform.position = playerposition;
     }
 
     public void SetPosition(Vector3 position)

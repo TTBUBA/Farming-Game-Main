@@ -5,23 +5,17 @@ using UnityEngine;
 public class ColliderHandler : MonoBehaviour
 {
     // Indirizzo della stanza da caricare
-    public string RoomAddress;
+    [SerializeField] private string RoomAddress;
     // Riferimento al gestore delle stanze
-    private RoomManger roomManger;
-
+    [SerializeField] private RoomManger roomManger;
+    [SerializeField] private GameObject Player;
+    [SerializeField] private GameObject PointSpawnPlayer;
     public GameObject Globalworld;
     public Animation Animazione_fade;
 
-    void Start()
-    {
-        // Trova un oggetto di tipo RoomManger nella scena e assegna il riferimento a roomManger
-        roomManger = FindAnyObjectByType<RoomManger>();
-    }
-
-    
     public void OnTriggerEnter2D(Collider2D collision)
     {
-        // Controlla se il collider appartiene a un oggetto con il tag "Player"
+        
         if (collision.CompareTag("Player"))
         {
             // Carica la stanza specificata dall'indirizzo
@@ -33,6 +27,9 @@ public class ColliderHandler : MonoBehaviour
 
             roomManger.SetPosition(transform.position);
 
+            //Quando entro posiziona il player sulla posizione del PointSpawnPlayer
+            Vector3 PlayerPosition = PointSpawnPlayer.transform.position;
+            Player.transform.position = PlayerPosition;
         }
     }
 

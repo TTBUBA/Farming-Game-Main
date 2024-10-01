@@ -6,6 +6,7 @@ public class ColliderHandler : MonoBehaviour
 {
     // Indirizzo della stanza da caricare
     [SerializeField] private string RoomAddress;
+
     // Riferimento al gestore delle stanze
     [SerializeField] private RoomManger roomManger;
     [SerializeField] private GameObject Player;
@@ -19,9 +20,11 @@ public class ColliderHandler : MonoBehaviour
         if (collision.CompareTag("Player"))
         {
             // Carica la stanza specificata dall'indirizzo
-            roomManger.LoodRoom(RoomAddress);
+            roomManger.ActivateRoom(RoomAddress);
+
             // Disattiva l'oggetto Globalworld
             Globalworld.SetActive(false);
+
             // Riproduce l'animazione
             Animazione_fade.Play();
 

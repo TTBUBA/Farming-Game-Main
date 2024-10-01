@@ -4,53 +4,32 @@ using UnityEngine;
 
 public class UscitaCollider : MonoBehaviour
 {
-    // Riferimento al gestore delle stanze (RoomManger)
-    private RoomManger RoomAddress;
-    // Riferimento all'oggetto del mondo globale
-    public GameObject globalworld;
-    // Riferimento all'animazione di fade
-    public Animation animazioneFade;
-    // Riferimento a un oggetto figlio
-    private GameObject childObject;
+    [SerializeField] private string RoomAddress;
 
-    
-    void Start()
-    {
-        // Trova un oggetto di tipo RoomManger nella scena e assegna il riferimento a RoomAddress
-        RoomAddress = FindAnyObjectByType<RoomManger>();
-        // Trova l'oggetto con il tag "Globalworld" e assegna il riferimento a globalworld
-        globalworld = GameObject.FindWithTag("Globalworld");
-        // Trova il figlio dell'oggetto globalworld chiamato "Word" e assegna il valore a childObject
-        childObject = globalworld.transform.Find("Word").gameObject;
-    }
+    public RoomManger RoomManger;
+    public GameObject globalworld; 
+    public Animation animazioneFade;
 
     
     public void OnTriggerEnter2D(Collider2D collision)
     {
-        // Controlla se il collider appartiene a un oggetto con il tag "Player"
+        
         if (collision.CompareTag("Player"))
         {
-            // Disabilita la stanza corrente tramite il gestore delle stanze
-            RoomAddress.DisableCurrentRoom();
+            // Disabilita la stanza corrente tramite DisableCurrentRoom
+            RoomManger.DisableCurrentRoom(RoomAddress);
 
-            // Se l'oggetto globalworld non è nullo (cioè esiste)
+            // Se l'oggetto globalworld non e nullo (cioe esiste)
             if (globalworld != null)
             {
-                // Attiva l'oggetto globalworld e il suo figlio childObject
+                // Attiva l'oggetto globalworld 
                 globalworld.SetActive(true);
-                childObject.SetActive(true);
-            }
-            else
-            {
-                // Logga un messaggio di debug se globalworld non è stato trovato
-                Debug.Log("non trovato");
             }
 
             // Riproduce l'animazione di fade
             animazioneFade.Play();
 
-
-            Vector3 entryPosition = RoomAddress.GetEntryPosition();
+            Vector3 entryPosition = RoomManger.GetEntryPosition();
             entryPosition.y -= 1f;
             entryPosition.z = 0;
             collision.transform.position = entryPosition;

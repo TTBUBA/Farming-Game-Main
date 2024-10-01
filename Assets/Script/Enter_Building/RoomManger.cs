@@ -1,48 +1,47 @@
+using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.AddressableAssets;
 using UnityEngine.ResourceManagement.AsyncOperations;
 
 public class RoomManger : MonoBehaviour
 {
-    // Riferimento alla stanza corrente
-    private GameObject CurrentRoom;
-    // Riferimento al giocatore
+    [SerializeField] private List<GameObject> Rooms;
+
     public GameObject Player;
-    // Distanza offset per il posizionamento della nuova stanza
-    public float Xasset;
-    public float Yasset;
+    // Riferimento alla stanza corrente
+    [SerializeField] private GameObject CurrentRoom;
+    [SerializeField] private Vector3 entryPosition;
 
-    public Vector3 entryPosition;
-
-
-    // Metodo per caricare una stanza dall'indirizzo specificato
-    public void LoodRoom(string roomAdress)
+    public void ActivateRoom(string roomAddress)
     {
-        Addressables.LoadAssetAsync<GameObject>(roomAdress).Completed += OnroomLoad;
-    }
-
-    // Metodo callback chiamato quando il caricamento della stanza è completato
-    private void OnroomLoad(AsyncOperationHandle<GameObject> obj)
-    {
-        if (obj.Status == AsyncOperationStatus.Succeeded)
+        foreach (GameObject room in Rooms)
         {
-            // Se esiste una stanza corrente, distruggila
-            /*
-            if (CurrentRoom != null)
+            //Controlla il nome Della stanza
+            if(room.name == roomAddress)
             {
-                Destroy(CurrentRoom);
+                if(CurrentRoom != null && CurrentRoom != room)
+                {
+                    room.SetActive(false);
+                }
+
+                room.SetActive(true);
+                CurrentRoom = room;
+                Debug.Log("stanza " + "=" + roomAddress);
             }
-            */
-  
-            // Posiziona la nuova stanza 
-            Vector3 RoomPosition = new Vector2(-200,300);
-        }
-        else
-        {
-            Debug.Log("Caricamento stanza fallito");
         }
     }
 
+    public void DisableCurrentRoom(string roomAddress)
+    {
+        foreach (GameObject room in Rooms)
+        {
+            //Controlla il nome Della stanza
+            if (room.name == roomAddress)
+            {
+                room.SetActive(false);
+            }
+        }
+    }
     public void SetPosition(Vector3 position)
     {
         entryPosition = Player.transform.position;
@@ -52,12 +51,5 @@ public class RoomManger : MonoBehaviour
     {
         return entryPosition;
     }
-    // Metodo per disabilitare la stanza corrente
-    public void DisableCurrentRoom()
-    {
-        if (CurrentRoom != null)
-        {
-            CurrentRoom.SetActive(false);
-        }
-    }
+
 }

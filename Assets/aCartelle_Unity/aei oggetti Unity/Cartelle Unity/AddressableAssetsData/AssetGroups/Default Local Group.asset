@@ -18,7 +18,7 @@ MonoBehaviour:
   m_GUID: aae9b44f67f63fa4982da189aa968cf5
   m_SerializeEntries:
   - m_GUID: cecfc835941704a42b8b6e96aea5b763
-    m_Address: Market_1
+    m_Address: Assets/Prefabs/Edifici_Visitabili/Market/Market_1.prefab
     m_ReadOnly: 0
     m_SerializedLabels: []
     FlaggedDuringContentUpdateRestriction: 0

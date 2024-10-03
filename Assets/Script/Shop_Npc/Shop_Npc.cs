@@ -192,7 +192,7 @@ public class Shop : MonoBehaviour
         {
             timeElapsed -= Time.deltaTime;
 
-            int incrementValue = Mathf.RoundToInt(1 * (1f - timeElapsed * timeElapsed));
+            int incrementValue = Mathf.RoundToInt(1f - timeElapsed * 2);
 
             trackerBoxes[currentIndex].CurrentValue -= incrementValue;
 

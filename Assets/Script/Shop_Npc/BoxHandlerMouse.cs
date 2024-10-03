@@ -8,20 +8,17 @@ public class BoxHandler : MonoBehaviour, IPointerEnterHandler, IPointerExitHandl
     public int SlotIndex; 
     
 
-
-
     public void OnPointerEnter(PointerEventData eventData)
     {
 
-        transform.transform.DOScale(new Vector2(1.05f, 1.05f), 0.2f).SetEase(Ease.InBounce);
+        transform.DOScale(new Vector3(1.05f, 1.05f, 1f), 0.2f).SetEase(Ease.InBounce);
         shop.currentIndex = SlotIndex;
 
     }
 
     public void OnPointerExit(PointerEventData eventData)
     {
-
-        transform.DOScale(Vector2.one, 0.2f).SetEase(Ease.InBounce);
+        transform.DOScale(Vector3.one, 0.2f).SetEase(Ease.InBounce);
     }
 
    

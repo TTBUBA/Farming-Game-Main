@@ -6,13 +6,16 @@ using UnityEngine.UI;
 
 public class Shop : MonoBehaviour
 {
-    public static Shop Instance { get; private set; }
     
+    public static Shop Instance { get; private set; }
+
     // Array
     public Image[] Box_Shop;
     public string[] ortaggioTypes;
     public Tracker_Box[] trackerBoxes;
-    public int currentIndex = 0;
+    public InventorySlot[] inventorySlots;
+
+    [SerializeField] public int currentIndex = 0;
 
     // Variabili per memorizzare l'ortaggio selezionato
     private int selectedOrtaggioIndex;
@@ -20,18 +23,16 @@ public class Shop : MonoBehaviour
     public string selectedOrtaggioType;
 
     // Variabile per memorizzare il totale corrente del portafoglio
-    public int CurrentWallet = 0;
+    private int CurrentWallet = 0;
     public Text Text_Wallet;
 
     [SerializeField] private GameManager gamemanager;
     [SerializeField] private GameObject shop;
-    public InventorySlot[] inventorySlots;
 
     // InputController
     [Header("UI Controller")]
     public GameObject[] Ui_Controller;
     public GameObject[] Ui_Keyboard;
-
     public GameObject Icon_Quit_Shop;
 
     [Header("Input Controller")]
@@ -52,7 +53,7 @@ public class Shop : MonoBehaviour
     public void Update()
     {
         TrackerDevice();
-
+        
         if (isHolding_Increse && !isHolding_Decrese)
         {
             Increment_Quantity();
@@ -62,6 +63,8 @@ public class Shop : MonoBehaviour
         {
             Decrese_Quantity();
         }
+        
+        
     }
 
     // Metodo per confermare l'acquisto dell'ordine
@@ -78,18 +81,18 @@ public class Shop : MonoBehaviour
             {
                 int quantityToAdd = trackerBox.CurrentValue;
 
-                if(quantityToAdd > 0)
+                if (quantityToAdd > 0)
                 {
-                    foreach(var slot in inventorySlots)
+                    foreach (var slot in inventorySlots)
                     {
-                        if(slot.seedType == trackerBox.Name_Box)
+                        if (slot.seedType == trackerBox.Name_Box)
                         {
                             slot.IncreaseSeedQuantity(quantityToAdd);
                             break;
                         }
                     }
                 }
-               
+
             }
 
             // Reset del carrello e del totale nel portafoglio
@@ -100,12 +103,12 @@ public class Shop : MonoBehaviour
                 trackerbox.Value_Quantity.text = "0";
                 trackerbox.Value_Vegetables.text = "X0";
             }
-            
+
             UpdateCarrelloTotale();
 
             Debug.Log("Ordine effettuato");
         }
-       
+
     }
 
     public void NextSlot()
@@ -128,53 +131,59 @@ public class Shop : MonoBehaviour
 
         ActiveImageController();
     }
-
+    
     // Funzione da chiamare quando il pulsante viene premuto
     public void OnPointerDown_Increse()
-    {
+    {    
         isHolding_Increse = true;
-        timeElapsed = 0f; // Resetta il tempo trascorso
+        timeElapsed = 0f;
     }
 
     // Funzione da chiamare quando il pulsante viene rilasciato
     public void OnPointerUp_Increse()
     {
         isHolding_Increse = false;
+        timeElapsed = 0f; // Resetta il tempo trascorso
     }
 
     // Funzione da chiamare quando il pulsante viene premuto
     public void OnPointerDown_Decrese()
     {
         isHolding_Decrese = true;
-        timeElapsed = 0f; // Resetta il tempo trascorso
+        timeElapsed = 0f; 
     }
 
     // Funzione da chiamare quando il pulsante viene rilasciato
     public void OnPointerUp_Decrese()
     {
         isHolding_Decrese = false;
+        timeElapsed = 0f; 
     }
-
 
     public void Increment_Quantity()
     {
-        
-        timeElapsed += Time.deltaTime;
 
-        int incrementValue = Mathf.RoundToInt(1 * (1f + timeElapsed * timeElapsed));
+        if (trackerBoxes[currentIndex].CurrentValue < 999)
+        {
+            timeElapsed += Time.deltaTime;
 
 
-        trackerBoxes[currentIndex].CurrentValue += incrementValue;
-        trackerBoxes[currentIndex].CurrentValue = Mathf.Clamp(trackerBoxes[currentIndex].CurrentValue, 0, trackerBoxes[currentIndex].MaxValue);
 
-        
-        trackerBoxes[currentIndex].Value_Quantity.text = trackerBoxes[currentIndex].CurrentValue.ToString();
-        trackerBoxes[currentIndex].Value_Vegetables.text = "X" + trackerBoxes[currentIndex].CurrentValue.ToString();
+            int incrementValue = Mathf.RoundToInt(1f + timeElapsed * 2);
+            
 
-        CurrentWallet += trackerBoxes[currentIndex].ortaggioPrices;
-        UpdateCarrelloTotale();
+            trackerBoxes[currentIndex].CurrentValue += incrementValue;
+            trackerBoxes[currentIndex].CurrentValue = Mathf.Clamp(trackerBoxes[currentIndex].CurrentValue, 0, trackerBoxes[currentIndex].MaxValue);
 
-        //Debug.Log(trackerBoxes[currentIndex].CurrentValue.ToString() + trackerBoxes[currentIndex].Name_Box);
+
+            trackerBoxes[currentIndex].Value_Quantity.text = trackerBoxes[currentIndex].CurrentValue.ToString();
+            trackerBoxes[currentIndex].Value_Vegetables.text = "X" + trackerBoxes[currentIndex].CurrentValue.ToString();
+
+            CurrentWallet += trackerBoxes[currentIndex].ortaggioPrices;
+            UpdateCarrelloTotale();
+
+            //Debug.Log(trackerBoxes[currentIndex].CurrentValue.ToString() + trackerBoxes[currentIndex].Name_Box);
+        }
     }
 
     public void Decrese_Quantity()
@@ -183,7 +192,7 @@ public class Shop : MonoBehaviour
         {
             timeElapsed -= Time.deltaTime;
 
-            int incrementValue = Mathf.RoundToInt(1 * (1 - timeElapsed * timeElapsed));
+            int incrementValue = Mathf.RoundToInt(1 * (1f - timeElapsed * timeElapsed));
 
             trackerBoxes[currentIndex].CurrentValue -= incrementValue;
 
@@ -251,7 +260,6 @@ public class Shop : MonoBehaviour
 
 
     //========== Input Controller ==========//
-
     private void OnEnable()
     {
         Icon_Controller_Shop.action.started += ShopOrderController;
@@ -370,7 +378,7 @@ public class Shop : MonoBehaviour
 
     private void ActionImage()
     {
-        Box_Shop[currentIndex].transform.DOScale(new Vector2(1.05f, 1.05f), 0.2f).SetEase(Ease.InBounce);
+        //Box_Shop[currentIndex].transform.DOScale(new Vector2(1.05f, 1.05f), 0.2f).SetEase(Ease.InBounce);
     }
 
 

@@ -154,16 +154,16 @@ public class OrderSheet : MonoBehaviour
 
                 switch (items[index].itemType)
                 {
-                    case Item.ItemType.Carota:
+                    case Item.ItemType.carrot:
                         trackingItem.RaccoltoCarote = (Mathf.Max(0, items[index].CurrentQuantity - items[index].RequiredQuantity));
                         break;
-                    case Item.ItemType.Cavolo:
+                    case Item.ItemType.kale:
                         trackingItem.Raccoltocavolo = (Mathf.Max(0, items[index].CurrentQuantity - items[index].RequiredQuantity));
                         break;
-                    case Item.ItemType.Patata:
+                    case Item.ItemType.potato:
                         trackingItem.RaccoltoPatate = (Mathf.Max(0, items[index].CurrentQuantity - items[index].RequiredQuantity));
                         break;
-                    case Item.ItemType.Grano:
+                    case Item.ItemType.wheat:
                         trackingItem.RaccoltoGrano = (Mathf.Max(0, items[index].CurrentQuantity - items[index].RequiredQuantity));
                         break;
                 }

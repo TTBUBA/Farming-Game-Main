@@ -1,21 +1,21 @@
 using UnityEngine;
 using UnityEngine.UI;
 
-    public enum ItemType 
-    {
-        Carota,
-        Patata,
-        Grano,
-        Cavolo
-    }
+ public enum ItemType 
+ {
+     carrot,
+     potato,
+     wheat,
+     kale
+  }
 public class Item : MonoBehaviour
 {
     public enum ItemType 
     {
-        Carota,
-        Patata,
-        Grano,
-        Cavolo
+        carrot,
+        potato,
+        wheat,
+        kale
     }
     public ItemType itemType;
     public string NameItem;
@@ -52,13 +52,13 @@ public class Item : MonoBehaviour
     {
         switch (itemType)
         {
-            case ItemType.Carota:
+            case ItemType.carrot:
                 return trackingItem.RaccoltoCarote;
-            case ItemType.Patata:
+            case ItemType.potato:
                 return trackingItem.RaccoltoPatate;
-            case ItemType.Grano:
+            case ItemType.wheat:
                 return trackingItem.RaccoltoGrano;
-            case ItemType.Cavolo:
+            case ItemType.kale:
                 return trackingItem.Raccoltocavolo;
             default:
                 return 0;

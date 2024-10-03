@@ -10,7 +10,7 @@ public class Npc_collision : MonoBehaviour
     public GameObject Shop;
     public Text Box_Npc_Text;
 
-    private bool IsCollision = false;
+    public bool IsCollision = false;
 
     [Header("Ui Controller")]
     [SerializeField] private GameObject Ui_Log_Controller;
@@ -26,6 +26,7 @@ public class Npc_collision : MonoBehaviour
     void Update()
     {
         trackerdevice();
+        ActiveShop();
     }
     private void trackerdevice()
     {
@@ -65,13 +66,12 @@ public class Npc_collision : MonoBehaviour
         {
             IsCollision = false;
             Ui_Npc.SetActive(false);
-
         }
     }
 
     public void ActiveShop()
     {
-        if (Input.GetKeyDown(KeyCode.T) && IsCollision == true)
+        if (Input.GetKeyDown(KeyCode.T))
         {
             Ui_Npc.SetActive(false);
             Shop.SetActive(true);

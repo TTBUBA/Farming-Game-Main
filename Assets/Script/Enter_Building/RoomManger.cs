@@ -12,6 +12,15 @@ public class RoomManger : MonoBehaviour
     [SerializeField] private GameObject CurrentRoom;
     [SerializeField] private Vector3 entryPosition;
 
+    public void Start()
+    {
+        foreach (GameObject room in Rooms)
+        {
+  
+                Debug.Log(room.name);
+            
+        }
+    }
     public void ActivateRoom(string roomAddress)
     {
         foreach (GameObject room in Rooms)
@@ -27,6 +36,7 @@ public class RoomManger : MonoBehaviour
                 room.SetActive(true);
                 CurrentRoom = room;
                 Debug.Log("stanza " + "=" + roomAddress);
+                Debug.Log(room.name);
             }
         }
     }

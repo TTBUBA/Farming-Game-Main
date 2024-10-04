@@ -378,7 +378,7 @@ public class Shop : MonoBehaviour
 
     private void ActionImage()
     {
-        //Box_Shop[currentIndex].transform.DOScale(new Vector2(1.05f, 1.05f), 0.2f).SetEase(Ease.InBounce);
+        Box_Shop[currentIndex].transform.DOScale(new Vector3(1.05f, 1.05f , 1f), 0.2f).SetEase(Ease.InBounce);
     }
 
 

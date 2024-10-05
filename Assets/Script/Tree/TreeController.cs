@@ -5,7 +5,7 @@ public class TreeController : MonoBehaviour
 {
     private Animator animator_Tree;
     private Tree tree;
-
+    public AxeController AxeController;
     private void Start()
     {
         animator_Tree = GetComponent<Animator>();

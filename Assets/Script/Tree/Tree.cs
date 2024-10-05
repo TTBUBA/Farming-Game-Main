@@ -2,35 +2,44 @@ using System.Collections;
 using UnityEngine;
 using UnityEngine.UI;
 using TMPro;
+using UnityEngine.InputSystem;
 
 public class Tree : MonoBehaviour
 {
-    public Sprite[] growthStages; // Gli sprite che rappresentano le fasi di crescita
-    public float timeToGrow = 10f; // Tempo totale per la ricrescita completa
-    public int currentStage = 0;
-    private SpriteRenderer spriteRenderer;
-    public Button destroy_Tree_Button; // Il bottone UI per tagliare l'albero
+    [SerializeField] private Sprite[] growthStages; // Fasi di crescita dell'albero
+    [SerializeField] private float timeToGrow = 10f; // Tempo per rigenerare l'albero
+    [SerializeField] public int currentStage = 0;
+    [SerializeField] private SpriteRenderer spriteRenderer;
 
     public GameObject Axe;
-
     public int legnoricevuto = 0;
     public TextMeshProUGUI Text_Legno;
     private Animation textAnimation;
     public TrakingLocal trakingRaccolto;
 
+    [Header("Ui_Controller")]
+    [SerializeField] private GameObject Button_Controller;
+
+    [Header("Ui_Keyboard")]
+    [SerializeField] private GameObject Button_Keyboard;
+
+    public bool UsingKeyboard = true;
+    public bool IsCollision = false;
+
+    public PlayerInput PlayerInput;
+
     void Start()
     {
         spriteRenderer = GetComponent<SpriteRenderer>();
+        textAnimation = Text_Legno.GetComponent<Animation>();
         spriteRenderer.sprite = growthStages[currentStage];
-        destroy_Tree_Button.gameObject.SetActive(false); // Nascondi il bottone all'inizio
-        Text_Legno.gameObject.SetActive(false); // Nascondi il testo all'inizio
-        textAnimation = Text_Legno.GetComponent<Animation>(); // Assicurati di ottenere il componente Animation da Text_Legno
+        Text_Legno.gameObject.SetActive(false); // Nasconde il testo all'inizio
         currentStage = growthStages.Length;
-        
     }
 
     private void Update()
     {
+        // Controlla la crescita dell'albero e gestisce il testo del legno
         if (currentStage >= 4)
         {
             legnoricevuto = 0;
@@ -40,68 +49,95 @@ public class Tree : MonoBehaviour
         {
             Text_Legno.gameObject.SetActive(false);
         }
+
+        TrackerInputSystem(); // Verifica il tipo di input attivo
+        ActiveImage(); // Mostra il pulsante corretto in base all'input
+    }
+
+    private void TrackerInputSystem()
+    {
+        if (PlayerInput != null)
+        {
+            var device = PlayerInput.currentControlScheme;
+            UsingKeyboard = (device == "Keyboard");
+        }
+    }
+
+    private void ActiveImage()
+    {
+        // Mostra il pulsante corretto in base all'input e la crescita dell'albero
+        if (currentStage >= 3 && IsCollision)
+        {
+            if (UsingKeyboard)
+            {
+                Button_Keyboard.SetActive(true);
+                Button_Controller.SetActive(false);
+            }
+            else
+            {
+                Button_Controller.SetActive(true);
+                Button_Keyboard.SetActive(false);
+            }
+        }
+    }
+
+    private void DisactiveImage()
+    {
+        // Disabilita i pulsanti
+        Button_Keyboard.SetActive(false);
+        Button_Controller.SetActive(false);
     }
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
         if (collision.gameObject.CompareTag("Axe"))
         {
-            if (currentStage >= 3)
-            {
-                destroy_Tree_Button.gameObject.SetActive(true); // Mostra il bottone quando l'ascia collide
-            }
+            IsCollision = true;
         }
     }
 
     private void OnTriggerExit2D(Collider2D collision)
     {
-        destroy_Tree_Button.gameObject.SetActive(false);
+        IsCollision = false;
+        DisactiveImage();
     }
 
     public void DestroyTree()
     {
-        // Aggiungi legnoricevuto a CountLegna di TrakingRaccolto
+        // Aggiorna il tracking del legno raccolto e avvia la rigenerazione dell'albero
         trakingRaccolto.AddLegna(legnoricevuto);
-
         StartCoroutine(GrowTree());
-        destroy_Tree_Button.gameObject.SetActive(false); // Nascondi il bottone dopo il click
+        DisactiveImage();
     }
 
     IEnumerator GrowTree()
     {
         currentStage = 0; // Resetta la crescita
-        spriteRenderer.sprite = null; // Disattiva l'albero visivamente
+        spriteRenderer.sprite = null; // Nasconde l'albero
 
-        yield return new WaitForSeconds(3f);
+        yield return new WaitForSeconds(3f); // Tempo prima di ricominciare la crescita
 
         for (int i = 0; i < growthStages.Length; i++)
         {
             yield return new WaitForSeconds(timeToGrow);
             currentStage = i;
             spriteRenderer.sprite = growthStages[currentStage];
-            Debug.Log($"Crescita albero: stage {currentStage}, sprite {spriteRenderer.sprite.name}");
+            Debug.Log($"Crescita albero: stage {currentStage}");
         }
 
-        // Dopo che l'albero è cresciuto completamente, mostra il testo
-        Text_PopUp();
+        Text_PopUp(); // Mostra il testo del legno ricevuto
     }
 
     public void Text_PopUp()
     {
-        legnoricevuto = Random.Range(10, 30);
+        legnoricevuto = Random.Range(10, 30); // Valore casuale del legno ricevuto
         Text_Legno.text = legnoricevuto.ToString();
 
-        // Assicurati che l'animazione sia presente prima di riprodurla
         if (textAnimation != null)
         {
             textAnimation.Play();
         }
-        else
-        {
-            Debug.LogWarning("Componente Animation non trovato su Text_Legno.");
-        }
 
         Text_Legno.gameObject.SetActive(true);
-        Debug.Log("legno ricevuto: " + legnoricevuto);
     }
 }

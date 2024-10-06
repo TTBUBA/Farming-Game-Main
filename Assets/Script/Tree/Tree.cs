@@ -11,11 +11,18 @@ public class Tree : MonoBehaviour
     [SerializeField] public int currentStage = 0;
     [SerializeField] private SpriteRenderer spriteRenderer;
 
-    public GameObject Axe;
-    public int legnoricevuto = 0;
+
+    [SerializeField] private int legnoricevuto = 0;
+    [SerializeField] public int LifeTree;
+    [SerializeField] private int[] LifeValue = { 10, 20, 30 };
+
+    [Header("Ui")]
     public TextMeshProUGUI Text_Legno;
+
+    [Header("Animation")]
     private Animation textAnimation;
-    public TrakingLocal trakingRaccolto;
+    private Animator TreeAnimation;
+
 
     [Header("Ui_Controller")]
     [SerializeField] private GameObject Button_Controller;
@@ -27,14 +34,17 @@ public class Tree : MonoBehaviour
     public bool IsCollision = false;
 
     public PlayerInput PlayerInput;
-
+    public TrakingLocal trakingRaccolto;
     void Start()
     {
         spriteRenderer = GetComponent<SpriteRenderer>();
         textAnimation = Text_Legno.GetComponent<Animation>();
+        TreeAnimation = GetComponent<Animator>();
         spriteRenderer.sprite = growthStages[currentStage];
-        Text_Legno.gameObject.SetActive(false); // Nasconde il testo all'inizio
         currentStage = growthStages.Length;
+        Text_Legno.gameObject.SetActive(false); // Nasconde il testo all'inizio
+
+        RandomLifeTree();
     }
 
     private void Update()
@@ -54,6 +64,10 @@ public class Tree : MonoBehaviour
         ActiveImage(); // Mostra il pulsante corretto in base all'input
     }
 
+    public void RandomLifeTree()
+    {
+        LifeTree = LifeValue[Random.Range(0, LifeValue.Length)];
+    }
     private void TrackerInputSystem()
     {
         if (PlayerInput != null)
@@ -62,7 +76,6 @@ public class Tree : MonoBehaviour
             UsingKeyboard = (device == "Keyboard");
         }
     }
-
     private void ActiveImage()
     {
         // Mostra il pulsante corretto in base all'input e la crescita dell'albero
@@ -80,7 +93,6 @@ public class Tree : MonoBehaviour
             }
         }
     }
-
     private void DisactiveImage()
     {
         // Disabilita i pulsanti
@@ -95,21 +107,19 @@ public class Tree : MonoBehaviour
             IsCollision = true;
         }
     }
-
     private void OnTriggerExit2D(Collider2D collision)
     {
         IsCollision = false;
         DisactiveImage();
     }
-
     public void DestroyTree()
     {
         // Aggiorna il tracking del legno raccolto e avvia la rigenerazione dell'albero
         trakingRaccolto.AddLegna(legnoricevuto);
-        StartCoroutine(GrowTree());
+        StartCoroutine(GrowTree()); //Coroutine per far crescere l'albero
         DisactiveImage();
+        
     }
-
     IEnumerator GrowTree()
     {
         currentStage = 0; // Resetta la crescita
@@ -122,12 +132,19 @@ public class Tree : MonoBehaviour
             yield return new WaitForSeconds(timeToGrow);
             currentStage = i;
             spriteRenderer.sprite = growthStages[currentStage];
-            Debug.Log($"Crescita albero: stage {currentStage}");
+           // Debug.Log($"Crescita albero: stage {currentStage}");
         }
 
         Text_PopUp(); // Mostra il testo del legno ricevuto
     }
+    public IEnumerator MotionTree()
+    {
+        // Avvia l'animazione di caduta dell'albero e poi disabilita l'animazione dell'ascia
+        TreeAnimation.SetBool("Motion", true);
+        yield return new WaitForSeconds(1f);
+        TreeAnimation.SetBool("Motion", false);
 
+    }
     public void Text_PopUp()
     {
         legnoricevuto = Random.Range(10, 30); // Valore casuale del legno ricevuto

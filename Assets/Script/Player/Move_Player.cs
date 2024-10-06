@@ -37,7 +37,7 @@ public class Move_Player : MonoBehaviour, IData
     public GameObject Axe;
 
 
-    Vector2 Movement;
+    public Vector2 Movement;
     public Vector2 keyboardMovement;
     public Vector2 controllerMovement;
 
@@ -85,7 +85,7 @@ public class Move_Player : MonoBehaviour, IData
         horizontal = Movement.x;
         vertical = Movement.y;
 
-
+       // Debug.Log(horizontal);
         // Il player rimane nella posizione in qui era prima
         if (horizontal != 0 || vertical != 0)
         {

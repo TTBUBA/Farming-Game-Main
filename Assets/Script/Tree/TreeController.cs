@@ -25,15 +25,15 @@ public class TreeController : MonoBehaviour
     {
         if (animator_Tree.enabled)
         {
-            StartCoroutine(PlayFallingAnimation());
+            StartCoroutine(PlayFallingLeftAnimation());
         }
     }
 
-    private IEnumerator PlayFallingAnimation()
+    private IEnumerator PlayFallingLeftAnimation()
     {
-        animator_Tree.SetBool("Fall", true);
+        animator_Tree.SetBool("Fall_Left", true);
         yield return new WaitForSeconds(2f);
-        animator_Tree.SetBool("Fall", false);
+        animator_Tree.SetBool("Fall_Left", false);
         animator_Tree.enabled = false;
 
         // Dopo l'animazione, attiva la funzione DestroyTree nella classe Tree

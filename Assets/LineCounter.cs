@@ -7,7 +7,7 @@ using UnityEngine;
 public class LineCounter : MonoBehaviour
 {
     // Definisce un metodo CountLines che può essere chiamato dal menu di Unity
-   // [MenuItem("Tools/Count Lines of Code")]
+    [MenuItem("Tools/Count Lines of Code")]
     public static void CountLines()
     {
         // Ottiene tutti i file .cs  nel progetto Unity

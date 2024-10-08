@@ -9,8 +9,8 @@ public class Move_Player : MonoBehaviour, IData
     private float horizontal;
     private float vertical;
 
-    private float lastHorizontal;
-    private float lastVertical;
+    public float lastHorizontal;
+    public float lastVertical;
 
 
     private Rigidbody2D rb;
@@ -137,29 +137,29 @@ public class Move_Player : MonoBehaviour, IData
         rb.velocity = direction * speed;
 
 
-        // Controlla la direzione in orizzontale del movimento dell ascia
-        switch (horizontal)
+        // Controlla la direzione in orizzontale del movimento dell ascia & PointSpawn
+        switch (lastHorizontal)
         {
             case > 0:
                 //Movimento ascia
-                Axe.transform.localPosition = new Vector2(1, 0);
-                Axe.transform.localScale = new Vector2(0.6f, 0.6f);
+                Axe.transform.localPosition = new Vector2(0.3f, -0.08f);
+                Axe.transform.localScale = new Vector2(0.5f, 0.5f);
 
                 //Movimento PointSpawn 
                 PointSpawn.transform.localPosition = new Vector2(1, 0);
                 break;
             case < 0:
                 //Movimento ascia
-                Axe.transform.localPosition = new Vector2(1, 0);
-                Axe.transform.localScale = new Vector2(-0.6f, 0.6f);
+                Axe.transform.localPosition = new Vector2(-0.3f, -0.08f);
+                Axe.transform.localScale = new Vector2(-0.5f, 0.5f);
 
                 //Movimento PointSpawn 
                 PointSpawn.transform.localPosition = new Vector2(-1, 0);
                 break;
         }
 
-        // Controlla la direzione in verticale del movimento del punto di spawn degli ortaggi
-        switch (vertical)
+        // Controlla la direzione in verticale del movimento del PointSpawn degli ortaggi
+        switch (lastVertical)
         {
             case > 0:
                 PointSpawn.transform.localPosition = new Vector2(0, 1);

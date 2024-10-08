@@ -10,7 +10,8 @@ public class Tree : MonoBehaviour
     [SerializeField] private float timeToGrow = 10f; // Tempo per rigenerare l'albero
     [SerializeField] public int currentStage = 0;
     [SerializeField] private SpriteRenderer spriteRenderer;
-
+    [SerializeField] private CircleCollider2D circlecollider;
+    [SerializeField] private CapsuleCollider2D Capsulecollider;
 
     [SerializeField] private int legnoricevuto = 0;
     [SerializeField] public int LifeTree;
@@ -37,6 +38,8 @@ public class Tree : MonoBehaviour
     public TrakingLocal trakingRaccolto;
     void Start()
     {
+        circlecollider = GetComponent<CircleCollider2D>();
+        Capsulecollider = GetComponent<CapsuleCollider2D>();
         spriteRenderer = GetComponent<SpriteRenderer>();
         textAnimation = Text_Legno.GetComponent<Animation>();
         TreeAnimation = GetComponent<Animator>();
@@ -60,10 +63,10 @@ public class Tree : MonoBehaviour
             Text_Legno.gameObject.SetActive(false);
         }
 
+        ColliderTree();
         TrackerInputSystem(); // Verifica il tipo di input attivo
         ActiveImage(); // Mostra il pulsante corretto in base all'input
     }
-
     public void RandomLifeTree()
     {
         LifeTree = LifeValue[Random.Range(0, LifeValue.Length)];
@@ -100,6 +103,21 @@ public class Tree : MonoBehaviour
         Button_Controller.SetActive(false);
     }
 
+    private void ColliderTree()
+    {
+        if(currentStage >= 3)
+        {
+            circlecollider.enabled = true;
+            Capsulecollider.enabled = true;
+
+        }
+        else if(currentStage >= 0)
+        {
+            circlecollider.enabled = false;
+            Capsulecollider.enabled = false;
+        }
+    }
+
     private void OnTriggerEnter2D(Collider2D collision)
     {
         if (collision.gameObject.CompareTag("Axe"))
@@ -118,7 +136,7 @@ public class Tree : MonoBehaviour
         trakingRaccolto.AddLegna(legnoricevuto);
         StartCoroutine(GrowTree()); //Coroutine per far crescere l'albero
         DisactiveImage();
-        
+        RandomLifeTree();
     }
     IEnumerator GrowTree()
     {

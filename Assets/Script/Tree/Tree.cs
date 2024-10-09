@@ -21,8 +21,8 @@ public class Tree : MonoBehaviour
     public TextMeshProUGUI Text_Legno;
 
     [Header("Animation")]
-    private Animation textAnimation;
-    private Animator TreeAnimation;
+    [SerializeField] private Animation textAnimation;
+    [SerializeField] private Animator TreeAnimation;
 
 
     [Header("Ui_Controller")]
@@ -102,7 +102,6 @@ public class Tree : MonoBehaviour
         Button_Keyboard.SetActive(false);
         Button_Controller.SetActive(false);
     }
-
     private void ColliderTree()
     {
         if(currentStage >= 3)

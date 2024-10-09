@@ -18,7 +18,7 @@ public class TreeController : MonoBehaviour
 
     public void Update()
     {
-        if (tree.currentStage >= 5)
+        if (tree.currentStage >= 4)
         {
             animator_Tree.enabled = true;
         }

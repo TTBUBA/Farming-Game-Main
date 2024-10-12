@@ -6,16 +6,22 @@ using UnityEngine.InputSystem;
 
 public class Tree : MonoBehaviour
 {
+    /* Variabili non in uso
+     * 
+    [SerializeField] public int LifeTree;
+    [SerializeField] private int[] LifeValue = { 10, 20, 30 };
+    */
+
     [SerializeField] private Sprite[] growthStages; // Fasi di crescita dell'albero
     [SerializeField] private float timeToGrow = 10f; // Tempo per rigenerare l'albero
     [SerializeField] public int currentStage = 0;
     [SerializeField] private SpriteRenderer spriteRenderer;
     [SerializeField] private CircleCollider2D circlecollider;
     [SerializeField] private CapsuleCollider2D Capsulecollider;
-
+    [SerializeField] public GameObject BackGroundBar;
+    [SerializeField] public Image BarLife;
     [SerializeField] private int legnoricevuto = 0;
-    [SerializeField] public int LifeTree;
-    [SerializeField] private int[] LifeValue = { 10, 20, 30 };
+
 
     [Header("Ui")]
     public TextMeshProUGUI Text_Legno;
@@ -47,11 +53,12 @@ public class Tree : MonoBehaviour
         currentStage = growthStages.Length;
         Text_Legno.gameObject.SetActive(false); // Nasconde il testo all'inizio
 
-        RandomLifeTree();
+        
     }
 
     private void Update()
     {
+        
         // Controlla la crescita dell'albero e gestisce il testo del legno
         if (currentStage >= 4)
         {
@@ -67,10 +74,7 @@ public class Tree : MonoBehaviour
         TrackerInputSystem(); // Verifica il tipo di input attivo
         ActiveImage(); // Mostra il pulsante corretto in base all'input
     }
-    public void RandomLifeTree()
-    {
-        LifeTree = LifeValue[Random.Range(0, LifeValue.Length)];
-    }
+
     private void TrackerInputSystem()
     {
         if (PlayerInput != null)
@@ -84,6 +88,7 @@ public class Tree : MonoBehaviour
         // Mostra il pulsante corretto in base all'input e la crescita dell'albero
         if (currentStage >= 3 && IsCollision)
         {
+            BackGroundBar.SetActive(true);
             if (UsingKeyboard)
             {
                 Button_Keyboard.SetActive(true);
@@ -101,6 +106,9 @@ public class Tree : MonoBehaviour
         // Disabilita i pulsanti
         Button_Keyboard.SetActive(false);
         Button_Controller.SetActive(false);
+
+        // Disabilita i La barra della vita
+        BackGroundBar.SetActive(false);
     }
     private void ColliderTree()
     {
@@ -116,7 +124,12 @@ public class Tree : MonoBehaviour
             Capsulecollider.enabled = false;
         }
     }
-
+    public void DecreseLifeTree()
+    {
+        BarLife.fillAmount -= Random.Range(0.02f, 0.2f);
+        Debug.Log(BarLife.fillAmount);
+  
+    }
     private void OnTriggerEnter2D(Collider2D collision)
     {
         if (collision.gameObject.CompareTag("Axe"))
@@ -135,7 +148,7 @@ public class Tree : MonoBehaviour
         trakingRaccolto.AddLegna(legnoricevuto);
         StartCoroutine(GrowTree()); //Coroutine per far crescere l'albero
         DisactiveImage();
-        RandomLifeTree();
+        
     }
     IEnumerator GrowTree()
     {

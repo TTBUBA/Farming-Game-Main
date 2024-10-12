@@ -1,4 +1,5 @@
 using System.Collections;
+using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
@@ -8,7 +9,6 @@ public class AxeController : MonoBehaviour
     public GameObject Axe;
     public Renderer axeRenderer;
     public float TimeUseAxe;
-
 
     [Header("Input_Controller")]
     public InputAction ButtonDestroy_Controller;
@@ -37,6 +37,7 @@ public class AxeController : MonoBehaviour
         {
             axeRenderer.enabled = true; // Mostra l'ascia
             currentTree = collision.gameObject.GetComponent<Tree>(); // Salva il riferimento all'albero corrente
+            currentTree.BackGroundBar.SetActive(true);
         }
     }
 
@@ -47,6 +48,7 @@ public class AxeController : MonoBehaviour
         {
             axeRenderer.enabled = false; // Nasconde l'ascia
             currentTree = null; // Rimuove il riferimento all'albero
+            currentTree.BackGroundBar.SetActive(false);
         }
     }
 
@@ -82,9 +84,9 @@ public class AxeController : MonoBehaviour
             // Abbatti l'albero corrente
             TreeController treeController = currentTree.GetComponent<TreeController>();
             
-            if (currentTree.LifeTree <= 0)
+            if (currentTree.BarLife.fillAmount <= 0)
             {
-                
+                currentTree.BarLife.fillAmount = 1f; // porta il valore a 1 
                 ButtonDestroyTree(treeController); // Avvia l'animazione dell'ascia
                 currentTree.DestroyTree(); // Distruggi l'albero specifico
                 currentTree.Text_PopUp(); // Mostra il testo del legno ricevuto
@@ -103,7 +105,6 @@ public class AxeController : MonoBehaviour
         ButtonDestroy_Controller.performed += DestroyTree_Controller;
         ButtonDestroy_KeyBoard.performed += DestroyTree_Keyboard;
     }
-
     private void OnDisable()
     {
         // Disabilita gli input e rimuovi gli eventi
@@ -113,13 +114,14 @@ public class AxeController : MonoBehaviour
         ButtonDestroy_Controller.performed -= DestroyTree_Controller;
         ButtonDestroy_KeyBoard.performed -= DestroyTree_Keyboard;
     }
+
     // Distruggi l'albero usando la tastiera
     private void DestroyTree_Keyboard(InputAction.CallbackContext context)
     {
         if(TimeUseAxe >= 1f)
         {
+            currentTree.DecreseLifeTree();
             DestroyTree(context, true);
-            currentTree.LifeTree -= 5;
             StartCoroutine(AnimatorAxe());
             currentTree.StartCoroutine(currentTree.MotionTree());
             TimeUseAxe = 0;

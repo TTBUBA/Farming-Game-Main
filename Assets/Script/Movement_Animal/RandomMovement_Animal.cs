@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class RandomMovement : MonoBehaviour
+public class RandomMovement_Animal : MonoBehaviour
 {
     public float speed = 3f;
     public float changeDirectionTime = 3f;

@@ -25,29 +25,6 @@ public class AnimalPlacer : MonoBehaviour
     public PlayerInput playerInput;
     public float SpedMoveController = 5f;
 
-    private void TrackerDevice()
-    {
-        if (playerInput != null)
-        {
-            var currentControlScheme = playerInput.currentControlScheme;
-
-            foreach (var device in playerInput.devices)
-            {
-                if (device is Keyboard)
-                {
-                    Debug.Log("Dispositivo attivo: Tastiera");
-                    // Azioni specifiche per la tastiera
-                }
-                else if (device is Gamepad)
-                {
-                    Debug.Log("Dispositivo attivo: Gamepad");
-                    // Azioni specifiche per il gamepad
-                }
-            }
-        }
-    }
-
-
     void Update()
     {
         if (isPlacing && objectInHand != null)
@@ -76,7 +53,6 @@ public class AnimalPlacer : MonoBehaviour
             }
         }
     }
-
     private void PlaceObject(Vector3 position)
     {
         RaycastHit2D hit = Physics2D.Raycast(position, Vector2.zero);
@@ -104,9 +80,52 @@ public class AnimalPlacer : MonoBehaviour
             }
         }
     }
+    private void TrackerDevice()
+    {
+        if (playerInput != null)
+        {
+            var currentControlScheme = playerInput.currentControlScheme;
+
+            foreach (var device in playerInput.devices)
+            {
+                if (device is Keyboard)
+                {
+                    Debug.Log("Dispositivo attivo: Tastiera");
+                    // Azioni specifiche per la tastiera
+                }
+                else if (device is Gamepad)
+                {
+                    Debug.Log("Dispositivo attivo: Gamepad");
+                    // Azioni specifiche per il gamepad
+                }
+            }
+        }
+    }
+    public void CancelPlacingObject()
+    {
+        if (objectInHand != null)
+        {
+            Destroy(objectInHand);
+            objectInHand = null;
+            isPlacing = false;
+            Debug.Log("Posizionamento annullato");
+        }
+    }
+
+    //Input Keyboard
+    public void BuyAnimalKeyboard()
+    {
+        if (objectInHand == null && gameManger.Coin >= cost)
+        {
+            objectInHand = Instantiate(objectToSpawn);
+            isPlacing = true;
+            gameManger.Coin -= cost;
+
+        }
+    }
+
 
     //Input Controller
-
     private void OnEnable()
     {
         moveAction.action.Enable();
@@ -169,14 +188,5 @@ public class AnimalPlacer : MonoBehaviour
         CancelPlacingObject();
     }
 
-    public void CancelPlacingObject()
-    {
-        if (objectInHand != null)
-        {
-            Destroy(objectInHand);
-            objectInHand = null;
-            isPlacing = false;
-            Debug.Log("Posizionamento annullato");
-        }
-    }
+    
 }

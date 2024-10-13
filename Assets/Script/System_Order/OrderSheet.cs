@@ -9,7 +9,7 @@ public class OrderSheet : MonoBehaviour
     public Text OrderNameText;
     public Text RewardText;
     public List<GameObject> BoxVegetables;
-    
+    public Button buttonOrder;
 
     public List<Item> items;
 
@@ -32,11 +32,11 @@ public class OrderSheet : MonoBehaviour
     public void Start()
     {
         ImageSheet = GetComponent<Image>();
+        buttonOrder = GetComponent<Button>();
     }
     public void Update()
     {
         //TEST
-
         if (Input.GetKeyDown(KeyCode.J))
         {
             ActivateRandomVegetables();
@@ -80,7 +80,6 @@ public class OrderSheet : MonoBehaviour
         });
 
 
-
     }
     public void ShowVegetables()
     {
@@ -111,8 +110,6 @@ public class OrderSheet : MonoBehaviour
         {
             Text.SetActive(false);
         }
-
-
     }
 
     public void ActiveVegetables()
@@ -121,8 +118,6 @@ public class OrderSheet : MonoBehaviour
         {
             vegetable.SetActive(true);
         }
-
-
     }
 
     public void ActiveText()
@@ -174,6 +169,7 @@ public class OrderSheet : MonoBehaviour
 
             HideVegetables();
             HideText();
+            buttonOrder.interactable = false;
             //gameObject.SetActive(false);
             ImageSheet.sprite = Sheet_Torn;
 

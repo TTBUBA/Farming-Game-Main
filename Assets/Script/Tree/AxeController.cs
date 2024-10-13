@@ -131,7 +131,14 @@ public class AxeController : MonoBehaviour
     // Distruggi l'albero usando il controller
     private void DestroyTree_Controller(InputAction.CallbackContext context)
     {
-        DestroyTree(context, false);
+        if (TimeUseAxe >= 1f)
+        {
+            currentTree.DecreseLifeTree();
+            DestroyTree(context, true);
+            StartCoroutine(AnimatorAxe());
+            currentTree.StartCoroutine(currentTree.MotionTree());
+            TimeUseAxe = 0;
+        }
     }
 
 }

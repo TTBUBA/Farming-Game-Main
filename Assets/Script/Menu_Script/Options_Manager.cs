@@ -16,15 +16,18 @@ public class Options_Manager : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        // Imposta la modalità full screen a 1920x1080
+        Screen.fullScreenMode = FullScreenMode.ExclusiveFullScreen;
+        Screen.SetResolution(1920, 1080, true);
+
         // Imposta il livello di qualità corrente all'avvio
         qualityLevel = QualitySettings.GetQualityLevel();
+        Screen.fullScreen = true;
+        Text_Fullscreen.text = "On";
+        ValueMusic = 0.1f;
+        ValueText = 10;
+        MusicText.text = ValueText.ToString();
         UpdateQualityText();
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-       
     }
 
     public void IncreseMusic()

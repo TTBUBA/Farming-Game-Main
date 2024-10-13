@@ -61,6 +61,7 @@ public class Order_Manager : MonoBehaviour
             {
                 OrderSheet.ImageSheet.sprite = OrderSheet.Sheet_Image;
                 OrderSheet.ActiveText();
+                OrderSheet.buttonOrder.interactable = true;
             }
             
 

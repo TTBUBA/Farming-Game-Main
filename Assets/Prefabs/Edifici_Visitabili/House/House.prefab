@@ -5088,6 +5088,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3541baa2f71802e42a1c152226c689ed, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  RoomAddress: 
+  RoomManger: {fileID: 0}
   globalworld: {fileID: 0}
   animazioneFade: {fileID: 5736491643681027655}
 --- !u!1 &4461801154557110122

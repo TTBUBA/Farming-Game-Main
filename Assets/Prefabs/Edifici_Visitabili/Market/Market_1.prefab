@@ -2701,6 +2701,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3541baa2f71802e42a1c152226c689ed, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  RoomAddress: 
+  RoomManger: {fileID: 0}
   globalworld: {fileID: 0}
   animazioneFade: {fileID: 5736491643681027655}
 --- !u!1 &3838240385121242498
@@ -6376,9 +6378,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: dab016403347dc341865bf97877e4a06, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Box: {fileID: 1570632635063650838}
+  Ui_Npc: {fileID: 0}
   Shop: {fileID: 4665172253197136498}
   Box_Npc_Text: {fileID: 456870571729701479}
+  IsCollision: 0
   Ui_Log_Controller: {fileID: 7100476823171054834}
   Log_Shop:
     m_Name: Log_Shop
@@ -6398,6 +6401,8 @@ MonoBehaviour:
       m_Flags: 0
     m_Flags: 0
   PlayerInput: {fileID: 0}
+  Move_Player: {fileID: 0}
+  PlayerMager: {fileID: 0}
 --- !u!50 &5238872738936951560
 Rigidbody2D:
   serializedVersion: 4

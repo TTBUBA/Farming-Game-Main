@@ -142,81 +142,9 @@
             "id": "78a7c803-78fa-4994-869f-7f0d60a232d7",
             "actions": [
                 {
-                    "name": "Button_Log_Box_Animal",
-                    "type": "Button",
-                    "id": "2506b191-d3f2-45b2-995c-3b4cf3134011",
-                    "expectedControlType": "Button",
-                    "processors": "",
-                    "interactions": "",
-                    "initialStateCheck": false
-                },
-                {
                     "name": "Button_Plant",
                     "type": "Button",
                     "id": "0e0eafd2-c4c1-4ca5-b54b-937397a098fe",
-                    "expectedControlType": "Button",
-                    "processors": "",
-                    "interactions": "",
-                    "initialStateCheck": false
-                },
-                {
-                    "name": "Button_Exit_Box_Animal",
-                    "type": "Button",
-                    "id": "106a1c8a-29d6-4967-a5bc-c0081efbaa1b",
-                    "expectedControlType": "Button",
-                    "processors": "",
-                    "interactions": "",
-                    "initialStateCheck": false
-                },
-                {
-                    "name": "Button_Log_Box_Magazzini",
-                    "type": "Button",
-                    "id": "4985523c-cec3-403f-ab42-eecc7a65ad41",
-                    "expectedControlType": "Button",
-                    "processors": "",
-                    "interactions": "",
-                    "initialStateCheck": false
-                },
-                {
-                    "name": "Button_Exit_Box_Magazzini",
-                    "type": "Button",
-                    "id": "dd10ef6c-29c6-4d45-8ba3-e6a055722dd6",
-                    "expectedControlType": "Button",
-                    "processors": "",
-                    "interactions": "",
-                    "initialStateCheck": false
-                },
-                {
-                    "name": "Button_Log_ShowCaseOrder",
-                    "type": "Button",
-                    "id": "44013b4b-7b38-499a-af60-85a01c49b24f",
-                    "expectedControlType": "Button",
-                    "processors": "",
-                    "interactions": "",
-                    "initialStateCheck": false
-                },
-                {
-                    "name": "Button_Exit_ShowCaseOrder",
-                    "type": "Button",
-                    "id": "2fd1d66e-83c9-42fc-8ee5-16e3e65cf7f6",
-                    "expectedControlType": "Button",
-                    "processors": "",
-                    "interactions": "",
-                    "initialStateCheck": false
-                },
-                {
-                    "name": "Button_Log_Mill",
-                    "type": "Button",
-                    "id": "30dcb1f9-c16f-44b3-af82-ae1760e25ae5",
-                    "expectedControlType": "Button",
-                    "processors": "",
-                    "interactions": "",
-                    "initialStateCheck": false
-                },
-                {
-                    "name": "Button_Exit_Mill",
-                    "type": "Button",
-                    "id": "e4fcccfc-9f4d-42ab-80b5-2837838a32ac",
                     "expectedControlType": "Button",
                     "processors": "",
                     "interactions": "",
@@ -410,20 +338,45 @@
                     "processors": "",
                     "interactions": "",
                     "initialStateCheck": true
+                },
+                {
+                    "name": "Button_Log_KeyBoard",
+                    "type": "Button",
+                    "id": "d54d8fa1-f3f1-42e3-9a46-16902623fa3b",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
+                },
+                {
+                    "name": "Button_Exit_KeyBoard",
+                    "type": "Button",
+                    "id": "5c48863a-08fd-46ce-88d4-0ea7c98d4a79",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
+                },
+                {
+                    "name": "Button_Log_Controller",
+                    "type": "Button",
+                    "id": "5865aad1-ff47-48ea-8458-b6e28b7ac3dc",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
+                },
+                {
+                    "name": "Button_Exit_Controller",
+                    "type": "Button",
+                    "id": "cb91565e-e80b-4be7-a02e-9da3da2bd5d7",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
                 }
             ],
             "bindings": [
-                {
-                    "name": "",
-                    "id": "52d81d85-97c0-4489-a7d3-9e1440f9cfca",
-                    "path": "<Gamepad>/buttonSouth",
-                    "interactions": "",
-                    "processors": "",
-                    "groups": "Controller",
-                    "action": "Button_Log_Box_Animal",
-                    "isComposite": false,
-                    "isPartOfComposite": false
-                },
                 {
                     "name": "",
                     "id": "9ded1c2f-7812-49fa-863e-4dd277004311",
@@ -443,39 +396,6 @@
                     "processors": "",
                     "groups": "",
                     "action": "Previous_Slot",
-                    "isComposite": false,
-                    "isPartOfComposite": false
-                },
-                {
-                    "name": "",
-                    "id": "135d20a5-60ce-4f37-9ca3-3459a1389396",
-                    "path": "<Gamepad>/buttonEast",
-                    "interactions": "",
-                    "processors": "",
-                    "groups": "Controller",
-                    "action": "Button_Exit_Box_Animal",
-                    "isComposite": false,
-                    "isPartOfComposite": false
-                },
-                {
-                    "name": "",
-                    "id": "49d59399-e374-45e2-83d2-82cb9735a837",
-                    "path": "<Gamepad>/buttonEast",
-                    "interactions": "",
-                    "processors": "",
-                    "groups": "Controller",
-                    "action": "Button_Exit_Box_Magazzini",
-                    "isComposite": false,
-                    "isPartOfComposite": false
-                },
-                {
-                    "name": "",
-                    "id": "f94f2765-5d63-4752-bd01-aa47c1db239c",
-                    "path": "<Gamepad>/buttonSouth",
-                    "interactions": "",
-                    "processors": "",
-                    "groups": "Controller",
-                    "action": "Button_Log_Box_Magazzini",
                     "isComposite": false,
                     "isPartOfComposite": false
                 },
@@ -520,28 +440,6 @@
                     "processors": "",
                     "groups": "",
                     "action": "Back_Image",
-                    "isComposite": false,
-                    "isPartOfComposite": false
-                },
-                {
-                    "name": "",
-                    "id": "ee3b2643-3814-40dc-be72-3635449d21e5",
-                    "path": "<Gamepad>/buttonEast",
-                    "interactions": "",
-                    "processors": "",
-                    "groups": "Controller",
-                    "action": "Button_Exit_Mill",
-                    "isComposite": false,
-                    "isPartOfComposite": false
-                },
-                {
-                    "name": "",
-                    "id": "9769d953-2e4e-4c13-b0a3-2e0d5c28ff05",
-                    "path": "<Gamepad>/buttonSouth",
-                    "interactions": "",
-                    "processors": "",
-                    "groups": "Controller",
-                    "action": "Button_Log_Mill",
                     "isComposite": false,
                     "isPartOfComposite": false
                 },
@@ -712,34 +610,56 @@
                 },
                 {
                     "name": "",
-                    "id": "60230676-509d-42b9-83ea-0d2100f625e3",
-                    "path": "<Gamepad>/buttonSouth",
-                    "interactions": "",
-                    "processors": "",
-                    "groups": "Controller",
-                    "action": "Button_Log_ShowCaseOrder",
-                    "isComposite": false,
-                    "isPartOfComposite": false
-                },
-                {
-                    "name": "",
-                    "id": "37c10275-6ee1-4126-bf48-3440d413a770",
-                    "path": "<Gamepad>/buttonEast",
-                    "interactions": "",
-                    "processors": "",
-                    "groups": "Controller",
-                    "action": "Button_Exit_ShowCaseOrder",
-                    "isComposite": false,
-                    "isPartOfComposite": false
-                },
-                {
-                    "name": "",
                     "id": "d74b9883-6baa-4623-accd-d88d61627e0a",
                     "path": "<Gamepad>/buttonSouth",
                     "interactions": "",
                     "processors": "",
                     "groups": "Controller",
                     "action": "Button_Plant",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "c463d8e9-236b-4915-a918-6ff92bcd86cd",
+                    "path": "<Keyboard>/e",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Button_Log_KeyBoard",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "38e7de0b-7927-4ab7-9fb9-4ac694f17cae",
+                    "path": "<Keyboard>/q",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Button_Exit_KeyBoard",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "fd8367a0-9876-4d20-ae6b-6d42138ab56c",
+                    "path": "<Gamepad>/dpad/up",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Button_Exit_Controller",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "25eebb9b-05ba-4c70-80bd-9ef40cf98f2b",
+                    "path": "<Gamepad>/leftStick/down",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Button_Log_Controller",
                     "isComposite": false,
                     "isPartOfComposite": false
                 }

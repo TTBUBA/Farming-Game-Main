@@ -211,7 +211,34 @@ public class Move_Player : MonoBehaviour, IData
             ActivePointPlant = false;
         }
     }
+    private Direction DetermineDirection(float horizontal, float vertical)
+    {
+        if (vertical < 0)
+        {
+            return Direction.Down;
+        }
+        else if (vertical > 0)
+        {
+            return Direction.Up;
+        }
+        else if (horizontal < 0)
+        {
+            return Direction.Left;
+        }
+        else
+        {
+            return Direction.Right;
+        }
+    }
 
+    private enum Direction
+    {
+        Down,
+        Up,
+        Left,
+        Right
+    }
+    
     /* Movimento per  mobile (pulsanti su/giù/sinistra/destra) 
   
     public void MovementMobile_Down()
@@ -265,34 +292,7 @@ public class Move_Player : MonoBehaviour, IData
         isMobileMovementPressed = false;
     }
     */
-    private Direction DetermineDirection(float horizontal, float vertical)
-    {
-        if (vertical < 0)
-        {
-            return Direction.Down;
-        }
-        else if (vertical > 0)
-        {
-            return Direction.Up;
-        }
-        else if (horizontal < 0)
-        {
-            return Direction.Left;
-        }
-        else
-        {
-            return Direction.Right;
-        }
-    }
 
-    private enum Direction
-    {
-        Down,
-        Up,
-        Left,
-        Right
-    }
-    
 
 
 }

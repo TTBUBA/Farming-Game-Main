@@ -196,8 +196,24 @@ public class Move_Player : MonoBehaviour, IData
         animator.SetBool("IdleLeft", false);
         animator.SetBool("IdleRight", false);
     }
+    public void OnTriggerEnter2D(Collider2D collision)
+    {
+        if (collision.gameObject.CompareTag("Terreno"))
+        {
+            ActivePointPlant = true;
+        }
+    }
 
-    // Funzioni per il movimento mobile (pulsanti su/giù/sinistra/destra)
+    public void OnTriggerExit2D(Collider2D collision)
+    {
+        if (collision.gameObject.CompareTag("Terreno"))
+        {
+            ActivePointPlant = false;
+        }
+    }
+
+    /* Movimento per  mobile (pulsanti su/giù/sinistra/destra) 
+  
     public void MovementMobile_Down()
     {
         SetMobileMovement(0f, -1f);
@@ -276,20 +292,7 @@ public class Move_Player : MonoBehaviour, IData
         Left,
         Right
     }
+     */
 
-    public void OnTriggerEnter2D(Collider2D collision)
-    {
-        if (collision.gameObject.CompareTag("Terreno"))
-        {
-            ActivePointPlant = true;
-        }
-    }
 
-    public void OnTriggerExit2D(Collider2D collision)
-    {
-        if (collision.gameObject.CompareTag("Terreno"))
-        {
-            ActivePointPlant = false;
-        }
-    }
 }

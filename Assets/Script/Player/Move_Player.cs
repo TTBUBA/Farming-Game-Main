@@ -264,7 +264,7 @@ public class Move_Player : MonoBehaviour, IData
     {
         isMobileMovementPressed = false;
     }
-
+    */
     private Direction DetermineDirection(float horizontal, float vertical)
     {
         if (vertical < 0)
@@ -292,7 +292,7 @@ public class Move_Player : MonoBehaviour, IData
         Left,
         Right
     }
-     */
+    
 
 
 }

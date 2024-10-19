@@ -30,9 +30,10 @@ public class Move_Player : MonoBehaviour, IData
     public bool ActivePointPlant = false;
 
     // Posizioni delle celle
-    private Vector3Int CellPosition;
-    private Vector3Int NextCellPosition;
+    public Vector3Int CellPosition; // Posizione della cella corrente
+    public Vector3Int NextCellPosition; // Posizione della prossima cella da raggiungere
 
+    public float test;
     void Start()
     {
         rb = GetComponent<Rigidbody2D>();
@@ -63,6 +64,7 @@ public class Move_Player : MonoBehaviour, IData
 
     void Update()
     {
+        //MovePointSpawn();
         HandleInput();
         HandleMovement();
         HandleAnimation();
@@ -99,7 +101,7 @@ public class Move_Player : MonoBehaviour, IData
         // Muovi PointSpawn se necessario
         if (ActivePointPlant)
         {
-            MovePointSpawn();
+           MovePointSpawn();
         }
     }
 
@@ -142,52 +144,70 @@ public class Move_Player : MonoBehaviour, IData
         {
             Axe.transform.localPosition = new Vector2(0.3f, -0.08f);
             Axe.transform.localScale = new Vector2(0.5f, 0.5f);
-            PointSpawn.transform.localPosition = new Vector2(1, 0);
         }
         else if (lastHorizontal < 0)
         {
             Axe.transform.localPosition = new Vector2(-0.3f, -0.08f);
-            Axe.transform.localScale = new Vector2(-0.5f, 0.5f);
-            PointSpawn.transform.localPosition = new Vector2(-1, 0);
-        }
-
-        if (lastVertical > 0)
-        {
-            PointSpawn.transform.localPosition = new Vector2(0, 1);
-        }
-        else if (lastVertical < 0)
-        {
-            PointSpawn.transform.localPosition = new Vector2(0, -1);
+            Axe.transform.localScale = new Vector2(-0.5f, 0.5f);        
         }
     }
 
-    // Muovi PointSpawn nella prossima cella 
+    // fa  muovere l'oggetto PointSpawn sulla Tilemap
     private void MovePointSpawn()
     {
-        // Calcola la cella corrente
-        CellPosition = Terrainmap.WorldToCell(transform.position);
+        // Ottiene la posizione del player sulla griglia
+        Vector3Int playerCell = Terrainmap.WorldToCell(transform.position);
+        Vector3 centerOfPlayerCell = Terrainmap.GetCellCenterWorld(playerCell);
 
-        // Muovi PointSpawn nella prossima cella
-        if (lastHorizontal > 0)
+        // Calcola la cella di destinazione in base alla direzione
+        Vector3Int targetCell = playerCell;
+
+
+        //========DEBUG========//
+        test += Time.deltaTime;
+
+        if(test >3)
         {
-            NextCellPosition = new Vector3Int(CellPosition.x + 1, CellPosition.y, 0);
+            Debug.Log(targetCell);
+            Debug.Log(centerOfPlayerCell);
+            test = 0;
         }
-        else if (lastHorizontal < 0)
-        {
-            NextCellPosition = new Vector3Int(CellPosition.x - 1, CellPosition.y, 0);
+        
+        // Disegna una croce al centro della cella
+        Debug.DrawLine(centerOfPlayerCell + Vector3.left * 0.5f, centerOfPlayerCell + Vector3.right * 0.5f, Color.red);
+        Debug.DrawLine(centerOfPlayerCell + Vector3.up * 0.5f, centerOfPlayerCell + Vector3.down * 0.5f, Color.red);
+
+        // Se il player è abbastanza vicino al centro della cella
+        if (Vector3.Distance(transform.position , centerOfPlayerCell) < 0.5f)
+        { 
+            if (lastHorizontal > 0)
+            {
+                targetCell.x += 1;  // Destra
+                centerOfPlayerCell.x += 1;
+            }
+            else if (lastHorizontal < 0)
+            {
+                targetCell.x -= 1;  // Sinistra
+                centerOfPlayerCell.x -= 1;
+            }
+            else if (lastVertical > 0)
+            {
+                targetCell.y += 1;  // Su
+                centerOfPlayerCell.y += 1;
+            }
+            else if (lastVertical < 0)
+            {
+                targetCell.y -= 1;  // Giù
+                centerOfPlayerCell.y -= 1;
+            }
         }
 
-        if (lastVertical > 0)
-        {
-            NextCellPosition = new Vector3Int(CellPosition.x, CellPosition.y + 1, 0);
-        }
-        else if (lastVertical < 0)
-        {
-            NextCellPosition = new Vector3Int(CellPosition.x, CellPosition.y - 1, 0);
-        }
 
-        PointSpawn.transform.position = Terrainmap.GetCellCenterWorld(NextCellPosition);
+        // Muovi il PointSpawn alla cella di destinazione
+        Vector3 targetPosition = Terrainmap.GetCellCenterWorld(targetCell);
+        PointSpawn.transform.position = targetPosition;
     }
+
 
     private void ResetIdleAnimation()
     {
@@ -230,7 +250,6 @@ public class Move_Player : MonoBehaviour, IData
             return Direction.Right;
         }
     }
-
     private enum Direction
     {
         Down,
@@ -292,7 +311,5 @@ public class Move_Player : MonoBehaviour, IData
         isMobileMovementPressed = false;
     }
     */
-
-
 
 }

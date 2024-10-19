@@ -8,6 +8,7 @@ using UnityEngine.UI;
 public class Player_Manager : MonoBehaviour
 {
     
+    public SpriteRenderer PointSpawn_Sprite;
     public GameObject PointSpawn;
     private InventoryManager inventoryManager;
 
@@ -18,13 +19,9 @@ public class Player_Manager : MonoBehaviour
     //public Text errorMessage;
     //public Button ButtonBulding;
 
-
-
     public bool PuoiPiantare = false;
     private bool inZonaCostruzioni = false;
   
-
-
     private void Awake()
     {
         ButtonPlant.SetActive(false);
@@ -44,7 +41,7 @@ public class Player_Manager : MonoBehaviour
             if (gameObject.CompareTag("Player") || gameObject.CompareTag("BoxPlayer"))
             {
                 ButtonPlant.SetActive(true);
-                PointSpawn.SetActive(true);
+                PointSpawn_Sprite.enabled = true;
                 PuoiPiantare = true;
 
                 if (inventoryManager != null && PuoiPiantare)
@@ -63,7 +60,7 @@ public class Player_Manager : MonoBehaviour
             if (gameObject.CompareTag("Player") || gameObject.CompareTag("BoxPlayer"))
             {
                 ButtonPlant.SetActive(false);
-                PointSpawn.SetActive(false);
+                PointSpawn_Sprite.enabled = false;
                 PuoiPiantare = false;
             }
         }

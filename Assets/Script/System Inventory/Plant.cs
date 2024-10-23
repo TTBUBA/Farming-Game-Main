@@ -26,7 +26,7 @@ public class Plant : MonoBehaviour
     public void StartGrowth(InventorySlot selectedSlot)
     {
         // Ottieni i dati dallo slot selezionato
-        VegetableData vegetableData = selectedSlot.GetVegetableData();
+        VegetableData vegetableData = selectedSlot.vegetableData;
 
         growSprites = vegetableData.GrowSprites;
         timeStages = vegetableData.TimeStages;

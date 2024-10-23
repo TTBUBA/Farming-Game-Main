@@ -3,98 +3,104 @@ using UnityEngine.InputSystem;
 using UnityEngine.UI;
 using System.Collections.Generic;
 using System.Linq;
-using System;
-
 
 public class InventoryManager : MonoBehaviour
 {
-    //tiene traccia delle celle occupate 
-    public Dictionary<Vector3Int, GameObject> occupiedTiles = new Dictionary<Vector3Int, GameObject >();
+    // Hotbar e slot dinamico
+    public InventorySlot[] hotbarSlots;  // Hotbar fissa con 4 slot
+    public InventorySlot dynamicSlot;  // Slot dinamico per semi o strumenti
 
+    [SerializeField] private int selectedHotbarSlotIndex = 0;  // Indice dello slot selezionato nella hotbar
+    public Transform plantPosition;  // Posizione dove piantare il seme
+
+    // Dati di input per il controller/gamepad
+    public InputActionReference Plating_Pad;  // Azione di piantare con gamepad
+    public InputActionReference NextSlot_Pad;  // Slot successivo nella hotbar
+    public InputActionReference PreviousSlot_Pad;  // Slot precedente nella hotbar
+
+    // Gestione delle celle occupate dalle piante
+    public Dictionary<Vector3Int, GameObject> occupiedTiles = new Dictionary<Vector3Int, GameObject>();
+
+    // Lista dei prefab delle piante per posizionarle in game
     public GameObject[] plantGameObjects;
-    public InventorySlot[] slots;  // Array degli slot dell'inventario
-    [SerializeField] private int selectedSlotIndex = 0;  // Indice dello slot attualmente selezionato
-    public Transform plantPosition;  // Posizione nel mondo dove piantare il seme
 
-    // Input GamePad
-    public InputActionReference Plating_Pad;  // Riferimento all'azione del gamepad per piantare un seme
-    public InputActionReference NextSlot_Pad;  // Riferimento all'azione del gamepad per selezionare lo slot successivo
-    public InputActionReference PreviousSlot_Pad;  // Riferimento all'azione del gamepad per selezionare lo slot precedente
-
-    //PlayerManager
+    // Riferimento al manager del giocatore
     public Player_Manager PlayerManager;
+
+    // Inizializza le azioni del gamepad
+    void OnEnable()
+    {
+        Plating_Pad.action.started += PlantSeedGamePad;
+        Plating_Pad.action.Enable();
+
+        NextSlot_Pad.action.started += NextSlot;
+        PreviousSlot_Pad.action.started += PreviousSlot;
+        NextSlot_Pad.action.Enable();
+        PreviousSlot_Pad.action.Enable();
+    }
+
+    // Disabilita le azioni per evitare memory leak
+    void OnDisable()
+    {
+        Plating_Pad.action.started -= PlantSeedGamePad;
+        Plating_Pad.action.Disable();
+
+        NextSlot_Pad.action.started -= NextSlot;
+        PreviousSlot_Pad.action.started -= PreviousSlot;
+        NextSlot_Pad.action.Disable();
+        PreviousSlot_Pad.action.Disable();
+    }
 
     // Metodo chiamato ad ogni frame per controllare l'input della tastiera
     void Update()
     {
-        ChangeSlot();
-        DEBUG();
-    }
-    public void ChangeSlot()
-    {
-        // Controllo input da tastiera per selezionare uno specifico slot usando i tasti numerici
-        if (Input.GetKeyDown(KeyCode.Alpha1)) SelectSlot(0);
-        if (Input.GetKeyDown(KeyCode.Alpha2)) SelectSlot(1);
-        if (Input.GetKeyDown(KeyCode.Alpha3)) SelectSlot(2);
-        if (Input.GetKeyDown(KeyCode.Alpha4)) SelectSlot(3);
-        if (Input.GetKeyDown(KeyCode.Alpha5)) SelectSlot(4);
+        ChangeHotbarSlot();  // Controlla la selezione degli slot della hotbar
+        DEBUG();  // Debug per il dizionario delle celle occupate
     }
 
-    // Metodo per selezionare uno slot specifico dato il suo indice
-    void SelectSlot(int index)
+    // Metodo per cambiare lo slot della hotbar con tastiera
+    public void ChangeHotbarSlot()
     {
-        // Deseleziona tutti gli slot
-        foreach (var slot in slots)
+        if (Input.GetKeyDown(KeyCode.Alpha1)) SelectHotbarSlot(0);
+        if (Input.GetKeyDown(KeyCode.Alpha2)) SelectHotbarSlot(1);
+        if (Input.GetKeyDown(KeyCode.Alpha3)) SelectHotbarSlot(2);
+        if (Input.GetKeyDown(KeyCode.Alpha4)) SelectHotbarSlot(3);
+    }
+
+    // Seleziona uno slot della hotbar
+    void SelectHotbarSlot(int index)
+    {
+        foreach (var slot in hotbarSlots)
         {
             slot.Deselect();
         }
 
-        // Aggiorna l'indice dello slot selezionato
-        selectedSlotIndex = index;
-
-        // Seleziona il nuovo slot
-        slots[selectedSlotIndex].Select();
+        selectedHotbarSlotIndex = index;
+        hotbarSlots[selectedHotbarSlotIndex].Select();
     }
 
+    // Metodo per piantare un seme dallo slot selezionato
     public void PlantSelectedSeed()
     {
-        InventorySlot selectedSlot = slots[selectedSlotIndex];  // Ottieni il riferimento allo slot selezionato
+        InventorySlot selectedSlot = hotbarSlots[selectedHotbarSlotIndex];  // Ottieni lo slot selezionato
 
-        if (selectedSlot.quantity > 0)  // Controlla se ci sono semi disponibili in questo slot
+        if (selectedSlot.vegetableData != null && selectedSlot.vegetableData.quantity > 0)  // Controlla se ci sono semi disponibili
         {
-            // Controlla che la posizione di piantagione sia assegnata
             if (plantPosition != null)
             {
-                // Converte la posizione di piantagione in una cella
                 Vector3Int cellPosition = Vector3Int.FloorToInt(plantPosition.position);
 
-                // Trova il GameObject della pianta corrispondente
-                GameObject selectedPlantObject = GetPlantAtPosition(cellPosition);
-
-                // Controlla se la cella è già occupata
+                // Se la cella non è occupata, pianta il seme
                 if (!occupiedTiles.ContainsKey(cellPosition))
                 {
-                    // Riduci la quantità nello slot e aggiorna la cella
-                    selectedSlot.PlantSeed();
+                    selectedSlot.PlantSeed();  // Riduce la quantità di semi
+                    Plant plant = GetPlantAtPosition(cellPosition)?.GetComponent<Plant>();
 
-                    // Ottieni il GameObject attuale su cui piantare
-                    GameObject selectedTile = plantPosition.gameObject;
-                 
-                    Plant vegetable = selectedPlantObject.GetComponent<Plant>();
-
-                    if (vegetable != null)
+                    if (plant != null)
                     {
-                        // Passa i dati dallo slot alla pianta
-                        vegetable.StartGrowth(selectedSlot);
-
-                        // Memorizza la pianta nella cella occupata
-                        occupiedTiles[cellPosition] = selectedTile;
-                        vegetable.cellPositionPlant = cellPosition;
-                        vegetable.InventoryManager = this;
-                        
+                        plant.StartGrowth(selectedSlot);  // Avvia la crescita della pianta
+                        occupiedTiles[cellPosition] = plant.gameObject;  // Memorizza la pianta nella cella occupata
                     }
-
-
                 }
                 else
                 {
@@ -104,88 +110,56 @@ public class InventoryManager : MonoBehaviour
         }
     }
 
-    // Metodo per ottenere il GameObject di una pianta in base alla posizione
+    // Metodo per ottenere la pianta corrispondente alla posizione
     private GameObject GetPlantAtPosition(Vector3Int position)
     {
-        // Cicla attraverso tutti i GameObject che rappresentano le piante
         foreach (GameObject plant in plantGameObjects)
         {
-            // Confronta la posizione della pianta con la posizione data (convertita in un Vector3Int)
             if (Vector3Int.FloorToInt(plant.transform.position) == position)
             {
-                // Se la posizione combacia, ritorna il GameObject della pianta
                 return plant;
             }
         }
-        // Se non c'è nessuna pianta alla posizione specificata, ritorna null
         return null;
     }
 
-    // Metodo per liberare la tile dal dizionario
-    public void RemoveVegetableTile(Vector3Int cellPosition)
-    {
-        if (occupiedTiles.ContainsKey(cellPosition))
-        {
-            occupiedTiles.Remove(cellPosition);
-        }
-    }
-
+    // Metodo per mostrare il contenuto del dizionario delle celle occupate
     public void DEBUG()
     {
-        //Debug per vedere cosa contiene il dizionario
         if (Input.GetKeyDown(KeyCode.J))
         {
             Debug.Log(string.Join(", ", occupiedTiles.Select(entry => $"{entry.Key}: {entry.Value.name}")));
         }
     }
 
-
-    //======INPUT CONTROLLER======//
-    void OnEnable()
-    {
-        // Collega l'evento di piantare un seme all'azione del gamepad
-        Plating_Pad.action.started += PlantSeedGamePad;
-        Plating_Pad.action.Enable();  // Abilita l'azione del gamepad per piantare
-
-        // Collega gli eventi per navigare tra gli slot con il gamepad
-        NextSlot_Pad.action.started += NextSlot;
-        PreviousSlot_Pad.action.started += PreviousSlot;
-        NextSlot_Pad.action.Enable();  // Abilita l'azione per lo slot successivo
-        PreviousSlot_Pad.action.Enable();  // Abilita l'azione per lo slot precedente
-    }
-    void OnDisable()
-    {
-        // Scollega gli eventi per evitare memory leak o chiamate non volute
-        Plating_Pad.action.started -= PlantSeedGamePad;
-        Plating_Pad.action.Disable();  // Disabilita l'azione del gamepad per piantare
-
-        NextSlot_Pad.action.started -= NextSlot;
-        PreviousSlot_Pad.action.started -= PreviousSlot;
-        NextSlot_Pad.action.Disable();  // Disabilita l'azione per lo slot successivo
-        PreviousSlot_Pad.action.Disable();  // Disabilita l'azione per lo slot precedente
-    }
-    // Metodo per piantare un seme utilizzando il gamepad
-    public void PlantSeedGamePad(InputAction.CallbackContext Obj)
+    // Metodo per piantare un seme con il gamepad
+    public void PlantSeedGamePad(InputAction.CallbackContext context)
     {
         if (PlayerManager.PuoiPiantare == true)
         {
-            PlantSelectedSeed();  // Esegue la piantagione del seme
+            PlantSelectedSeed();
         }
-      
     }
 
     // Metodo per selezionare lo slot successivo con il controller
     private void NextSlot(InputAction.CallbackContext context)
     {
-        selectedSlotIndex = (selectedSlotIndex + 1) % slots.Length;  // Incrementa l'indice e torna a zero se supera il numero di slot
-        SelectSlot(selectedSlotIndex);  // Aggiorna la UI per riflettere il nuovo slot selezionato
+        selectedHotbarSlotIndex = (selectedHotbarSlotIndex + 1) % hotbarSlots.Length;
+        SelectHotbarSlot(selectedHotbarSlotIndex);
     }
 
     // Metodo per selezionare lo slot precedente con il controller
     private void PreviousSlot(InputAction.CallbackContext context)
     {
-        selectedSlotIndex--;  // Decrementa l'indice dello slot
-        if (selectedSlotIndex < 0) selectedSlotIndex = slots.Length - 1;  // Se l'indice diventa negativo, torna all'ultimo slot
-        SelectSlot(selectedSlotIndex);  // Aggiorna la UI per riflettere il nuovo slot selezionato
+        selectedHotbarSlotIndex--;
+        if (selectedHotbarSlotIndex < 0) selectedHotbarSlotIndex = hotbarSlots.Length - 1;
+        SelectHotbarSlot(selectedHotbarSlotIndex);
+    }
+
+    // Metodo per mostrare lo slot dinamico quando necessario
+    public void ShowDynamicSlot(List<VegetableData> availableSeeds)
+    {
+        dynamicSlot.gameObject.SetActive(true);  // Mostra lo slot dinamico
+        // Logica per selezionare il seme o strumento disponibile
     }
 }

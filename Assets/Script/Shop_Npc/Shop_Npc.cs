@@ -85,7 +85,7 @@ public class Shop : MonoBehaviour
                 {
                     foreach (var slot in inventorySlots)
                     {
-                        if (slot.seedType == trackerBox.Name_Box)
+                        if (slot.vegetableData.NameVegetable == trackerBox.Name_Box)
                         {
                             slot.IncreaseSeedQuantity(quantityToAdd);
                             break;

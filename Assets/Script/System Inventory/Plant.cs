@@ -64,7 +64,7 @@ public class Plant : MonoBehaviour
                 if (trakingRaccolto != null)
                 {
                     trakingRaccolto.CollectItem(ItemType);
-                    InventoryManager.RemoveVegetableTile(cellPositionPlant);
+                    InventoryManager.(cellPositionPlant);
                     ResetPlant();
 
                     //Debug.Log("Collisione Avvenuta e raccolto aggiunto");

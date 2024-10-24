@@ -6,6 +6,7 @@ public class VegetableData : ScriptableObject
     public string NameVegetable;
     public int quantity;
     public Sprite[] GrowSprites;
+    public Sprite IconVegetable;
     public float TimeStages;
     public string ItemType;
     //public string seedType;

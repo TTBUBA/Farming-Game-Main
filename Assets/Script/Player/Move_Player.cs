@@ -164,12 +164,12 @@ public class Move_Player : MonoBehaviour, IData
 
 
         //========DEBUG========//
-        test += Time.deltaTime;
+        //test += Time.deltaTime;
 
         if(test >3)
         {
-            Debug.Log(targetCell);
-            Debug.Log(centerOfPlayerCell);
+            //Debug.Log(targetCell);
+            //Debug.Log(centerOfPlayerCell);
             test = 0;
         }
         

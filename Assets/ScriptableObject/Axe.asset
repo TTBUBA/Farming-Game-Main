@@ -12,6 +12,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8d0750b0933969c448a007e69355c24e, type: 3}
   m_Name: Axe
   m_EditorClassIdentifier: 
-  NameVegetable: 
-  icon: {fileID: 0}
+  NameVegetable: axe
+  icon: {fileID: 484618701, guid: ad766e41482bb0549a44eb48bcd791a9, type: 3}
   AreaUsing: 

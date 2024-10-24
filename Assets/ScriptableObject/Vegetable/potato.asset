@@ -1,0 +1,24 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 50db618bed22c1848b57294a9e2084bc, type: 3}
+  m_Name: potato
+  m_EditorClassIdentifier: 
+  NameVegetable: potato
+  quantity: 15
+  GrowSprites:
+  - {fileID: 21300000, guid: 17709ac85dcf4264f90362b80beab6da, type: 3}
+  - {fileID: 21300000, guid: 5fdb3c1a4fc346c48b92cc3e28f2c509, type: 3}
+  - {fileID: 21300000, guid: b20e61920dc5ab5458ba9c052c7355b5, type: 3}
+  - {fileID: 21300000, guid: 815010af1258ae24896ffa8019d6cf46, type: 3}
+  IconVegetable: {fileID: 21300000, guid: 99250df9bfbc6524fa73a14d8d3ed695, type: 3}
+  TimeStages: 2
+  ItemType: potato

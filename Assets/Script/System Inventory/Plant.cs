@@ -19,10 +19,11 @@ public class Plant : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        InventorySlot inventorySlot = GetComponent<InventorySlot>();
         SpriteRenderer = GetComponent<SpriteRenderer>();
+        
     }
 
+    // Inizia la crescita del seme piantato
     public void StartGrowth(InventorySlot selectedSlot)
     {
         // Ottieni i dati dallo slot selezionato
@@ -41,17 +42,16 @@ public class Plant : MonoBehaviour
     }
  
    public IEnumerator Grow()
-    {
+   {
         while (CurrentStage < growSprites.Length)
         {
             yield return new WaitForSeconds(timeStages);
             CurrentStage++;
             SpriteRenderer.sprite = growSprites[CurrentStage];
-        }
-
-        
+        }   
     }
 
+    // Rileva se il player può raccogliere la pianta
     public void OnTriggerEnter2D(Collider2D other)
     {
         
@@ -64,7 +64,7 @@ public class Plant : MonoBehaviour
                 if (trakingRaccolto != null)
                 {
                     trakingRaccolto.CollectItem(ItemType);
-                    InventoryManager.(cellPositionPlant);
+                    InventoryManager.RemoveVegetableTile(cellPositionPlant);
                     ResetPlant();
 
                     //Debug.Log("Collisione Avvenuta e raccolto aggiunto");

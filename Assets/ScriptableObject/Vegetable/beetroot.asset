@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: beetroot
   m_EditorClassIdentifier: 
   NameVegetable: beetroot
-  quantity: 10
+  quantity: 9
   GrowSprites:
   - {fileID: 21300000, guid: 5780ce92cb844864c83d4e64853d7dd2, type: 3}
   - {fileID: 21300000, guid: 1d96fc942e8fadc48a65e2acd3f19fad, type: 3}

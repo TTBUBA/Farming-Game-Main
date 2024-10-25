@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: potato
   m_EditorClassIdentifier: 
   NameVegetable: potato
-  quantity: 15
+  quantity: 1
   GrowSprites:
   - {fileID: 21300000, guid: 17709ac85dcf4264f90362b80beab6da, type: 3}
   - {fileID: 21300000, guid: 5fdb3c1a4fc346c48b92cc3e28f2c509, type: 3}

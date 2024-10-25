@@ -6,8 +6,7 @@ public class SeedSelectionManager : MonoBehaviour
 {
     public GameObject seedSelectionPanel; // Pannello di selezione semi
     public InventorySlot[] seedSlots; // Slot per gli ortaggi
-    public HotbarManager hotbarManager; // Riferimento al manager della hotbar
-    
+    public InventoryManager inventoryManager;
 
     public Image ImageSeedSelect;
     public Text QuantitySeedSelect;
@@ -31,7 +30,11 @@ public class SeedSelectionManager : MonoBehaviour
     {
         for (int i = 0; i < seedSlots.Length; i++)
         {
-            seedSlots[i].SetSlot(/* Dati ortaggio qui, ad esempio: */ GetVegetableData(i));
+            var vegetableData = GetVegetableData(i);
+            if (vegetableData != null)
+            {
+                seedSlots[i].SetSlot(vegetableData);
+            }
         }
     }
 
@@ -44,9 +47,13 @@ public class SeedSelectionManager : MonoBehaviour
     public void SelectSeed(InventorySlot selectedSlot)
     {
         //Debug.Log(selectedSlot.vegetableData.NameVegetable + ":" + selectedSlot.vegetableData.quantity);
-        Debug.Log(selectedSlot.vegetableData);
+        //Debug.Log(selectedSlot.vegetableData);
+       // Debug.Log(selectedSlot.vegetableData.ItemType);
+
         ImageSeedSelect.sprite = selectedSlot.vegetableData.IconVegetable;
         QuantitySeedSelect.text = selectedSlot.vegetableData.quantity.ToString();
+
+        inventoryManager.SetCurrentSelectedSlot(selectedSlot);// Aggiorna lo slot selezionato nell'inventario
 
         //CloseSeedSelection(); // Chiudi il pannello di selezione
     }

@@ -12,8 +12,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 50db618bed22c1848b57294a9e2084bc, type: 3}
   m_Name: Kale
   m_EditorClassIdentifier: 
-  NameVegetable: 
-  quantity: 0
-  GrowSprites: []
-  TimeStages: 0
-  ItemType: 
+  NameVegetable: kale
+  quantity: 10
+  GrowSprites:
+  - {fileID: 21300000, guid: d997fb90fa253e24d81c7c757e698b21, type: 3}
+  - {fileID: 21300000, guid: adb16f85b46cd1441b89ab1280b08868, type: 3}
+  - {fileID: 21300000, guid: 30d1dc54efaecae4481905929cea49b4, type: 3}
+  - {fileID: 21300000, guid: a6b6a56cf2dc1524aa1c3abf9f2e3653, type: 3}
+  IconVegetable: {fileID: 21300000, guid: 8f9ae9849eed13a468902c12fc83fbe0, type: 3}
+  TimeStages: 2
+  ItemType: kale

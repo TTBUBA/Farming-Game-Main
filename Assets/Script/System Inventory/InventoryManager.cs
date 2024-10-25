@@ -9,37 +9,48 @@ using UnityEngine.UIElements;
 public class InventoryManager : MonoBehaviour
 {
     public InventorySlot[] inventorySlots;
+    private InventorySlot currentSelectedSlot;
     public Transform plantPosition; // Posizione dove piantare il seme
     public Dictionary<Vector3Int, GameObject> occupiedTiles = new Dictionary<Vector3Int, GameObject>();
     public GameObject[] plantGameObjects;
 
+    private void Start()
+    {
+        Debug.Log(inventorySlots.Length);
+    }
 
+    public void SetCurrentSelectedSlot(InventorySlot selectedSlot)
+    {
+        currentSelectedSlot = selectedSlot;
+    }
     // Pianta il seme selezionato
     public void PlantSelectedSeed()
     {
-        InventorySlot selectedSlot = inventorySlots[Random.Range(0, inventorySlots.Length)];
-;
-        if (selectedSlot.vegetableData != null && selectedSlot.vegetableData.quantity > 0)
+        //InventorySlot selectedSlot = inventorySlots[Random.Range(0, inventorySlots.Length)];
+
+        //InventorySlot selectedSlot = inventorySlots[inventorySlots.Length - 1];
+        
+
+        Vector3Int cellPosition = Vector3Int.FloorToInt(plantPosition.position);
+
+        if (!occupiedTiles.ContainsKey(cellPosition))
         {
-            Vector3Int cellPosition = Vector3Int.FloorToInt(plantPosition.position);
+            Debug.Log("ortaggio piantato");
 
-            if (!occupiedTiles.ContainsKey(cellPosition))
-            {
-                Debug.Log("ortaggio piantato");
-                selectedSlot.PlantSeed();
-                Plant plant = GetPlantAtPosition(cellPosition)?.GetComponent<Plant>();
+            currentSelectedSlot.PlantSeed();
+            Plant plant = GetPlantAtPosition(cellPosition)?.GetComponent<Plant>();
 
-                if (plant != null)
-                {
-                    plant.StartGrowth(selectedSlot);
-                    occupiedTiles[cellPosition] = plant.gameObject;
-                }
-            }
-            else
+            if (plant != null)
             {
-                Debug.Log("Cella occupata");
+                plant.StartGrowth(currentSelectedSlot);
+                occupiedTiles[cellPosition] = plant.gameObject;
             }
         }
+        else
+        {
+            Debug.Log("Cella occupata");
+        }
+ 
     }
 
     // Ottiene la pianta alla posizione data

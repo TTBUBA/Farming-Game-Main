@@ -12,8 +12,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 50db618bed22c1848b57294a9e2084bc, type: 3}
   m_Name: beetroot
   m_EditorClassIdentifier: 
-  NameVegetable: 
-  quantity: 0
-  GrowSprites: []
-  TimeStages: 0
-  ItemType: 
+  NameVegetable: beetroot
+  quantity: 10
+  GrowSprites:
+  - {fileID: 21300000, guid: 5780ce92cb844864c83d4e64853d7dd2, type: 3}
+  - {fileID: 21300000, guid: 1d96fc942e8fadc48a65e2acd3f19fad, type: 3}
+  - {fileID: 21300000, guid: d19fb3b76c4845c49964bfee53168dc4, type: 3}
+  - {fileID: 21300000, guid: d2927cafc627b60459a3849e12bcb122, type: 3}
+  IconVegetable: {fileID: 21300000, guid: 8679580a1ea17cb448c866fba03b6209, type: 3}
+  TimeStages: 2
+  ItemType: beetroot

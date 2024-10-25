@@ -10,7 +10,7 @@ public class InventorySlot : MonoBehaviour
     private void Start()
     {
         quantityText.text = vegetableData.quantity.ToString();
-        slotImage.sprite = vegetableData.IconVegetable;
+        slotImage.sprite = vegetableData.IconVegetable; 
     }
 
     public void SetSlot(VegetableData newVegetableData)
@@ -26,7 +26,7 @@ public class InventorySlot : MonoBehaviour
         {
             vegetableData.quantity--; // Riduci la quantità
             quantityText.text = vegetableData.quantity.ToString();
-
+            Debug.Log(vegetableData.ItemType);
         }
     }
 

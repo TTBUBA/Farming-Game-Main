@@ -67,7 +67,7 @@ public class Plant : MonoBehaviour
                     InventoryManager.RemoveVegetableTile(cellPositionPlant);
                     ResetPlant();
 
-                    //Debug.Log("Collisione Avvenuta e raccolto aggiunto");
+                    
                 }
 
             }

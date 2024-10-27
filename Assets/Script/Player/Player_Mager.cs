@@ -38,17 +38,14 @@ public class Player_Manager : MonoBehaviour
         // Quando il player entra in collisione con il terreno
         if (collider.gameObject.CompareTag("Terreno"))
         {
-            if (gameObject.CompareTag("Player") || gameObject.CompareTag("BoxPlayer"))
-            {
-                ButtonPlant.SetActive(true);
-                PointSpawn_Sprite.enabled = true;
-                PuoiPiantare = true;
+            ButtonPlant.SetActive(true);
+            PointSpawn_Sprite.enabled = true;
+            PuoiPiantare = true;
 
-                if (inventoryManager != null && PuoiPiantare)
-                {
-                    inventoryManager.plantPosition = PointSpawn.transform;
-                    inventoryManager.PlantSelectedSeed();
-                }
+            if (inventoryManager != null && PuoiPiantare)
+            {
+                inventoryManager.plantPosition = PointSpawn.transform;
+                inventoryManager.PlantSelectedSeed();
             }
         }
     }

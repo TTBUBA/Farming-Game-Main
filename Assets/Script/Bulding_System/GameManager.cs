@@ -19,9 +19,9 @@ public class GameManager : MonoBehaviour , IData
 
     public float time;
 
-
-    
     public GameObject Money_Counter;
+    public PlayerInput playerInput;
+    public bool UsingKeyboard;
 
 
     [Header("Counter_Animal")]
@@ -36,12 +36,6 @@ public class GameManager : MonoBehaviour , IData
     public GameObject Debug;
     public GameObject Extig;
 
-    public void Start()
-    {
-        // CameraPlayer.enabled = true;
-        
-    }
-
     public void LoadData(GameData data)
     {
         this.Coin = data.Coin;
@@ -55,8 +49,6 @@ public class GameManager : MonoBehaviour , IData
     
     private void Update()
     {
-
-
         // Aggiorna il testo delle monete nella UI ad ogni frame
         CoinText.text = Coin.ToString();
 
@@ -69,9 +61,7 @@ public class GameManager : MonoBehaviour , IData
 
         // serve per aumentare o dimunuire il tempo nel gioco
         Time.timeScale = time;
-
-        
-
+        trackerdevice();
     }
 
 
@@ -142,7 +132,25 @@ public class GameManager : MonoBehaviour , IData
         }
     }
 
+    private void trackerdevice()
+    {
+        if (playerInput != null)
+        {
+            var Device = playerInput.defaultControlScheme;
 
+            foreach (var device in playerInput.devices)
+            {
+                if (device is Keyboard)
+                {
+                    UsingKeyboard = true;
+                }
+                else if (device is Gamepad)
+                {
+                    UsingKeyboard = false;
+                }
+            }
+        }
+    }
     public void CloseDebug()
     {
         Debug.SetActive(false);
@@ -154,96 +162,7 @@ public class GameManager : MonoBehaviour , IData
 }
 
 
-    /*
-    // Metodo per acquistare un edificio
-    public void BuyBulding(Bulding bulding)
-    {
-        // Controlla se ci sono abbastanza monete per acquistare l'edificio
-        if (Coin >= bulding.Cost)
-        {
-            // Mostra il cursore personalizzato
-            custumCursor.gameObject.SetActive(true);
-            // Cambia l'immagine del cursore personalizzato con l'immagine dell'edificio
-            custumCursor.GetComponent<SpriteRenderer>().sprite = bulding.GetComponent<SpriteRenderer>().sprite;
-            // Nasconde il cursore di default del sistema
-            Cursor.visible = true;
-
-            // Deduce il costo dell'edificio dalle monete
-            Coin -= bulding.Cost;
-            // Imposta l'edificio da posizionare
-            buldingPlace = bulding;
-
-            // Mostra la griglia di gioco
-            Grid.SetActive(true);
-        }
-    }
-
-    public void ButtonShopClik()
-    {
-        //oggeti da disattivare appena viene premuto il tasto shop
-        
-        Image_Shop.SetActive(false);
-
-        //oggeti da attivare appena viene premuto il tasto shop
-        Ui_Bar_Shop.SetActive(true);
-
-    }
-
-    public void ButtonShopBack()
-    {
-        //oggeti da disattivare appena viene premuto il tasto shop
-        
-        Image_Shop.SetActive(true);
-
-        //oggeti da attivare appena viene premuto il tasto shop
-        Ui_Bar_Shop.SetActive(false);
-
-    }
-
-    public void HandleCollisionZonaCostruzioni()
-    {
-        Autorizzazione_Ui.SetActive(true);
-        CameraBulding.SetActive(true);
-        ButtonExting_Bulding.SetActive(false);
    
-
-        ButtonPlatin.SetActive(false);
-        Money_Counter.SetActive(true);
-        Player.SetActive(false);
-        CameraPlayer.enabled = false;
-
-    }
-
-    public void BackButtonBulding()
-    {
-          
-        CameraBulding.SetActive(false);
-        Autorizzazione_Ui.SetActive(false);
-        ButtonExting_Bulding.SetActive(false);
-   
-
-        ButtonPlatin.SetActive(true);
-        Money_Counter.SetActive(true);
-        
-        Vector3 NewpositionPlayer = new Vector3(-493.8f, -64.6f,0);
-        Player.transform.position = NewpositionPlayer;
-
-        Player.SetActive(true);
-        CameraPlayer.enabled = true;
-
-    }
-
-  
-
-    public void ButtonAcceptBulding()
-    {
-        ButtonExting_Bulding.SetActive(true);
-
-
-        Autorizzazione_Ui.SetActive(false);
-
-    }
-    */
 
 
 

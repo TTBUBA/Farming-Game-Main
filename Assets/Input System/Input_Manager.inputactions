@@ -664,6 +664,102 @@
                     "isPartOfComposite": false
                 }
             ]
+        },
+        {
+            "name": "Controller",
+            "id": "e863e574-596e-4ec1-b8c5-6478626d883a",
+            "actions": [
+                {
+                    "name": "Open_OpenSeedSelection_Controller",
+                    "type": "Button",
+                    "id": "41df00bf-bde5-4232-92fb-af1fc6c32522",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
+                },
+                {
+                    "name": "Open_CloseSeedSelection_Controller",
+                    "type": "Button",
+                    "id": "ac9389c8-9375-4230-81d4-b4ad866b6df3",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
+                }
+            ],
+            "bindings": [
+                {
+                    "name": "",
+                    "id": "cdff5479-da01-44bc-8531-d049c1537981",
+                    "path": "<Gamepad>/buttonSouth",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Open_OpenSeedSelection_Controller",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "a5c327d4-3669-49a9-b998-43ebff1aedab",
+                    "path": "<Gamepad>/buttonEast",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Open_CloseSeedSelection_Controller",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                }
+            ]
+        },
+        {
+            "name": "Keyboard",
+            "id": "a224c3e6-b59c-41d0-bec0-4811447aab43",
+            "actions": [
+                {
+                    "name": "Open_OpenSeedSelection_Keyboard",
+                    "type": "Button",
+                    "id": "04e91fe8-3384-45f8-80d2-68c7278e4a4b",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
+                },
+                {
+                    "name": "Open_CloseSeedSelection_Keyboard",
+                    "type": "Button",
+                    "id": "ffbeb7f5-1e26-4f28-ac25-24175c8fbb12",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
+                }
+            ],
+            "bindings": [
+                {
+                    "name": "",
+                    "id": "5b3ee2ae-b1e1-4d20-bbeb-2a1354a2fefd",
+                    "path": "<Keyboard>/f",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Open_OpenSeedSelection_Keyboard",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "97ca45c0-c8af-4567-9ec0-fd19890f90ab",
+                    "path": "<Keyboard>/q",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Open_CloseSeedSelection_Keyboard",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                }
+            ]
         }
     ],
     "controlSchemes": [

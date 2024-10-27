@@ -14,11 +14,6 @@ public class InventoryManager : MonoBehaviour
     public Dictionary<Vector3Int, GameObject> occupiedTiles = new Dictionary<Vector3Int, GameObject>();
     public GameObject[] plantGameObjects;
 
-    private void Start()
-    {
-        Debug.Log(inventorySlots.Length);
-    }
-
     public void SetCurrentSelectedSlot(InventorySlot selectedSlot)
     {
         currentSelectedSlot = selectedSlot;

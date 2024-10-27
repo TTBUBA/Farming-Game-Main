@@ -3,7 +3,6 @@ using UnityEngine.InputSystem;
 
 public class PlayerCollision : MonoBehaviour
 {
-    
     [Header("UI Button_Log_Exit")]
     public GameObject Ui_Button_Log; // Ui Bottone di log
     public GameObject Ui_Button_Exit; // Ui Bottone di uscita
@@ -48,9 +47,8 @@ public class PlayerCollision : MonoBehaviour
 
     private void Start()
     {
-        // Inizializza il componente PlayerInput
         Playerinput = GetComponent<PlayerInput>();
-        IsCollision = false; 
+        IsCollision = false;
     }
 
     private void Update()
@@ -61,47 +59,43 @@ public class PlayerCollision : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D collider)
     {
-        // Se il giocatore collide con sé stesso o con un oggetto specifico (Ascia), non fare nulla
         if (collider.gameObject == this.gameObject || collider.CompareTag("Axe"))
         {
             return;
         }
 
-        // Salva il tag dell'oggetto con cui si è in collisione
         currentCollisionTag = collider.gameObject.tag;
+        TrackerDevice();
 
-        TrackerDevice(); // Controlla quale dispositivo è in uso
-        ShowUiButton(); // Mostra il bottone dell'interfaccia utente
-        IsCollision = true; 
+        // Imposta IsCollision solo se ShowCurrentUI() restituisce true
+        IsCollision = CheckCollisionTag();
+        
+        ShowUiButton();
     }
 
     private void OnTriggerExit2D(Collider2D collider)
     {
-        // Se il giocatore esce dalla collisione con se stesso o con un altro giocatore, non fa nulla
         if (collider.gameObject == this.gameObject || collider.CompareTag("Player"))
         {
             return;
         }
 
-        ResetUI();  // Quando esci dalla collisione, resetta l'interfaccia utente
-        IsCollision = false; 
+        ResetUI();
+        IsCollision = false;
     }
 
     private void TrackerDevice()
     {
-        // Controlla quale dispositivo (tastiera o controller) sta usando il giocatore
         if (Playerinput != null)
         {
             var CurrentDevice = Playerinput.currentControlScheme;
 
             foreach (var device in Playerinput.devices)
             {
-                // Se il dispositivo è una tastiera, imposta IsUsingKeyboard su true
                 if (device is Keyboard)
                 {
                     IsUsingKeyboard = true;
                 }
-                // Se il dispositivo è un controller, imposta IsUsingKeyboard su false
                 else if (device is Gamepad)
                 {
                     IsUsingKeyboard = false;
@@ -112,60 +106,76 @@ public class PlayerCollision : MonoBehaviour
 
     private void ShowUiButton()
     {
-        // Mostra il bottone solo se il giocatore è in collisione
         if (IsCollision == true)
         {
-            Ui_Button_Log.SetActive(true); // Attiva il bottone di log
+            Ui_Button_Log.SetActive(true);
 
-            // Mostra le icone in base al dispositivo usato
             if (IsUsingKeyboard)
             {
-                Ui_Log_Keyboard.SetActive(true); // Mostra l'icona per tastiera
-                Ui_Log_Controller.SetActive(false); // Nascondi l'icona per controller
+                Ui_Log_Keyboard.SetActive(true);
+                Ui_Log_Controller.SetActive(false);
             }
             else
             {
-                Ui_Log_Controller.SetActive(true); // Mostra l'icona per controller
-                Ui_Log_Keyboard.SetActive(false); // Nascondi l'icona per tastiera
+                Ui_Log_Controller.SetActive(true);
+                Ui_Log_Keyboard.SetActive(false);
             }
+        }
+    }
+
+    private bool CheckCollisionTag()
+    {
+        switch (currentCollisionTag)
+        {
+            case "statistics_cow":
+            case "statistics_chicken":  
+            case "statistics_Sheep":
+            case "statistics_pig":
+            case "Box_Magazzino":
+            case "Box_Silo": 
+            case "Mill":
+            case "Order_Tab":
+                return true;
+            default:
+                return false;
         }
     }
 
     private void ShowCurrentUI()
     {
-        // Mostra la UI corrispondente al tag dell'oggetto con cui si è in collisione
         switch (currentCollisionTag)
         {
             case "statistics_cow":
-                Ui_Cow.SetActive(true); // Mostra la UI per la mucca
+                Ui_Cow.SetActive(true);
                 break;
             case "statistics_chicken":
-                Ui_Chicken.SetActive(true); // Mostra la UI per il pollo
+                Ui_Chicken.SetActive(true);
                 break;
             case "statistics_Sheep":
-                Ui_Sheep.SetActive(true); // Mostra la UI per la pecora
+                Ui_Sheep.SetActive(true);
                 break;
             case "statistics_pig":
-                Ui_Pig.SetActive(true); // Mostra la UI per il maiale
+                Ui_Pig.SetActive(true);
                 break;
             case "Box_Magazzino":
-                Ui_Magazzino.SetActive(true); // Mostra la UI per il magazzino
+                Ui_Magazzino.SetActive(true);
                 break;
             case "Box_Silo":
-                Ui_Silo.SetActive(true); // Mostra la UI per il silo
+                Ui_Silo.SetActive(true);
                 break;
             case "Mill":
-                Ui_Mill.SetActive(true); // Mostra la UI per il mulino
+                Ui_Mill.SetActive(true);
                 break;
             case "Order_Tab":
-                Ui_Order.SetActive(true); // Mostra la UI per gli ordini
+                Ui_Order.SetActive(true);
+                break;
+            default:
                 break;
         }
     }
 
     private void ResetUI()
     {
-        // Disattiva tutte le UI
         Ui_Button_Log.SetActive(false);
         Ui_Button_Exit.SetActive(false);
 
@@ -184,21 +194,18 @@ public class PlayerCollision : MonoBehaviour
         Ui_Log_Keyboard.SetActive(false);
         Ui_Exit_Keyboard.SetActive(false);
 
-        currentCollisionTag = null; // Resetta il tag della collisione
-        IsCollision = false; // Imposta IsCollision su false
+        currentCollisionTag = null;
+        IsCollision = false;
     }
 
-    //============INPUT SYSTEM============//
     private void OnEnable()
     {
-        // Abilita le azioni di input quando lo script è attivo
         Button_Log_KeyBoard.action.Enable();
         Button_Exit_KeyBoard.action.Enable();
 
         Button_Log_Controller.action.Enable();
         Button_Exit_Controller.action.Enable();
 
-        // Collega le funzioni ai pulsanti di log e uscita
         Button_Log_KeyBoard.action.started += Button_Log;
         Button_Exit_KeyBoard.action.started += Button_Exit;
 
@@ -208,14 +215,12 @@ public class PlayerCollision : MonoBehaviour
 
     private void OnDisable()
     {
-        // Disabilita le azioni di input quando lo script non è attivo
         Button_Log_KeyBoard.action.Disable();
         Button_Exit_KeyBoard.action.Disable();
 
         Button_Log_Controller.action.Disable();
         Button_Exit_Controller.action.Disable();
 
-        // Scollega le funzioni dai pulsanti di log e uscita
         Button_Log_KeyBoard.action.started -= Button_Log;
         Button_Exit_KeyBoard.action.started -= Button_Exit;
 
@@ -225,39 +230,34 @@ public class PlayerCollision : MonoBehaviour
 
     private void Button_Log(InputAction.CallbackContext context)
     {
-        // Azione da eseguire quando si preme il bottone di log
-        Ui_Button_Log.SetActive(false); // Nasconde il bottone di log
-        Ui_Button_Exit.SetActive(true); // Mostra il bottone di uscita
-        ShowCurrentUI(); // Mostra la UI attuale
+        Ui_Button_Log.SetActive(false);
+        Ui_Button_Exit.SetActive(true);
+        ShowCurrentUI();
 
-        // Mostra le icone in base al dispositivo usato
         if (IsUsingKeyboard)
         {
-            Ui_Exit_Keyboard.SetActive(true); // Mostra l'icona di uscita per tastiera
-            Ui_Exit_Controller.SetActive(false); // Nasconde l'icona di uscita per controller
+            Ui_Exit_Keyboard.SetActive(true);
+            Ui_Exit_Controller.SetActive(false);
         }
         else
         {
-            Ui_Exit_Controller.SetActive(true); // Mostra l'icona di uscita per controller
-            Ui_Exit_Keyboard.SetActive(false); // Nascondi l'icona di uscita per tastiera
+            Ui_Exit_Controller.SetActive(true);
+            Ui_Exit_Keyboard.SetActive(false);
         }
     }
 
     private void Button_Exit(InputAction.CallbackContext context)
     {
-        // Azione da eseguire quando si preme il bottone di uscita
-        Ui_Button_Log.SetActive(true); // Mostra il bottone di log
-        Ui_Button_Exit.SetActive(false); // Nascondi il bottone di uscita
-        ResetUI(); // Resetta l'interfaccia utente
+        Ui_Button_Log.SetActive(true);
+        Ui_Button_Exit.SetActive(false);
+        ResetUI();
     }
 
-    // Metodo pubblico per mostrare la UI attuale
     public void ShowUicurrent()
     {
         ShowCurrentUI();
     }
 
-    // Metodo pubblico per disattivare l'interfaccia utente attuale
     public void DisactiveCurrentUi()
     {
         ResetUI();

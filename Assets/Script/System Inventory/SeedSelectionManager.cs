@@ -1,6 +1,7 @@
 using UnityEngine;
 using UnityEngine.UI;
 using System.Collections.Generic;
+using UnityEngine.InputSystem;
 
 public class SeedSelectionManager : MonoBehaviour
 {
@@ -10,21 +11,60 @@ public class SeedSelectionManager : MonoBehaviour
 
     public Image ImageSeedSelect;
     public Text QuantitySeedSelect;
-    void Start()
+
+    public GameManager gameManager;
+    public Player_Manager playerManager;
+
+    public GameObject Button_Quit;
+
+    [Header("Ui_Controller")]
+    public GameObject Ui_OpenSeedSelection_controller;
+    public GameObject Ui_CloseSeedSelection_controller;
+
+    [Header("Ui_Keyboard")] 
+    public GameObject Ui_CloseSeedSelection_Keyboard;
+
+    [Header("Input_Controller")]
+    public InputActionReference OpenSeedSelection_controller;
+    public InputActionReference CloseSeedSelection_controller;
+    [Header("Input_Keyboard")]
+    public InputActionReference OpenSeedSelection_Keyboard; 
+    public InputActionReference CloseSeedSelection_Keyboard;
+
+    public void Awake()
     {
-        //seedSelectionPanel.SetActive(false); // Nascondi il pannello di selezione
+        InventorySlot selectedSlot = seedSlots[0];
+        QuantitySeedSelect.text = selectedSlot.vegetableData.quantity.ToString();
+        //SelectSeed(selectedSlot);
     }
 
+    private void Update()
+    {
+        if(gameManager.UsingKeyboard == true)
+        {
+            Ui_CloseSeedSelection_Keyboard.SetActive(true);
+            Ui_CloseSeedSelection_controller.SetActive(false);
+        }
+        else
+        {
+            Ui_CloseSeedSelection_controller.SetActive(true);
+            Ui_CloseSeedSelection_Keyboard.SetActive(false);
+        }
+    }
     public void OpenSeedSelection()
     {
         seedSelectionPanel.SetActive(true); // Mostra il pannello di selezione
+        Button_Quit.SetActive(true);
         UpdateSeedSlots(); // Aggiorna gli slot con i dati degli ortaggi
+
     }
 
     public void CloseSeedSelection()
-    {
+    {  
         seedSelectionPanel.SetActive(false); // Nasconde il pannello di selezione
+        Button_Quit.SetActive(false);
     }
+
 
     void UpdateSeedSlots()
     {
@@ -55,6 +95,34 @@ public class SeedSelectionManager : MonoBehaviour
 
         inventoryManager.SetCurrentSelectedSlot(selectedSlot);// Aggiorna lo slot selezionato nell'inventario
 
-        //CloseSeedSelection(); // Chiudi il pannello di selezione
     }
+    //========INPUT GENERAL========//
+    private void OnEnable()
+    {
+        OpenSeedSelection_Keyboard.action.Enable();
+        CloseSeedSelection_Keyboard.action.Enable();
+
+        OpenSeedSelection_Keyboard.action.started += OpenSeedPanel_Keyboard;
+        CloseSeedSelection_Keyboard.action.started += CloseSeedPanel_Keyboard;
+    }
+    private void OnDisable()
+    {
+        OpenSeedSelection_Keyboard.action.Disable();
+        CloseSeedSelection_Keyboard.action.Disable();
+
+        OpenSeedSelection_Keyboard.action.started -= OpenSeedPanel_Keyboard;
+        CloseSeedSelection_Keyboard.action.started -= CloseSeedPanel_Keyboard;
+    }
+    //========INPUT KEYBOARD========//
+    private void OpenSeedPanel_Keyboard(InputAction.CallbackContext context)
+    {
+         OpenSeedSelection();   
+    }
+
+    private void CloseSeedPanel_Keyboard(InputAction.CallbackContext context)
+    {
+        CloseSeedSelection();     
+    }
+    //========INPUT CONTROLLER========//
+
 }

@@ -30,14 +30,7 @@ public class NewBehaviourScript : MonoBehaviour
     public GameObject Web_Ui;
 
 
-    // Start is called before the first frame update
-    void Start()
-    {
-        Website_shop.SetActive(false);
-        Website_Strano.SetActive(false);
-    }
-
-    // Update is called once per frame
+   
     public void ClickButtonSearch()
     {
         string EndUrl = UrlWebSite.text;

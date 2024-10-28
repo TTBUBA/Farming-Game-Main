@@ -7,14 +7,11 @@ public class SeedSelectionManager : MonoBehaviour
 {
     public GameObject seedSelectionPanel; // Pannello di selezione semi
     public InventorySlot[] seedSlots; // Slot per gli ortaggi
-    public InventoryManager inventoryManager;
+    public int selectedSlotIndex = 0;
 
+    [Header("Ui_Seed")]
     public Image ImageSeedSelect;
     public Text QuantitySeedSelect;
-
-    public GameManager gameManager;
-    public Player_Manager playerManager;
-
     public GameObject Button_Quit;
 
     [Header("Ui_Controller")]
@@ -31,25 +28,20 @@ public class SeedSelectionManager : MonoBehaviour
     public InputActionReference OpenSeedSelection_Keyboard; 
     public InputActionReference CloseSeedSelection_Keyboard;
 
+    public GameManager gameManager;
+    public Player_Manager playerManager;
+    public InventoryManager inventoryManager;
+
     public void Awake()
     {
         InventorySlot selectedSlot = seedSlots[0];
         QuantitySeedSelect.text = selectedSlot.vegetableData.quantity.ToString();
-        //SelectSeed(selectedSlot);
     }
 
     private void Update()
     {
-        if(gameManager.UsingKeyboard == true)
-        {
-            Ui_CloseSeedSelection_Keyboard.SetActive(true);
-            Ui_CloseSeedSelection_controller.SetActive(false);
-        }
-        else
-        {
-            Ui_CloseSeedSelection_controller.SetActive(true);
-            Ui_CloseSeedSelection_Keyboard.SetActive(false);
-        }
+        UpdateUi(); 
+        CheakDeviceUsing();
     }
     public void OpenSeedSelection()
     {
@@ -65,6 +57,24 @@ public class SeedSelectionManager : MonoBehaviour
         Button_Quit.SetActive(false);
     }
 
+    private void UpdateUi()
+    {
+        InventorySlot selectedSlot = seedSlots[0];
+        QuantitySeedSelect.text = selectedSlot.vegetableData.quantity.ToString();
+    }
+    private void CheakDeviceUsing()
+    {
+        if (gameManager.UsingKeyboard == true)
+        {
+            Ui_CloseSeedSelection_Keyboard.SetActive(true);
+            Ui_CloseSeedSelection_controller.SetActive(false);
+        }
+        else
+        {
+            Ui_CloseSeedSelection_controller.SetActive(true);
+            Ui_CloseSeedSelection_Keyboard.SetActive(false);
+        }
+    }
 
     void UpdateSeedSlots()
     {
@@ -88,8 +98,8 @@ public class SeedSelectionManager : MonoBehaviour
     {
         //Debug.Log(selectedSlot.vegetableData.NameVegetable + ":" + selectedSlot.vegetableData.quantity);
         //Debug.Log(selectedSlot.vegetableData);
-       // Debug.Log(selectedSlot.vegetableData.ItemType);
-
+        // Debug.Log(selectedSlot.vegetableData.ItemType);
+        selectedSlotIndex++;
         ImageSeedSelect.sprite = selectedSlot.vegetableData.IconVegetable;
         QuantitySeedSelect.text = selectedSlot.vegetableData.quantity.ToString();
 
@@ -113,6 +123,7 @@ public class SeedSelectionManager : MonoBehaviour
         OpenSeedSelection_Keyboard.action.started -= OpenSeedPanel_Keyboard;
         CloseSeedSelection_Keyboard.action.started -= CloseSeedPanel_Keyboard;
     }
+
     //========INPUT KEYBOARD========//
     private void OpenSeedPanel_Keyboard(InputAction.CallbackContext context)
     {

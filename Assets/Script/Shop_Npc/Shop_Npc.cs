@@ -13,7 +13,7 @@ public class Shop : MonoBehaviour
     public Image[] Box_Shop;
     public string[] ortaggioTypes;
     public Tracker_Box[] trackerBoxes;
-    public InventorySlot[] inventorySlots;
+    public Slot_Vegetable[] inventorySlots;
 
     [SerializeField] public int currentIndex = 0;
 

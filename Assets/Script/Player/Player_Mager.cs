@@ -14,13 +14,8 @@ public class Player_Manager : MonoBehaviour
 
     public GameObject ButtonPlant;
 
-
-    //private UnlockBuilding_System UnlockBuildingSystem;
-    //public Text errorMessage;
-    //public Button ButtonBulding;
-
     public bool PuoiPiantare = false;
-    private bool inZonaCostruzioni = false;
+    public string CurrentCollisiontag;
   
     private void Awake()
     {
@@ -35,6 +30,13 @@ public class Player_Manager : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D collider)
     {
+        if (collider.gameObject == this.gameObject || collider.CompareTag("Axe"))
+        {
+            return;
+        }
+
+        CurrentCollisiontag = collider.gameObject.tag;
+
         // Quando il player entra in collisione con il terreno
         if (collider.gameObject.CompareTag("Terreno"))
         {
@@ -52,6 +54,12 @@ public class Player_Manager : MonoBehaviour
 
     private void OnTriggerExit2D(Collider2D collision)
     {
+        if (collision.gameObject == this.gameObject || collision.CompareTag("Axe")) 
+        {
+            return;
+        }
+
+        CurrentCollisiontag = null;
         if (collision.gameObject.CompareTag("Terreno"))
         {
             if (gameObject.CompareTag("Player") || gameObject.CompareTag("BoxPlayer"))

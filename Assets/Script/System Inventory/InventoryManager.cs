@@ -8,13 +8,18 @@ using UnityEngine.UIElements;
 
 public class InventoryManager : MonoBehaviour
 {
-    public InventorySlot[] inventorySlots;
-    private InventorySlot currentSelectedSlot;
+    //Slot degli ortaggi
+    public Slot_Vegetable[] inventorySlots;
+    private Slot_Vegetable currentSelectedSlot;
+
+    //Slot degli Tools
+
+
     public Transform plantPosition; // Posizione dove piantare il seme
     public Dictionary<Vector3Int, GameObject> occupiedTiles = new Dictionary<Vector3Int, GameObject>();
     public GameObject[] plantGameObjects;
 
-    public void SetCurrentSelectedSlot(InventorySlot selectedSlot)
+    public void SetCurrentSelectedSlot(Slot_Vegetable selectedSlot)
     {
         currentSelectedSlot = selectedSlot;
     }

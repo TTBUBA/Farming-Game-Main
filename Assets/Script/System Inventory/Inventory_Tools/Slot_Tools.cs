@@ -17,8 +17,6 @@ public class Slot_Tools : MonoBehaviour
         Debug.Log(NewTools.name);
     }
 
-
-
     public void Select()
     {
        this.gameObject.transform.localScale = new Vector3(1.10f, 1.10f, 1);

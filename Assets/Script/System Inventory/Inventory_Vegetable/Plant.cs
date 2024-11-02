@@ -10,6 +10,7 @@ public class Plant : MonoBehaviour
     public float timeStages;
     public string ItemType;
     public int CurrentStage = 0;
+    public bool IsPlanting;
 
   
     private SpriteRenderer SpriteRenderer;
@@ -19,8 +20,7 @@ public class Plant : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        SpriteRenderer = GetComponent<SpriteRenderer>();
-        
+        SpriteRenderer = GetComponent<SpriteRenderer>();   
     }
 
     // Inizia la crescita del seme piantato
@@ -33,10 +33,15 @@ public class Plant : MonoBehaviour
         timeStages = vegetableData.TimeStages;
         ItemType = vegetableData.ItemType;
 
+        CurrentStage = 0;
+
+        // Imposta immediatamente lo sprite iniziale
+        if (growSprites != null && growSprites.Length > 0 )
+        {
+            SpriteRenderer.sprite = growSprites[CurrentStage];
+        }
 
         // Debug.Log("Dati" + selectedSlot.seedPrefab.name + "tempo" + timeStages);
-
-        CurrentStage = 0;
 
         StartCoroutine(Grow());
     }

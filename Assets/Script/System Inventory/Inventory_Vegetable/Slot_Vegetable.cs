@@ -26,18 +26,8 @@ public class Slot_Vegetable : MonoBehaviour
         {
             vegetableData.quantity--; // Riduci la quantità
             quantityText.text = vegetableData.quantity.ToString();
-            Debug.Log(vegetableData.ItemType);
+            //Debug.Log(vegetableData.ItemType);
         }
-    }
-
-    public void Deselect()
-    {
-        
-    }
-
-    public void Select()
-    {
-       
     }
 
     // incrementa la quandita di semi 

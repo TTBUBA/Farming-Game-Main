@@ -29,7 +29,9 @@ public class HotbarManager : MonoBehaviour
             slot.Deselect(); // Deseleziona gli slot
         }
 
-        Debug.Log(hotbarSlots[selectedHotbarSlotIndex].name);
+        //Debug.Log(hotbarSlots[selectedHotbarSlotIndex].name);
+
+        Debug.Log(hotbarSlots[selectedHotbarSlotIndex].toolsData.NameTools);
 
         selectedHotbarSlotIndex = index;
         hotbarSlots[selectedHotbarSlotIndex].Select(); // Seleziona lo slot

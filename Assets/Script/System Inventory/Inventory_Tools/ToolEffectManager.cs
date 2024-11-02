@@ -11,28 +11,36 @@ public class ToolEffectManager : MonoBehaviour
     public GameObject PointSpawn;
 
 
+
     public Player_Manager PlayerCollision;
     public Slot_Tools[] SlotTools;
-
+    public InventoryManager inventoryManager;
+    public HotbarManager hotbarManager;
     public void Update()
     {
         ApplyToolEffect();
     }
     public void ApplyToolEffect()
     {
-        foreach (Slot_Tools slot in SlotTools)
+        // Ottiene lo slot selezionato
+        Slot_Tools slotTools = hotbarManager.hotbarSlots[hotbarManager.selectedHotbarSlotIndex];
+
+        //Debug.Log(slotTools.toolsData.NameTools);
+        
+        if (PlayerCollision.CurrentCollisiontag == slotTools.toolsData.AreaUsing)
         {
-            if (PlayerCollision.CurrentCollisiontag == slot.toolsData.AreaUsing)
+            switch(slotTools.toolsData.NameTools)
             {
-                switch(slot.toolsData.NameTools)
-                {
-                    case "hoe":
-                        ChangeTile();
-                        Debug.Log("hoe using");
-                        break;
-                }
+                case "hoe":
+                   ChangeTile();
+                   break;
+
+                case "pickaxe":
+                    PickAxe_Test(); 
+                    break;
             }
         }
+        
 
     }
 
@@ -42,8 +50,25 @@ public class ToolEffectManager : MonoBehaviour
 
         if (Input.GetKeyDown(KeyCode.V))
         {
+            Plant plant = inventoryManager.GetPlantAtPosition(currentCell)?.GetComponent<Plant>();
+
             tilemapTerrain.SetTile(currentCell, Newtile);
+
+            if(plant != null)
+            {
+                plant.IsPlanting = true;
+            }
+
+            Debug.Log("Hoe Using");
         }
-        
+    }
+
+    public void PickAxe_Test()
+    {
+        if(Input.GetKeyDown(KeyCode.V))
+        {
+           Debug.Log("PickAxe Using");
+        }
+
     }
 }

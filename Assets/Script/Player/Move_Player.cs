@@ -178,7 +178,7 @@ public class Move_Player : MonoBehaviour, IData
         Debug.DrawLine(centerOfPlayerCell + Vector3.up * 0.5f, centerOfPlayerCell + Vector3.down * 0.5f, Color.red);
 
         // Se il player è abbastanza vicino al centro della cella
-        if (Vector3.Distance(transform.position , centerOfPlayerCell) < 0.5f)
+        if (Vector3.Distance(transform.position , centerOfPlayerCell) < 0.1f)
         { 
             if (lastHorizontal > 0)
             {

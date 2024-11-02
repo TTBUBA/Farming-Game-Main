@@ -11,7 +11,9 @@ public class SeedSelectionManager : MonoBehaviour
 
     [Header("Ui_Seed")]
     public Image ImageSeedSelect;
+    public Sprite DefultSeed;
     public Text QuantitySeedSelect;
+    public GameObject QuantitySeed;
     public GameObject Button_Quit;
 
     [Header("Ui_Controller")]
@@ -32,12 +34,6 @@ public class SeedSelectionManager : MonoBehaviour
     public Player_Manager playerManager;
     public InventoryManager inventoryManager;
 
-    public void Awake()
-    {
-        Slot_Vegetable selectedSlot = seedSlots[0];
-        QuantitySeedSelect.text = selectedSlot.vegetableData.quantity.ToString();
-    }
-
     private void Update()
     {
         UpdateUi(); 
@@ -55,11 +51,14 @@ public class SeedSelectionManager : MonoBehaviour
     {  
         seedSelectionPanel.SetActive(false); // Nasconde il pannello di selezione
         Button_Quit.SetActive(false);
+        QuantitySeed.SetActive(false);
+        ImageSeedSelect.sprite = DefultSeed;
+
     }
 
     private void UpdateUi()
     {
-        Slot_Vegetable selectedSlot = seedSlots[0];
+        Slot_Vegetable selectedSlot = seedSlots[selectedSlotIndex];
         QuantitySeedSelect.text = selectedSlot.vegetableData.quantity.ToString();
     }
     private void CheakDeviceUsing()
@@ -99,10 +98,12 @@ public class SeedSelectionManager : MonoBehaviour
         //Debug.Log(selectedSlot.vegetableData.NameVegetable + ":" + selectedSlot.vegetableData.quantity);
         //Debug.Log(selectedSlot.vegetableData);
         // Debug.Log(selectedSlot.vegetableData.ItemType);
+
+
         selectedSlotIndex++;
         ImageSeedSelect.sprite = selectedSlot.vegetableData.IconVegetable;
         QuantitySeedSelect.text = selectedSlot.vegetableData.quantity.ToString();
-
+        QuantitySeed.SetActive(true);
         inventoryManager.SetCurrentSelectedSlot(selectedSlot);// Aggiorna lo slot selezionato nell'inventario
 
     }

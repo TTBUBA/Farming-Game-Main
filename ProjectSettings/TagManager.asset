@@ -26,6 +26,7 @@ TagManager:
   - ZonaCostruzioni
   - box_cow
   - Order_Tab
+  - rock
   layers:
   - Default
   - TransparentFX

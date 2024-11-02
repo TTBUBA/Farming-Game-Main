@@ -13,12 +13,13 @@ MonoBehaviour:
   m_Name: Carrot
   m_EditorClassIdentifier: 
   NameVegetable: carrot
-  quantity: 10
+  quantity: 50
   GrowSprites:
+  - {fileID: 21300000, guid: 75da89ff59f47ec4782fd74877c5b105, type: 3}
   - {fileID: 21300000, guid: 35bc6c87c2d14f644ba6dadd074cf837, type: 3}
   - {fileID: 21300000, guid: 025656f98a6a02b448548facb685e504, type: 3}
   - {fileID: 21300000, guid: 57ddb557cda451a439b3245f54ceae90, type: 3}
   - {fileID: 21300000, guid: cb13056eff613844f9484db6b6963490, type: 3}
-  IconVegetable: {fileID: 21300000, guid: 083f7669fec4fd546b606f28a2aee28e, type: 3}
+  IconVegetable: {fileID: 21300000, guid: ba6defebaa8c8d34cacf8f974b9e0ab9, type: 3}
   TimeStages: 2
   ItemType: carrot

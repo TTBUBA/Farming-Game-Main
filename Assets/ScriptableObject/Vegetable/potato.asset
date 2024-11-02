@@ -13,12 +13,13 @@ MonoBehaviour:
   m_Name: potato
   m_EditorClassIdentifier: 
   NameVegetable: potato
-  quantity: 1
+  quantity: 50
   GrowSprites:
+  - {fileID: 21300000, guid: 75da89ff59f47ec4782fd74877c5b105, type: 3}
   - {fileID: 21300000, guid: 17709ac85dcf4264f90362b80beab6da, type: 3}
   - {fileID: 21300000, guid: 5fdb3c1a4fc346c48b92cc3e28f2c509, type: 3}
   - {fileID: 21300000, guid: b20e61920dc5ab5458ba9c052c7355b5, type: 3}
   - {fileID: 21300000, guid: 815010af1258ae24896ffa8019d6cf46, type: 3}
-  IconVegetable: {fileID: 21300000, guid: 99250df9bfbc6524fa73a14d8d3ed695, type: 3}
+  IconVegetable: {fileID: 21300000, guid: f7387eb8254408443a63907d3cbff7d9, type: 3}
   TimeStages: 2
   ItemType: potato

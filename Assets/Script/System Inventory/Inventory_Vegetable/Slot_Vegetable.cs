@@ -5,49 +5,50 @@ public class Slot_Vegetable : MonoBehaviour
 {
     public VegetableData vegetableData; // Dati dell'ortaggio
     public Image slotImage; // Immagine dello slot
-    public Text quantityText;
+    public Text quantityText; // Testo che mostra la quantità di semi
 
     private void Start()
     {
-        quantityText.text = vegetableData.quantity.ToString();
-        slotImage.sprite = vegetableData.IconVegetable; 
+        // Inizializza la UI dello slot con i dati dell'ortaggio
+        quantityText.text = vegetableData.quantity.ToString(); // Mostra la quantità iniziale
+        slotImage.sprite = vegetableData.IconVegetable; // Imposta l'icona dell'ortaggio nello slot
     }
 
+    // Imposta i dati per questo slot
     public void SetSlot(VegetableData newVegetableData)
     {
-        quantityText.text = vegetableData.quantity.ToString();
-        vegetableData = newVegetableData;
+        vegetableData = newVegetableData; // Aggiorna i dati dell'ortaggio
         slotImage.sprite = newVegetableData.GrowSprites[0]; // Mostra l'immagine del primo sprite
+        UpdateUI(); // Aggiorna l'interfaccia utente con i nuovi dati
     }
 
+    // Riduci la quantità di semi quando si pianta
     public void PlantSeed()
     {
-        if (vegetableData != null && vegetableData.quantity > 0)
+        if (vegetableData != null && vegetableData.quantity > 0) // Controlla se ci sono semi disponibili
         {
             vegetableData.quantity--; // Riduci la quantità
-            quantityText.text = vegetableData.quantity.ToString();
-            //Debug.Log(vegetableData.ItemType);
+            UpdateUI(); // Aggiorna l'interfaccia utente
         }
     }
 
-    // incrementa la quandita di semi 
+    // Incrementa la quantità di semi
     public void IncreaseSeedQuantity(int Quantity)
     {
-        vegetableData.quantity += Quantity;
-        UpdateUI();
+        vegetableData.quantity += Quantity; // Aggiungi la quantità specificata
+        UpdateUI(); // Aggiorna l'interfaccia utente
     }
 
-    // dimunuisce la quandita di semi
+    // Decrementa la quantità di semi
     public void DecreaseSeedQuantity(int Quantity)
     {
-        vegetableData.quantity -= Quantity;
-        UpdateUI();
-
+        vegetableData.quantity -= Quantity; // Sottrai la quantità specificata
+        UpdateUI(); // Aggiorna l'interfaccia utente
     }
 
     // Metodo privato per aggiornare il testo della quantità nella UI
     private void UpdateUI()
     {
-        quantityText.text = vegetableData.quantity.ToString();  // Aggiorna il testo con la quantità attuale
+        quantityText.text = vegetableData.quantity.ToString(); // Aggiorna il testo con la quantità attuale
     }
 }

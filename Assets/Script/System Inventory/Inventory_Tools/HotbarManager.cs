@@ -1,3 +1,5 @@
+// Gestisce la selezione degli slot della hotbar, permettendo al giocatore di cambiare strumento premendo i tasti numerici. 
+// Tiene traccia dello slot attualmente selezionato e gestisce l'interazione tra gli slot della hotbar.
 using UnityEngine;
 
 public class HotbarManager : MonoBehaviour
@@ -7,15 +9,17 @@ public class HotbarManager : MonoBehaviour
 
     void Start()
     {
-        hotbarSlots[selectedHotbarSlotIndex].Select();
+        hotbarSlots[selectedHotbarSlotIndex].Select(); // Seleziona lo slot iniziale al caricamento
     }
+
     void Update()
     {
-        ChangeHotbarSlot(); // Controlla la selezione degli slot della hotbar
+        ChangeHotbarSlot(); // Controlla la selezione degli slot della hotbar ogni frame
     }
 
     public void ChangeHotbarSlot()
     {
+        // Cambia lo slot selezionato in base ai tasti numerici premuti
         if (Input.GetKeyDown(KeyCode.Alpha1)) SelectHotbarSlot(0);
         if (Input.GetKeyDown(KeyCode.Alpha2)) SelectHotbarSlot(1);
         if (Input.GetKeyDown(KeyCode.Alpha3)) SelectHotbarSlot(2);
@@ -24,17 +28,15 @@ public class HotbarManager : MonoBehaviour
 
     void SelectHotbarSlot(int index)
     {
+        // Deseleziona tutti gli slot
         foreach (var slot in hotbarSlots)
         {
-            slot.Deselect(); // Deseleziona gli slot
+            slot.Deselect();
         }
 
-        //Debug.Log(hotbarSlots[selectedHotbarSlotIndex].name);
+        Debug.Log(hotbarSlots[selectedHotbarSlotIndex].toolsData.NameTools); // Messaggio di debug per il nome dello strumento selezionato
 
-        Debug.Log(hotbarSlots[selectedHotbarSlotIndex].toolsData.NameTools);
-
-        selectedHotbarSlotIndex = index;
-        hotbarSlots[selectedHotbarSlotIndex].Select(); // Seleziona lo slot
+        selectedHotbarSlotIndex = index; // Aggiorna l'indice dello slot selezionato
+        hotbarSlots[selectedHotbarSlotIndex].Select(); // Seleziona il nuovo slot
     }
-
 }

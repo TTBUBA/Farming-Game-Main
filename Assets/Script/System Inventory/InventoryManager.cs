@@ -1,21 +1,15 @@
-//gestisce lo slot dinamico e la logica per piantare il seme selezionato
-
 using UnityEngine;
-using UnityEngine.InputSystem;
 using System.Collections.Generic;
-using UnityEngine.UIElements;
 
 public class InventoryManager : MonoBehaviour
 {
-    //Slot degli ortaggi
+    // Slot degli ortaggi
     public Slot_Vegetable[] inventorySlots;
     private Slot_Vegetable currentSelectedSlot;
 
-    //Slot degli Tools
-    public Sprite VegetableDefult; 
-
     public Transform plantPosition; // Posizione dove piantare il seme
-    public Dictionary<Vector3Int, GameObject> occupiedTiles = new Dictionary<Vector3Int, GameObject>();
+    //Dizionario che traccia le celle occupate (Vector3Int) agli oggetti (GameObject) corrispondenti.
+    public Dictionary<Vector3Int, GameObject> occupiedTiles = new Dictionary<Vector3Int, GameObject>(); 
     public GameObject[] plantGameObjects;
 
     public void SetCurrentSelectedSlot(Slot_Vegetable selectedSlot)
@@ -26,35 +20,23 @@ public class InventoryManager : MonoBehaviour
     // Pianta il seme selezionato
     public void PlantSelectedSeed()
     {
-        //InventorySlot selectedSlot = inventorySlots[Random.Range(0, inventorySlots.Length)];
-
-        //InventorySlot selectedSlot = inventorySlots[inventorySlots.Length - 1];
-
         Vector3Int cellPosition = Vector3Int.FloorToInt(plantPosition.position);
         Plant plant = GetPlantAtPosition(cellPosition)?.GetComponent<Plant>();
 
-        if (plant.IsPlanting == true)
+        if (plant != null && plant.IsPlanting) // Verifica se la pianta esiste e se è in fase di piantagione
         {
-
             if (!occupiedTiles.ContainsKey(cellPosition))
             {
-                Debug.Log("ortaggio piantato");
-
+                Debug.Log("Ortaggio piantato");
                 currentSelectedSlot.PlantSeed();
-                
-                if (plant != null)
-                {
-                    plant.StartGrowth(currentSelectedSlot);
-                    occupiedTiles[cellPosition] = plant.gameObject;
-                }
+                plant.StartGrowth(currentSelectedSlot);
+                occupiedTiles[cellPosition] = plant.gameObject;
             }
             else
             {
                 Debug.Log("Cella occupata");
             }
         }
-
- 
     }
 
     // Ottiene la pianta alla posizione data
@@ -78,5 +60,3 @@ public class InventoryManager : MonoBehaviour
         }
     }
 }
-
-

@@ -1,26 +1,21 @@
 using System.Collections;
-using System.Collections.Generic;
-using UnityEditor.Rendering;
 using UnityEngine;
-
 
 public class Plant : MonoBehaviour
 {
-    public Sprite[] growSprites;
-    public float timeStages;
-    public string ItemType;
-    public int CurrentStage = 0;
-    public bool IsPlanting;
+    public Sprite[] growSprites; // Array di sprite per le fasi di crescita
+    public float timeStages; // Tempo di crescita per ciascuna fase
+    public string ItemType; // Tipo di oggetto (es. ortaggio)
+    public int CurrentStage = 0; // Fase attuale della crescita
+    public bool IsPlanting; // Indica se è in fase di piantagione
 
-  
-    private SpriteRenderer SpriteRenderer;
-    public InventoryManager InventoryManager;
-    public Vector3Int cellPositionPlant;
+    private SpriteRenderer SpriteRenderer; // Riferimento al componente SpriteRenderer
+    public InventoryManager InventoryManager; // Riferimento al gestore dell'inventario
+    public Vector3Int cellPositionPlant; // Posizione della cella in cui è piantata la pianta
 
-    // Start is called before the first frame update
     void Start()
     {
-        SpriteRenderer = GetComponent<SpriteRenderer>();   
+        SpriteRenderer = GetComponent<SpriteRenderer>();
     }
 
     // Inizia la crescita del seme piantato
@@ -36,31 +31,29 @@ public class Plant : MonoBehaviour
         CurrentStage = 0;
 
         // Imposta immediatamente lo sprite iniziale
-        if (growSprites != null && growSprites.Length > 0 )
+        if (growSprites != null && growSprites.Length > 0)
         {
             SpriteRenderer.sprite = growSprites[CurrentStage];
         }
 
-        // Debug.Log("Dati" + selectedSlot.seedPrefab.name + "tempo" + timeStages);
-
-        StartCoroutine(Grow());
+        StartCoroutine(Grow()); // Inizia la coroutine per la crescita
     }
- 
-   public IEnumerator Grow()
-   {
-        while (CurrentStage < growSprites.Length)
+
+    // Coroutine per la crescita della pianta
+    public IEnumerator Grow()
+    {
+        while (CurrentStage < growSprites.Length - 1) // Aggiungi -1 per evitare un out of bounds
         {
             yield return new WaitForSeconds(timeStages);
             CurrentStage++;
             SpriteRenderer.sprite = growSprites[CurrentStage];
-        }   
+        }
     }
 
     // Rileva se il player può raccogliere la pianta
     public void OnTriggerEnter2D(Collider2D other)
     {
-        
-        if (CurrentStage >= 3)
+        if (CurrentStage >= 3) // Verifica che la pianta sia matura
         {
             if (other.gameObject.CompareTag("BoxPlayer"))
             {
@@ -71,15 +64,12 @@ public class Plant : MonoBehaviour
                     trakingRaccolto.CollectItem(ItemType);
                     InventoryManager.RemoveVegetableTile(cellPositionPlant);
                     ResetPlant();
-
-                    
                 }
-
             }
-
         }
     }
 
+    // Reset della pianta
     public void ResetPlant()
     {
         CurrentStage = 0;

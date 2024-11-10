@@ -53,8 +53,8 @@ public class SeedSelectionManager : MonoBehaviour
     {
         seedSelectionPanel.SetActive(false); // Disattiva il pannello di selezione
         Button_Quit.SetActive(false); // Nasconde il bottone per chiudere il pannello
-        QuantitySeed.SetActive(false); // Nasconde la UI della quantità dei semi
-        ImageSeedSelect.sprite = DefultSeed; // Ripristina l'immagine di default
+        //QuantitySeed.SetActive(false); // Nasconde la UI della quantità dei semi
+        //ImageSeedSelect.sprite = DefultSeed; // Ripristina l'immagine di default
     }
 
     // Aggiorna l'interfaccia utente in base allo slot selezionato

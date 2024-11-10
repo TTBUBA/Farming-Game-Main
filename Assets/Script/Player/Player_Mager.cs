@@ -4,7 +4,6 @@ using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.UI;
 
-
 public class Player_Manager : MonoBehaviour
 {
     
@@ -13,24 +12,32 @@ public class Player_Manager : MonoBehaviour
     private InventoryManager inventoryManager;
 
     public GameObject ButtonPlant;
-
+    public Text TextButtonPlant;
     public bool PuoiPiantare = false;
     public string CurrentCollisiontag;
-  
-    private void Awake()
+    public Plant plant;
+
+    public void Update()
     {
-        ButtonPlant.SetActive(false);
+        if(plant != null)
+        {
+            if (plant.IsPlanting == true)
+            {
+                TextButtonPlant.text = "Plant";
+            }
+            else
+            {
+                TextButtonPlant.text = "Zappa";
+            }
+        }
+
     }
-
-    public Vector3 GetPosition()
-    {
-        return transform.position;
-    }
-
-
     private void OnTriggerEnter2D(Collider2D collider)
     {
-        if (collider.gameObject == this.gameObject || collider.CompareTag("Axe"))
+        
+        plant = collider.GetComponent<Plant>();
+
+        if (collider.gameObject == this.gameObject || collider.CompareTag("Axe") || collider.CompareTag("Untagged"))
         {
             return;
         }
@@ -42,24 +49,30 @@ public class Player_Manager : MonoBehaviour
         {
             ButtonPlant.SetActive(true);
             PointSpawn_Sprite.enabled = true;
-            PuoiPiantare = true;
+            //PuoiPiantare = true;
 
-            if (inventoryManager != null && PuoiPiantare)
+            if (inventoryManager != null && plant.IsPlanting == true)
             {
                 inventoryManager.plantPosition = PointSpawn.transform;
                 inventoryManager.PlantSelectedSeed();
+                TextButtonPlant.text = "Plant";
+            }
+            else
+            {
+                TextButtonPlant.text = "Zappa";
             }
         }
     }
 
     private void OnTriggerExit2D(Collider2D collision)
     {
-        if (collision.gameObject == this.gameObject || collision.CompareTag("Axe")) 
+        if (collision.gameObject == this.gameObject || collision.CompareTag("Axe") || collision.CompareTag("Untagged")) 
         {
             return;
         }
 
         CurrentCollisiontag = null;
+
         if (collision.gameObject.CompareTag("Terreno"))
         {
             if (gameObject.CompareTag("Player") || gameObject.CompareTag("BoxPlayer"))
@@ -70,24 +83,4 @@ public class Player_Manager : MonoBehaviour
             }
         }
     }
-
-    /* System Bulding
-     * 
-    private void OnAnotherButtonClick()
-    {
-        if (inZonaCostruzioni)
-        {
-            UnlockBuildingSystem.UnlockBuilding();
-        }
-        else
-        {
-            errorMessage.gameObject.SetActive(true);
-            UnlockBuildingSystem.animationfade.Play();
-        }
-    }
-
-    */
-
-
-
 }

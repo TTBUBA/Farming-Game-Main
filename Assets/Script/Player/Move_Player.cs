@@ -2,10 +2,11 @@ using UnityEditor;
 using UnityEngine;
 using UnityEngine.InputSystem;
 using UnityEngine.Tilemaps;
+using UnityEngine.UI;
 
 public class Move_Player : MonoBehaviour, IData
 {
-    // Componenti
+    
     private Rigidbody2D rb;
     private Animator animator;
 
@@ -29,11 +30,6 @@ public class Move_Player : MonoBehaviour, IData
     public GameObject Axe;
     public bool ActivePointPlant = false;
 
-    // Posizioni delle celle
-    public Vector3Int CellPosition; // Posizione della cella corrente
-    public Vector3Int NextCellPosition; // Posizione della prossima cella da raggiungere
-
-    public float test;
     void Start()
     {
         rb = GetComponent<Rigidbody2D>();
@@ -165,17 +161,19 @@ public class Move_Player : MonoBehaviour, IData
 
         //========DEBUG========//
         //test += Time.deltaTime;
-
+        /*
         if(test >3)
         {
             //Debug.Log(targetCell);
             //Debug.Log(centerOfPlayerCell);
             test = 0;
         }
-        
+        */
+
         // Disegna una croce al centro della cella
         Debug.DrawLine(centerOfPlayerCell + Vector3.left * 0.5f, centerOfPlayerCell + Vector3.right * 0.5f, Color.red);
         Debug.DrawLine(centerOfPlayerCell + Vector3.up * 0.5f, centerOfPlayerCell + Vector3.down * 0.5f, Color.red);
+        //================//
 
         // Se il player è abbastanza vicino al centro della cella
         if (Vector3.Distance(transform.position , centerOfPlayerCell) < 0.1f)
@@ -216,6 +214,7 @@ public class Move_Player : MonoBehaviour, IData
         animator.SetBool("IdleLeft", false);
         animator.SetBool("IdleRight", false);
     }
+
     public void OnTriggerEnter2D(Collider2D collision)
     {
         if (collision.gameObject.CompareTag("Terreno"))
@@ -312,4 +311,4 @@ public class Move_Player : MonoBehaviour, IData
     }
     */
 
-}
+    }

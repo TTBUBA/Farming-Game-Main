@@ -34,7 +34,7 @@ public class ToolEffectManager : MonoBehaviour
             switch (slotTools.toolsData.NameTools) // Determina quale strumento è selezionato
             {
                 case "hoe": // Se lo strumento è la zappa
-                    ChangeTile(); 
+                    ChangeTile();
                     break;
 
                 case "pickaxe": // Se lo strumento è il piccone
@@ -49,7 +49,7 @@ public class ToolEffectManager : MonoBehaviour
         // Ottiene la cella attuale sulla mappa in base alla posizione del punto di riferimento
         Vector3Int currentCell = tilemapTerrain.WorldToCell(PointSpawn.transform.position);
 
-        // Controlla se il tasto V è premuto
+        // Controlla se il tasto G è premuto
         if (Input.GetKeyDown(KeyCode.V))
         {
             // Ottiene la pianta presente nella cella corrente, se esiste
@@ -70,10 +70,6 @@ public class ToolEffectManager : MonoBehaviour
 
     public void PickAxe_Test()
     {
-        // Controlla se il tasto V è premuto per il piccone
-        if (Input.GetKeyDown(KeyCode.V))
-        {
-            Debug.Log("PickAxe Using"); // Messaggio di debug per l'uso del piccone
-        }
+        //Piccone meccanica
     }
 }

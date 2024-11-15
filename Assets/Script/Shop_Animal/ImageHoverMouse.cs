@@ -8,11 +8,6 @@ public class ImageHover_Animal : MonoBehaviour, IPointerEnterHandler , IPointerE
     public int CurrentIndex;
     public Shop_Manager_Animal ShopManagerAnimal;
 
-    void Start()
-    {
-        
-    }
-
 
     public void OnPointerEnter(PointerEventData eventData)
     {

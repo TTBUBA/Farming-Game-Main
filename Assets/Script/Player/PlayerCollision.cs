@@ -82,6 +82,7 @@ public class PlayerCollision : MonoBehaviour
 
         ResetUI();
         IsCollision = false;
+        currentCollisionTag = null;
     }
 
     private void TrackerDevice()

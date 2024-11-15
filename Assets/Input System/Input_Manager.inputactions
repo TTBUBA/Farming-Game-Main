@@ -670,7 +670,7 @@
             "id": "e863e574-596e-4ec1-b8c5-6478626d883a",
             "actions": [
                 {
-                    "name": "Open_OpenSeedSelection_Controller",
+                    "name": "OpenSeedSelection_Controller",
                     "type": "Button",
                     "id": "41df00bf-bde5-4232-92fb-af1fc6c32522",
                     "expectedControlType": "Button",
@@ -679,9 +679,27 @@
                     "initialStateCheck": false
                 },
                 {
-                    "name": "Open_CloseSeedSelection_Controller",
+                    "name": "CloseSeedSelection_Controller",
                     "type": "Button",
                     "id": "ac9389c8-9375-4230-81d4-b4ad866b6df3",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
+                },
+                {
+                    "name": "NextSlot_controller",
+                    "type": "Button",
+                    "id": "6b17972a-6d2e-4d02-b483-30072ee1bbd6",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
+                },
+                {
+                    "name": "BackSlot_controller",
+                    "type": "Button",
+                    "id": "dd2c90f2-2acd-423e-a5e9-8286741a3c90",
                     "expectedControlType": "Button",
                     "processors": "",
                     "interactions": "",
@@ -696,7 +714,7 @@
                     "interactions": "",
                     "processors": "",
                     "groups": "",
-                    "action": "Open_OpenSeedSelection_Controller",
+                    "action": "OpenSeedSelection_Controller",
                     "isComposite": false,
                     "isPartOfComposite": false
                 },
@@ -707,7 +725,29 @@
                     "interactions": "",
                     "processors": "",
                     "groups": "",
-                    "action": "Open_CloseSeedSelection_Controller",
+                    "action": "CloseSeedSelection_Controller",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "a1f4073f-5465-4491-a7e1-9c9f1846fa4c",
+                    "path": "<Gamepad>/dpad/right",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "NextSlot_controller",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "f2861e6f-9992-4236-aae3-561b37d0553b",
+                    "path": "<Gamepad>/dpad/left",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "BackSlot_controller",
                     "isComposite": false,
                     "isPartOfComposite": false
                 }

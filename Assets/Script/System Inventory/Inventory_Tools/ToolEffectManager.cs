@@ -5,6 +5,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Tilemaps;
+using UnityEngine.InputSystem;
 
 public class ToolEffectManager : MonoBehaviour
 {
@@ -18,6 +19,11 @@ public class ToolEffectManager : MonoBehaviour
     public InventoryManager inventoryManager; // Riferimento al gestore dell'inventario
     public HotbarManager hotbarManager; // Riferimento al gestore della hotbar
 
+    [Header("INPUT KEYBOARD")]
+    public InputActionReference hole_Keyboard;
+    
+    [Header("INPUT CONTROLLER")]
+    public InputActionReference hole_Controller;
     public void Update()
     {
         ApplyToolEffect(); // Applica l'effetto dello strumento ogni frame
@@ -49,27 +55,32 @@ public class ToolEffectManager : MonoBehaviour
         // Ottiene la cella attuale sulla mappa in base alla posizione del punto di riferimento
         Vector3Int currentCell = tilemapTerrain.WorldToCell(PointSpawn.transform.position);
 
-        // Controlla se il tasto G è premuto
-        if (Input.GetKeyDown(KeyCode.V))
+
+        // Ottiene la pianta presente nella cella corrente, se esiste
+        Plant plant = inventoryManager.GetPlantAtPosition(currentCell)?.GetComponent<Plant>();
+
+        // Imposta il nuovo tile nella mappa
+        tilemapTerrain.SetTile(currentCell, Newtile);
+
+        // Se esiste una pianta, imposta la sua proprietà IsPlanting a true
+        if (plant != null)
         {
-            // Ottiene la pianta presente nella cella corrente, se esiste
-            Plant plant = inventoryManager.GetPlantAtPosition(currentCell)?.GetComponent<Plant>();
-
-            // Imposta il nuovo tile nella mappa
-            tilemapTerrain.SetTile(currentCell, Newtile);
-
-            // Se esiste una pianta, imposta la sua proprietà IsPlanting a true
-            if (plant != null)
-            {
-                plant.IsPlanting = true;
-            }
-
-            Debug.Log("Hoe Using"); // Messaggio di debug per l'uso della zappa
+           plant.IsPlanting = true;
         }
+
+        //Debug.Log("Hoe Using"); // Messaggio di debug per l'uso della zappa
+        
     }
 
     public void PickAxe_Test()
     {
         //Piccone meccanica
     }
+    //===========INPUT SETTING===========//
+    //===========INPUT KEYBOARD===========//
+    private void UseHole_Keyboard()
+    {
+
+    }
+    //===========INPUT CONTROLLER=========//
 }

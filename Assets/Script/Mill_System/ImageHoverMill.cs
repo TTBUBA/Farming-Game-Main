@@ -8,12 +8,6 @@ public class ImageHoverMill : MonoBehaviour, IPointerEnterHandler , IPointerExit
     
     private int ImageIndex;
 
-    void Start()
-    {
-        
-    }
-
-
     public void OnPointerEnter(PointerEventData eventData)
     {
         //uIController.SetCurrentIndex(ImageIndex);

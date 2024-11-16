@@ -670,7 +670,7 @@
             "id": "e863e574-596e-4ec1-b8c5-6478626d883a",
             "actions": [
                 {
-                    "name": "OpenSeedSelection_Controller",
+                    "name": "OpenMenu_Controller",
                     "type": "Button",
                     "id": "41df00bf-bde5-4232-92fb-af1fc6c32522",
                     "expectedControlType": "Button",
@@ -679,7 +679,7 @@
                     "initialStateCheck": false
                 },
                 {
-                    "name": "CloseSeedSelection_Controller",
+                    "name": "CloseMenu_Controller",
                     "type": "Button",
                     "id": "ac9389c8-9375-4230-81d4-b4ad866b6df3",
                     "expectedControlType": "Button",
@@ -704,6 +704,24 @@
                     "processors": "",
                     "interactions": "",
                     "initialStateCheck": false
+                },
+                {
+                    "name": "UseTools_Controller",
+                    "type": "Button",
+                    "id": "9175a325-a508-42e7-9eaa-fea1560aaca2",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
+                },
+                {
+                    "name": "PlantVegetable_Controller",
+                    "type": "Button",
+                    "id": "d56b2dc2-13ed-4183-a5e8-f9e71452cbcf",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
                 }
             ],
             "bindings": [
@@ -714,7 +732,7 @@
                     "interactions": "",
                     "processors": "",
                     "groups": "",
-                    "action": "OpenSeedSelection_Controller",
+                    "action": "OpenMenu_Controller",
                     "isComposite": false,
                     "isPartOfComposite": false
                 },
@@ -725,7 +743,7 @@
                     "interactions": "",
                     "processors": "",
                     "groups": "",
-                    "action": "CloseSeedSelection_Controller",
+                    "action": "CloseMenu_Controller",
                     "isComposite": false,
                     "isPartOfComposite": false
                 },
@@ -750,6 +768,28 @@
                     "action": "BackSlot_controller",
                     "isComposite": false,
                     "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "8894f0bd-1559-455a-b26c-73340da9abd7",
+                    "path": "<Gamepad>/buttonNorth",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "UseTools_Controller",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "683e48d4-c174-4e93-862b-a8b42e1cf5de",
+                    "path": "<Gamepad>/buttonNorth",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "PlantVegetable_Controller",
+                    "isComposite": false,
+                    "isPartOfComposite": false
                 }
             ]
         },
@@ -758,7 +798,7 @@
             "id": "a224c3e6-b59c-41d0-bec0-4811447aab43",
             "actions": [
                 {
-                    "name": "Open_OpenSeedSelection_Keyboard",
+                    "name": "Open_Close",
                     "type": "Button",
                     "id": "04e91fe8-3384-45f8-80d2-68c7278e4a4b",
                     "expectedControlType": "Button",
@@ -767,9 +807,27 @@
                     "initialStateCheck": false
                 },
                 {
-                    "name": "Open_CloseSeedSelection_Keyboard",
+                    "name": "Close_Menu",
                     "type": "Button",
                     "id": "ffbeb7f5-1e26-4f28-ac25-24175c8fbb12",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
+                },
+                {
+                    "name": "UseTools_Keyboard",
+                    "type": "Button",
+                    "id": "b9303314-477b-43de-8061-75edce9ae43f",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
+                },
+                {
+                    "name": "PlantVegetable_Keyboard",
+                    "type": "Button",
+                    "id": "1990374a-8fe7-456e-962f-8a0c21ab7ffd",
                     "expectedControlType": "Button",
                     "processors": "",
                     "interactions": "",
@@ -784,7 +842,7 @@
                     "interactions": "",
                     "processors": "",
                     "groups": "",
-                    "action": "Open_OpenSeedSelection_Keyboard",
+                    "action": "Open_Close",
                     "isComposite": false,
                     "isPartOfComposite": false
                 },
@@ -795,7 +853,29 @@
                     "interactions": "",
                     "processors": "",
                     "groups": "",
-                    "action": "Open_CloseSeedSelection_Keyboard",
+                    "action": "Close_Menu",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "4d4d2891-91af-4ab3-8703-d343d8c8b8da",
+                    "path": "<Keyboard>/c",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "UseTools_Keyboard",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "b033a53f-474b-4570-a39d-0a395734da92",
+                    "path": "<Keyboard>/c",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "PlantVegetable_Keyboard",
                     "isComposite": false,
                     "isPartOfComposite": false
                 }

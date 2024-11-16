@@ -67,8 +67,13 @@ public class SeedSelectionManager : MonoBehaviour
     // Aggiorna l'interfaccia utente in base allo slot selezionato
     private void UpdateUi()
     {
-        Slot_Vegetable selectedSlot = seedSlots[selectedSlotIndex]; // Ottiene lo slot attualmente selezionato
-        QuantitySeedSelect.text = selectedSlot.vegetableData.quantity.ToString(); // Aggiorna il testo con la quantità dell'ortaggio selezionato
+
+        Slot_Vegetable selectedSlot = inventoryManager.currentSelectedSlot; // Ottiene lo slot attualmente selezionato
+        if( selectedSlot != null )
+        {
+            QuantitySeedSelect.text = selectedSlot.vegetableData.quantity.ToString(); // Aggiorna il testo con la quantità dell'ortaggio selezionato
+        }
+       
     }
 
     // Controlla se si sta usando la tastiera o il controller
@@ -110,11 +115,14 @@ public class SeedSelectionManager : MonoBehaviour
     // Seleziona il seme e aggiorna l'interfaccia utente
     public void SelectSeed(Slot_Vegetable selectedSlot)
     {
-
         ImageSeedSelect.sprite = selectedSlot.vegetableData.IconVegetable; // Aggiorna l'immagine del seme selezionato
         QuantitySeedSelect.text = selectedSlot.vegetableData.quantity.ToString(); // Aggiorna il testo della quantità
         QuantitySeed.SetActive(true); // Mostra la UI della quantità
         inventoryManager.SetCurrentSelectedSlot(selectedSlot); // Aggiorna lo slot selezionato nell'inventario
+
+        UpdateUi();
+        
+        
     }
 
     private void NextSlotVegetable()

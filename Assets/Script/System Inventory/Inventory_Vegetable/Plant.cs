@@ -1,5 +1,6 @@
 using System.Collections;
 using UnityEngine;
+using UnityEngine.Tilemaps;
 
 public class Plant : MonoBehaviour
 {
@@ -12,10 +13,14 @@ public class Plant : MonoBehaviour
     private SpriteRenderer SpriteRenderer; // Riferimento al componente SpriteRenderer
     public InventoryManager InventoryManager; // Riferimento al gestore dell'inventario
     public Vector3Int cellPositionPlant; // Posizione della cella in cui è piantata la pianta
+    public Tilemap Tilemap;
 
     void Start()
     {
         SpriteRenderer = GetComponent<SpriteRenderer>();
+
+
+        cellPositionPlant = Tilemap.WorldToCell(this.gameObject.transform.position);
     }
 
     // Inizia la crescita del seme piantato
@@ -76,5 +81,6 @@ public class Plant : MonoBehaviour
         SpriteRenderer.sprite = null;
         growSprites = null;
         timeStages = 0;
+        ItemType = null;
     }
 }
